@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vs_common_default">Lalai</string>
+    <string name="vs_common_unknown">Tidak diketahui</string>
+    <string name="vs_common_auto_choose">Pilih Auto</string>
+    <string name="vs_common_dialog_ok_button">Faham</string>
+    <string name="vs_common_tips_preparing">Menyediakan&#8230;</string>
+    <string name="vs_common_tips_loading">Memuatkan &#8230;</string>
+    <string name="vs_common_tips_loading2">MEMUATKAN&#8230;</string>
+    <string name="vs_common_tips_loading3">Memuatkan, sila cuba kemudian</string>
+    <string name="vs_common_tips_loading_data">Memuatkan data&#8230; (sehingga 10 saat)</string>
+    <string name="vs_common_tips_network_unavailable">Ada sesuatu yang tidak kena, sila periksa rangkaian</string>
+    <string name="vs_common_tips_no_email_app">Anda tidak mempunyai aplikasi e-mel untuk menghantar e-mel. Sila tetapkan aplikasi e-mel terlebih dahulu</string>
+
+    <string name="vs_common_button_go">PERGI</string>
+    <string name="vs_common_button_retry">Cuba semula</string>
+    <string name="vs_common_button_close">Tutup</string>
+    <string name="vs_common_button_got_it">Faham</string>
+    <string name="vs_common_button_upload">Muat Naik</string>
+    <string name="vs_common_button_submit">Hantar</string>
+    <string name="vs_common_button_success">Berjaya</string>
+    <string name="vs_common_button_change">Ubah</string>
+    <string name="vs_common_button_cancel">Batal</string>
+    <string name="vs_common_button_ok">OK</string>
+    <string name="vs_common_button_connected">BERSAMBUNG</string>
+    <string name="vs_common_button_disconnected">TERPUTUS</string>
+
+    <string name="vs_common_title_secondary">VPN</string>
+
+    <string name="vs_core_service_state_testing">Menyambungkan&#8230;</string>
+    <string name="vs_core_service_state_testing2">Menguji&#8230;</string>
+    <string name="vs_core_service_state_testing_data">Menguji&#8230; (sehingga 10 saat)</string>
+    <string name="vs_core_service_state_disconnecting">Diputuskan&#8230;</string>
+    <string name="vs_core_service_state_disconnecting2">Diputuskan, sila cuba kemudian</string>
+    <string name="vs_core_service_state_disconnected">Terputus</string>
+    <string name="vs_core_service_state_disconnected_timeout">Sambungan tamat tempoh, sila periksa rangkaian dan sambungkan semula (sebaiknya ubah beberapa wilayah yang lain)</string>
+    <string name="vs_core_service_state_disconnected_timeout2">Sambungan tamat tempoh, sila cuba lagi atau pilih wilayah lain [code=%s]</string>
+    <string name="vs_core_service_state_disconnected_used_up">%s jam tempoh percubaan telah tamat, sila sambung semula</string>
+    <string name="vs_core_service_state_disconnected_used_up2">Masa percubaan percuma telah tamat, sila sambung semula</string>
+    <string name="vs_core_service_state_disconnected_used_up3">Masa percubaan telah tamat, sila sambung semula</string>
+    <string name="vs_core_service_state_disconnected_error">Ralat[code=%s], sila sambung semula (sebaiknya but semula peranti untuk memperbaiki)</string>
+    <string name="vs_core_service_state_disconnected_error2">[code=%s], sila sambung semula (sebaiknya but semula peranti untuk memperbaiki)</string>
+    <string name="vs_core_service_state_disconnected_error3">Gagal, but semula peranti anda untuk memperbaiki [code=%s]</string>
+    <string name="vs_core_service_state_connecting">Menyambungkan&#8230; 20%</string>
+    <string name="vs_core_service_state_connecting2">Menyambungkan, sila cuba kemudian</string>
+    <string name="vs_core_service_state_connected">Bersambung</string>
+    <string name="vs_core_service_operate_connect">Ketik untuk menyambung</string>
+    <string name="vs_core_service_operate_connect2">Pergi</string>
+    <string name="vs_core_service_operate_connect3">Sambungkan ke wilayah ini</string>
+    <string name="vs_core_service_operate_connect_free">Ketik untuk Menyambung Secara Percuma</string>
+    <string name="vs_core_service_operate_disconnect">Ketik untuk memutuskan</string>
+    <string name="vs_core_service_always_vpn_tips">Sila ketik \'OK \' (tandakan \'Saya mempercayai aplikasi ini \') atau matikan \'VPN Sentiasa Hidup \' pada tetapan VPN</string>
+
+    <string name="vs_statement_privacy">Privasi akan\n dilindungi</string>
+    <string name="vs_statement_ip">IP akan\ndiubah</string>
+    <string name="vs_statement_banned">Yang diharamkan akan dibuka"</string>
+
+    <string name="vs_vad_consent_desc_a">Kami menjaga privasi dan keselamatan data anda. Kami mengekalkan aplikasi ini percuma dengan memaparkan iklan.</string>
+    <string name="vs_vad_consent_desc_b">Bolehkah kami terus menggunakan data anda untuk menyesuaikan iklan kepada anda?</string>
+    <string name="vs_vad_consent_desc_c">Anda boleh mengubah pilihan anda pada bila-bila masa untuk $appTitle dalam tetapan dasar privasi. Rakan kongsi kami akan mengumpulkan data dan menggunakan pengecam unik pada peranti anda untuk menunjukkan iklan kepada anda.</string>
+    <string name="vs_vad_consent_ok">Ya, VPN pantas dengan iklan yang berkaitan</string>
+    <string name="vs_vad_consent_cancel">Tidak, VPN normal dengan iklan</string>
+
+    <string name="vs_will_disconnect_dialog_title">Akan Diputuskan?</string>
+    <string name="vs_will_disconnect_dialog_cancel">Kemudian</string>
+    <string name="vs_will_disconnect_dialog_ok">Putuskan</string>
+    <string name="vs_will_disconnect_dialog_desc_for_change_region">Sekiranya anda ingin menyambung ke wilayah lain, anda mesti memutuskan sambungan terlebih dahulu</string>
+    <string name="vs_will_disconnect_dialog_desc_for_disconnect">Setelah terputus, anda akan kehilangan sambungan VPN.</string>
+    <string name="vs_will_disconnect_dialog_desc_for_disconnect2">Sekiranya anda mengetik \'Putuskan sambungan\', anda akan kehilangan sambungan VPN.</string>
+
+    <string name="vs_quality_test_button_text">Ujian Ketersambungan?</string>
+    <string name="vs_quality_repair_button_text">Lambat atau Tidak Berfungsi?</string>
+    <string name="vs_quality_test_result_title">Keputusan Ujian</string>
+    <string name="vs_quality_success_result_text">Berjaya!\nJabat tangan HTTPS mengambil masa %s minit</string>
+    <string name="vs_quality_fail_result_text">Opps!\nGagal mengesan sambungan Internet.</string>
+
+    <string name="vs_legal_notices_dialog_title">Notis Undang-Undang</string>
+    <string name="vs_legal_notices_dialog_title2">Perkhidmatan Tidak Tersedia</string>
+    <string name="vs_legal_notices_dialog_content">Mengikut undang-undang, dasar dan peraturan setiap negara dan wilayah, perkhidmatan VPN tidak disediakan di wilayah anda.</string>
+    <string name="vs_legal_notices_dialog_content2">Maaf, perkhidmatan tidak disediakan di wilayah anda pada masa ini!</string>
+
+    <string name="vs_privacy_confirm_content">MAKLUMAT YANG KAMI KUMPULKAN\n\na. Maklumat Peribadi.\n Kami tidak mengumpulkan Maklumat Peribadi. "Maklumat Peribadi" ialah maklumat pengenalan diri anda atau orang lain, seperti nama pertama dan nama akhir anda, alamat fizikal, alamat e-mel, telefon, faksimili, SSN, maklumat yang disimpan di dalam peranti anda.\n\nb. Maklumat Bukan Peribadi.\nKami mengumpulkan maklumat bukan peribadi anda semasa anda melayari laman web kami, termasuk maklumat peranti anda (ID peranti dikecualikan), sistem operasi, log.\n\nc. Maklumat yang Anda Bekalkan.\nKami mungkin mengumpulkan maklumat anda semasa anda berkomunikasi dengan kami atau jika anda memberi kepada kami.\n\nBAGAIMANA KAMI MENGGUNAKAN MAKLUMAT.\n\na. Maklumat Peribadi.\n Kami tidak menyimpan Maklumat Peribadi dan oleh itu kami tidak mendedahkan Maklumat Peribadi anda.\n\nb. Maklumat Bukan Peribadi.\n Kami tidak menjual, memperdagangkan, atau memindahkan maklumat anda kepada pihak luar. Kami tidak menggabungkan Maklumat Bukan Peribadi dengan Maklumat Peribadi (seperti menggabungkan nama anda dengan nombor Peranti Pengguna unik anda).\n\n c. Alasan Undang-Undang\nKami akan mengakses, menggunakan atau mendedahkan maklumat anda dengan organisasi atau entiti lain jika dikehendaki oleh undang-undang, peraturan, proses undang-undang atau permintaan pemerintah yang berkuatkuasa; mengesan, mencegah masalah penipuan, keselamatan atau teknikal; melindungi daripada bahaya terhadap hak, harta benda atau keselamatan kami, pengguna kami atau orang awam seperti yang dikehendaki atau dibenarkan oleh undang-undang.\n\nKESELAMATAN\n\n Kami sangat prihatin dalam menjaga keselamatan maklumat anda. Kami tidak mengumpulkan Maklumat Peribadi dan kami menggunakan langkah-langkah pentadbiran, fizikal dan elektronik yang dirancang untuk melindungi Maklumat Bukan Peribadi anda daripada sebarang akses dan penggunaan tanpa kebenaran. Perlu diketahui bahawa tidak ada langkah-langkah keselamatan yang kami ambil untuk melindungi supaya maklumat anda benar-benar terjamin untuk mengelakkan akses tanpa izin atau penggunaan Maklumat Bukan Peribadi anda yang tidak dapat ditembusi.\n\nMaklumat Sensitif\n\nKami meminta anda agar tidak menghantar kepada kami dan tidak mendedahkan Maklumat Peribadi yang sensitif (contohnya, maklumat yang berkaitan dengan keturunan atau etnik, pendapat politik, agama atau kepercayaan lain, kesihatan, orientasi seksual, latar belakang jenayah atau keahlian dalam organisasi masa lalu, termasuk keahlian kesatuan) pada atau melalui Aplikasi, Perkhidmatan atau Laman atau sebaliknya kepada kami.\n\nHUBUNGI KAMI\n\nJika anda mempunyai pertanyaan atau komen tentang Dasar ini atau amalan privasi kami, atau untuk melaporkan pelanggaran Dasar atau penyalahgunaan Perkhidmatan atau Laman web ini, sila hubungi kami di one.support@ironmeta.com.</string>
+    <string name="vs_privacy_confirm_button">Saya bersetuju</string>
+
+    <string name="vs_dialog_add_an_hour">Dapatkan 1 jam</string>
+    <string name="vs_dialog_get_later">Dapatkan kemudian</string>
+
+    <string name="vs_disconnected_report_title">Laporan Sambungan</string>
+    <string name="vs_disconnected_report_ip_address">Alamat IP</string>
+    <string name="vs_disconnected_report_duration">Durasi</string>
+    <string name="vs_disconnected_report_upload">Jumlah Muat Naik</string>
+    <string name="vs_disconnected_report_download">Jumlah Muat Turun</string>
+
+    <string name="vs_vip_feature_title">Naik Taraf ke VIP</string>
+    <string name="vs_vip_dialog_desc_advantage_a">Tiada iklan</string>
+    <string name="vs_vip_dialog_desc_advantage_b">Kelajuan Lebih Pantas</string>
+    <string name="vs_vip_dialog_desc_advantage_c">Lokasi di Seluruh Dunia</string>
+    <string name="vs_vip_state_load">Pelan sedang dimuatkan &#8230;</string>
+    <string name="vs_vip_state_normal_content">Anda bukan VIP, sila naik taraf.</string>
+    <string name="vs_vip_state_pending_content">Pembelian anda belum selesai, sila pergi ke \'Langganan Play Store\' untuk memeriksa pembelian, dan cuba kemudian</string>
+    <string name="vs_vip_state_vip_content">Tahniah!\n Anda adalah pengguna VIP.</string>
+    <string name="vs_vip_dialog_desc_rule">Langganan diperbaharui secara automatik dan akaun anda akan dikenakan bayaran setiap bulan atau tahun. Anda boleh membatalkannya pada bila-bila masa.</string>
+
+    <string name="vs_rating_dialog_title">Sila nilai kami</string>
+    <string name="vs_rating_dialog_title2">Suka Tomato?</string>
+    <string name="vs_rating_dialog_desc">Ketik bintang untuk menetapkan penilaian anda</string>
+    <string name="vs_rating_dialog_positive_comment">Kami sangat gembira mendengarnya :)</string>
+    <string name="vs_rating_dialog_negative_comment">Kami sedih mendengarnya :(</string>
+    <string name="vs_rating_dialog_conform_button">OK</string>
+    <string name="vs_rating_view_terrible_title">Dahsyat</string>
+    <string name="vs_rating_view_bad_title">Teruk</string>
+    <string name="vs_rating_view_okay_title">Ok</string>
+    <string name="vs_rating_view_good_title">Baik</string>
+    <string name="vs_rating_view_great_title">Hebat</string>
+    <string name="vs_rating_select_none_tips">Sila ketik wajah yang tersenyum</string>
+    <string name="vs_rating_feedback_send">Saya ada beberapa maklum balas</string>
+    <string name="vs_rating_feedback_tip">Luncur ke atas untuk memberi penilaian dan maklum balas kepada kami</string>
+    <string name="vs_rating_thanks_tips">Terima kasih atas penilaian anda</string>
+
+    <string name="vs_add_time_an_hour">Ketik untuk menambah 1 jam</string>
+    <string name="vs_add_time_an_hour_1">+ 1 JAM</string>
+    <string name="vs_add_time_an_hour_succeed_dialog_title">Tahniah!</string>
+    <string name="vs_add_time_an_hour_succeed_dialog_content">Masa penyambungan telah ditingkatkan sebanyak 1 jam</string>
+    <string name="vs_add_time_an_hour_wait">Sila tunggu &#8230;(%s s)</string>
+    <string name="vs_add_time_an_hour_wait_1">tunggu&#8230;(%s s)</string>
+
+    <string name="vs_add_time_two_hour">Ketik untuk menambah 2 jam</string>
+    <string name="vs_add_time_two_hours">Ketik untuk menambah 2 jam</string>
+    <string name="vs_add_time_two_hours_1">+ 2 JAM</string>
+    <string name="vs_add_time_two_hours_preparing">MENYEDIAKAN&#8230;</string>
+    <string name="vs_add_time_two_hour_way">Dengan menonton iklan video</string>
+    <string name="vs_add_time_two_hour_wait">Menyediakan&#8230;</string>
+    <string name="vs_add_time_two_hour_succeed">Tahniah! Masa penyambungan telah ditingkatkan sebanyak 2 jam</string>
+    <string name="vs_add_time_two_hour_fail">Anda mesti menyelesaikan tontonan video untuk mendapatkan ganjaran</string>
+
+    <string name="vs_add_time_get_an_hour">Dapatkan 1 jam</string>
+    <string name="vs_add_time_get_later">Dapatkan kemudian</string>
+
+    <string name="vs_feature_apps_bypass_title">Tetapan LangkauanAplikasi</string>
+    <string name="vs_feature_apps_bypass_title2">Aplikasi Menggunakan VPN</string>
+    <string name="vs_feature_app_bypass_tip">Perhatikan bahawa ia akan mula berkesan di sambungan seterusnya</string>
+
+    <string name="vs_feature_settings_title">Tetapan</string>
+    <string name="vs_feature_settings_title2">Tetapan VPN</string>
+    <string name="vs_setting_button_restart_vpn">Mulakan semula VPN</string>
+    <string name="vs_setting_item_dns">DNS mengatasi UDP</string>
+    <string name="vs_setting_item_ipv6">Halakan semula trafik IPv6</string>
+    <string name="vs_setting_item_tcp">Dayakan TCP Buka Pantas</string>
+
+    <string name="vs_feature_share_title">Kongsi</string>
+    <string name="vs_feature_share_statement">Kongsi Kod QR</string>
+    <string name="vs_feature_share_item_name_whats_app">WhatsApp</string>
+    <string name="vs_feature_share_item_name_sms">SMS</string>
+    <string name="vs_feature_share_item_name_email">E-mel</string>
+    <string name="vs_feature_share_item_name_copy_link">Salin Pautan</string>
+    <string name="vs_feature_share_item_name_more">Lebih banyak </string>
+    <string name="vs_feature_share_title_for_chooser">Selesaikan tindakan menggunakan</string>
+    <string name="vs_feature_share_content_text">IronMeta One ialah Proksi VPN pantas, tanpa had, stabil dan peribadi! Sangat disyorkan supaya anda memasang aplikasi ini! Pautan muat turun</string>
+    <string name="vs_feature_share_content_email_subject">IronMeta One | Proksi VPN Percuma, VPN Pantas, Buka Sekatan</string>
+
+    <string name="vs_feature_share_item_tip_whats_app">Kongsi melalui WhatsApp tidak berjaya.</string>
+    <string name="vs_feature_share_item_tip_sms">Kongsi melalui sms tidak berjaya.</string>
+    <string name="vs_feature_share_item_tip_email">Kongsi melalui e-mel tidak berjaya.</string>
+    <string name="vs_feature_share_item_tip_copy_link">Disalin</string>
+    <string name="vs_feature_share_item_tip_more">Kongsi lebih banyak tidak berjaya.</string>
+
+    <string name="vs_feature_language_title">Bahasa</string>
+
+    <string name="vs_feature_privacy_policy_title">Dasar Privasi</string>
+    <string name="vs_privacy_policy_setting">Tetapan</string>
+
+    <string name="vs_feature_my_vip_account">Akaun VIP saya</string>
+
+    <string name="vs_feature_terms_of_service_title">Terma Perkhidmatan</string>
+
+        <string name="vs_feature_FAQ_title">Soalan Lazim</string>
+    <string name="vs_faq_question_1">S1: Bagaimanakah cara untuk menggunakan Tomato VPN?</string>
+    <string name="vs_faq_question_2">S2: Adakah Tomato VPN selamat?</string>
+    <string name="vs_faq_question_3">S3: Mengapakah Tomato VPN tidak dapat disambungkan?</string>
+    <string name="vs_faq_question_4">S4: Apakah yang perlu dilakukan sekiranya sambungan tidak stabil atau perlahan?</string>
+    <string name="vs_faq_question_5">S5: Bagaimanakah cara untuk memilih IP, pelayan atau wilayah yang anda sukai?</string>
+    <string name="vs_faq_question_6">S6: Apakah yang perlu dilakukan jika Tomato VPN tidak menyediakan IP, pelayan atau wilayah yang anda mahukan?</string>
+    <string name="vs_faq_question_7">Jangan gunakan P2P atau BitTorrent!</string>
+    <string name="vs_faq_answer_1">Hanya ketik butang \'PERGI\'. Sekiranya menunjukkan \'BERSAMBUNG\', ini bermaksud Tomato VPN berfungsi. Sila tandakan \'Saya mempercayai aplikasi ini\' pada kali pertama anda bersambung.</string>
+    <string name="vs_faq_answer_2">Ia 100% selamat dengan data dan masa tanpa had, tetapi P2P atau BitTorrent tidak dibenarkan. Tomato VPN juga dapat melindungi keselamatan dan privasi hotspot WiFi anda. Ia tidak akan mencuri sebarang maklumat pengguna.</string>
+    <string name="vs_faq_answer_3">Mungkin terdapat beberapa sebab: (1) Sekiranya ia menunjukkan \'Rangkaian Tidak Tersedia\', itu bermaksud rangkaian tidak stabil, anda harus memastikan telefon bimbit anda bersambung ke Internet. (2) Sekiranya ia menunjukkan \'Sambungan tamat tempoh\', itu bermaksud pelayan semasa sibuk atau disekat di wilayah anda. Anda boleh memilih pelayan lain, atau cuba lagi. (3) Sekiranya ia menunjukkan \'Tiada pelayan yang tersedia sekarang\', anda perlu mengemas kini Tomato VPN ke versi terbaru. (4) Sekiranya semua perkara di atas tidak berfungsi, anda boleh menyahpasang VPN Tomato dan memasangnya semula. Biasanya ia akan berfungsi dengan baik.</string>
+    <string name="vs_faq_answer_4">Sila klik bendera kebangsaan di sebelah kanan atas bar alatan di laman utama, kemudian pilih pelayan terpantas dan paling stabil, dan sambungkan semula. Pelayan terpantas biasanya terdapat di wilayah yang dekat dengan negara tempat anda berada. Sekiranya semua pelayan tidak stabil, sila hantarkan e-mel ke vpntomato.dev@gmail.com, kami akan membalas e-mel anda dengan secepat mungkin.</string>
+    <string name="vs_faq_answer_5">Sila klik bendera kebangsaan di sebelah kanan atas bar alatan di laman utama. Kemudian pilih IP, wilayah atau pelayan yang anda sukai dan sambungkan.</string>
+    <string name="vs_faq_answer_6">Sila e-mel ke vpntomato.dev@gmail.com, kami akan membalas e-mel anda dengan secepat mungkin.</string>
+    <string name="vs_faq_answer_7">Jangan gunakan BitTorrent dengan VPN, atau akaun anda akan disekat.</string>
+
+    <string name="vs_feature_feedback_title">Maklum balas</string>
+    <string name="vs_feature_feedback_rating_guide_toast_slides_up_tip">Luncur ke atas untuk memberi penilaian dan maklum balas kepada kami</string>
+    <string name="vs_feedback_rating_text">Penilaian anda:</string>
+    <string name="vs_feedback_content_text">Kandungan anda:</string>
+    <string name="vs_feedback_content_hintText">Sila masukkan maklum balas anda</string>
+    <string name="vs_feedback_email_text">E-mel anda:</string>
+    <string name="vs_feedback_email_hintText">Sila masukkan e-mel anda</string>
+    <string name="vs_feedback_no_email_showToast">Sila masukkan kandungan e-mel anda</string>
+    <string name="vs_feedback_wrong">Ada sesuatu yang tidak kena &#8230;</string>
+    <string name="vs_feedback_privacy_policy">Mengikuti Dasar Privasi &#8230;&#8230;</string>
+    <string name="vs_feedback_thanks">Terima kasih di atas maklum balas anda</string>
+
+    <string name="update_dialog_title">Versi Baharu</string>
+    <string name="update_dialog_desc">Versi terbaharu telah dikeluarkan, yang mempunyai pelayan yang lebih pantas dan memperbaiki banyak pepijat. Kami mencadangkan untuk membuat kemas kini.</string>
+    <string name="update_dialog_cancel">Kemudian</string>
+    <string name="update_dialog_ok">Kemas kini Sekarang</string>
+
+    <string name="vs_feature_region_selector_title">Pemilih Wilayah</string>
+    <string name="vs_feature_region_selector_title2">Beralih ke wilayah lain</string>
+    <string name="vs_feature_region_selector_title3">Tukar Wilayah VPN</string>
+    <string name="vs_feature_region_selector_no_server">Maaf, tiada pelayan</string>
+    <string name="vs_feature_region_change_dialog_title">Tukar wilayah?</string>
+    <string name="vs_feature_region_change_dialog_decs">Sekiranya anda ingin menukar atau memilih beberapa wilayah lain untuk disambungkan, sila ketik \'Ubah\'</string>
+    <string name="vs_feature_region_change_connecting">Sekiranya anda ingin menukar atau memilih beberapa wilayah lain untuk disambungkan, sila ketik \'Ubah\'</string>
+    <string name="vs_feature_region_change_disconnecting">Sekiranya anda ingin menukar atau memilih beberapa wilayah lain untuk disambungkan, sila ketik \'Ubah\'</string>
+    <string name="vs_feature_region_refresh_tips_loading">Menyegarkan semula senarai pelayan&#8230;</string>
+    <string name="vs_feature_region_refresh_tips_success">Berjaya disegarkan</string>
+
+    <string name="summary_title">Ringkasan</string>
+    <string name="summary_body">Suatu penghormatan！ Kami telah melayani anda bagi</string>
+    <string name="region_pre">wilayah:%s</string>
+    <string name="traffic_usage">Penggunaan trafik</string>
+
+    <string name="get_1_hour">Dapatkan 1 jam</string>
+    <string name="get_later">Dapatkan kemudian</string>
+
+    <string name="vs_feature_splash_tip_loading">Memuatkan &#8230;</string>
+
+    <string name="vs_region_default">Wilayah Rawak</string>
+    <string name="vs_region_default2">Pilih secara Automatik</string>
+    <string name="vs_region_default_desc">Pilih wilayah yang terbaik</string>
+    <string name="vs_region_default_desc2">Cari Pelayan Terbaik</string>
+</resources>

@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vs_common_default">Standard</string>
+    <string name="vs_common_unknown">Unbekannt</string>
+    <string name="vs_common_auto_choose">Automatische Auswahl</string>
+    <string name="vs_common_dialog_ok_button">Verstanden</string>
+    <string name="vs_common_tips_preparing">In Vorbereitung &#8230;</string>
+    <string name="vs_common_tips_loading">Laden &#8230;</string>
+    <string name="vs_common_tips_loading2">LADEN &#8230;</string>
+    <string name="vs_common_tips_loading3">Laden – bitte versuchen Sie es später erneut</string>
+    <string name="vs_common_tips_loading_data">Daten werden geladen &#8230; (bis zu 10 Sekunden)</string>
+    <string name="vs_common_tips_network_unavailable">Etwas ist schief gelaufen, bitte überprüfen Sie das Netzwerk</string>
+    <string name="vs_common_tips_no_email_app">Sie haben keine E-Mail-App zum Senden von E-Mails. Bitte richten Sie zunächst eine E-Mail-App ein</string>
+
+    <string name="vs_common_button_go">LOS</string>
+    <string name="vs_common_button_retry">Erneut versuchen</string>
+    <string name="vs_common_button_close">Schließen</string>
+    <string name="vs_common_button_got_it">Verstanden</string>
+    <string name="vs_common_button_upload">Hochladen</string>
+    <string name="vs_common_button_submit">Absenden</string>
+    <string name="vs_common_button_success">Erfolgreich</string>
+    <string name="vs_common_button_change">Ändern</string>
+    <string name="vs_common_button_cancel">Abbrechen</string>
+    <string name="vs_common_button_ok">OK</string>
+    <string name="vs_common_button_connected">VERBUNDEN</string>
+    <string name="vs_common_button_disconnected">VERBINDUNG UNTERBROCHEN</string>
+
+    <string name="vs_common_title_secondary">VPN</string>
+
+    <string name="vs_core_service_state_testing">Verbindung wird hergestellt &#8230;</string>
+    <string name="vs_core_service_state_testing2">Test läuft &#8230;</string>
+    <string name="vs_core_service_state_testing_data">Test läuft &#8230; (bis zu 10 Sekunden)</string>
+    <string name="vs_core_service_state_disconnecting">Verbindung wird unterbrochen &#8230;</string>
+    <string name="vs_core_service_state_disconnecting2">Verbindung wird unterbrochen – bitte versuchen Sie es später erneut</string>
+    <string name="vs_core_service_state_disconnected">Verbindung unterbrochen</string>
+    <string name="vs_core_service_state_disconnected_timeout">Zeitüberschreitung der Verbindung, bitte überprüfen Sie das Netzwerk und stellen Sie die Verbindung erneut her (wählen Sie besser eine andere Region)</string>
+    <string name="vs_core_service_state_disconnected_timeout2">Zeitüberschreitung der Verbindung, bitte versuchen Sie es erneut oder wählen Sie andere Regionen [code=%s]</string>
+    <string name="vs_core_service_state_disconnected_used_up">Die %s-stündige Testzeit ist abgelaufen, bitte stellen Sie die Verbindung erneut her</string>
+    <string name="vs_core_service_state_disconnected_used_up2">Die kostenlose Testzeit ist abgelaufen, bitte verbinden Sie sich erneut</string>
+    <string name="vs_core_service_state_disconnected_used_up3">Die Testzeit ist abgelaufen, bitte verbinden Sie sich erneut</string>
+    <string name="vs_core_service_state_disconnected_error">Fehler[code=%s], bitte verbinden Sie sich erneut (besser Gerät neu starten, um Fehler zu beheben)</string>
+    <string name="vs_core_service_state_disconnected_error2">[code=%s], bitte verbinden Sie sich erneut (besser das Gerät neu starten, um den Fehler zu beheben)</string>
+    <string name="vs_core_service_state_disconnected_error3">Fehlgeschlagen, bitte starten Sie Ihr Gerät neu, um es zu reparieren [code=%s]</string>
+    <string name="vs_core_service_state_connecting">20 % geladen &#8230;</string>
+    <string name="vs_core_service_state_connecting2">Verbindung wird hergestellt, bitte versuchen Sie es später</string>
+    <string name="vs_core_service_state_connected">Verbunden</string>
+    <string name="vs_core_service_operate_connect">Zum Verbinden tippen</string>
+    <string name="vs_core_service_operate_connect2">Los</string>
+    <string name="vs_core_service_operate_connect3">Mit dieser Region verbinden</string>
+    <string name="vs_core_service_operate_connect_free">Zum freien Verbinden tippen</string>
+    <string name="vs_core_service_operate_disconnect">Zum Abbrechen der Verbindung tippen</string>
+    <string name="vs_core_service_always_vpn_tips">Bitte tippen Sie auf „OK“ (setzen Sie ein Häkchen bei „Ich vertraue dieser Anwendung“) oder deaktivieren Sie „VPN immer aktiv“ in den VPN-Einstellungen</string>
+
+    <string name="vs_statement_privacy">Die Privatsphäre wird\ngeschützt</string>
+    <string name="vs_statement_ip">Das IP\nwird geändert</string>
+    <string name="vs_statement_banned">Gesperrtes wird entsperrt"</string>
+
+    <string name="vs_vad_consent_desc_a">Uns ist Ihre Privatsphäre und das Thema Datensicherheit wichtig. Wir halten diese App kostenlos, indem wir Werbung anzeigen.</string>
+    <string name="vs_vad_consent_desc_b">Können wir Ihre Daten weiterhin dazu verwenden, um zielgerichtete Anzeigen einspielen zu können?</string>
+    <string name="vs_vad_consent_desc_c">Sie können Ihre Wahl der $appTitle-App jederzeit in den Datenschutzeinstellungen rückgängig machen beziehungsweise neu treffen. Unsere Partner sammeln Daten und verwenden eine eindeutige Kennung auf Ihrem Gerät, um Ihnen Werbung zu zeigen.</string>
+    <string name="vs_vad_consent_ok">Ja, schnelles VPN mit relevanter Werbung</string>
+    <string name="vs_vad_consent_cancel">Nein, normales VPN mit Werbung</string>
+
+    <string name="vs_will_disconnect_dialog_title">Verbindung unterbrechen?</string>
+    <string name="vs_will_disconnect_dialog_cancel">Später</string>
+    <string name="vs_will_disconnect_dialog_ok">Verbindung unterbrechen</string>
+    <string name="vs_will_disconnect_dialog_desc_for_change_region">Wenn Sie sich mit anderen Regionen verbinden wollen, müssen Sie zuerst die Verbindung trennen</string>
+    <string name="vs_will_disconnect_dialog_desc_for_disconnect">Nach dem Unterbrechen der Verbindung, verlieren Sie die VPN-Verbindung.</string>
+    <string name="vs_will_disconnect_dialog_desc_for_disconnect2">Wenn Sie auf „Verbindung unterbrechen“ tippen, wird die VPN-Verbindung unterbrochen.</string>
+
+    <string name="vs_quality_test_button_text">Konnektivität testen?</string>
+    <string name="vs_quality_repair_button_text">Langsam oder funktioniert nicht?</string>
+    <string name="vs_quality_test_result_title">Testergebnis</string>
+    <string name="vs_quality_success_result_text">Erfolgreich!\nHTTPS-Handshake dauerte %s ms</string>
+    <string name="vs_quality_fail_result_text">Ups!\nInternet-Verbindung wurde nicht erkannt.</string>
+
+    <string name="vs_legal_notices_dialog_title">Rechtliche Hinweise</string>
+    <string name="vs_legal_notices_dialog_title2">Dienst nicht verfügbar</string>
+    <string name="vs_legal_notices_dialog_content">In Übereinstimmung mit den Gesetzen, Richtlinien und Vorschriften der einzelnen Länder und Regionen wird der VPN-Dienst in Ihrer Region nicht angeboten.</string>
+    <string name="vs_legal_notices_dialog_content2">Es tut uns leid, der Dienst wird derzeit in Ihrer Region nicht angeboten!</string>
+
+    <string name="vs_privacy_confirm_content">VON UNS ERFASSTE DATEN\n\na. Personenbezogene Daten.\nWir sammeln keine personenbezogenen Daten. „Personenbezogene Daten“ sind Informationen, die Sie oder eine andere Person identifizieren, wie z. B. Ihr Vor- und Nachname, Wohndresse, E-Mail-Adresse, Telefon, Fax, SSN sowie Informationen, die in Ihrem Gerät gespeichert sind.\n\nb. Nicht-personenbezogene Daten.\nWir erfassen Ihre nicht-personenbezogenen Daten, wenn Sie unsere Website besuchen, einschließlich Ihrer Geräteinformationen (Geräte-ID ausgeschlossen), Betriebssystem und Protokolle.\n\nc. Informationen, die Sie uns zur Verfügung stellen.\nWir können Ihre Informationen sammeln, wenn Sie mit uns kommunizieren oder sie uns geben.\n\nWIE WIR DATEN VERWENDEN\n\na. Personenbezogene Daten.\nWir speichern keine personenbezogene Daten und geben daher Ihre personenbezogenen Daten nicht weiter.\n\nb. Nicht-personenbezogene Daten.\nWir verkaufen, handeln oder übertragen Ihre Daten nicht an Dritte. Wir kombinieren keine nicht-personenbezogenen Daten mit personenbezogenen Daten (z. B. Kombinieren Ihres Namen mit Ihrer eindeutigen Benutzergerätenummer).\n\nc. Rechtlicher Hintergrund\nWir werden auf Ihre Daten zugreifen, sie verwenden oder an andere Organisationen oder Einrichtungen weitergeben, wenn dies durch ein anwendbares Gesetz, eine Verordnung, ein Gerichtsverfahren oder eine durchsetzbare behördliche Anfrage erforderlich ist – um Betrug, Sicherheits- oder technische Probleme aufzudecken, zu verhindern oder anderweitig zu beheben beziehungsweise um die Rechte, das Eigentum oder die Sicherheit von uns, unseren Benutzern oder der Öffentlichkeit zu schützen, soweit dies gesetzlich erforderlich oder zulässig ist.\n\nSICHERHEIT\n\nWir legen großen Wert auf die Wahrung der Vertraulichkeit Ihrer Daten. Wir sammeln keine personenbezogenen Daten und setzen administrative, physische und elektronische Maßnahmen ein, um Ihre nicht-personenbezogenen Daten vor unbefugtem Zugriff und Gebrauch zu schützen. Bitte beachten Sie, dass keine Sicherheitsmaßnahme, die wir zum Schutz Ihrer Daten ergreifen, absolut garantiert, dass ein unbefugter Zugriff auf oder eine unbefugte Nutzung Ihrer nicht-personenbezogenen Daten verhindert wird.\n\nSensible Daten\n\nWir bitten Sie, uns keine sensiblen personenbezogenen Daten zu senden und keine sensiblen personenbezogenen Daten preiszugeben (z. B., Informationen im Zusammenhang mit rassischer oder ethnischer Herkunft, politischen Meinungen, Religion oder anderen Überzeugungen, Gesundheit, sexueller Orientierung, kriminellem Hintergrund oder Mitgliedschaft in früheren Organisationen, einschließlich Gewerkschaftsmitgliedschaften) auf oder über eine Anwendung, die Dienste oder die Website oder anderweitig an uns zu senden.\n\nKONTAKT\n\nWenn Sie Fragen oder Kommentare zu dieser Richtlinie oder unseren Datenschutzpraktiken haben oder Verstöße gegen die Richtlinie oder einen Missbrauch der Dienste oder der Website melden möchten, kontaktieren Sie uns bitte unter one.support@ironmeta.com.</string>
+    <string name="vs_privacy_confirm_button">Ich stimme zu</string>
+
+    <string name="vs_dialog_add_an_hour">In 1 Stunde</string>
+    <string name="vs_dialog_get_later">Später</string>
+
+    <string name="vs_disconnected_report_title">Verbindungsbericht</string>
+    <string name="vs_disconnected_report_ip_address">IP-Adresse</string>
+    <string name="vs_disconnected_report_duration">Dauer</string>
+    <string name="vs_disconnected_report_upload">Hochladen gesamt</string>
+    <string name="vs_disconnected_report_download">Herunterladen gesamt</string>
+
+    <string name="vs_vip_feature_title">Upgrade auf VIP</string>
+    <string name="vs_vip_dialog_desc_advantage_a">Keine Werbung</string>
+    <string name="vs_vip_dialog_desc_advantage_b">Schneller</string>
+    <string name="vs_vip_dialog_desc_advantage_c">Weltweite Standorte</string>
+    <string name="vs_vip_state_load">Pläne werden geladen &#8230;</string>
+    <string name="vs_vip_state_normal_content">Sie sind kein VIP, bitte upgraden.</string>
+    <string name="vs_vip_state_pending_content">Ihr Kauf steht noch aus. Bitte gehen Sie zu „Play Store-Abonnement“, um den Kauf zu überprüfen, und versuchen Sie es später noch einmal</string>
+    <string name="vs_vip_state_vip_content">Herzlichen Glückwunsch!\nSie sind ein VIP-Benutzer.</string>
+    <string name="vs_vip_dialog_desc_rule">Das Abonnement verlängert sich automatisch und Ihr Konto wird jeden Monat oder jedes Jahr belastet. Sie können jederzeit kündigen.</string>
+
+    <string name="vs_rating_dialog_title">Bitte bewerten Sie uns</string>
+    <string name="vs_rating_dialog_title2">Gefällt ihnen Tomato?</string>
+    <string name="vs_rating_dialog_desc">Tippen Sie auf einen Stern, um Ihre Bewertung abzugeben</string>
+    <string name="vs_rating_dialog_positive_comment">Das freut uns sehr :)</string>
+    <string name="vs_rating_dialog_negative_comment">Oh schade :(</string>
+    <string name="vs_rating_dialog_conform_button">OK</string>
+    <string name="vs_rating_view_terrible_title">Schrecklich</string>
+    <string name="vs_rating_view_bad_title">Schlecht</string>
+    <string name="vs_rating_view_okay_title">In Ordnung</string>
+    <string name="vs_rating_view_good_title">Gut</string>
+    <string name="vs_rating_view_great_title">Großartig</string>
+    <string name="vs_rating_select_none_tips">Bitte tippen Sie auf ein Smiley-Gesicht</string>
+    <string name="vs_rating_feedback_send">Ich habe Feedback</string>
+    <string name="vs_rating_feedback_tip">Nach oben wischen, um uns zu bewerten und Ihr Feedback abzugeben</string>
+    <string name="vs_rating_thanks_tips">Danke für Ihre Bewertung</string>
+
+    <string name="vs_add_time_an_hour">Tippen Sie, um 1 Stunde hinzuzufügen</string>
+    <string name="vs_add_time_an_hour_1">+1 STUNDE</string>
+    <string name="vs_add_time_an_hour_succeed_dialog_title">Glückwunsch!</string>
+    <string name="vs_add_time_an_hour_succeed_dialog_content">Die Verbindungszeit wurde um 1 Stunde erhöht</string>
+    <string name="vs_add_time_an_hour_wait">Bitte warten &#8230;(%s s)</string>
+    <string name="vs_add_time_an_hour_wait_1">warten &#8230;(%s s)</string>
+
+    <string name="vs_add_time_two_hour">Tippen Sie, um 2 Stunden hinzuzufügen</string>
+    <string name="vs_add_time_two_hours">Tippen Sie, um 2 Stunden hinzuzufügen</string>
+    <string name="vs_add_time_two_hours_1">+2 STUNDEN</string>
+    <string name="vs_add_time_two_hours_preparing">IN VORBEREITUNG &#8230;</string>
+    <string name="vs_add_time_two_hour_way">Durch Ansehen einer Videoanzeige</string>
+    <string name="vs_add_time_two_hour_wait">In Vorbereitung &#8230;</string>
+    <string name="vs_add_time_two_hour_succeed">Glückwunsch! Die Verbindungszeit wurde um 2 Stunden erhöht</string>
+    <string name="vs_add_time_two_hour_fail">Sie müssen das Video zu Ende ansehen, um die Belohnung zu erhalten</string>
+
+    <string name="vs_add_time_get_an_hour">In 1 Stunde</string>
+    <string name="vs_add_time_get_later">Später</string>
+
+    <string name="vs_feature_apps_bypass_title">Apps: Umgehen der Einstellungen</string>
+    <string name="vs_feature_apps_bypass_title2">Apps: VPN verwenden</string>
+    <string name="vs_feature_app_bypass_tip">Beachten Sie, dass es bei der nächsten Verbindung wirksam wird</string>
+
+    <string name="vs_feature_settings_title">Einstellungen</string>
+    <string name="vs_feature_settings_title2">VPN-Einstellungen</string>
+    <string name="vs_setting_button_restart_vpn">VPN neu starten</string>
+    <string name="vs_setting_item_dns">DNS über UDP</string>
+    <string name="vs_setting_item_ipv6">IPv6-Verkehr umlenken</string>
+    <string name="vs_setting_item_tcp">TCP Fast Open aktivieren</string>
+
+    <string name="vs_feature_share_title">Teilen</string>
+    <string name="vs_feature_share_statement">QR-Code teilen</string>
+    <string name="vs_feature_share_item_name_whats_app">WhatsApp</string>
+    <string name="vs_feature_share_item_name_sms">SMS</string>
+    <string name="vs_feature_share_item_name_email">E-Mail</string>
+    <string name="vs_feature_share_item_name_copy_link">Link kopieren</string>
+    <string name="vs_feature_share_item_name_more">Mehr</string>
+    <string name="vs_feature_share_title_for_chooser">Aktion beenden mit</string>
+    <string name="vs_feature_share_content_text">IronMeta One ist ein schneller, unbegrenzter, stabiler und privater VPN Proxy! Wir empfehlen Ihnen, diese App zu installieren! Link herunterladen</string>
+    <string name="vs_feature_share_content_email_subject">IronMeta One | kostenloser VPN Proxy, schnelles VPN, Deblockieren</string>
+
+    <string name="vs_feature_share_item_tip_whats_app">Teilen per WhatsApp erfolglos.</string>
+    <string name="vs_feature_share_item_tip_sms">Teilen per SMS erfolglos.</string>
+    <string name="vs_feature_share_item_tip_email">Teilen per E-Mail erfolglos.</string>
+    <string name="vs_feature_share_item_tip_copy_link">Kopiert</string>
+    <string name="vs_feature_share_item_tip_more">Teilen durch mehr erfolglos.</string>
+
+    <string name="vs_feature_language_title">Sprache</string>
+
+    <string name="vs_feature_privacy_policy_title">Datenschutz</string>
+    <string name="vs_privacy_policy_setting">Einstellungen</string>
+
+    <string name="vs_feature_my_vip_account">Mein VIP-Konto</string>
+
+    <string name="vs_feature_terms_of_service_title">Service-Bedingungen</string>
+
+        <string name="vs_feature_FAQ_title">FAQ</string>
+    <string name="vs_faq_question_1">Q1: Wie benutzt man VPN Tomato?</string>
+    <string name="vs_faq_question_2">Q2: Ist VPN Tomato sicher?</string>
+    <string name="vs_faq_question_3">Q3: Warum kann sich VPN Tomato nicht verbinden?</string>
+    <string name="vs_faq_question_4">Q4: Was ist zu tun, wenn die Verbindung instabil oder langsam ist?</string>
+    <string name="vs_faq_question_5">Q5: Wie wählt man die IP-Adresse, den Server oder die Region, die man bevorzugt?</string>
+    <string name="vs_faq_question_6">Q6: Was tun, wenn VPN Tomato nicht die gewünschte IP-Adresse, den gewünschten Server oder die gewünschte Region anbietet?</string>
+    <string name="vs_faq_question_7">Verwenden Sie kein P2P oder BitTorrent!</string>
+    <string name="vs_faq_answer_1">Tippen Sie einfach auf die Schaltfläche „LOS“. Wenn es „VERBUNDEN“ anzeigt wird, bedeutet das, dass VPN Tomato funktioniert. Bitte markieren Sie „Ich vertraue dieser Anwendung“, wenn Sie sich das erste Mal verbinden.</string>
+    <string name="vs_faq_answer_2">Es ist 100 % sicher mit unbegrenzten Daten und Zeit, aber P2P oder BitTorrent ist nicht erlaubt. Außerdem kann VPN Tomato die Sicherheit und Privatsphäre Ihres WiFi-Hotspots schützen. Es wird niemals die Daten eines Benutzers stehlen.</string>
+    <string name="vs_faq_answer_3">Dafür kann es einige Gründe geben: (1) Wenn „Netzwerk nicht verfügbar“ angezeigt wird, bedeutet dies, dass das Netzwerk nicht stabil ist, Sie sollten sicherstellen, dass Ihr Mobiltelefon mit dem Internet verbunden ist. (2) Wenn „Verbindungszeit überschritten“ angezeigt wird, bedeutet dies, dass der aktuelle Server in Ihrer Region beschäftigt oder blockiert ist. Sie können einen anderen Server auswählen oder es erneut versuchen. (3) Wenn „Aktuell keine Server verfügbar“ angezeigt wird, müssen Sie VPN Tomato auf die neueste Version aktualisieren. (4) Wenn alle oben genannten Punkte nicht funktionieren, können Sie VPN Tomato deinstallieren und neu installieren. In der Regel funktioniert es dann gut.</string>
+    <string name="vs_faq_answer_4">Bitte klicken Sie auf die Landesflagge oben rechts in der Symbolleiste der Homepage, wählen Sie dann den schnellsten und stabilsten Server aus und stellen Sie die Verbindung wieder her. Der schnellste Server befindet sich in der Regel in der Region, die dem Land, in dem Sie sich befinden, am nächsten ist. Wenn alle Server nicht stabil sind, senden Sie bitte eine E-Mail an vpntomato.dev@gmail.com. Wir werden Ihnen so schnell wie möglich antworten.</string>
+    <string name="vs_faq_answer_5">Bitte klicken Sie auf die Landesflagge oben rechts in der Symbolleiste der Homepage. Dann wählen Sie die IP-Adresse, die Region oder den Server, den Sie bevorzugen, und verbinden Sie sich.</string>
+    <string name="vs_faq_answer_6">Bitte senden Sie eine E-Mail an vpntomato.dev@gmail.com, wir werden Ihnen so schnell wie möglich antworten.</string>
+    <string name="vs_faq_answer_7">Bitte verwenden Sie BitTorrent nicht mit VPN, sonst wird Ihr Konto gesperrt.</string>
+
+    <string name="vs_feature_feedback_title">Feedback</string>
+    <string name="vs_feature_feedback_rating_guide_toast_slides_up_tip">Nach oben wischen, um uns zu bewerten und Ihr Feedback abzugeben</string>
+    <string name="vs_feedback_rating_text">Ihre Bewertung:</string>
+    <string name="vs_feedback_content_text">Ihr Kommentar:</string>
+    <string name="vs_feedback_content_hintText">Bitte geben Sie hier Ihr Feedback ein</string>
+    <string name="vs_feedback_email_text">Ihre E-Mail-Adresse:</string>
+    <string name="vs_feedback_email_hintText">Bitte geben Sie Ihre E-Mail-Adresse ein</string>
+    <string name="vs_feedback_no_email_showToast">Bitte geben Sie hier ihren Kommentar ein</string>
+    <string name="vs_feedback_wrong">Etwas ist schief gelaufen &#8230;</string>
+    <string name="vs_feedback_privacy_policy">Gemäß der Datenschutzbestimmungen &#8230;</string>
+    <string name="vs_feedback_thanks">Danke für Ihr Feedback</string>
+
+    <string name="update_dialog_title">Neue Version</string>
+    <string name="update_dialog_desc">Eine neue Version, die über schnellere Server verfügt und viele Fehler behebt, wurde veröffentlicht. Wir empfehlen, ein Update durchzuführen.</string>
+    <string name="update_dialog_cancel">Später</string>
+    <string name="update_dialog_ok">Jetzt aktualisieren</string>
+
+    <string name="vs_feature_region_selector_title">Region-Wähler</string>
+    <string name="vs_feature_region_selector_title2">Zu einer anderen Region wechseln</string>
+    <string name="vs_feature_region_selector_title3">VPN-Region ändern</string>
+    <string name="vs_feature_region_selector_no_server">Leider keine Server verfügbar</string>
+    <string name="vs_feature_region_change_dialog_title">Region ändern?</string>
+    <string name="vs_feature_region_change_dialog_decs">Wenn Sie die Region ändern oder eine andere Region für die Verbindung auswählen möchten, tippen Sie bitte auf „Ändern“</string>
+    <string name="vs_feature_region_change_connecting">Wenn Sie die Region ändern oder eine andere Region für die Verbindung auswählen möchten, tippen Sie bitte auf „Ändern“</string>
+    <string name="vs_feature_region_change_disconnecting">Wenn Sie die Region ändern oder eine andere Region für die Verbindung auswählen möchten, tippen Sie bitte auf „Ändern“</string>
+    <string name="vs_feature_region_refresh_tips_loading">Aktualisieren der Serverliste &#8230;</string>
+    <string name="vs_feature_region_refresh_tips_success">Erfolgreich aktualisiert</string>
+
+    <string name="summary_title">Zusammenfassung</string>
+    <string name="summary_body">Es freut uns, Sie in der Region</string>
+    <string name="region_pre">%s Bedient haben zu dürfen</string>
+    <string name="traffic_usage">Traffic</string>
+
+    <string name="get_1_hour">In 1 Stunde</string>
+    <string name="get_later">Später</string>
+
+    <string name="vs_feature_splash_tip_loading">Laden &#8230;</string>
+
+    <string name="vs_region_default">Zufällig gewählte Region</string>
+    <string name="vs_region_default2">Automatische Auswahl</string>
+    <string name="vs_region_default_desc">Die beste Region auswählen</string>
+    <string name="vs_region_default_desc2">Besten Server finden</string>
+</resources>

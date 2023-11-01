@@ -1,0 +1,350 @@
+package com.ironmeta.one.ads.presenter
+
+import android.app.Activity
+import android.content.Context
+import android.view.View
+import android.view.ViewGroup
+import com.google.android.gms.ads.AdRequest
+import com.ironmeta.one.BuildConfig
+import com.ironmeta.one.ads.constant.AdConstant
+import com.ironmeta.one.ads.constant.AdFormat
+import com.ironmeta.one.ads.constant.AdPlatform
+import com.ironmeta.one.ads.bean.UserAdConfig
+import com.ironmeta.one.ads.format.*
+import com.ironmeta.one.ads.proxy.AdLoadListener
+import com.ironmeta.one.ads.proxy.AdShowListener
+import com.ironmeta.one.ads.proxy.IAdPresenterProxy
+import com.roiquery.ad.AdType
+import com.roiquery.ad.DTAdReport
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import java.util.Timer
+import kotlin.concurrent.schedule
+
+class AdPresenter(adUnitSet: UserAdConfig.AdUnitSet, val context: Context) : IAdPresenterProxy {
+    private var adInterstitialMap: HashMap<String, AdInterstitialAdmob>? = null
+    private var adRewardedMap: HashMap<String, AdRewarded>? = null
+    private var adNative: AdNative? = null
+    private var adAppOpenMap: HashMap<String, AdAppOpenAdmob>? = null
+
+    init {
+        initAds(adUnitSet, context)
+    }
+    
+    private fun getInterstitialAdOrCreate(adPlacement: String): AdInterstitialAdmob? {
+        return adInterstitialMap?.let {
+            val interstitial = it[adPlacement] ?: AdInterstitialAdmob(
+                (if (BuildConfig.DEBUG) generateAdUnitDebugId(AdFormat.INTERSTITIAL, AdPlatform.ADMOB) else getReleaseAdUnitId(adPlacement)), context
+            )
+            it[adPlacement] = interstitial
+            interstitial
+        }
+    }
+
+    private fun getAppOpenAdOrCreate(adPlacement: String): AdAppOpenAdmob? {
+        return adAppOpenMap?.let {
+            val appOpen = it[adPlacement] ?: AdAppOpenAdmob(
+                (if (BuildConfig.DEBUG) generateAdUnitDebugId(AdFormat.APP_OPEN, AdPlatform.ADMOB) else getReleaseAdUnitId(adPlacement)), context
+            )
+            it[adPlacement] = appOpen
+            appOpen
+        }
+    }
+
+    private fun getRewardedAdOrCreate(adPlacement: String): AdRewarded? {
+        return adRewardedMap?.let {
+            val rewarded = it[adPlacement] ?: AdRewarded((if (BuildConfig.DEBUG) generateAdUnitDebugId(AdFormat.REWARDED, AdPlatform.ADMOB) else getReleaseAdUnitId(adPlacement)))
+            it[adPlacement] = rewarded
+            rewarded
+        }
+    }
+
+    private fun getReleaseAdUnitId(adPlacement: String): String {
+        return when (adPlacement) {
+            AdConstant.AdPlacement.I_APP_START_DISCONNECT -> AdConstant.AdUnitId.I_APP_START_DISCONNECT
+            AdConstant.AdPlacement.I_APP_START_CONNECT -> AdConstant.AdUnitId.I_APP_START_CONNECT
+            AdConstant.AdPlacement.I_CONNECTED -> AdConstant.AdUnitId.I_CONNECTED
+            AdConstant.AdPlacement.I_DISCONNECT -> AdConstant.AdUnitId.I_DISCONNECT
+            AdConstant.AdPlacement.I_HOME_RESTART_DISCONNECT -> AdConstant.AdUnitId.I_HOME_RESTART_DISCONNECT
+            AdConstant.AdPlacement.I_HOME_RESTART_CONNECT -> AdConstant.AdUnitId.I_HOME_RESTART_CONNECT
+            AdConstant.AdPlacement.I_ADD_TIME_MAIN_PAGE_1 -> AdConstant.AdUnitId.I_ADD_TIME_MAIN_PAGE_1
+            AdConstant.AdPlacement.I_ADD_TIME_MAIN_PAGE_2 -> AdConstant.AdUnitId.I_ADD_TIME_MAIN_PAGE_2
+            AdConstant.AdPlacement.I_ADD_TIME_1_REPORT_PAGE -> AdConstant.AdUnitId.I_ADD_TIME_1_REPORT_PAGE
+            AdConstant.AdPlacement.I_ADD_TIME_2_REPORT_PAGE -> AdConstant.AdUnitId.I_ADD_TIME_2_REPORT_PAGE
+            AdConstant.AdPlacement.I_AFTER_REWARDED -> AdConstant.AdUnitId.I_AFTER_REWARDED
+            AdConstant.AdPlacement.I_CONNECTIVITY_TEST -> AdConstant.AdUnitId.I_CONNECTIVITY_TEST
+            AdConstant.AdPlacement.I_BACK_HOME_CONNECTED -> AdConstant.AdUnitId.I_BACK_HOME_CONNECTED
+            AdConstant.AdPlacement.I_BACK_HOME_DISCONNECTED -> AdConstant.AdUnitId.I_BACK_HOME_DISCONNECTED
+            AdConstant.AdPlacement.R_ADD_TIME -> AdConstant.AdUnitId.R_ADD_TIME
+            else -> ""
+        }
+    }
+
+    private fun initAds(adUnitSet: UserAdConfig.AdUnitSet, context: Context) {
+        if (adUnitSet.switch != true) {
+            return
+        }
+        adInterstitialMap = HashMap()
+        adAppOpenMap = HashMap()
+        adRewardedMap = HashMap()
+        adUnitSet.native?.let { list ->
+            if (list.isEmpty()) {
+                return@let
+            }
+            when (list[0].adPlatform) {
+                AdPlatform.ADMOB.id.toString() -> {
+                    val adUnitId = if (BuildConfig.DEBUG) generateAdUnitDebugId(AdFormat.NATIVE, AdPlatform.ADMOB) else list[0].id
+                    adNative = AdNative(context, adUnitId)
+                }
+            }
+        }
+    }
+
+    override fun loadAdExceptNative(adFormat: AdFormat, adPlacement: String, loadListener: AdLoadListener?) {
+        when (adFormat) {
+            AdFormat.INTERSTITIAL -> {
+                var loadStart = System.currentTimeMillis()
+                var loadTimes = 0
+                val loadListenerProxy = object : AdLoadListener {
+                    override fun onAdLoaded() {
+                        loadListener?.onAdLoaded()
+                        DTAdReport.reportLoadEnd(getInterstitialAdOrCreate(adPlacement)?.adId?:"", AdType.INTERSTITIAL, com.roiquery.ad.AdPlatform.ADMOB, (System.currentTimeMillis() - loadStart), true, getInterstitialAdOrCreate(adPlacement)?.seq?:"")
+                    }
+
+                    override fun onFailure(errorCode: Int, errorMessage: String) {
+                        DTAdReport.reportLoadEnd(getInterstitialAdOrCreate(adPlacement)?.adId?:"", AdType.INTERSTITIAL, com.roiquery.ad.AdPlatform.ADMOB, (System.currentTimeMillis() - loadStart), false, getInterstitialAdOrCreate(adPlacement)?.seq?:"", errorCode, errorMessage)
+                        if (loadTimes == 1 && errorCode != AdRequest.ERROR_CODE_NO_FILL && errorCode != AdRequest.ERROR_CODE_MEDIATION_NO_FILL) {
+                            Timer().schedule(2000) {
+                                loadTimes ++
+                                GlobalScope.launch(Dispatchers.Main) {
+                                    getInterstitialAdOrCreate(adPlacement)?.loadAd(loadListener)
+                                }
+                            }
+                        } else {
+                            loadListener?.onFailure(errorCode, errorMessage)
+                        }
+                    }
+                }
+                getInterstitialAdOrCreate(adPlacement)?.loadAd(loadListenerProxy)
+                loadTimes = 1
+                DTAdReport.reportLoadBegin(getInterstitialAdOrCreate(adPlacement)?.adId?:"", AdType.INTERSTITIAL, com.roiquery.ad.AdPlatform.ADMOB, getInterstitialAdOrCreate(adPlacement)?.seq?:"")
+            }
+            AdFormat.APP_OPEN -> {
+                var loadTimes = 0
+                val loadListenerProxy = object : AdLoadListener {
+                    override fun onAdLoaded() {
+                        loadListener?.onAdLoaded()
+                    }
+
+                    override fun onFailure(errorCode: Int, errorMessage: String) {
+                        if (loadTimes == 1 && errorCode != AdRequest.ERROR_CODE_NO_FILL && errorCode != AdRequest.ERROR_CODE_MEDIATION_NO_FILL) {
+                            Timer().schedule(2000) {
+                                GlobalScope.launch(Dispatchers.Main) {
+                                    getAppOpenAdOrCreate(adPlacement)?.loadAd(loadListener)
+                                }
+                            }
+                        } else {
+                            loadListener?.onFailure(errorCode, errorMessage)
+                        }
+                    }
+                }
+                getAppOpenAdOrCreate(adPlacement)?.loadAd(loadListenerProxy)
+                loadTimes = 1
+            }
+            AdFormat.REWARDED -> {
+                var loadTimes = 0
+                val loadListenerProxy = object : AdLoadListener {
+                    override fun onAdLoaded() {
+                        loadListener?.onAdLoaded()
+                    }
+
+                    override fun onFailure(errorCode: Int, errorMessage: String) {
+                        if (loadTimes == 1) {
+                            Timer().schedule(2000) {
+                                GlobalScope.launch(Dispatchers.Main) {
+                                    getRewardedAdOrCreate(adPlacement)?.loadAd(loadListener)
+                                }
+                            }
+                        } else {
+                            loadListener?.onFailure(errorCode, errorMessage)
+                        }
+                    }
+                }
+                getRewardedAdOrCreate(adPlacement)?.loadAd(loadListenerProxy)
+                loadTimes = 1
+            }
+        }
+    }
+
+    override fun loadNativeAd(adPlacement: String, loadListener: AdLoadListener?) {
+        adNative?.loadAd(object : NativeAdLoadListener {
+            override fun onAdLoaded() {
+                loadListener?.onAdLoaded()
+            }
+
+            override fun onAdLoadFail(code: Int, message: String) {
+                loadListener?.onFailure(code, message)
+            }
+        })
+    }
+
+    override fun isLoadedExceptNative(adFormat: AdFormat, adPlacement: String): Boolean {
+        return when (adFormat) {
+            AdFormat.INTERSTITIAL -> {
+                getInterstitialAdOrCreate(adPlacement)?.isLoaded() == true
+            }
+            AdFormat.REWARDED -> {
+                getRewardedAdOrCreate(adPlacement)?.isLoaded() == true
+            }
+            AdFormat.APP_OPEN -> {
+                getAppOpenAdOrCreate(adPlacement)?.isLoaded() == true
+            }
+            else -> {
+                false
+            }
+        }
+    }
+
+    override fun isNativeAdLoaded(adPlacement: String): Boolean {
+        return adNative?.isLoaded() == true
+    }
+
+    override fun showAdExceptNative(
+        activity: Activity,
+        adFormat: AdFormat,
+        adPlacement: String,
+        listener: AdShowListener?
+    ) {
+        when (adFormat) {
+            AdFormat.INTERSTITIAL -> {
+                getInterstitialAdOrCreate(adPlacement)?.show(activity, listener, adPlacement)
+            }
+            AdFormat.REWARDED -> {
+                getRewardedAdOrCreate(adPlacement)?.show(activity, listener, adPlacement)
+            }
+            AdFormat.APP_OPEN -> {
+                getAppOpenAdOrCreate(adPlacement)?.show(activity, listener, adPlacement)
+            }
+        }
+    }
+
+    override fun getNativeAdExitAppView(
+        placementId: String,
+        parent: ViewGroup,
+        listener: AdShowListener?
+    ): View? {
+        val adNative = adNative ?: return null
+        DTAdReport.reportToShow("${adNative?.adId}", AdType.NATIVE, com.roiquery.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
+        return adNative.getNativeAdExitAppView(parent, placementId, object : NativeAdShowListener {
+            override fun onAdImpression() {
+                DTAdReport.reportShow("${adNative?.adId}", AdType.NATIVE, com.roiquery.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
+                listener?.onAdShown()
+            }
+
+            override fun onAdClicked() {
+                DTAdReport.reportClick("${adNative?.adId}", AdType.NATIVE, com.roiquery.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
+                DTAdReport.reportConversionByClick("${adNative?.adId}", AdType.NATIVE, com.roiquery.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
+                listener?.onAdClicked()
+            }
+
+        })
+    }
+
+    override fun getNativeAdMediumView(
+        bigStyle: Boolean,
+        placementId: String,
+        parent: ViewGroup,
+        listener: AdShowListener?
+    ): View? {
+        DTAdReport.reportToShow("${adNative?.adId}", AdType.NATIVE, com.roiquery.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
+        return adNative?.getNativeAdMediumView(bigStyle, parent, placementId, object : NativeAdShowListener {
+            override fun onAdImpression() {
+                DTAdReport.reportShow("${adNative?.adId}", AdType.NATIVE, com.roiquery.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
+                listener?.onAdShown()
+            }
+
+            override fun onAdClicked() {
+                DTAdReport.reportClick("${adNative?.adId}", AdType.NATIVE, com.roiquery.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
+                DTAdReport.reportConversionByClick("${adNative?.adId}", AdType.NATIVE, com.roiquery.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
+                listener?.onAdClicked()
+            }
+
+        })
+    }
+
+    override fun getNativeAdSmallView(style: ViewStyle, placementId: String, parent: ViewGroup, listener: AdShowListener?): View? {
+        DTAdReport.reportToShow("${adNative?.adId}", AdType.NATIVE, com.roiquery.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
+        return adNative?.getNativeAdSmallView(parent, style, placementId, object : NativeAdShowListener {
+            override fun onAdImpression() {
+                DTAdReport.reportShow("${adNative?.adId}", AdType.NATIVE, com.roiquery.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
+                listener?.onAdShown()
+            }
+
+            override fun onAdClicked() {
+                DTAdReport.reportClick("${adNative?.adId}", AdType.NATIVE, com.roiquery.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
+                DTAdReport.reportConversionByClick("${adNative?.adId}", AdType.NATIVE, com.roiquery.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
+                listener?.onAdClicked()
+            }
+        })
+    }
+
+    override fun destroyShownNativeAd() {
+        adNative?.destroyShownAds()
+    }
+
+    private fun generateAdUnitDebugId(adFormat: AdFormat, adPlatform: AdPlatform): String {
+        when (adFormat) {
+            AdFormat.INTERSTITIAL -> {
+                when(adPlatform) {
+                    AdPlatform.ADMOB -> {
+                        return AdConstant.AdUnitId.ADMOB_INTERSTITIAL_ID_TEST
+                    }
+                }
+            }
+            AdFormat.NATIVE -> {
+                when(adPlatform) {
+                    AdPlatform.ADMOB -> {
+                        return AdConstant.AdUnitId.ADMOB_NATIVE_ID_TEST
+                    }
+                }
+            }
+            AdFormat.REWARDED -> {
+                when(adPlatform) {
+                    AdPlatform.ADMOB -> {
+                        return AdConstant.AdUnitId.ADMOB_REWARDED_ID_TEST
+                    }
+                }
+            }
+            AdFormat.APP_OPEN -> {
+                when(adPlatform) {
+                    AdPlatform.ADMOB -> {
+                        return AdConstant.AdUnitId.ADMOB_APP_OPEN_ID_TEST
+                    }
+                }
+            }
+        }
+        return ""
+    }
+
+    override fun logToShow(type: AdFormat, adPlacement: String) {
+        when (type) {
+            AdFormat.INTERSTITIAL -> {
+                getInterstitialAdOrCreate(adPlacement)?.logToShow(adPlacement)
+            }
+            AdFormat.NATIVE -> {
+
+            }
+            AdFormat.APP_OPEN -> {
+                getAppOpenAdOrCreate(adPlacement)?.logToShow(adPlacement)
+            }
+            AdFormat.REWARDED -> {
+                getRewardedAdOrCreate(adPlacement)?.logToShow(adPlacement)
+            }
+        }
+    }
+
+    override fun markNativeAdShown(adPlacement: String) {
+        adNative?.markNativeAdShown()
+    }
+}

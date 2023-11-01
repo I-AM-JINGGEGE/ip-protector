@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#1E1E1E</color>
+    <color name="colorPrimaryDark">#1E1E1E</color>
+    <color name="colorAccent">#1590F6</color>
+    <color name="transparent">#00000000</color>
+    <color name="status_bar_bg">#1A000000</color>
+
+    <color name="white">#ffffffff</color>
+    <color name="white_40">#66ffffff</color>
+    <color name="black">#000000</color>
+
+    <color name="bg_item_unselected">#FAFAFA</color>
+    <color name="bg_item_selected">#DBDBDB</color>
+
+    <color name="add_time_text_disable">#99FFFFFF</color>
+
+    <color name="state_disconnect">#6E6E6E</color>
+    <color name="state_connecting">#C3C3C3</color>
+    <color name="state_connected">#FFFFFF</color>
+
+    <color name="button_blue">#1485FD</color>
+
+    <color name="line_grey">#21979797</color>
+    <color name="green">#25FAA9</color>
+</resources>

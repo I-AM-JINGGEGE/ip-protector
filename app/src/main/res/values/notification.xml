@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="notification_primary_text">#313131</color>
+    <color name="notification_secondary_text">#5E5F5D</color>
+    <color name="notification_button_gradient_start">#1485FD</color>
+    <color name="notification_button_gradient_end">#009BE6</color>
+</resources>

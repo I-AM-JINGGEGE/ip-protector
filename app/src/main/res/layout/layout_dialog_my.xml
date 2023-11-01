@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="297dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/white_radius_4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="15dp"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:id="@+id/ic_tip_close"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="end"
+            android:src="@mipmap/ic_close" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:drawablePadding="10dp"
+            android:drawableStart="@mipmap/rating_icon"
+            android:text="@string/rate_title"
+            android:textAllCaps="false"
+            android:textColor="#222222"
+            android:textSize="18sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="start"
+            android:text="@string/rate_content"
+            android:textAllCaps="false"
+            android:textColor="#333333"
+            android:textSize="12sp" />
+        <com.ironmeta.one.ui.widget.RatingBar
+            android:id="@+id/smile_rating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            tools:ignore="MissingClass" />
+
+        <Button
+            android:id="@+id/confirm_button"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_marginTop="23dp"
+            android:layout_marginStart="23dp"
+            android:layout_marginEnd="23dp"
+            android:background="@drawable/blue_radius_4dp"
+            android:text="OK"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
+        <TextView
+            android:id="@+id/not_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="@string/rate_dont_show_again"
+            android:textAllCaps="false"
+            android:textColor="#cccccc"
+            android:textSize="12sp" />
+    </LinearLayout>
+</ScrollView>

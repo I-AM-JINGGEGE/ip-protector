@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/custom_toast_layout"
+    android:background="#d0000000">
+
+    <LinearLayout
+        android:id="@+id/rating_stars_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="100dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@mipmap/rating_star_selected"
+            android:layout_margin="12dp"/>
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@mipmap/rating_star_selected"
+            android:layout_margin="12dp"/>
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@mipmap/rating_star_selected"
+            android:layout_margin="12dp"/>
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@mipmap/rating_star_selected"
+            android:layout_margin="12dp"/>
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@mipmap/rating_star_selected"
+            android:layout_margin="12dp"/>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/rating_gesture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ui_rating_guide_toast_guide_gesture_icon"
+        android:layout_alignEnd="@id/rating_stars_layout"
+        android:layout_alignTop="@id/rating_stars_layout"/>
+
+    <TextView
+        android:id="@+id/rating_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/rating_stars_layout"
+        android:layout_marginBottom="20dp"
+        android:text="@string/vs_rating_feedback_tip"
+        android:textColor="#ffffff"
+        android:textSize="17sp"/>
+
+    <FrameLayout
+        android:id="@+id/translation_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="140dp"
+        android:layout_above="@id/rating_text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp">
+
+        <View
+            android:id="@+id/translation_circle"
+            android:layout_width="40dp"
+            android:layout_height="70dp"
+            android:layout_gravity="bottom|center_horizontal"
+            android:background="@drawable/ui_rating_guide_toast_rating_mask"/>
+
+        <ImageView
+            android:id="@+id/translation_mask"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:src="@mipmap/ui_rating_guide_toast_scroll_point"/>
+
+    </FrameLayout>
+
+</RelativeLayout>

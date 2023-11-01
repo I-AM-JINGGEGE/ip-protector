@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vs_common_default">기본값</string>
+    <string name="vs_common_unknown">알 수 없음</string>
+    <string name="vs_common_auto_choose">자동 선택</string>
+    <string name="vs_common_dialog_ok_button">확인</string>
+    <string name="vs_common_tips_preparing">준비 중&#8230;</string>
+    <string name="vs_common_tips_loading">로딩 중&#8230;</string>
+    <string name="vs_common_tips_loading2">로딩 중&#8230;</string>
+    <string name="vs_common_tips_loading3">로딩 중입니다. 나중에 시도해 주십시오.</string>
+    <string name="vs_common_tips_loading_data">데이터 로딩 중&#8230; (최대 10초)</string>
+    <string name="vs_common_tips_network_unavailable">문제가 발생했습니다. 네트워크를 확인해 주십시오.</string>
+    <string name="vs_common_tips_no_email_app">이메일 앱이 없어 이메일을 보낼 수 없습니다. 우선 이메일 앱을 설정해 주십시오.</string>
+
+    <string name="vs_common_button_go">이동</string>
+    <string name="vs_common_button_retry">재시도</string>
+    <string name="vs_common_button_close">닫기</string>
+    <string name="vs_common_button_got_it">확인</string>
+    <string name="vs_common_button_upload">업로드</string>
+    <string name="vs_common_button_submit">제출</string>
+    <string name="vs_common_button_success">성공</string>
+    <string name="vs_common_button_change">변경</string>
+    <string name="vs_common_button_cancel">취소</string>
+    <string name="vs_common_button_ok">확인</string>
+    <string name="vs_common_button_connected">연결됨</string>
+    <string name="vs_common_button_disconnected">연결 해제됨</string>
+
+    <string name="vs_common_title_secondary">VPN</string>
+
+    <string name="vs_core_service_state_testing">연결 중&#8230;</string>
+    <string name="vs_core_service_state_testing2">테스트 중&#8230;</string>
+    <string name="vs_core_service_state_testing_data">테스트 중&#8230;(최대 10초)</string>
+    <string name="vs_core_service_state_disconnecting">연결 해제 중&#8230;</string>
+    <string name="vs_core_service_state_disconnecting2">연결 해제 중입니다. 나중에 시도해 주십시오.</string>
+    <string name="vs_core_service_state_disconnected">연결 해제됨</string>
+    <string name="vs_core_service_state_disconnected_timeout">연결 시간이 초과되었습니다. 네트워크를 확인하고 다시 연결해 주십시오(지역 변경 권장).</string>
+    <string name="vs_core_service_state_disconnected_timeout2">연결 시간이 초과되었습니다. 다시 시도하거나 다른 지역을 선택해 주십시오[code=%s].</string>
+    <string name="vs_core_service_state_disconnected_used_up">%s 시간의 평가판 시간이 만료되었습니다. 다시 연결해 주십시오.</string>
+    <string name="vs_core_service_state_disconnected_used_up2">무료 평가판 시간이 만료되었습니다. 다시 연결해 주십시오.</string>
+    <string name="vs_core_service_state_disconnected_used_up3">평가판 시간이 만료되었습니다. 다시 연결해 주십시오.</string>
+    <string name="vs_core_service_state_disconnected_error">오류 [code=%s]가 발생했습니다. 다시 연결해 주십시오(문제 해결을 위한 장치 재부팅 권장).</string>
+    <string name="vs_core_service_state_disconnected_error2">[code=%s], 다시 연결해 주십시오(문제 해결을 위한 장치 재부팅 권장).</string>
+    <string name="vs_core_service_state_disconnected_error3">실패했습니다. 장치를 재부팅하여 [code=%s]을(를) 복구해 주십시오.</string>
+    <string name="vs_core_service_state_connecting">연결 중&#8230;20%</string>
+    <string name="vs_core_service_state_connecting2">연결 중입니다. 나중에 시도해 주십시오.</string>
+    <string name="vs_core_service_state_connected">연결됨</string>
+    <string name="vs_core_service_operate_connect">탭하여 연결</string>
+    <string name="vs_core_service_operate_connect2">이동</string>
+    <string name="vs_core_service_operate_connect3">이 지역에 연결</string>
+    <string name="vs_core_service_operate_connect_free">탭하여 무료 연결</string>
+    <string name="vs_core_service_operate_disconnect">탭하여 연결 해제</string>
+    <string name="vs_core_service_always_vpn_tips">\'확인\'을 클릭하거나(\'이 애플리케이션을 신뢰합니다\'에 체크) VPN 설정에서 \'VPN 항상 사용\'을 끕니다.</string>
+
+    <string name="vs_statement_privacy">개인정보가\n보호됩니다</string>
+    <string name="vs_statement_ip">IP가\n변경됩니다</string>
+    <string name="vs_statement_banned">금지된 항목의 잠금이 해제됩니다”</string>
+
+    <string name="vs_vad_consent_desc_a">당사는 귀하의 개인정보 보호 및 데이터 보안을 중요하게 생각합니다. 당사는 광고를 게재하여 이 앱을 무료로 제공하고 있습니다.</string>
+    <string name="vs_vad_consent_desc_b">맞춤 광고를 위해 귀하의 데이터를 계속 사용하시겠습니까?</string>
+    <string name="vs_vad_consent_desc_c">개인정보 처리방침 설정에서 $appTitle의 선택 사항을 언제든지 변경할 수 있습니다. 당사의 파트너는 데이터를 수집하고 귀하의 장치에서 고유 식별자를 사용하여 광고를 표시합니다.</string>
+    <string name="vs_vad_consent_ok">예, 빠른 VPN과 관련 광고를 선택하겠습니다.</string>
+    <string name="vs_vad_consent_cancel">아니요, 일반 VPN과 광고를 선택하겠습니다.</string>
+
+    <string name="vs_will_disconnect_dialog_title">연결을 해제하시겠습니까?</string>
+    <string name="vs_will_disconnect_dialog_cancel">나중에</string>
+    <string name="vs_will_disconnect_dialog_ok">연결 해제</string>
+    <string name="vs_will_disconnect_dialog_desc_for_change_region">다른 지역에 연결하려면 우선 연결을 해제해야 합니다.</string>
+    <string name="vs_will_disconnect_dialog_desc_for_disconnect">연결을 해제하면 VPN 연결이 끊어집니다.</string>
+    <string name="vs_will_disconnect_dialog_desc_for_disconnect2">\'연결 해제\'를 누르면 VPN 연결이 끊어집니다.</string>
+
+    <string name="vs_quality_test_button_text">연결을 테스트하시겠습니까?</string>
+    <string name="vs_quality_repair_button_text">느리거나 작동하지 않습니까?</string>
+    <string name="vs_quality_test_result_title">테스트 결과</string>
+    <string name="vs_quality_success_result_text">완료됐습니다!\nHTTPS 핸드셰이크에 %sms가 소요됐습니다.</string>
+    <string name="vs_quality_fail_result_text">죄송합니다.\n인터넷 연결을 찾지 못했습니다.</string>
+
+    <string name="vs_legal_notices_dialog_title">법적 고지</string>
+    <string name="vs_legal_notices_dialog_title2">서비스 사용 불가</string>
+    <string name="vs_legal_notices_dialog_content">각국 및 지역의 법과 정책, 규정에 따라 귀하의 지역에서는 본 VPN 서비스가 제공되지 않습니다.</string>
+    <string name="vs_legal_notices_dialog_content2">죄송합니다. 현재 귀하의 지역에서는 서비스가 제공되지 않습니다.</string>
+
+    <string name="vs_privacy_confirm_content">당사의 정보 수집\n\na. 개인정보.\n당사는 개인정보를 수집하지 않습니다. “개인정보”란 이름, 실제 주소, 이메일 주소, 전화번호, 팩스, 주민등록번호, 장치에 저장된 정보를 비롯하여 귀하 또는 타인을 식별하는 정보를 의미합니다.\n\nb. 비개인정보.\n당사는 귀하가 당사의 웹사이트를 방문할 때 장치 정보(장치 ID 제외), 운영체제, 로그를 비롯한 귀하의 비개인정보를 수집합니다.\n\nc. 귀하가 제공하는 정보.\n당사는 귀하가 당사와 커뮤니케이션하거나 당사에게 정보를 제공할 경우 귀하의 정보를 수집할 수 있습니다.\n\n당사의 정보 활용\n\na. 개인정보.\n당사는 개인정보를 저장하지 않으므로 귀하의 개인정보를 공개하지 않습니다.\n\nb. 비개인정보.\n당사는 귀하의 정보를 외부에 판매, 거래 또는 전송하지 않습니다. 당사는 비개인정보와 개인정보를 결합하지 않습니다(예: 귀하의 이름과 고유 사용자 장치 번호의 결합).\n\nc. 법적 근거\n당사는 관련 법률, 규정, 법적 절차 또는 강제력 있는 정부 기관의 요청에 의해 요구되는 이유로 귀하의 정보에 액세스하고 해당 정보를 사용하거나 다른 조직이나 단체에 공개합니다; 사기, 보안 또는 기술적 문제를 감지 또는 방지합니다; 당사와 당사의 사용자, 또는 법률에 의거하여 요구되거나 허용되는 대중의 권리, 재산 또는 안전을 피해로부터 보호합니다. \n\n보안\n\n당사는 귀하의 정보에 대한 기밀성 유지에 큰 주의를 기울입니다. 당사는 개인정보를 수집하지 않으며 귀하의 비개인정보에 대한 무단 액세스 및 사용을 방지하기 위해 설계된 관리적, 물리적, 전자적 조치를 취합니다. 당사가 귀하의 정보 보호를 위해 취하는 보안 조치는 침투할 수 없는 귀하의 비개인정보에 대한 무단 액세스 또는 사용 방지를 완벽하게 보장할 수 없음을 알려드립니다.\n\n민감한 정보\n\n애플리케이션이나 서비스, 사이트, 기타 수단을 통해 귀하의 민감한 개인정보(예: 인종 또는 민족, 정치적 견해, 종교 또는 기타 신념, 건강, 성적 지향, 범죄 이력, 노동조합을 비롯한 과거 속한 조직의 멤버십 관련 정보)를 당사에게 전송하거나 공개하는 일은 지양해 주십시오.\n\n연락\n\n본 정책 또는 당사의 개인정보 보호 관행에 대한 문의 사항이나 의견이 있는 경우, 또는 정책의 위반이나 서비스 또는 사이트의 오용을 신고하려는 경우 one.support@ironmeta.com으로 연락해 주십시오.</string>
+    <string name="vs_privacy_confirm_button">동의합니다</string>
+
+    <string name="vs_dialog_add_an_hour">1시간 받기</string>
+    <string name="vs_dialog_get_later">나중에 받기</string>
+
+    <string name="vs_disconnected_report_title">연결 보고서</string>
+    <string name="vs_disconnected_report_ip_address">IP 주소</string>
+    <string name="vs_disconnected_report_duration">기간</string>
+    <string name="vs_disconnected_report_upload">총 업로드</string>
+    <string name="vs_disconnected_report_download">총 다운로드</string>
+
+    <string name="vs_vip_feature_title">VIP로 업그레이드</string>
+    <string name="vs_vip_dialog_desc_advantage_a">광고 제거</string>
+    <string name="vs_vip_dialog_desc_advantage_b">속도 향상</string>
+    <string name="vs_vip_dialog_desc_advantage_c">전 세계 위치</string>
+    <string name="vs_vip_state_load">계획 로딩 중&#8230;</string>
+    <string name="vs_vip_state_normal_content">VIP가 아닙니다. 업그레이드해 주십시오.</string>
+    <string name="vs_vip_state_pending_content">구매가 보류 중입니다. \'Play 스토어 구독\'으로 이동하여 구매를 확인하고 나중에 다시 시도해 주십시오.</string>
+    <string name="vs_vip_state_vip_content">축하드립니다!\nVIP 사용자가 되셨습니다.</string>
+    <string name="vs_vip_dialog_desc_rule">구독은 자동으로 갱신되며 요금은 귀하의 계정으로 매월 또는 매년에 청구됩니다. 언제든지 취소할 수 있습니다.</string>
+
+    <string name="vs_rating_dialog_title">평가하기</string>
+    <string name="vs_rating_dialog_title2">Tomato에 만족하십니까?</string>
+    <string name="vs_rating_dialog_desc">별을 눌러 평가하세요</string>
+    <string name="vs_rating_dialog_positive_comment">매우 기쁘네요 :)</string>
+    <string name="vs_rating_dialog_negative_comment">매우 슬프네요 :(</string>
+    <string name="vs_rating_dialog_conform_button">확인</string>
+    <string name="vs_rating_view_terrible_title">아주 나쁨</string>
+    <string name="vs_rating_view_bad_title">나쁨</string>
+    <string name="vs_rating_view_okay_title">적당함</string>
+    <string name="vs_rating_view_good_title">좋음</string>
+    <string name="vs_rating_view_great_title">아주 좋음</string>
+    <string name="vs_rating_select_none_tips">웃는 얼굴을 탭하십시오</string>
+    <string name="vs_rating_feedback_send">피드백을 제공하겠습니다</string>
+    <string name="vs_rating_feedback_tip">위로 슬라이드해서 평가하고 피드백을 남겨 주십시오</string>
+    <string name="vs_rating_thanks_tips">평가에 감사드립니다</string>
+
+    <string name="vs_add_time_an_hour">탭하여 1시간 추가하기</string>
+    <string name="vs_add_time_an_hour_1">+ 1시간</string>
+    <string name="vs_add_time_an_hour_succeed_dialog_title">축하합니다!</string>
+    <string name="vs_add_time_an_hour_succeed_dialog_content">연결 시간이 1시간 증가했습니다</string>
+    <string name="vs_add_time_an_hour_wait">기다려 주십시오&#8230;(%ss)</string>
+    <string name="vs_add_time_an_hour_wait_1">기다려 주십시오&#8230;(%ss)</string>
+
+    <string name="vs_add_time_two_hour">탭하여 2시간 추가하기</string>
+    <string name="vs_add_time_two_hours">탭하여 2시간 추가하기</string>
+    <string name="vs_add_time_two_hours_1">+ 2시간</string>
+    <string name="vs_add_time_two_hours_preparing">준비 중&#8230;</string>
+    <string name="vs_add_time_two_hour_way">동영상 광고 시청</string>
+    <string name="vs_add_time_two_hour_wait">준비 중&#8230;</string>
+    <string name="vs_add_time_two_hour_succeed">축하합니다! 연결 시간이 2시간 증가했습니다</string>
+    <string name="vs_add_time_two_hour_fail">보상을 받으려면 동영상 시청을 완료해야 합니다</string>
+
+    <string name="vs_add_time_get_an_hour">1시간 받기</string>
+    <string name="vs_add_time_get_later">나중에 받기</string>
+
+    <string name="vs_feature_apps_bypass_title">앱 우회 설정</string>
+    <string name="vs_feature_apps_bypass_title2">VPN 사용 앱</string>
+    <string name="vs_feature_app_bypass_tip">다음 연결 시 적용됩니다</string>
+
+    <string name="vs_feature_settings_title">설정</string>
+    <string name="vs_feature_settings_title2">VPN 설정</string>
+    <string name="vs_setting_button_restart_vpn">VPN 재시작</string>
+    <string name="vs_setting_item_dns">UDP를 통한 DNS</string>
+    <string name="vs_setting_item_ipv6">IPv6 트래픽 리디렉션</string>
+    <string name="vs_setting_item_tcp">TCP 빠른 열기 사용</string>
+
+    <string name="vs_feature_share_title">공유</string>
+    <string name="vs_feature_share_statement">QR 코드 공유</string>
+    <string name="vs_feature_share_item_name_whats_app">WhatsApp</string>
+    <string name="vs_feature_share_item_name_sms">SMS</string>
+    <string name="vs_feature_share_item_name_email">이메일</string>
+    <string name="vs_feature_share_item_name_copy_link">링크 복사</string>
+    <string name="vs_feature_share_item_name_more">더 보기</string>
+    <string name="vs_feature_share_title_for_chooser">다음을 사용하여 작업 완료</string>
+    <string name="vs_feature_share_content_text">IronMeta One은 빠르고 안정적인 무제한 프라이빗 VPN 프록시입니다! 앱 설치를 강력 권장합니다! 다운로드 링크</string>
+    <string name="vs_feature_share_content_email_subject">IronMeta One | 무료 VPN 프록시, 빠른 VPN, 잠금 해제</string>
+
+    <string name="vs_feature_share_item_tip_whats_app">WhatsApp 공유에 실패했습니다.</string>
+    <string name="vs_feature_share_item_tip_sms">SMS 공유에 실패했습니다.</string>
+    <string name="vs_feature_share_item_tip_email">이메일 공유에 실패했습니다.</string>
+    <string name="vs_feature_share_item_tip_copy_link">복사됨</string>
+    <string name="vs_feature_share_item_tip_more">더 보기 공유에 실패했습니다.</string>
+
+    <string name="vs_feature_language_title">언어</string>
+
+    <string name="vs_feature_privacy_policy_title">개인정보 처리방침</string>
+    <string name="vs_privacy_policy_setting">설정</string>
+
+    <string name="vs_feature_my_vip_account">나의 VIP 계정</string>
+
+    <string name="vs_feature_terms_of_service_title">서비스 약관</string>
+
+        <string name="vs_feature_FAQ_title">FAQ</string>
+    <string name="vs_faq_question_1">Q1: VPN Tomato를 어떻게 사용하나요?</string>
+    <string name="vs_faq_question_2">Q2: VPN Tomato는 안전한가요?</string>
+    <string name="vs_faq_question_3">Q3: VPN Tomato를 연결할 수 없습니다. 그 이유는 무엇인가요?</string>
+    <string name="vs_faq_question_4">Q4: 연결이 불안정하거나 느릴 경우 어떻게 해야 하나요?</string>
+    <string name="vs_faq_question_5">Q5: 기본 설정 IP, 서버, 지역을 어떻게 선택하나요?</string>
+    <string name="vs_faq_question_6">Q6: VPN Tomato가 원하는 IP, 서버, 지역을 제공하지 않을 경우 어떻게 해야 하나요?</string>
+    <string name="vs_faq_question_7">P2P나 BitTorrent를 사용하지 마십시오!</string>
+    <string name="vs_faq_answer_1">\'이동\' 단추를 탭하세요. \'연결됨\'이라고 표시되면 VPN Tomato가 작동하는 것입니다. 처음 연결할 때 \'이 애플리케이션을 신뢰합니다\'에 체크해 주십시오.</string>
+    <string name="vs_faq_answer_2">100% 안전하며 무제한 데이터와 시간이 제공되지만, P2P나 BitTorrent는 허용되지 않습니다. 또한 VPN Tomato는 귀하의 WiFi 핫스팟 보안 및 개인정보를 보호할 수 있습니다. 절대로 사용자의 정보를 도용하지 않습니다.</string>
+    <string name="vs_faq_answer_3">다음과 같은 몇 가지 이유가 있습니다. (1) \'네트워크 사용 불가\'라는 메시지는 네트워크가 불안정한 상태임을 의미합니다. 휴대폰이 인터넷에 연결되어 있는지 확인해 주십시오. (2) \'연결시간 초과\'라는 메시지는 현재 서버가 사용 중이거나 귀하의 지역에서 차단되었음을 의미합니다. 다른 서버를 선택하거나 다시 시도해 주십시오. (3) \'현재 사용 가능한 서버 없음\'이라는 메시지가 표시되면 VPN Tomato를 최신 버전으로 업데이트해야 합니다. (4) 상기 모든 방법으로 해결되지 않을 경우 VPN Tomato를 제거하고 다시 설치해 주십시오. 일반적으로 정상 작동하게 됩니다.</string>
+    <string name="vs_faq_answer_4">홈페이지 툴바 우측 상단의 국기를 클릭하여 가장 속도가 빠르고 안정적인 서버를 선택한 후 다시 연결합니다. 가장 속도가 빠른 서버는 보통 사용자의 국가와 가까운 지역에 있습니다. 서버가 불안정할 경우 vpntomato.dev@gmail.com으로 이메일을 보내 주십시오. 가능한 빨리 답변해 드리겠습니다.</string>
+    <string name="vs_faq_answer_5">홈페이지 툴바 우측 상단의 국기를 클릭해 주십시오. 원하는 IP나 지역, 서버를 선택하고 연결합니다.</string>
+    <string name="vs_faq_answer_6">vpntomato.dev@gmail.com으로 이메일을 보내 주십시오. 가능한 빨리 답변해 드리겠습니다.</string>
+    <string name="vs_faq_answer_7">VPN을 통해 BitTorrent를 사용하지 마십시오. 계정이 차단될 수 있습니다.</string>
+
+    <string name="vs_feature_feedback_title">피드백</string>
+    <string name="vs_feature_feedback_rating_guide_toast_slides_up_tip">위로 슬라이드해서 평가하고 피드백을 남겨 주십시오</string>
+    <string name="vs_feedback_rating_text">평가:</string>
+    <string name="vs_feedback_content_text">내용:</string>
+    <string name="vs_feedback_content_hintText">피드백을 입력해 주십시오</string>
+    <string name="vs_feedback_email_text">이메일:</string>
+    <string name="vs_feedback_email_hintText">이메일을 입력해 주십시오</string>
+    <string name="vs_feedback_no_email_showToast">콘텐츠 이메일을 입력해 주십시오</string>
+    <string name="vs_feedback_wrong">문제가 발생했습니다&#8230;</string>
+    <string name="vs_feedback_privacy_policy">개인정보 처리방침에 따라&#8230;&#8230;</string>
+    <string name="vs_feedback_thanks">피드백에 감사드립니다</string>
+
+    <string name="update_dialog_title">새 버전</string>
+    <string name="update_dialog_desc">최신 버전이 출시됐습니다. 더욱 속도가 빠른 서버를 제공하며 버그가 다수 수정됐습니다. 업데이트를 권장합니다.</string>
+    <string name="update_dialog_cancel">나중에</string>
+    <string name="update_dialog_ok">지금 업데이트</string>
+
+    <string name="vs_feature_region_selector_title">지역 선택기</string>
+    <string name="vs_feature_region_selector_title2">다른 지역으로 전환</string>
+    <string name="vs_feature_region_selector_title3">VPN 지역 변경</string>
+    <string name="vs_feature_region_selector_no_server">죄송합니다. 서버가 없습니다.</string>
+    <string name="vs_feature_region_change_dialog_title">지역을 변경하시겠습니까?</string>
+    <string name="vs_feature_region_change_dialog_decs">연결할 지역을 변경하시거나 다른 지역을 선택하시려면 \'변경\'을 탭해주십시오.</string>
+    <string name="vs_feature_region_change_connecting">연결할 지역을 변경하시거나 다른 지역을 선택하시려면 \'변경\'을 탭해주십시오.</string>
+    <string name="vs_feature_region_change_disconnecting">연결할 지역을 변경하시거나 다른 지역을 선택하시려면 \'변경\'을 탭해주십시오.</string>
+    <string name="vs_feature_region_refresh_tips_loading">서버 목록 새로 고침 중&#8230;</string>
+    <string name="vs_feature_region_refresh_tips_success">새로 고침을 완료했습니다</string>
+
+    <string name="summary_title">요약</string>
+    <string name="summary_body">귀하께 서비스를 제공할 수 있어 영광입니다!</string>
+    <string name="region_pre">지역:%s</string>
+    <string name="traffic_usage">트래픽 사용량</string>
+
+    <string name="get_1_hour">1시간 받기</string>
+    <string name="get_later">나중에 받기</string>
+
+    <string name="vs_feature_splash_tip_loading">로딩 중&#8230;</string>
+
+    <string name="vs_region_default">무작위 지역</string>
+    <string name="vs_region_default2">자동 선택</string>
+    <string name="vs_region_default_desc">가장 바람직한 지역 선택</string>
+    <string name="vs_region_default_desc2">가장 바람직한 서버 찾기</string>
+</resources>

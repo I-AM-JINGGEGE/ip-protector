@@ -1,0 +1,98 @@
+package com.ironmeta.one.coreservice
+
+import android.content.Context
+import androidx.annotation.MainThread
+import androidx.lifecycle.MutableLiveData
+import com.ironmeta.base.vstore.VstoreManager
+import com.ironmeta.one.MainApplication
+import com.ironmeta.one.R
+import com.ironmeta.one.base.utils.LogUtils
+import com.ironmeta.one.region.RegionConstants
+import com.ironmeta.one.server.UpTimeHelper
+import com.ironmeta.tahiti.TahitiCoreServiceAppsBypassUtils
+import com.ironmeta.tahiti.TahitiCoreServiceStateInfoManager
+import com.sdk.ssmod.IMSDK
+import com.sdk.ssmod.IMSDKRuntimeException
+import com.sdk.ssmod.api.http.beans.FetchResponse
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+
+class CoreServiceManager private constructor(context: Context) {
+    private val TAG = "CoreServiceManager"
+    /** region end  */
+    companion object {
+        private var sCoreServiceManager: CoreServiceManager = CoreServiceManager(MainApplication.context)
+        @JvmStatic
+        @MainThread
+        @Synchronized
+        fun getInstance(context: Context): CoreServiceManager {
+            return sCoreServiceManager
+        }
+    }
+    private val isConnectingAsLiveData = MutableLiveData<Boolean>()
+    val selectedRegionIdLiveData = MutableLiveData<String>()
+
+    init {
+        val selectedZoneCode = VstoreManager.getInstance(MainApplication.context).decode(true, RegionConstants.Key_Selected_Region_Country_Code, RegionConstants.REGION_CODE_DEFAULT)
+        selectedRegionIdLiveData.postValue(selectedZoneCode)
+    }
+
+    fun connect(serverZone: FetchResponse.ServerZone?) {
+        GlobalScope.launch {
+            if (TahitiCoreServiceStateInfoManager.getInstance(MainApplication.context).coreServiceConnected) {
+                disconnectFromServer()
+            }
+            syncServerCountryCodeSelected(serverZone?.country ?: RegionConstants.REGION_CODE_DEFAULT)
+            try {
+                if (serverZone == null || serverZone.id == RegionConstants.REGION_UUID_DEFAULT) {
+                    connectToBest()
+                } else {
+                    connectToServer(serverZone)
+                }
+            } catch (e: IMSDKRuntimeException) {
+                LogUtils.i(TAG, "${e.errorCode}, ${e.message}")
+                isConnectingAsLiveData.postValue(false)
+            } catch (e: Exception) {
+                LogUtils.i(TAG, "${e.message}")
+                isConnectingAsLiveData.postValue(false)
+            }
+        }
+    }
+
+    fun disconnect() {
+        GlobalScope.launch {
+            disconnectFromServer()
+        }
+    }
+
+    private suspend fun disconnectFromServer() {
+        val canStop = IMSDK.vpnState.value?.canStop
+        if (canStop != null && canStop) {
+            UpTimeHelper.stopUpTime()
+            IMSDK.disconnect()
+        }
+    }
+
+    private suspend fun connectToServer(serverZone: FetchResponse.ServerZone?) {
+        isConnectingAsLiveData.postValue(true)
+        IMSDK.withResponse(CoreSDKResponseManager.fetchResponseAsLiveData.value!!)
+            .toServerZone(serverZone?.id ?: RegionConstants.REGION_UUID_DEFAULT)
+            .bypassPackageNames(TahitiCoreServiceAppsBypassUtils.getAppsBypassPackageName(MainApplication.context).toList())
+            .connect()
+        isConnectingAsLiveData.postValue(false)
+    }
+
+    private suspend fun connectToBest(): String? {
+        isConnectingAsLiveData.postValue(true)
+        val response = IMSDK.withResponse(CoreSDKResponseManager.fetchResponseAsLiveData.value!!)
+            .bypassPackageNames(TahitiCoreServiceAppsBypassUtils.getAppsBypassPackageName(MainApplication.context).toList()).toBest(null).connect()
+        isConnectingAsLiveData.postValue(false)
+        return response.zoneId
+    }
+
+    fun syncServerCountryCodeSelected(serverZoneIdSelected: String?) {
+        val id = serverZoneIdSelected ?: RegionConstants.REGION_CODE_DEFAULT
+        VstoreManager.getInstance(MainApplication.context).encode(true, RegionConstants.Key_Selected_Region_Country_Code, id)
+        selectedRegionIdLiveData.postValue(id)
+    }
+}

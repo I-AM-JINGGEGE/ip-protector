@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vs_common_default">По умолчанию</string>
+    <string name="vs_common_unknown">Неизвестный</string>
+    <string name="vs_common_auto_choose">автоматическое выделение</string>
+    <string name="vs_common_dialog_ok_button">Понятно</string>
+    <string name="vs_common_tips_preparing">Подготовка&#8230;</string>
+    <string name="vs_common_tips_loading">Загрузка&#8230;</string>
+    <string name="vs_common_tips_loading2">ЗАГРУЗКА&#8230;</string>
+    <string name="vs_common_tips_loading3">Идет загрузка, повторите попытку позже</string>
+    <string name="vs_common_tips_loading_data">Загрузка данных&#8230;(до 10 секунд)</string>
+    <string name="vs_common_tips_network_unavailable">Что-то пошло не так, проверьте подключение сети</string>
+    <string name="vs_common_tips_no_email_app">У вас нет приложения электронной почты для отправки сообщений. Сначала установите приложение электронной почты</string>
+
+    <string name="vs_common_button_go">НАЧАТЬ</string>
+    <string name="vs_common_button_retry">Еще раз</string>
+    <string name="vs_common_button_close">Закрыть</string>
+    <string name="vs_common_button_got_it">Понятно</string>
+    <string name="vs_common_button_upload">Загрузить</string>
+    <string name="vs_common_button_submit">Отправить</string>
+    <string name="vs_common_button_success">Успешно</string>
+    <string name="vs_common_button_change">Изменить</string>
+    <string name="vs_common_button_cancel">Отменить</string>
+    <string name="vs_common_button_ok">ОК</string>
+    <string name="vs_common_button_connected">ПОДКЛЮЧЕНО</string>
+    <string name="vs_common_button_disconnected">ОТКЛЮЧЕНО</string>
+
+    <string name="vs_common_title_secondary">VPN</string>
+
+    <string name="vs_core_service_state_testing">Подключение&#8230;</string>
+    <string name="vs_core_service_state_testing2">Проверка&#8230;</string>
+    <string name="vs_core_service_state_testing_data">Проверка&#8230;(до 10 секунд)</string>
+    <string name="vs_core_service_state_disconnecting">Отключение&#8230;</string>
+    <string name="vs_core_service_state_disconnecting2">Отключение, повторите попытку позже</string>
+    <string name="vs_core_service_state_disconnected">Отключено</string>
+    <string name="vs_core_service_state_disconnected_timeout">Время подключения вышло, проверьте сетевое соединение и подключитесь повторно(лучше поменять регион)</string>
+    <string name="vs_core_service_state_disconnected_timeout2">Время подключения вышло, подключитесь повторно или выберите другие регионы [code=%s]</string>
+    <string name="vs_core_service_state_disconnected_used_up">%s ч. пробной версии использовано, подключитесь повторно</string>
+    <string name="vs_core_service_state_disconnected_used_up2">Бесплатное время пробной версии использовано, подключитесь повторно</string>
+    <string name="vs_core_service_state_disconnected_used_up3">Время пробной версии использовано, подключитесь повторно</string>
+    <string name="vs_core_service_state_disconnected_error">Ошибка[code=%s], подключитесь повторно(лучше перегрузить устройство для устранения ошибки)</string>
+    <string name="vs_core_service_state_disconnected_error2">[code=%s], подключитесь повторно(лучше перегрузить устройство для устранения ошибки)</string>
+    <string name="vs_core_service_state_disconnected_error3">Не удалось выполнить, перегрузите устройство для исправления [code=%s]</string>
+    <string name="vs_core_service_state_connecting">Подключение&#8230;20%</string>
+    <string name="vs_core_service_state_connecting2">Подключение, повторите попытку позже</string>
+    <string name="vs_core_service_state_connected">Подключено</string>
+    <string name="vs_core_service_operate_connect">Нажмите для подключения</string>
+    <string name="vs_core_service_operate_connect2">Начать</string>
+    <string name="vs_core_service_operate_connect3">Подключиться к этому региону</string>
+    <string name="vs_core_service_operate_connect_free">Нажмите для бесплатного подключения</string>
+    <string name="vs_core_service_operate_disconnect">Нажмите для отключения</string>
+    <string name="vs_core_service_always_vpn_tips">Нажмите \'OK\' (выберите \'Я доверяю этому приложению\') или выключите \'VPN всегда включен\' в настройках VPN</string>
+
+    <string name="vs_statement_privacy">Защита\nконфиденциальности</string>
+    <string name="vs_statement_ip">Изменение\nIP-адреса</string>
+    <string name="vs_statement_banned">Запрещенное содержимое будет разблокировано"</string>
+
+    <string name="vs_vad_consent_desc_a">Мы заботимся о вашей конфиденциальности и безопасности данных. Это приложение остается бесплатным благодаря рекламе.</string>
+    <string name="vs_vad_consent_desc_b">Можно продолжать использование ваших данных для настройки подходящей рекламы?</string>
+    <string name="vs_vad_consent_desc_c">Вы сможете изменить свой выбор в любое время в отношении $appTitle в настройках политики конфиденциальности. Наши партнеры будут собирать данные и использовать уникальные идентификаторы на вашем устройстве для показа рекламы.</string>
+    <string name="vs_vad_consent_ok">Да, быстрый VPN с подходящей рекламой</string>
+    <string name="vs_vad_consent_cancel">Нет, обычный VPN с рекламой</string>
+
+    <string name="vs_will_disconnect_dialog_title">Отключиться?</string>
+    <string name="vs_will_disconnect_dialog_cancel">Позже</string>
+    <string name="vs_will_disconnect_dialog_ok">Отключиться</string>
+    <string name="vs_will_disconnect_dialog_desc_for_change_region">Если необходимо подключиться к другим регионам, сначала выполните отключение</string>
+    <string name="vs_will_disconnect_dialog_desc_for_disconnect">После отключения будет прервано соединение VPN.</string>
+    <string name="vs_will_disconnect_dialog_desc_for_disconnect2">Если вы нажмете \'Отключиться\’, то соединение VPN будет прервано.</string>
+
+    <string name="vs_quality_test_button_text">Проверить соединение?</string>
+    <string name="vs_quality_repair_button_text">Низкая скорость или не работает?</string>
+    <string name="vs_quality_test_result_title">Результат проверки</string>
+    <string name="vs_quality_success_result_text">Успешно выполнено!\nПодтверждение соединения HTTPS заняло %s мс</string>
+    <string name="vs_quality_fail_result_text">Ой!\nПодключение к интернету не обнаружено.</string>
+
+    <string name="vs_legal_notices_dialog_title">Юридическая информация</string>
+    <string name="vs_legal_notices_dialog_title2">Сервис недоступен</string>
+    <string name="vs_legal_notices_dialog_content">Сервис VPN не предоставляется в вашем регионе в соответствии с законами, политиками и нормативными требованиями страны и региона.</string>
+    <string name="vs_legal_notices_dialog_content2">Сожалеем, в данный момент в вашем регионе сервис не предоставляется!</string>
+
+    <string name="vs_privacy_confirm_content">МЫ СОБИРАЕМ СЛЕДУЮЩУЮ ИНФОРМАЦИЮ\n\nа. Персональная информация.\nМы не собираем персональную информацию. «Персональная информация» — это информация, идентифицирующая вас или какого-либо другого пользователя. Например, фамилия и имя, физические адреса, электронные адреса, номер телефона, факс, SSN, хранящиеся на вашем устройстве данные.\n\nб. Информация, не содержащая персональных данных.\nМы собираем информацию, не содержащую персональных данных, когда вы посещаете наш веб-сайт (информация о вашем устройстве (кроме его ID), операционная система, журналы).\n\nв. Информация, которую вы предоставляете.\nМы можем собирать вашу информацию, когда вы взаимодействуете с нами или предоставляете ее нам.\n\nКАК МЫ ИСПОЛЬЗУЕМ ИНФОРМАЦИЮ\n\nа. Персональная информация.\nМы не храним персональную информацию и поэтому не раскрываем ее.\n\nб. Информация, не содержащая персональных данных.\nМы не продаем вашу информацию, не торгуем ей и не передаем сторонним организациям. Мы не совмещаем информацию, не содержащая персональных данных, с персональной информацией (например, ваше имя с уникальным номером устройства пользователя).\n\nв. Юридические причины\nМы будем получать доступ, использовать или раскрывать вашу информацию другим организациям или субъектам в связи с требованиями применимых законодательств, нормативных актов, судебных процессов или при исполняемых государственных запросах; обнаруживать, предотвращать или выполнять иные действия при мошенничестве, проблемах безопасности или технических проблемах; защищать от ущерба права, собственность или безопасность нас, наших пользователей или общественность в соответствии с требованиями или разрешениями закона.\n\nБЕЗОПАСНОСТЬ\n\n Мы очень заботимся о защите конфиденциальности вашей информации. Мы не собираем персональную информацию и применяем административные, физические и программно-технические меры, направленные на защиту вашей информации, не содержащей персональных данных, от несанкционированного доступа и использования. Примите во внимание, что никакие меры безопасности, используемые для защиты вашей информации, не гарантируют абсолютного предотвращения несанкционированного доступа или использования вашей информации, не содержащей персональных данных, которая является защищенной.\n\nУязвимая информация\n\nМы просим вас не отправлять нам и не разглашать важную личную информацию (например, информацию, связанную с расовым или этническим происхождением, политическими взглядами, религией или другими убеждениями, здоровьем, сексуальной ориентацией, криминальным прошлым или членством в организациях, включая членство в профсоюзных организациях) в заявке или по средством заявки, сервиса, сайта или иным образом, не связанным с нами.\n\nСВЯЖИТЕСЬ С НАМИ\n\nЕсли у вас есть какие-либо вопросы или комментарии по поводу этой политики или нашей политики конфиденциальности, а также для того, чтобы сообщить о любых нарушениях политики или злоупотреблениях сервисами или сайтом, свяжитесь с нами по адресу one.support@ironmeta.com.</string>
+    <string name="vs_privacy_confirm_button">Принимаю</string>
+
+    <string name="vs_dialog_add_an_hour">Получить 1 час</string>
+    <string name="vs_dialog_get_later">Получить позже</string>
+
+    <string name="vs_disconnected_report_title">Отчет о подключении</string>
+    <string name="vs_disconnected_report_ip_address">IP-адрес</string>
+    <string name="vs_disconnected_report_duration">Длительность</string>
+    <string name="vs_disconnected_report_upload">Всего отправлено</string>
+    <string name="vs_disconnected_report_download">Всего загружено</string>
+
+    <string name="vs_vip_feature_title">Повысить до VIP</string>
+    <string name="vs_vip_dialog_desc_advantage_a">Без рекламы</string>
+    <string name="vs_vip_dialog_desc_advantage_b">Быстрая скорость</string>
+    <string name="vs_vip_dialog_desc_advantage_c">Местоположения по всему миру</string>
+    <string name="vs_vip_state_load">Планы загружаются&#8230;</string>
+    <string name="vs_vip_state_normal_content">Ваш план не VIP, необходимо повысить.</string>
+    <string name="vs_vip_state_pending_content">Ваша покупка находится в режиме ожидания, перейдите в \'Подписки Play Store\', чтобы проверить покупку и попробуйте позже</string>
+    <string name="vs_vip_state_vip_content">Поздравляем!\nВы пользователь VIP.</string>
+    <string name="vs_vip_dialog_desc_rule">Подписка автоматически обновляется, и с вашей учетной записи будет взиматься ее стоимость ежемесячно в течение года. Вы можете выполнить отмену в любое время.</string>
+
+    <string name="vs_rating_dialog_title">Оцените нас</string>
+    <string name="vs_rating_dialog_title2">Нравится Tomato?</string>
+    <string name="vs_rating_dialog_desc">Поставьте звезду, чтобы задать рейтинг</string>
+    <string name="vs_rating_dialog_positive_comment">Мы очень рады вашему отзыву :)</string>
+    <string name="vs_rating_dialog_negative_comment">Очень жаль :(</string>
+    <string name="vs_rating_dialog_conform_button">ОК</string>
+    <string name="vs_rating_view_terrible_title">Очень плохо</string>
+    <string name="vs_rating_view_bad_title">Плохо</string>
+    <string name="vs_rating_view_okay_title">Нормально</string>
+    <string name="vs_rating_view_good_title">Хорошо</string>
+    <string name="vs_rating_view_great_title">Отлично</string>
+    <string name="vs_rating_select_none_tips">Нажмите на смайл</string>
+    <string name="vs_rating_feedback_send">У меня есть отзыв</string>
+    <string name="vs_rating_feedback_tip">Проведите вверх, чтобы оценить нас и оставить отзыв</string>
+    <string name="vs_rating_thanks_tips">Спасибо за рейтинг</string>
+
+    <string name="vs_add_time_an_hour">Нажмите, чтобы добавить 1 час</string>
+    <string name="vs_add_time_an_hour_1">+ 1 ЧАС</string>
+    <string name="vs_add_time_an_hour_succeed_dialog_title">Поздравляем!</string>
+    <string name="vs_add_time_an_hour_succeed_dialog_content">Время подключения увеличено на 1 час</string>
+    <string name="vs_add_time_an_hour_wait">Ожидайте&#8230;(%s с)</string>
+    <string name="vs_add_time_an_hour_wait_1">ожидайте&#8230;(%s с)</string>
+
+    <string name="vs_add_time_two_hour">Нажмите, чтобы добавить 2 ч.</string>
+    <string name="vs_add_time_two_hours">Нажмите, чтобы добавить 2 часа</string>
+    <string name="vs_add_time_two_hours_1">+ 2 ЧАСА</string>
+    <string name="vs_add_time_two_hours_preparing">ПОДГОТОВКА&#8230;</string>
+    <string name="vs_add_time_two_hour_way">Просмотреть рекламное видео</string>
+    <string name="vs_add_time_two_hour_wait">Подготовка&#8230;</string>
+    <string name="vs_add_time_two_hour_succeed">Поздравляем! Время подключения увеличено на 2 часа</string>
+    <string name="vs_add_time_two_hour_fail">Вы просмотрели видео и получили награду</string>
+
+    <string name="vs_add_time_get_an_hour">Получить 1 час</string>
+    <string name="vs_add_time_get_later">Получить позже</string>
+
+    <string name="vs_feature_apps_bypass_title">Обходный настройки для приложений</string>
+    <string name="vs_feature_apps_bypass_title2">Приложения, использующие VPN</string>
+    <string name="vs_feature_app_bypass_tip">Обратите внимание, что настройки вступят в силу при следующем подключении</string>
+
+    <string name="vs_feature_settings_title">Настройки</string>
+    <string name="vs_feature_settings_title2">Настройки VPN</string>
+    <string name="vs_setting_button_restart_vpn">Перезапустить VPN</string>
+    <string name="vs_setting_item_dns">DNS через UDP</string>
+    <string name="vs_setting_item_ipv6">Перенаправление трафика IPv6</string>
+    <string name="vs_setting_item_tcp">Включить TCP Fast Open</string>
+
+    <string name="vs_feature_share_title">Поделиться</string>
+    <string name="vs_feature_share_statement">Поделиться QR-кодом</string>
+    <string name="vs_feature_share_item_name_whats_app">WhatsApp</string>
+    <string name="vs_feature_share_item_name_sms">SMS</string>
+    <string name="vs_feature_share_item_name_email">E-mail</string>
+    <string name="vs_feature_share_item_name_copy_link">Скопировать ссылку</string>
+    <string name="vs_feature_share_item_name_more">Больше</string>
+    <string name="vs_feature_share_title_for_chooser">Завершить действие, используя</string>
+    <string name="vs_feature_share_content_text">IronMeta One — это быстрый, безлимитный, стабильный и конфиденциальный VPN Proxy! Очень рекомендуем вам установить это приложение! Ссылка для загрузки</string>
+    <string name="vs_feature_share_content_email_subject">IronMeta One | Бесплатный VPN Proxy, Быстрый VPN, Разблокировка</string>
+
+    <string name="vs_feature_share_item_tip_whats_app">Не удалось поделиться в WhatsApp.</string>
+    <string name="vs_feature_share_item_tip_sms">Не удалось поделиться по sms.</string>
+    <string name="vs_feature_share_item_tip_email">Не удалось поделиться по электронной почте.</string>
+    <string name="vs_feature_share_item_tip_copy_link">Скопировано</string>
+    <string name="vs_feature_share_item_tip_more">Не удалось поделиться, используя другое.</string>
+
+    <string name="vs_feature_language_title">Язык</string>
+
+    <string name="vs_feature_privacy_policy_title">Политика конфиденциальности</string>
+    <string name="vs_privacy_policy_setting">Настройки</string>
+
+    <string name="vs_feature_my_vip_account">Моя учетная запись VIP</string>
+
+    <string name="vs_feature_terms_of_service_title">Условия обслуживания</string>
+
+        <string name="vs_feature_FAQ_title">Часто задаваемые вопросы</string>
+    <string name="vs_faq_question_1">Вопрос 1: Как использовать VPN Tomato?</string>
+    <string name="vs_faq_question_2">Вопрос 2: VPN Tomato безопасный?</string>
+    <string name="vs_faq_question_3">Вопрос 3: Почему VPN Tomato не подключается?</string>
+    <string name="vs_faq_question_4">Вопрос 4: Что делать, если подключение нестабильно или у него низкая скорость?</string>
+    <string name="vs_faq_question_5">Вопрос 5: Как выбрать IP-адрес или необходимый регион?</string>
+    <string name="vs_faq_question_6">Вопрос 6: Что делать, если в VPN Tomato нет необходимого IP-адреса, сервера или региона?</string>
+    <string name="vs_faq_question_7">Не используйте P2P или BitTorrent!</string>
+    <string name="vs_faq_answer_1">Просто нажмите на кнопку \'НАЧАТЬ\'. Если отображается \'ПОДКЛЮЧЕНО\', то VPN Tomato работает. Выберите \'Я доверяю этому приложению\' при первом подключении.</string>
+    <string name="vs_faq_answer_2">Безопасное на 100%, с безлимитной датой и временем, но запрещено использование P2P или BitTorrent. Также VPN Tomato может защитить безопасность и конфиденциальность точки доступа WiFi. Данные пользователя никогда не будут похищены.</string>
+    <string name="vs_faq_answer_3">Возможные причины: (1) Если отображается сообщение \'Сеть недоступна\', то это означает, что сетевое подключение нестабильно, и вам нужно проверить подключен ли мобильный телефон к интернету. (2) Если отображается сообщение \'Время подключения вышло\', то это означает, что сервер занят или заблокирован в вашем регионе. Можно выбрать другой сервер или повторить попытку. (3) Если отображается сообщение \'Сейчас нет доступных серверов\', то вам нужно обновить VPN Tomato до последней версии. (4) Если все указанное выше не работает, то удалите и установите заново VPN Tomato. Обычно программа работает хорошо.</string>
+    <string name="vs_faq_answer_4">Нажмите на флаг страны сверху справа на панели инструментов на домашней странице, затем выберите самый быстрый сервер с наиболее стабильным подключением и подключитесь заново. Самый быстрый сервер обычно находится в регионе поблизости страны, в которой вы находитесь. Если подключение всех серверов нестабильно, то свяжитесь с нами по электронной почте vpntomato.dev@gmail.com, и мы ответим вам как можно скорее.</string>
+    <string name="vs_faq_answer_5">Выберите флаг страны на панели инструментов на домашней странице. Затем выберите IP-адрес, регион или необходимый сервер и выполните подключение.</string>
+    <string name="vs_faq_answer_6">Свяжитесь с нами по электронной почте vpntomato.dev@gmail.com, и мы ответим вам как можно скорее.</string>
+    <string name="vs_faq_answer_7">Не используйте BitTorrent вместе с VPN, иначе ваша учетная запись будет заблокирована.</string>
+
+    <string name="vs_feature_feedback_title">Отзывы</string>
+    <string name="vs_feature_feedback_rating_guide_toast_slides_up_tip">Проведите вверх, чтобы оценить нас и оставить отзыв</string>
+    <string name="vs_feedback_rating_text">Ваш рейтинг:</string>
+    <string name="vs_feedback_content_text">Ваш контент:</string>
+    <string name="vs_feedback_content_hintText">Введите отзыв</string>
+    <string name="vs_feedback_email_text">Ваша электронная почта:</string>
+    <string name="vs_feedback_email_hintText">Введите электронную почту</string>
+    <string name="vs_feedback_no_email_showToast">Введите электронную почту для рассылки</string>
+    <string name="vs_feedback_wrong">Что-то пошло не так&#8230;</string>
+    <string name="vs_feedback_privacy_policy">Следование политике конфиденциальности &#8230;</string>
+    <string name="vs_feedback_thanks">Спасибо за отзыв</string>
+
+    <string name="update_dialog_title">Новая версия</string>
+    <string name="update_dialog_desc">Вышла новая версия с серверами с повышенной скоростью и с многими исправленными ошибками. Мы предлагаем выполнить обновление.</string>
+    <string name="update_dialog_cancel">Позже</string>
+    <string name="update_dialog_ok">Обновить сейчас</string>
+
+    <string name="vs_feature_region_selector_title">Выбор региона</string>
+    <string name="vs_feature_region_selector_title2">Переключить на другой регион</string>
+    <string name="vs_feature_region_selector_title3">Изменить регион VPN</string>
+    <string name="vs_feature_region_selector_no_server">Извините, сервер отсутствует</string>
+    <string name="vs_feature_region_change_dialog_title">Изменить регион?</string>
+    <string name="vs_feature_region_change_dialog_decs">Если нужно изменить или выбрать другие регионы для подключения, нажмите \'Изменить\'</string>
+    <string name="vs_feature_region_change_connecting">Если нужно изменить или выбрать другие регионы для подключения, нажмите \'Изменить\'</string>
+    <string name="vs_feature_region_change_disconnecting">Если нужно изменить или выбрать другие регионы для подключения, нажмите \'Изменить\'</string>
+    <string name="vs_feature_region_refresh_tips_loading">Обновление списка серверов&#8230;</string>
+    <string name="vs_feature_region_refresh_tips_success">Обновлено</string>
+
+    <string name="summary_title">Кратки отчет</string>
+    <string name="summary_body">Мы с честью предоставляем услуги для вас в течение</string>
+    <string name="region_pre">регион:%s</string>
+    <string name="traffic_usage">Использование трафика</string>
+
+    <string name="get_1_hour">Получить 1 час</string>
+    <string name="get_later">Получить позже</string>
+
+    <string name="vs_feature_splash_tip_loading">Загрузка&#8230;</string>
+
+    <string name="vs_region_default">Случайный регион</string>
+    <string name="vs_region_default2">Автоматический выбор</string>
+    <string name="vs_region_default_desc">Выбрать лучший регион</string>
+    <string name="vs_region_default_desc2">Найти лучший сервер</string>
+</resources>

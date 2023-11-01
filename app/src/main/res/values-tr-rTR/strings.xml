@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vs_common_default">Varsayılan</string>
+    <string name="vs_common_unknown">Bilinmeyen</string>
+    <string name="vs_common_auto_choose">Otomatik Seçim</string>
+    <string name="vs_common_dialog_ok_button">Anladım</string>
+    <string name="vs_common_tips_preparing">Hazırlanıyor&#8230;</string>
+    <string name="vs_common_tips_loading">Yükleniyor&#8230;</string>
+    <string name="vs_common_tips_loading2">YÜKLENİYOR&#8230;</string>
+    <string name="vs_common_tips_loading3">Yükleniyor, lütfen daha sonra tekrar deneyin</string>
+    <string name="vs_common_tips_loading_data">Veriler yükleniyor&#8230; (10 saniyeye kadar)</string>
+    <string name="vs_common_tips_network_unavailable">Bir hata oluştu, lütfen ağı kontrol edin</string>
+    <string name="vs_common_tips_no_email_app">E-posta göndermek için e-posta uygulaması yok. Lütfen önce bir e-posta uygulaması kurun</string>
+
+    <string name="vs_common_button_go">BAŞLAT</string>
+    <string name="vs_common_button_retry">Tekrar Dene</string>
+    <string name="vs_common_button_close">Kapat</string>
+    <string name="vs_common_button_got_it">Anladım</string>
+    <string name="vs_common_button_upload">Karşıya Yükle</string>
+    <string name="vs_common_button_submit">Gönder</string>
+    <string name="vs_common_button_success">Başarılı</string>
+    <string name="vs_common_button_change">Değiştir</string>
+    <string name="vs_common_button_cancel">İptal</string>
+    <string name="vs_common_button_ok">Tamam</string>
+    <string name="vs_common_button_connected">BAĞLANILDI</string>
+    <string name="vs_common_button_disconnected">BAĞLANTI KESİLDİ</string>
+
+    <string name="vs_common_title_secondary">VPN</string>
+
+    <string name="vs_core_service_state_testing">Bağlanılıyor&#8230;</string>
+    <string name="vs_core_service_state_testing2">Test ediliyor&#8230;</string>
+    <string name="vs_core_service_state_testing_data">Test ediliyor&#8230; (10 saniyeye kadar)</string>
+    <string name="vs_core_service_state_disconnecting">Bağlantı kesiliyor&#8230;</string>
+    <string name="vs_core_service_state_disconnecting2">Bağlantı kesiliyor, lütfen daha sonra tekrar deneyin</string>
+    <string name="vs_core_service_state_disconnected">Bağlantı kesildi</string>
+    <string name="vs_core_service_state_disconnected_timeout">Bağlantı, zaman aşımına uğradı. Lütfen ağı kontrol edip tekrar bağlanın (başka bölgelere bağlanmanız önerilir)</string>
+    <string name="vs_core_service_state_disconnected_timeout2">Bağlantı, zaman aşımına uğradı. Lütfen tekrar deneyin veya diğer bölgeleri seçin [code=%s]</string>
+    <string name="vs_core_service_state_disconnected_used_up">%s saatlik deneme süresi sona erdi. Lütfen tekrar bağlanın</string>
+    <string name="vs_core_service_state_disconnected_used_up2">Ücretsiz deneme süresi sona erdi. Lütfen tekrar bağlanın</string>
+    <string name="vs_core_service_state_disconnected_used_up3">Deneme süresi sona erdi. Lütfen tekrar bağlanın</string>
+    <string name="vs_core_service_state_disconnected_error">Hata[code=%s]. Lütfen tekrar bağlanın (düzeltmek için cihazı yeniden başlatmanız önerilir)</string>
+    <string name="vs_core_service_state_disconnected_error2">[code=%s]. Lütfen tekrar bağlanın (düzeltmek için cihazı yeniden başlatmanız önerilir)</string>
+    <string name="vs_core_service_state_disconnected_error3">Başarısız. Lütfen [code=%s] kodlu hatayı düzeltmek için cihazınızı yeniden başlatın</string>
+    <string name="vs_core_service_state_connecting">Bağlanılıyor&#8230; %20</string>
+    <string name="vs_core_service_state_connecting2">Bağlanılıyor, lütfen daha sonra tekrar deneyin</string>
+    <string name="vs_core_service_state_connected">Bağlanıldı</string>
+    <string name="vs_core_service_operate_connect">Bağlanmak için dokun</string>
+    <string name="vs_core_service_operate_connect2">Başlat</string>
+    <string name="vs_core_service_operate_connect3">Bu bölgeye bağlan</string>
+    <string name="vs_core_service_operate_connect_free">Ücretsiz bağlanmak için dokun</string>
+    <string name="vs_core_service_operate_disconnect">Bağlantıyı kesmek için dokun</string>
+    <string name="vs_core_service_always_vpn_tips">Lütfen \"Tamam\"a dokunun (\"Bu uygulamaya güveniyorum\"u işaretleyin) veya VPN ayarlarından \"VPN daima açık\" seçeneğini kapatın</string>
+
+    <string name="vs_statement_privacy">Gizlilik\nkorunacak</string>
+    <string name="vs_statement_ip">IP\ndeğiştirilecek</string>
+    <string name="vs_statement_banned">Engellenenler kaldırılacak</string>
+
+    <string name="vs_vad_consent_desc_a">Gizliliğinizi ve verilerinizin güvenliğini önemsiyoruz. Reklâm göstererek bu uygulamayı ücretsiz sunabiliyoruz.</string>
+    <string name="vs_vad_consent_desc_b">Reklamları size özgü bir hale getirebilmek için verilerinizi kullanabilir miyiz?</string>
+    <string name="vs_vad_consent_desc_c">$appTitle için tercihlerinizi istediğiniz zaman gizlilik politikası ayarlarından değiştirebilirsiniz. Ortaklarımız, verileri toplayıp cihazınızda benzersiz bir tanımlayıcı kullanarak size reklam gösterecektir.</string>
+    <string name="vs_vad_consent_ok">Evet, bana özgü reklamlarla hızlı VPN</string>
+    <string name="vs_vad_consent_cancel">Hayır, reklamlarla normal VPN</string>
+
+    <string name="vs_will_disconnect_dialog_title">Bağlantı kesilecek?</string>
+    <string name="vs_will_disconnect_dialog_cancel">Daha Sonra</string>
+    <string name="vs_will_disconnect_dialog_ok">Bağlantıyı Kes</string>
+    <string name="vs_will_disconnect_dialog_desc_for_change_region">Diğer bölgelere bağlanmak istiyorsanız önce bağlantıyı kesmeniz gerekiyor</string>
+    <string name="vs_will_disconnect_dialog_desc_for_disconnect">Bağlantı kesildikten sonra VPN bağlantısını kaybedeceksiniz.</string>
+    <string name="vs_will_disconnect_dialog_desc_for_disconnect2">\"Bağlantıyı Kes\"e dokunursanız VPN bağlantısını kaybedeceksiniz.</string>
+
+    <string name="vs_quality_test_button_text">Bağlantı test edilsin mi?</string>
+    <string name="vs_quality_repair_button_text">Yavaş ya da çalışmıyor mu?</string>
+    <string name="vs_quality_test_result_title">Test Sonucu</string>
+    <string name="vs_quality_success_result_text">Başarılı!\nHTTPS tokalaşması %s ms sürdü</string>
+    <string name="vs_quality_fail_result_text">Üzgünüz!\nİnternet bağlantısı algılanamadı.</string>
+
+    <string name="vs_legal_notices_dialog_title">Yasal Uyarılar</string>
+    <string name="vs_legal_notices_dialog_title2">Hizmet Kullanım Dışı</string>
+    <string name="vs_legal_notices_dialog_content">Ülke ve bölgelerin yasaları, politikaları ve yönetmelikleri uyarınca VPN hizmeti, sizin bölgenizde sağlanamıyor.</string>
+    <string name="vs_legal_notices_dialog_content2">Özür dileriz. Bu hizmet, şu anda sizin bölgenizde verilemiyor.</string>
+
+    <string name="vs_privacy_confirm_content">TOPLADIĞIMIZ BİLGİLER\n\na. Kişisel Bilgiler.\nKişisel Bilgileri toplamıyoruz. “Kişisel Bilgiler”, sizi veya başka birini tanımlayan, adınız ve soyadınız, ikamet adresiniz, e-posta adresleriniz, telefonunuz, faksınız, SSN\'iniz, cihazınızda saklanan bilgiler gibi bilgilerdir.\n\nb. Kişisel olmayan bilgiler.\nWeb sitemizi ziyaret ettiğinizde (cihaz kimliği hariç) cihaz bilgileriniz, işletim sistemi ve günlükler de dahil olmak üzere kişisel olmayan bilgilerinizi toplarız.\n\nc. Verdiğiniz Bilgiler.\nBizimle iletişime geçtiğinizde veya bize verdiğiniz bilgileri toplayabiliriz.\n\nBİLGİLERİ NASIL KULLANIRIZ?\n\na. Kişisel Bilgiler.\nKişisel Bilgileri saklamayız ve ifşa etmeyiz.\n\nb. Kişisel Olmayan Bilgiler.\nBilgilerinizi harici taraflara satmayız, vermeyiz veya aktarmayız. Kişisel Olmayan Bilgilerinizi, Kişisel Bilgilerinizle birleştirmeyiz (örneğin adınızı benzersiz Kullanıcı Cihazı numaranızla birleştirmek gibi).\n\nc. Yasal Nedenler\nGeçerli kanun, yönetmelik, yasal işlem veya geçerli devlet taleplerince istenmesi halinde; dolandırıcılık, güvenlik veya teknik sorunların tespit edilmesi ve önlenmesi amacıyla; bizim, kullanıcılarımızın veya kamunun haklarına, mülkiyetine veya güvenliğine zarar verilmesine karşı korunma amacıyla, kanunun gerektirdiği veya izin verdiği ölçüde bilgilerinize erişebilir, kullanabilir ve diğer kurumlara veya kuruluşlara ifşa edebiliriz.\n\nGÜVENLİK\n\nBilgilerinizin güvenliğini koruma konusunda çok hassas davranmaktayız. Kişisel Bilgileri toplamıyoruz ve Kişisel Olmayan Bilgilerinizi yetkisiz erişime ve kullanıma karşı korumak için tasarlanmış idari, fiziksel ve elektronik önlemler kullanıyoruz. Aldığımız hiçbir güvenlik önleminin, Kişisel Olmayan Bilgilerinize yetkisiz erişimi veya Kişisel Olmayan Bilgilerinizin kullanımını kesinlikle önleyeceği garanti edilemez.\n\nHassas Bilgiler\n\nHassas Kişisel Bilgilerinizi (örn. ırk veya etnik köken, politik düşünce, din veya diğer inanç, sağlık, cinsel yönelim, sabıka kaydı veya işçi sendikası üyelikleri gibi kuruluşlara geçmişte üyelik gibi bilgileri) bir Uygulama, Hizmetler, Site yoluyla veya başka bir yolla bize göndermemenizi ve bize ifşa etmemenizi rica ediyoruz.\n\nBİZE ULAŞIN\n\nBu Politika veya gizlilik uygulamalarımız hakkında yorumlarınız varsa veya Politikanın, Hizmetlerin veya Sitenin herhangi bir ihlalini ya da kötüye kullanımını rapor etmek için lütfen one.support@ironmeta.com adresinden bizimle iletişime geçin.</string>
+    <string name="vs_privacy_confirm_button">Kabul Ediyorum</string>
+
+    <string name="vs_dialog_add_an_hour">1 saat al</string>
+    <string name="vs_dialog_get_later">Daha sonra al</string>
+
+    <string name="vs_disconnected_report_title">Bağlantı Raporu</string>
+    <string name="vs_disconnected_report_ip_address">IP Adresi</string>
+    <string name="vs_disconnected_report_duration">Süre</string>
+    <string name="vs_disconnected_report_upload">Toplam Karşıya Yükleme</string>
+    <string name="vs_disconnected_report_download">Toplam İndirme</string>
+
+    <string name="vs_vip_feature_title">VIP\'ye Yükseltin</string>
+    <string name="vs_vip_dialog_desc_advantage_a">Reklâmsız</string>
+    <string name="vs_vip_dialog_desc_advantage_b">Daha Hızlı</string>
+    <string name="vs_vip_dialog_desc_advantage_c">Tüm Dünyadan Konumlar</string>
+    <string name="vs_vip_state_load">Planlar yükleniyor&#8230;</string>
+    <string name="vs_vip_state_normal_content">VIP değilsiniz, lütfen yükseltin.</string>
+    <string name="vs_vip_state_pending_content">Satın alma işleminizi beklemede. Satın alma işlemini kontrol etmek için lütfen \"Play Store Aboneliği\"ne gidin ve daha sonra tekrar deneyin</string>
+    <string name="vs_vip_state_vip_content">Tebrikler!\nVIP kullanıcısınız.</string>
+    <string name="vs_vip_dialog_desc_rule">Abonelik, otomatik olarak yenilenir ve hesaptan her ay veya her yıl ödeme alınır. İstediğiniz zaman iptal edebilirsiniz.</string>
+
+    <string name="vs_rating_dialog_title">Lütfen bize puan verin</string>
+    <string name="vs_rating_dialog_title2">Tomato\'yu beğendiniz mi?</string>
+    <string name="vs_rating_dialog_desc">Puanınızı vermek için bir yıldıza dokunun</string>
+    <string name="vs_rating_dialog_positive_comment">Bunu öğrendiğimize çok sevindik :)</string>
+    <string name="vs_rating_dialog_negative_comment">Bunu öğrendiğimize çok üzüldük :(</string>
+    <string name="vs_rating_dialog_conform_button">Tamam</string>
+    <string name="vs_rating_view_terrible_title">Çok kötü</string>
+    <string name="vs_rating_view_bad_title">Kötü</string>
+    <string name="vs_rating_view_okay_title">Orta</string>
+    <string name="vs_rating_view_good_title">İyi</string>
+    <string name="vs_rating_view_great_title">Çok iyi</string>
+    <string name="vs_rating_select_none_tips">Lütfen bir ifadeye dokunun</string>
+    <string name="vs_rating_feedback_send">Görüşlerim var</string>
+    <string name="vs_rating_feedback_tip">Bize puan vermek ve görüşlerinizi bildirmek için yukarı kaydırın</string>
+    <string name="vs_rating_thanks_tips">Puanınız için teşekkürler</string>
+
+    <string name="vs_add_time_an_hour">1 saat eklemek için dokun</string>
+    <string name="vs_add_time_an_hour_1">+ 1 SAAT</string>
+    <string name="vs_add_time_an_hour_succeed_dialog_title">Tebrikler!</string>
+    <string name="vs_add_time_an_hour_succeed_dialog_content">Bağlantı süresi 1 saat artırıldı</string>
+    <string name="vs_add_time_an_hour_wait">Lütfen bekleyin&#8230; (%s sn)</string>
+    <string name="vs_add_time_an_hour_wait_1">bekleyin&#8230; (%s sn)</string>
+
+    <string name="vs_add_time_two_hour">2 saat eklemek için dokun</string>
+    <string name="vs_add_time_two_hours">2 saat eklemek için dokun</string>
+    <string name="vs_add_time_two_hours_1">+ 2 SAAT</string>
+    <string name="vs_add_time_two_hours_preparing">HAZIRLANIYOR&#8230;</string>
+    <string name="vs_add_time_two_hour_way">Bir reklâm videosu izleyerek</string>
+    <string name="vs_add_time_two_hour_wait">Hazırlanıyor&#8230;</string>
+    <string name="vs_add_time_two_hour_succeed">Tebrikler! Bağlantı süresi 2 saat artırıldı</string>
+    <string name="vs_add_time_two_hour_fail">Ödülü almak için videoyu sonuna kadar izlemelisiniz</string>
+
+    <string name="vs_add_time_get_an_hour">1 saat al</string>
+    <string name="vs_add_time_get_later">Daha sonra al</string>
+
+    <string name="vs_feature_apps_bypass_title">Uygulama Atlama Ayarları</string>
+    <string name="vs_feature_apps_bypass_title2">VPN Kullanan Uygulamalar</string>
+    <string name="vs_feature_app_bypass_tip">Lütfen bir sonraki bağlantıda etkinleşeceğini unutmayın</string>
+
+    <string name="vs_feature_settings_title">Ayarlar</string>
+    <string name="vs_feature_settings_title2">VPN Ayarları</string>
+    <string name="vs_setting_button_restart_vpn">VPN\'i Yeniden Başlat</string>
+    <string name="vs_setting_item_dns">UDP üzerinden DNS</string>
+    <string name="vs_setting_item_ipv6">IPv6 trafiğini yeniden yönlendir</string>
+    <string name="vs_setting_item_tcp">TCP Hızlı Açılmayı etkinleştir</string>
+
+    <string name="vs_feature_share_title">Paylaş</string>
+    <string name="vs_feature_share_statement">QR Kodunu paylaş</string>
+    <string name="vs_feature_share_item_name_whats_app">WhatsApp</string>
+    <string name="vs_feature_share_item_name_sms">SMS</string>
+    <string name="vs_feature_share_item_name_email">E-posta</string>
+    <string name="vs_feature_share_item_name_copy_link">Bağlantıyı Kopyala</string>
+    <string name="vs_feature_share_item_name_more">Diğer</string>
+    <string name="vs_feature_share_title_for_chooser">Şunu kullanarak eylemi tamamla:</string>
+    <string name="vs_feature_share_content_text">IronMeta One; hızlı, sınırsız, stabil ve özel bir VPN ara sunucusu! Bu uygulamayı yüklemeni kesinlikle öneriyorum! İndirme bağlantısı</string>
+    <string name="vs_feature_share_content_email_subject">IronMeta One | Ücretsiz VPN Ara Sunucusu, Hızlı VPN, Engeli Kaldır</string>
+
+    <string name="vs_feature_share_item_tip_whats_app">WhatsApp ile paylaşma başarısız oldu.</string>
+    <string name="vs_feature_share_item_tip_sms">SMS ile paylaşma başarısız oldu.</string>
+    <string name="vs_feature_share_item_tip_email">E-posta ile paylaşma başarısız oldu.</string>
+    <string name="vs_feature_share_item_tip_copy_link">Kopyalandı</string>
+    <string name="vs_feature_share_item_tip_more">Diğer bir yolla paylaşma başarısız oldu.</string>
+
+    <string name="vs_feature_language_title">Dil</string>
+
+    <string name="vs_feature_privacy_policy_title">Gizlilik Politikası</string>
+    <string name="vs_privacy_policy_setting">Ayarlar</string>
+
+    <string name="vs_feature_my_vip_account">VIP Hesabım</string>
+
+    <string name="vs_feature_terms_of_service_title">Hizmet Koşulları</string>
+
+        <string name="vs_feature_FAQ_title">SSS</string>
+    <string name="vs_faq_question_1">S1: VPN Tomato nasıl kullanılır?</string>
+    <string name="vs_faq_question_2">S2: VPN Tomato güvenli midir?</string>
+    <string name="vs_faq_question_3">S3: VPN Tomato neden bağlanamıyor?</string>
+    <string name="vs_faq_question_4">S4: Bağlantı stabil değilse veya yavaşsa ne yapabilirim?</string>
+    <string name="vs_faq_question_5">S5: Tercih edilen IP, sunucu veya bölge nasıl seçilir?</string>
+    <string name="vs_faq_question_6">S6: VPN Tomato, istediğim IP\'yi, sunucuyu veya bölgeyi sunmuyorsa ne yapabilirim?</string>
+    <string name="vs_faq_question_7">P2P veya BitTorrent kullanmayın!</string>
+    <string name="vs_faq_answer_1">\"BAŞLAT\" düğmesine dokunun. \"BAĞLANILDI\" yazısı görünüyorsa VPN Tomato çalışıyor demektir. Lütfen ilk defa bağlanırken \"Bu uygulamaya güveniyorum\"u işaretleyin.</string>
+    <string name="vs_faq_answer_2">Sınırsız veri ve süreyle %100 güvenlidir ancak P2P veya BitTorrent kullanımına izin verilmez. Ayrıca VPN Tomato, WiFi etkin noktanızın güvenliğini ve gizliliğini koruyabilir. Asla kullanıcıların bilgilerini çalmaz.</string>
+    <string name="vs_faq_answer_3">Bunun birkaç sebebi olabilir: (1) \"Ağ Yok\" yazısı görünüyorsa ağ stabil değil demektir. Cep telefonunuzun internet bağlantısı olduğundan emin olun. (2) \"Bağlantı zaman aşımı\" yazısı görünüyorsa mevcut sunucu meşgul veya bulunduğunuz bölgede engellenmiş demektir. Başka bir sunucu seçebilir veya tekrar deneyebilirsiniz. (3) \"Şu anda uygun sunucu yok\" yazısı görünüyorsa VPN Tomato\'yu son sürüme yükseltmeniz gereklidir. (4) Yukarıdakilerin hiçbiri işe yaramıyorsa VPN Tomato\'yu kaldırıp tekrar yükleyebilirsiniz. Bu, genellikle işe yarayacaktır.</string>
+    <string name="vs_faq_answer_4">Lütfen ana sayfanın sağ üst köşesindeki araç çubuğunda bulunan ülke bayrağına tıklayın, ardından en hızlı ve en stabil sunucuyu seçin ve yeniden bağlanın. En hızlı sunucu, genellikle bulunduğunuz ülkeye en yakın bölgedeki sunucudur. Sunucuların hiçbiri stabil değilse lütfen vpntomato.dev@gmail.com adresine e-posta gönderin. En kısa sürede size yanıt vereceğiz.</string>
+    <string name="vs_faq_answer_5">Lütfen ana sayfanın sağ üst köşesindeki araç çubuğunda bulunan ülke bayrağına tıklayın. Ardından tercih ettiğiniz IP\'yi, bölgeyi ve sunucuyu seçip bağlanın.</string>
+    <string name="vs_faq_answer_6">Lütfen vpntomato.dev@gmail.com adresine e-posta gönderin. En kısa sürede size yanıt vereceğiz.</string>
+    <string name="vs_faq_answer_7">Lütfen VPN ile BitTorrent kullanmayın. Aksi halde hesabınız engellenir.</string>
+
+    <string name="vs_feature_feedback_title">Geri Bildirim</string>
+    <string name="vs_feature_feedback_rating_guide_toast_slides_up_tip">Bize puan vermek ve görüşlerinizi bildirmek için yukarı kaydırın</string>
+    <string name="vs_feedback_rating_text">Puanınız:</string>
+    <string name="vs_feedback_content_text">İçeriğiniz:</string>
+    <string name="vs_feedback_content_hintText">Lütfen geri bildiriminizi girin</string>
+    <string name="vs_feedback_email_text">E-postanız:</string>
+    <string name="vs_feedback_email_hintText">Lütfen e-postanızı girin</string>
+    <string name="vs_feedback_no_email_showToast">Lütfen içerik e-postanızı girin</string>
+    <string name="vs_feedback_wrong">Bir hata oluştu&#8230;</string>
+    <string name="vs_feedback_privacy_policy">Gizlilik Politikası</string>
+    <string name="vs_feedback_thanks">Geri bildiriminiz için teşekkürler</string>
+
+    <string name="update_dialog_title">Yeni Sürüm</string>
+    <string name="update_dialog_desc">Daha hızlı sunucular içeren ve birçok hatanın düzeltildiği son sürüm yayınlandı. Güncellemenizi öneririz.</string>
+    <string name="update_dialog_cancel">Daha Sonra</string>
+    <string name="update_dialog_ok">Şimdi Güncelle</string>
+
+    <string name="vs_feature_region_selector_title">Bölge Seçici</string>
+    <string name="vs_feature_region_selector_title2">Başka bölgeye geçiş yap</string>
+    <string name="vs_feature_region_selector_title3">VPN Bölgesini Değiştir</string>
+    <string name="vs_feature_region_selector_no_server">Üzgünüz, sunucu yok</string>
+    <string name="vs_feature_region_change_dialog_title">Bölge değiştirilsin mi?</string>
+    <string name="vs_feature_region_change_dialog_decs">Bağlandığınız bölgeyi değiştirmek veya diğer bölgelere bağlanmak istiyorsanız lütfen \"Değiştir\"e dokunun</string>
+    <string name="vs_feature_region_change_connecting">Bağlandığınız bölgeyi değiştirmek veya diğer bölgelere bağlanmak istiyorsanız lütfen \"Değiştir\"e dokunun</string>
+    <string name="vs_feature_region_change_disconnecting">Bağlandığınız bölgeyi değiştirmek veya diğer bölgelere bağlanmak istiyorsanız lütfen \"Değiştir\"e dokunun</string>
+    <string name="vs_feature_region_refresh_tips_loading">Sunucu listesi yenileniyor&#8230;</string>
+    <string name="vs_feature_region_refresh_tips_success">Başarıyla yenilendi</string>
+
+    <string name="summary_title">Özet</string>
+    <string name="summary_body">Tebrikler! Size hizmet verdiğimiz</string>
+    <string name="region_pre">bölge: %s</string>
+    <string name="traffic_usage">Trafik kullanımı</string>
+
+    <string name="get_1_hour">1 saat al</string>
+    <string name="get_later">Daha sonra al</string>
+
+    <string name="vs_feature_splash_tip_loading">Yükleniyor&#8230;</string>
+
+    <string name="vs_region_default">Rastgele Bölge</string>
+    <string name="vs_region_default2">Otomatik Seç</string>
+    <string name="vs_region_default_desc">En İyi Bölgeyi Seç</string>
+    <string name="vs_region_default_desc2">En İyi Sunucuyu Bul</string>
+</resources>

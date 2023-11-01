@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vs_common_default">ค่าเริ่มต้น</string>
+    <string name="vs_common_unknown">ไม่ทราบ</string>
+    <string name="vs_common_auto_choose">เลือกอัตโนมัติ</string>
+    <string name="vs_common_dialog_ok_button">เข้าใจแล้ว</string>
+    <string name="vs_common_tips_preparing">กำลังเตรียมการ&#8230;</string>
+    <string name="vs_common_tips_loading">กำลังโหลด&#8230;</string>
+    <string name="vs_common_tips_loading2">กำลังโหลด&#8230;</string>
+    <string name="vs_common_tips_loading3">กำลังโหลด โปรดลองอีกครั้งภายหลัง</string>
+    <string name="vs_common_tips_loading_data">กำลังโหลดข้อมูล&#8230; (สูงสุด 10 วินาที)</string>
+    <string name="vs_common_tips_network_unavailable">มีบางอย่างผิดปกติ โปรดตรวจสอบเครือข่าย</string>
+    <string name="vs_common_tips_no_email_app">คุณไม่มีแอปพลิเคชันอีเมลเพื่อส่งอีเมล โปรดตั้งค่าแอปพลิเคชันอีเมลก่อน</string>
+
+    <string name="vs_common_button_go">ไป</string>
+    <string name="vs_common_button_retry">ลองอีกครั้ง</string>
+    <string name="vs_common_button_close">ปิด</string>
+    <string name="vs_common_button_got_it">เข้าใจแล้ว</string>
+    <string name="vs_common_button_upload">อัปโหลด</string>
+    <string name="vs_common_button_submit">ส่ง</string>
+    <string name="vs_common_button_success">สำเร็จ</string>
+    <string name="vs_common_button_change">เปลี่ยน</string>
+    <string name="vs_common_button_cancel">ยกเลิก</string>
+    <string name="vs_common_button_ok">ตกลง</string>
+    <string name="vs_common_button_connected">เชื่อมต่อแล้ว</string>
+    <string name="vs_common_button_disconnected">ยกเลิกการเชื่อมต่อแล้ว</string>
+
+    <string name="vs_common_title_secondary">VPN</string>
+
+    <string name="vs_core_service_state_testing">กำลังเชื่อมต่อ&#8230;</string>
+    <string name="vs_core_service_state_testing2">กำลังทดสอบ&#8230;</string>
+    <string name="vs_core_service_state_testing_data">กำลังทดสอบ&#8230;(สูงสุด 10 วินาที)</string>
+    <string name="vs_core_service_state_disconnecting">กำลังยกเลิกการเชื่อมต่อ&#8230;</string>
+    <string name="vs_core_service_state_disconnecting2">กำลังยกเลิกการเชื่อมต่อ โปรดลองอีกครั้งภายหลัง</string>
+    <string name="vs_core_service_state_disconnected">ยกเลิกการเชื่อมต่อแล้ว</string>
+    <string name="vs_core_service_state_disconnected_timeout">การเชื่อมต่อหมดเวลา โปรดตรวจสอบเครือข่ายและเชื่อมต่ออีกครั้ง (แนะนำให้เปลี่ยนเป็นภูมิภาคอื่น)</string>
+    <string name="vs_core_service_state_disconnected_timeout2">การเชื่อมต่อหมดเวลา โปรดลองอีกครั้งหรือเลือกภูมิภาคอื่น [code=%s]</string>
+    <string name="vs_core_service_state_disconnected_used_up">หมดเวลาทดลองใช้ %s ชั่วโมงแล้ว โปรดเชื่อมต่ออีกครั้ง</string>
+    <string name="vs_core_service_state_disconnected_used_up2">หมดเวลาทดลองใช้ฟรีแล้ว โปรดเชื่อมต่ออีกครั้ง</string>
+    <string name="vs_core_service_state_disconnected_used_up3">หมดเวลาทดลองใช้แล้ว โปรดเชื่อมต่ออีกครั้ง</string>
+    <string name="vs_core_service_state_disconnected_error">มีข้อผิดพลาด[code=%s] โปรดเชื่อมต่ออีกครั้ง (แนะนำให้รีบูทอุปกรณ์เพื่อแก้ไขปัญหา)</string>
+    <string name="vs_core_service_state_disconnected_error2">[code=%s] โปรดเชื่อมต่ออีกครั้ง (แนะนำให้รีบูทอุปกรณ์เพื่อแก้ไขปัญหา)</string>
+    <string name="vs_core_service_state_disconnected_error3">ล้มเหลว โปรดรีบูทอุปกรณ์ของคุณเพื่อซ่อมแซม [code=%s]</string>
+    <string name="vs_core_service_state_connecting">กำลังเชื่อมต่อ&#8230;20%</string>
+    <string name="vs_core_service_state_connecting2">กำลังเชื่อมต่อ โปรดลองอีกครั้งภายหลัง</string>
+    <string name="vs_core_service_state_connected">เชื่อมต่อแล้ว</string>
+    <string name="vs_core_service_operate_connect">แตะเพื่อเชื่อมต่อ</string>
+    <string name="vs_core_service_operate_connect2">ไป</string>
+    <string name="vs_core_service_operate_connect3">เชื่อมต่อไปที่ภูมิภาคนี้</string>
+    <string name="vs_core_service_operate_connect_free">แตะเพื่อเชื่อมต่อฟรี</string>
+    <string name="vs_core_service_operate_disconnect">แตะเพื่อยกเลิกการเชื่อมต่อ</string>
+    <string name="vs_core_service_always_vpn_tips">โปรดแตะ \'ตกลง\' (เลือก \'ฉันไว้ใจแอปพลิเคชันนี้\') หรือปิด \'เปิด VPN ตลอดเวลา\' ที่การตั้งค่า VPN</string>
+
+    <string name="vs_statement_privacy">ความเป็นส่วนตัว\nได้รับการปกป้อง</string>
+    <string name="vs_statement_ip">IP จะ\nถูกเปลี่ยนแปลง</string>
+    <string name="vs_statement_banned">การแบนจะถูกปลดล็อก"</string>
+
+    <string name="vs_vad_consent_desc_a">เราใส่ใจในความเป็นส่วนตัวและความปลอดภัยของข้อมูลของคุณ เราทำให้แอปพลิเคชันนี้ฟรีโดยการแสดงโฆษณา</string>
+    <string name="vs_vad_consent_desc_b">เราสามารถใช้ข้อมูลของคุณเพื่อปรับแต่งโฆษณาให้เหมาะกับคุณต่อไปได้หรือไม่</string>
+    <string name="vs_vad_consent_desc_c">คุณสามารถเปลี่ยนตัวเลือกได้ตลอดเวลาสำหรับ $appTitle ในการตั้งค่านโยบายความเป็นส่วนตัว พาร์ทเนอร์ของเราจะรวบรวมข้อมูลและใช้ตัวระบุเฉพาะบนอุปกรณ์ของคุณเพื่อแสดงโฆษณา</string>
+    <string name="vs_vad_consent_ok">ใช่ VPN ที่รวดเร็วพร้อมโฆษณาที่เกี่ยวข้อง</string>
+    <string name="vs_vad_consent_cancel">ไม่ VPN ปกติพร้อมโฆษณา</string>
+
+    <string name="vs_will_disconnect_dialog_title">จะยกเลิกการเชื่อมต่อหรือไม่</string>
+    <string name="vs_will_disconnect_dialog_cancel">ภายหลัง</string>
+    <string name="vs_will_disconnect_dialog_ok">ยกเลิกการเชื่อมต่อ</string>
+    <string name="vs_will_disconnect_dialog_desc_for_change_region">หากคุณต้องการเชื่อมต่อไปที่ภูมิภาคอื่น คุณต้องยกเลิกการเชื่อมต่อก่อน</string>
+    <string name="vs_will_disconnect_dialog_desc_for_disconnect">หลังจากยกเลิกการเชื่อมต่อแล้ว คุณจะสูญเสียการเชื่อมต่อ VPN</string>
+    <string name="vs_will_disconnect_dialog_desc_for_disconnect2">หากคุณแตะ \'ยกเลิกการเชื่อมต่อ\' คุณจะสูญเสียการเชื่อมต่อ VPN </string>
+
+    <string name="vs_quality_test_button_text">ทดสอบการเชื่อมต่อหรือไม่</string>
+    <string name="vs_quality_repair_button_text">ช้าหรือใช้งานไม่ได้หรือไม่</string>
+    <string name="vs_quality_test_result_title">ผลลัพธ์การทดสอบ</string>
+    <string name="vs_quality_success_result_text">สำเร็จ!\nHTTPS handshake ใช้เวลา %s มิลลิวินาที</string>
+    <string name="vs_quality_fail_result_text">โอ๊ะ!\nไม่พบการเชื่อมต่ออินเทอร์เน็ต</string>
+
+    <string name="vs_legal_notices_dialog_title">ประกาศทางกฎหมาย</string>
+    <string name="vs_legal_notices_dialog_title2">ไม่สามารถให้บริการได้</string>
+    <string name="vs_legal_notices_dialog_content">ตามกฎหมาย นโยบาย และข้อบังคับของแต่ละประเทศและภูมิภาค บริการ VPN ไม่ได้ให้บริการในภูมิภาคของคุณ</string>
+    <string name="vs_legal_notices_dialog_content2">ขออภัย ขณะนี้ยังไม่มีบริการในภูมิภาคของคุณ!</string>
+
+    <string name="vs_privacy_confirm_content">ข้อมูลที่เรารวบรวม\n\n1. ข้อมูลส่วนบุคคล\nเราไม่รวบรวมข้อมูลส่วนบุคคล “ข้อมูลส่วนบุคคล” คือข้อมูลที่ระบุตัวคุณหรือบุคคลอื่น เช่น ชื่อและนามสกุลของคุณ ที่อยู่จริง อีเมล โทรศัพท์ แฟกซ์ SSN ข้อมูลที่เก็บไว้ในอุปกรณ์ของคุณ\n\n2. ข้อมูลที่ไม่ใช่ข้อมูลส่วนบุคคล\nเรารวบรวมข้อมูลที่ไม่ใช่ข้อมูลส่วนบุคคลของคุณเมื่อคุณเยี่ยมชมเว็บไซต์ของเรา อาทิเช่น ข้อมูลอุปกรณ์ของคุณ (ไม่รวม ID อุปกรณ์) ระบบปฏิบัติการ บันทึกข้อมูล\n\n3. ข้อมูลที่คุณมอบให้\nเราอาจรวบรวมข้อมูลของคุณเมื่อคุณสื่อสารกับเราหรือคุณให้เรา\n\nเราใช้ข้อมูลอย่างไร\n\n1. ข้อมูลส่วนบุคคล\nเราไม่จัดเก็บข้อมูลส่วนบุคคล ดังนั้นเราจึงไม่เปิดเผยข้อมูลส่วนบุคคลของคุณ\n\n2. ข้อมูลที่ไม่ใช่ข้อมูลส่วนบุคคล\nเราไม่ขาย แลกเปลี่ยน หรือถ่ายโอนข้อมูลของคุณไปยังบุคคลภายนอก เราไม่รวมข้อมูลที่ไม่ใช่ข้อมูลส่วนบุคคลเข้ากับข้อมูลส่วนบุคคล (เช่น การรวมชื่อของคุณเข้ากับหมายเลขอุปกรณ์ผู้ใช้เฉพาะของคุณ)\n\n3. เหตุผลทางกฎหมาย\nเราจะเข้าถึง ใช้ หรือเปิดเผยข้อมูลของคุณกับองค์กรหรือหน่วยงานอื่นๆ ด้วยเหตุผลที่กำหนดโดยกฎหมาย ข้อบังคับ กระบวนการทางกฎหมาย หรือคำขอของรัฐบาลที่บังคับใช้ เราจะตรวจจับ ป้องกัน หรือฉ้อโกง ปัญหาด้านความปลอดภัยหรือทางเทคนิค เราจะป้องกันอันตรายต่อสิทธิ์ ทรัพย์สิน หรือความปลอดภัยของเรา ผู้ใช้ของเรา หรือสาธารณะตามที่กฎหมายกำหนดหรืออนุญาต\n\nความปลอดภัย\n\nเราให้ความสำคัญมากเกี่ยวกับการรักษาความลับของข้อมูลของคุณ เราไม่รวบรวมข้อมูลส่วนบุคคล และเราใช้มาตรการทางการบริหาร ทางกายภาพ และทางอิเล็กทรอนิกส์ที่ออกแบบมาเพื่อปกป้องข้อมูลที่ไม่ใช่ข้อมูลส่วนบุคคลของคุณจากการเข้าถึงและการใช้งานโดยไม่ได้รับอนุญาต โปรดทราบว่าไม่มีรับประกันว่ามาตรการรักษาความปลอดภัยที่เราใช้เพื่อปกป้องข้อมูลของคุณนั้นสมบูรณ์โดยสิ้นเชิงในการหลีกเลี่ยงการเข้าถึงโดยไม่ได้รับอนุญาตหรือการใช้ข้อมูลที่ไม่ใช่ข้อมูลส่วนบุคคลของคุณซึ่งไม่สามารถเข้าถึงได้\n\nข้อมูลที่ละเอียดอ่อน\n\nเราขอให้คุณไม่ส่งให้เรา และไม่เปิดเผยข้อมูลส่วนบุคคลที่ละเอียดอ่อนใดๆ (เช่น ข้อมูลที่เกี่ยวข้องกับเชื้อชาติหรือชาติพันธุ์ ความคิดเห็นทางการเมือง ศาสนาหรือความเชื่ออื่นๆ สุขภาพ รสนิยมทางเพศ ภูมิหลังทางอาญาหรือการเป็นสมาชิกในองค์กรที่ผ่านมา รวมถึงการเป็นสมาชิกสหภาพแรงงาน) ในหรือผ่านทางแอปพลิเคชัน บริการ หรือไซต์หรืออื่นๆ ให้กับเรา\n\nติดต่อเรา\n\nหากคุณมีคำถามหรือความคิดเห็นเกี่ยวกับนโยบายนี้หรือแนวปฏิบัติด้านความเป็นส่วนตัวของเรา หรือต้องการรายงานการละเมิดนโยบายหรือการใช้บริการหรือเว็บไซต์ในทางที่ผิด โปรดติดต่อเราที่ one.support@ironmeta.com</string>
+    <string name="vs_privacy_confirm_button">ฉันยอมรับ</string>
+
+    <string name="vs_dialog_add_an_hour">รับ 1 ชั่วโมง</string>
+    <string name="vs_dialog_get_later">รับภายหลัง</string>
+
+    <string name="vs_disconnected_report_title">รายงานการเชื่อมต่อ</string>
+    <string name="vs_disconnected_report_ip_address">ที่อยู่ IP</string>
+    <string name="vs_disconnected_report_duration">ระยะเวลา</string>
+    <string name="vs_disconnected_report_upload">อัปโหลดทั้งหมด</string>
+    <string name="vs_disconnected_report_download">ดาวน์โหลดทั้งหมด</string>
+
+    <string name="vs_vip_feature_title">อัปเกรดไปเป็น VIP</string>
+    <string name="vs_vip_dialog_desc_advantage_a">ไม่มีโฆษณา</string>
+    <string name="vs_vip_dialog_desc_advantage_b">ความเร็วสูงกว่า</string>
+    <string name="vs_vip_dialog_desc_advantage_c">สถานที่ทั่วโลก</string>
+    <string name="vs_vip_state_load">กำลังโหลดแผน&#8230;</string>
+    <string name="vs_vip_state_normal_content">คุณไม่ใช่ VIP โปรดอัปเกรด</string>
+    <string name="vs_vip_state_pending_content">การสั่งซื้อของคุณกำลังรอการอนุมัติ โปรดไปที่\'การสมัครสมาชิกของ Play Store\' เพื่อตรวจสอบการสั่งซื้อ และลองอีกครั้ง</string>
+    <string name="vs_vip_state_vip_content">ยินดีด้วย!\nคุณคือผู้ใช้ VIP แล้ว</string>
+    <string name="vs_vip_dialog_desc_rule">การสมัครสมาชิกจะต่ออายุโดยอัตโนมัติและบัญชีของคุณจะถูกเรียกเก็บเงินทุกเดือนหรือทุกปี คุณสามารถยกเลิกได้ทุกเมื่อ</string>
+
+    <string name="vs_rating_dialog_title">โปรดให้คะแนนเรา</string>
+    <string name="vs_rating_dialog_title2">ชอบ Tomato หรือไม่</string>
+    <string name="vs_rating_dialog_desc">แตะดาวเพื่อให้คะแนน</string>
+    <string name="vs_rating_dialog_positive_comment">เราดีใจที่ได้รู้ :)</string>
+    <string name="vs_rating_dialog_negative_comment">เราเสียใจที่ได้รู้ :(</string>
+    <string name="vs_rating_dialog_conform_button">ตกลง</string>
+    <string name="vs_rating_view_terrible_title">แย่มาก</string>
+    <string name="vs_rating_view_bad_title">แย่</string>
+    <string name="vs_rating_view_okay_title">พอใช้</string>
+    <string name="vs_rating_view_good_title">ดี</string>
+    <string name="vs_rating_view_great_title">ยอดเยี่ยม</string>
+    <string name="vs_rating_select_none_tips">โปรดแตะหน้ายิ้ม</string>
+    <string name="vs_rating_feedback_send">ฉันมีข้อเสนอแนะบางอย่าง</string>
+    <string name="vs_rating_feedback_tip">เลื่อนขึ้นเพื่อให้คะแนนเราและคำติชม</string>
+    <string name="vs_rating_thanks_tips">ขอบคุณสำหรับการให้คะแนน</string>
+
+    <string name="vs_add_time_an_hour">แตะเพื่อเพิ่ม 1 ชั่วโมง</string>
+    <string name="vs_add_time_an_hour_1">+ 1 ชั่วโมง</string>
+    <string name="vs_add_time_an_hour_succeed_dialog_title">ยินดีด้วย!</string>
+    <string name="vs_add_time_an_hour_succeed_dialog_content">เวลาในการเชื่อมต่อเพิ่มขึ้น 1 ชั่วโมง</string>
+    <string name="vs_add_time_an_hour_wait">โปรดรอ&#8230;(%s วินาที)</string>
+    <string name="vs_add_time_an_hour_wait_1">รอ&#8230;(%s วินาที)</string>
+
+    <string name="vs_add_time_two_hour">แตะเพื่อเพิ่ม 2 ชั่วโมง</string>
+    <string name="vs_add_time_two_hours">แตะเพื่อเพิ่ม 2 ชั่วโมง</string>
+    <string name="vs_add_time_two_hours_1">+ 2 ชั่วโมง</string>
+    <string name="vs_add_time_two_hours_preparing">กำลังเตรียมการ&#8230;</string>
+    <string name="vs_add_time_two_hour_way">ด้วยการชมโฆษณาวิดีโอ</string>
+    <string name="vs_add_time_two_hour_wait">กำลังเตรียมการ&#8230;</string>
+    <string name="vs_add_time_two_hour_succeed">ยินดีด้วย! เวลาในการเชื่อมต่อเพิ่มขึ้น 2 ชั่วโมง</string>
+    <string name="vs_add_time_two_hour_fail">คุณต้องดูวิดีโอให้จบเพื่อรับรางวัล</string>
+
+    <string name="vs_add_time_get_an_hour">รับ 1 ชั่วโมง</string>
+    <string name="vs_add_time_get_later">รับภายหลัง</string>
+
+    <string name="vs_feature_apps_bypass_title">การตั้งค่าบายพาสสำหรับแอปพลิเคชัน</string>
+    <string name="vs_feature_apps_bypass_title2">แอปพลิเคชันใช้ VPN</string>
+    <string name="vs_feature_app_bypass_tip">โปรดทราบว่าจะมีผลในการเชื่อมต่อครั้งต่อไป</string>
+
+    <string name="vs_feature_settings_title">การตั้งค่า</string>
+    <string name="vs_feature_settings_title2">การตั้งค่า VPN</string>
+    <string name="vs_setting_button_restart_vpn">รีสตาร์ท VPN</string>
+    <string name="vs_setting_item_dns">DNS ผ่าน UDP</string>
+    <string name="vs_setting_item_ipv6">เปลี่ยนเส้นทางการรับส่งข้อมูล IPv6</string>
+    <string name="vs_setting_item_tcp">เปิดใช้งาน TCP Fast Open</string>
+
+    <string name="vs_feature_share_title">แชร์</string>
+    <string name="vs_feature_share_statement">แชร์ QR Code</string>
+    <string name="vs_feature_share_item_name_whats_app">WhatsApp</string>
+    <string name="vs_feature_share_item_name_sms">SMS</string>
+    <string name="vs_feature_share_item_name_email">อีเมล</string>
+    <string name="vs_feature_share_item_name_copy_link">คัดลอกลิงก์</string>
+    <string name="vs_feature_share_item_name_more">เพิ่มเติม</string>
+    <string name="vs_feature_share_title_for_chooser">ดำเนินการให้เสร็จสมบูรณ์โดยใช้</string>
+    <string name="vs_feature_share_content_text">IronMeta One เป็น VPN Proxy ที่รวดเร็ว ใช้ได้ไม่จำกัด เสถียรและเป็นส่วนตัว! ขอแนะนำให้คุณติดตั้งแอปพลิเคชันนี้! ลิงก์ดาวน์โหลด</string>
+    <string name="vs_feature_share_content_email_subject">IronMeta One | VPN Proxy ฟรี, VPN เร็ว, ปลดบล็อก</string>
+
+    <string name="vs_feature_share_item_tip_whats_app">แชร์โดย WhatsApp ไม่สำเร็จ</string>
+    <string name="vs_feature_share_item_tip_sms">แชร์โดย SMS ไม่สำเร็จ</string>
+    <string name="vs_feature_share_item_tip_email">แชร์โดยอีเมลไม่สำเร็จ</string>
+    <string name="vs_feature_share_item_tip_copy_link">คัดลอกแล้ว</string>
+    <string name="vs_feature_share_item_tip_more">แชร์ไม่สำเร็จ</string>
+
+    <string name="vs_feature_language_title">ภาษา</string>
+
+    <string name="vs_feature_privacy_policy_title">นโยบายความเป็นส่วนตัว</string>
+    <string name="vs_privacy_policy_setting">การตั้งค่า</string>
+
+    <string name="vs_feature_my_vip_account">บัญชี VIP ของฉัน</string>
+
+    <string name="vs_feature_terms_of_service_title">เงื่อนไขการให้บริการ</string>
+
+        <string name="vs_feature_FAQ_title">คำถามที่พบบ่อย</string>
+    <string name="vs_faq_question_1">คำถามที่ 1: ใช้งาน VPN Tomato อย่างไร</string>
+    <string name="vs_faq_question_2">คำถามที่ 2: VPN Tomato ปลอดภัยหรือไม่</string>
+    <string name="vs_faq_question_3">คำถามที่ 3: ทำไม VPN Tomato ไม่สามารถเชื่อมต่อได้</string>
+    <string name="vs_faq_question_4">คำถามที่ 4: จะทำอย่างไรหากการเชื่อมต่อไม่เสถียรหรือช้า</string>
+    <string name="vs_faq_question_5">คำถามที่ 5: เลือก IP, เซิร์ฟเวอร์ หรือภูมิภาคที่คุณต้องการอย่างไร</string>
+    <string name="vs_faq_question_6">คำถามที่ 6: จะทำอย่างไรถ้า VPN Tomato ไม่มี IP เซิร์ฟเวอร์ หรือภูมิภาคที่คุณต้องการ</string>
+    <string name="vs_faq_question_7">อย่าใช้ P2P หรือ BitTorrent!</string>
+    <string name="vs_faq_answer_1">ให้แตะปุ่ม \'ไป\' หากขึ้นข้อความ \'เชื่อมต่อแล้ว\’ แสดงว่า VPN Tomato ทำงานได้ โปรดเลือก \'ฉันไว้ใจแอปพลิเคชันนี้\' ในครั้งแรกที่คุณเชื่อมต่อ</string>
+    <string name="vs_faq_answer_2">VPN Tomato ปลอดภัย 100% พร้อมข้อมูลและเวลาที่ไม่จำกัด แต่ไม่อนุญาตให้ใช้ P2P หรือ BitTorrent นอกจากนี้ VPN Tomato ยังสามารถปกป้องความปลอดภัยและความเป็นส่วนตัวของฮอตสปอต WiFi ของคุณได้อีกด้วย จะไม่ขโมยข้อมูลของผู้ใช้โดยเด็ดขาด</string>
+    <string name="vs_faq_answer_3">อาจมีสาเหตุบางประการ: (1) หากขึ้นข้อความ \'ไม่มีเครือข่ายให้ใช้งาน\' แสดงว่าเครือข่ายไม่เสถียร คุณควรตรวจสอบให้แน่ใจว่าโทรศัพท์มือถือของคุณเชื่อมต่อกับอินเทอร์เน็ต (2) หากขึ้นข้อความ \'การเชื่อมต่อหมดเวลา\' แสดงว่าเซิร์ฟเวอร์ปัจจุบันไม่ว่างหรือถูกบล็อกในภูมิภาคของคุณ คุณสามารถเลือกเซิร์ฟเวอร์อื่นหรือลองอีกครั้ง (3) หากขึ้นข้อความ \'ไม่มีเซิร์ฟเวอร์ให้ใช้งานในขณะนี้\' คุณต้องอัปเดต VPN Tomato เป็นเวอร์ชันล่าสุด (4) หากทุกอย่างข้างต้นไม่ได้ผล คุณสามารถถอนการติดตั้ง VPN Tomato และติดตั้งใหม่ โดยปกติแล้วจะกลับมาใช้งานได้</string>
+    <string name="vs_faq_answer_4">โปรดคลิกธงชาติที่มุมขวาบนของแถบเครื่องมือในหน้าแรก จากนั้นเลือกเซิร์ฟเวอร์ที่เร็วและเสถียรที่สุด และเชื่อมต่ออีกครั้ง เซิร์ฟเวอร์ที่เร็วที่สุดมักจะอยู่ในภูมิภาคใกล้กับประเทศที่คุณอยู่ หากเซิร์ฟเวอร์ทั้งหมดไม่เสถียร โปรดส่งอีเมลไปที่ vpntomato.dev@gmail.com เราจะตอบกลับคุณโดยเร็วที่สุด</string>
+    <string name="vs_faq_answer_5">โปรดคลิกธงชาติที่มุมขวาบนของแถบเครื่องมือในหน้าแรก จากนั้นเลือก IP ภูมิภาค หรือเซิร์ฟเวอร์ที่คุณต้องการและเชื่อมต่อ</string>
+    <string name="vs_faq_answer_6">โปรดส่งอีเมลไปที่ vpntomato.dev@gmail.com เราจะตอบกลับคุณโดยเร็วที่สุด</string>
+    <string name="vs_faq_answer_7">โปรดอย่าใช้ BitTorrent กับ VPN มิเช่นนั้นบัญชีของคุณจะถูกบล็อก</string>
+
+    <string name="vs_feature_feedback_title">คำติชม</string>
+    <string name="vs_feature_feedback_rating_guide_toast_slides_up_tip">เลื่อนขึ้นเพื่อให้คะแนนเราและคำติชม</string>
+    <string name="vs_feedback_rating_text">คะแนนของคุณ:</string>
+    <string name="vs_feedback_content_text">เนื้อหาของคุณ:</string>
+    <string name="vs_feedback_content_hintText">โปรดระบุคำติชมของคุณ</string>
+    <string name="vs_feedback_email_text">อีเมลของคุณ:</string>
+    <string name="vs_feedback_email_hintText">โปรดระบุอีเมลของคุณ</string>
+    <string name="vs_feedback_no_email_showToast">โปรดป้อนเนื้อหาอีเมลของคุณ</string>
+    <string name="vs_feedback_wrong">มีบางอย่างผิดปกติ&#8230;</string>
+    <string name="vs_feedback_privacy_policy">การปฏิบัติตามนโยบายความเป็นส่วนตัว&#8230;&#8230;</string>
+    <string name="vs_feedback_thanks">ขอบคุณสำหรับคำติชมของคุณ</string>
+
+    <string name="update_dialog_title">เวอร์ชันใหม่</string>
+    <string name="update_dialog_desc">เวอร์ชันล่าสุดพร้อมใช้งานแล้ว ซึ่งมีเซิร์ฟเวอร์ที่เร็วกว่าและแก้ไขข้อบกพร่องมากมาย เราแนะนำให้คุณอัปเดต</string>
+    <string name="update_dialog_cancel">ภายหลัง</string>
+    <string name="update_dialog_ok">อัปเดตตอนนี้</string>
+
+    <string name="vs_feature_region_selector_title">ตัวเลือกภูมิภาค</string>
+    <string name="vs_feature_region_selector_title2">สลับไปภูมิภาคอื่น</string>
+    <string name="vs_feature_region_selector_title3">เปลี่ยนภูมิภาค VPN</string>
+    <string name="vs_feature_region_selector_no_server">ขออภัย ไม่มีเซิร์ฟเวอร์</string>
+    <string name="vs_feature_region_change_dialog_title">เปลี่ยนภูมิภาคหรือไม่</string>
+    <string name="vs_feature_region_change_dialog_decs">หากคุณต้องการเปลี่ยนหรือเลือกภูมิภาคอื่นเพื่อเชื่อมต่อ โปรดแตะ \'เปลี่ยน\'</string>
+    <string name="vs_feature_region_change_connecting">หากคุณต้องการเปลี่ยนหรือเลือกภูมิภาคอื่นเพื่อเชื่อมต่อ โปรดแตะ \'เปลี่ยน\'</string>
+    <string name="vs_feature_region_change_disconnecting">หากคุณต้องการเปลี่ยนหรือเลือกภูมิภาคอื่นเพื่อเชื่อมต่อ โปรดแตะ \'เปลี่ยน\'</string>
+    <string name="vs_feature_region_refresh_tips_loading">กำลังรีเฟรชรายชื่อเซิร์ฟเวอร์&#8230;</string>
+    <string name="vs_feature_region_refresh_tips_success">รีเฟรชสำเร็จแล้ว</string>
+
+    <string name="summary_title">สรุป</string>
+    <string name="summary_body">รู้สึกเป็นเกียรติ！ที่เราได้รับใช้คุณสำหรับ</string>
+    <string name="region_pre">ภูมิภาค:%s</string>
+    <string name="traffic_usage">การใช้งานการรับส่งข้อมูล</string>
+
+    <string name="get_1_hour">รับ 1 ชั่วโมง</string>
+    <string name="get_later">รับภายหลัง</string>
+
+    <string name="vs_feature_splash_tip_loading">กำลังโหลด&#8230;</string>
+
+    <string name="vs_region_default">สุ่มภูมิภาค</string>
+    <string name="vs_region_default2">เลือกอัตโนมัติ</string>
+    <string name="vs_region_default_desc">เลือกภูมิภาคที่ดีที่สุด</string>
+    <string name="vs_region_default_desc2">ค้นหาเซิร์ฟเวอร์ที่ดีที่สุด</string>
+</resources>

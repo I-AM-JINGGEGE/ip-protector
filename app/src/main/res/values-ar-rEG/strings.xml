@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vs_common_default">افتراضي</string>
+    <string name="vs_common_unknown">غير معروف</string>
+    <string name="vs_common_auto_choose">الاختيار التلقائي</string>
+    <string name="vs_common_dialog_ok_button">فهمت</string>
+    <string name="vs_common_tips_preparing">جارٍ الإعداد&#8230;</string>
+    <string name="vs_common_tips_loading">جارٍ التحميل&#8230;</string>
+    <string name="vs_common_tips_loading2">جارٍ التحميل&#8230;</string>
+    <string name="vs_common_tips_loading3">جارٍ التحميل، يرجى المحاولة في وقت لاحق</string>
+    <string name="vs_common_tips_loading_data">جارٍ تحميل البيانات&#8230; (ما يصل إلى 10 ثوانٍ)</string>
+    <string name="vs_common_tips_network_unavailable">حدث خطأ، يرجى التحقق من الشبكة</string>
+    <string name="vs_common_tips_no_email_app">ليس لديك أي تطبيق بريد إلكتروني لإرسال رسائل البريد الإلكتروني. يرجى إعداد تطبيق بريد إلكتروني أولاً</string>
+
+    <string name="vs_common_button_go">انتقال</string>
+    <string name="vs_common_button_retry">إعادة المحاولة</string>
+    <string name="vs_common_button_close">إغلاق</string>
+    <string name="vs_common_button_got_it">فهمت</string>
+    <string name="vs_common_button_upload">تحميل</string>
+    <string name="vs_common_button_submit">إرسال</string>
+    <string name="vs_common_button_success">تم بنجاح</string>
+    <string name="vs_common_button_change">تغيير</string>
+    <string name="vs_common_button_cancel">إلغاء</string>
+    <string name="vs_common_button_ok">موافق</string>
+    <string name="vs_common_button_connected">متصل</string>
+    <string name="vs_common_button_disconnected">غير متصل</string>
+
+    <string name="vs_common_title_secondary">VPN</string>
+
+    <string name="vs_core_service_state_testing">جارٍ الاتصال&#8230;</string>
+    <string name="vs_core_service_state_testing2">جارٍ الاختبار&#8230;</string>
+    <string name="vs_core_service_state_testing_data">جارٍ الاختبار (ما يصل إلى 10 ثوانٍ)&#8230;</string>
+    <string name="vs_core_service_state_disconnecting">جارٍ قطع الاتصال&#8230;</string>
+    <string name="vs_core_service_state_disconnecting2">جارٍ قطع الاتصال، يرجى المحاولة في وقت لاحق</string>
+    <string name="vs_core_service_state_disconnected">غير متصل</string>
+    <string name="vs_core_service_state_disconnected_timeout">انتهت مهلة الاتصال، يرجى التحقق من الشبكة وإعادة الاتصال مرة أخرى (من الأفضل تغيير بعض المناطق الأخرى)</string>
+    <string name="vs_core_service_state_disconnected_timeout2">انتهت مهلة الاتصال، يرجى إعادة المحاولة أو تحديد مناطق أخرى [code=%s]</string>
+    <string name="vs_core_service_state_disconnected_used_up">انتهت صلاحية الفترة التجريبية %s، يرجى إعادة الاتصال</string>
+    <string name="vs_core_service_state_disconnected_used_up2">انتهت صلاحية الفترة المجانية، يرجى إعادة الاتصال</string>
+    <string name="vs_core_service_state_disconnected_used_up3">انتهت صلاحية الفترة التجريبية، يرجى إعادة الاتصال</string>
+    <string name="vs_core_service_state_disconnected_error">خطأ[code=%s]، يرجى إعادة الاتصال مرة أخرى (من الأفضل إعادة تشغيل الجهاز لإصلاح المشكلة)</string>
+    <string name="vs_core_service_state_disconnected_error2">[code=%s]يرجى إعادة الاتصال مرة أخرى (من الأفضل إعادة تشغيل الجهاز لإصلاح المشكلة)</string>
+    <string name="vs_core_service_state_disconnected_error3">فشل، يرجى إعادة تشغيل الجهاز وإصلاح [code=%s]</string>
+    <string name="vs_core_service_state_connecting">جارٍ الاتصال&#8230;20%</string>
+    <string name="vs_core_service_state_connecting2">جارٍ الاتصال، يرجى المحاولة في وقت لاحق</string>
+    <string name="vs_core_service_state_connected">متصل</string>
+    <string name="vs_core_service_operate_connect">اضغط للاتصال</string>
+    <string name="vs_core_service_operate_connect2">انتقال</string>
+    <string name="vs_core_service_operate_connect3">الاتصال بهذه المنطقة</string>
+    <string name="vs_core_service_operate_connect_free">اضغط للاتصال مجانًا</string>
+    <string name="vs_core_service_operate_disconnect">اضغط لقطع الاتصال</string>
+    <string name="vs_core_service_always_vpn_tips">يرجى الضغط على \'موافق\' (حدد \'أثق بهذا التطبيق\') أو أوقف تشغيل \'VPN دائمًا في وضع التشغيل\' من إعدادات VPN</string>
+
+    <string name="vs_statement_privacy">ستتم حماية\nالخصوصية</string>
+    <string name="vs_statement_ip">سيتم تغيير\nعنوان IP</string>
+    <string name="vs_statement_banned">سيتم إلغاء قفل المحظور"</string>
+
+    <string name="vs_vad_consent_desc_a">نهتم بالخصوصية وأمان البيانات. نقدم هذا التطبيق مجانًا باستمرار عن طريق عرض الإعلانات.</string>
+    <string name="vs_vad_consent_desc_b">هل يمكننا متابعة استخدام بياناتك لتخصيص الإعلانات لك؟</string>
+    <string name="vs_vad_consent_desc_c">يمكنك تغيير خيارك بشأن $appTitle في أي وقت من إعدادات سياسة الخصوصية. سيجمع شركاؤنا البيانات ويستخدمون معرفًا فريدًا على جهازك لعرض إعلانات لك.</string>
+    <string name="vs_vad_consent_ok">نعم، VPN سريع مع إعلانات ذات صلة</string>
+    <string name="vs_vad_consent_cancel">لا، VPN عادي مع إعلانات</string>
+
+    <string name="vs_will_disconnect_dialog_title">هل تريد قطع الاتصال؟</string>
+    <string name="vs_will_disconnect_dialog_cancel">لاحقًا</string>
+    <string name="vs_will_disconnect_dialog_ok">قطع الاتصال</string>
+    <string name="vs_will_disconnect_dialog_desc_for_change_region">إذا أردت الاتصال بمناطق أخرى، فيجب قطع الاتصال أولاً</string>
+    <string name="vs_will_disconnect_dialog_desc_for_disconnect">بعد قطع الاتصال، ستفقد اتصال VPN.</string>
+    <string name="vs_will_disconnect_dialog_desc_for_disconnect2">بعد الضغط على \'قطع الاتصال\'، ستفقد اتصال VPN.</string>
+
+    <string name="vs_quality_test_button_text">هل تريد اختبار الاتصال؟</string>
+    <string name="vs_quality_repair_button_text">بطيء أو لا يعمل؟</string>
+    <string name="vs_quality_test_result_title">نتيجة الاختبار</string>
+    <string name="vs_quality_success_result_text">تم بنجاح!\nاستغرق تأكيد اتصال HTTPS %s مللي ثانية</string>
+    <string name="vs_quality_fail_result_text">عذرًا!\nفشل اكتشاف الاتصال بالإنترنت.</string>
+
+    <string name="vs_legal_notices_dialog_title">الإشعارات القانونية</string>
+    <string name="vs_legal_notices_dialog_title2">الخدمة غير متاحة</string>
+    <string name="vs_legal_notices_dialog_content">وفقًا للقوانين والسياسات واللوائح الخاصة بكل بلد ومنطقة، لا تتوفر خدمة VPN في منطقتك.</string>
+    <string name="vs_legal_notices_dialog_content2">عذرًا، الخدمة غير متاحة في منطقتك حاليًا!</string>
+
+    <string name="vs_privacy_confirm_content">المعلومات التي نجمعها\n\nأ. المعلومات الشخصية.\nلن نجمع المعلومات الشخصية. "المعلومات الشخصية" هي المعلومات التي تحدد هويتك، مثل اسمك الأول واسم العائلة والعناوين الفعلية وعناوين البريد الإلكتروني والهاتف والفاكس ورقم الضمان الاجتماعي (SSN) والمعلومات المخزنة في جهازك.\n\nب. المعلومات غير الشخصية.\nنجمع المعلومات غير الشخصية عند زيارتك لموقعنا الإلكتروني، وتشمل معلومات جهازك (باستثناء معرف الجهاز) ونظام التشغيل والسجلات.\n\nج. المعلومات التي تقدمها.\nقد نجمع معلوماتك عندما تتواصل معنا أو تقدمها لنا.\n\nكيف نستخدم المعلومات\n\nأ. المعلومات الشخصية.\nلا نخزن المعلومات الشخصية ولذلك لا نكشف عن معلوماتك الشخصية.\n\nب. المعلومات غير الشخصية.\nلا نبيع معلوماتك أو نتاجر بها أو ننقلها بأي طريقة أخرى إلى جهات أخرى. لا نجمع المعلومات غير الشخصية مع المعلومات الشخصية (مثل الجمع بين اسمك ورقم جهاز المستخدم الفريد).\n\nج. الأسباب القانونية\nسنصل إلى معلوماتك أو نستخدمها أو نكشف عنها لمؤسسات أو كيانات أخرى للأسباب التي يطالب بها أي قانون أو لائحة أو إجراء قانوني سارٍ أو طلب حكومي واجب النفاذ؛ واكتش مشاكل الاحتيال أو الأمان أو المشاكل التقنية أو منعها؛ والحماية من الإضرار بحقوقنا أو ممتلكاتنا أو سلامتنا أو سلامة مستخدمينا أو الجمهور وفقًا لما يطلبه أو يسمح به القانون.\n\nالأمان\n\nنهتم جدًا بحماية سرية معلوماتك. لا نجمع المعلومات الشخصية ونتخذ التدابير الإدارية والمادية والإلكترونية المخصصة لحماية معلوماتك غير الشخصية من الوصول والاستخدام غير المصرح به. يرجى العلم بأن التدابير الأمنية التي نتخذها لحماية معلوماتك ليست مضمونة تمامًا لتجنب الوصول غير المصرح به إلى المعلومات غير الشخصية المحصنة أو استخدامها.\n\nالمعلومات الحساسة\n\nنطالبك ألا ترسل إلينا أو تكشف لنا أي معلومات شخصية حساسة (على سبيل المثال، المعلومات المرتبطة بالأصل العرقي أو الإثني أو الآراء السياسية أو الدين أو المعتقدات الأخرى أو الصحة أو الميل الجنسي أو الخلفية الجنائية أو العضوية في منظمات سابقة، بما في ذلك العضوية في اتحادات العمال) على أي تطبيق أو من خلاله أو على الخدمات أو الموقع أو من خلالهما أو بأي طريقة أخرى.\n\nاتصل بنا\n\nإذا كانت لديك أي أسئلة أو تعليقات عن سياستنا أو ممارسات الخصوصية أو للإبلاغ عن أي انتهاكات للسياسة أو إساءة استخدام الخدمات أو الموقع، فيرجى الاتصال بنا على one.support@ironmeta.com.</string>
+    <string name="vs_privacy_confirm_button">أوافق</string>
+
+    <string name="vs_dialog_add_an_hour">الحصول على ساعة واحدة</string>
+    <string name="vs_dialog_get_later">الحصول فيما بعد</string>
+
+    <string name="vs_disconnected_report_title">تقرير الاتصال</string>
+    <string name="vs_disconnected_report_ip_address">عنوان IP</string>
+    <string name="vs_disconnected_report_duration">المدة</string>
+    <string name="vs_disconnected_report_upload">التحميل الإجمالي</string>
+    <string name="vs_disconnected_report_download">التنزيل الإجمالي</string>
+
+    <string name="vs_vip_feature_title">الترقية إلى VIP</string>
+    <string name="vs_vip_dialog_desc_advantage_a">بدون إعلانات</string>
+    <string name="vs_vip_dialog_desc_advantage_b">سرعة أكبر</string>
+    <string name="vs_vip_dialog_desc_advantage_c">مواقع حول العالم</string>
+    <string name="vs_vip_state_load">جارٍ تحميل الخطط&#8230;</string>
+    <string name="vs_vip_state_normal_content">لست VIP، يرجى الترقية.</string>
+    <string name="vs_vip_state_pending_content">عملية الشراء معلقة، يرجى الانتقال إلى \'اشتراك Play Store\' للتحقق من الشراء، والمحاولة لاحقًا</string>
+    <string name="vs_vip_state_vip_content">تهانينا!\nأنت مستخدم VIP.</string>
+    <string name="vs_vip_dialog_desc_rule">يتم تجديد الاشتراك تلقائيًا وسيتم تحصيل رسوم حسابك كل شهر أو كل سنة. يمكنك الإلغاء في أي وقت.</string>
+
+    <string name="vs_rating_dialog_title">يرجى تقييمنا</string>
+    <string name="vs_rating_dialog_title2">هل أعجبك Tomato؟</string>
+    <string name="vs_rating_dialog_desc">اضغط على نجمة لتضع تقييمك</string>
+    <string name="vs_rating_dialog_positive_comment">يسعدنا جدًا أن نسمع ذلك :)</string>
+    <string name="vs_rating_dialog_negative_comment">يحزننا أن نسمع ذلك :(</string>
+    <string name="vs_rating_dialog_conform_button">موافق</string>
+    <string name="vs_rating_view_terrible_title">سيئ جدًا</string>
+    <string name="vs_rating_view_bad_title">سيئ</string>
+    <string name="vs_rating_view_okay_title">مقبول</string>
+    <string name="vs_rating_view_good_title">جيد</string>
+    <string name="vs_rating_view_great_title">رائع</string>
+    <string name="vs_rating_select_none_tips">يرجى الضغط على وجه باسم</string>
+    <string name="vs_rating_feedback_send">لدي تعليق</string>
+    <string name="vs_rating_feedback_tip">مرر لأعلى لتقييمنا ووضع تعليق</string>
+    <string name="vs_rating_thanks_tips">شكرًا لك على التقييم</string>
+
+    <string name="vs_add_time_an_hour">اضغط لإضافة ساعة واحدة</string>
+    <string name="vs_add_time_an_hour_1">أكثر من ساعة واحدة</string>
+    <string name="vs_add_time_an_hour_succeed_dialog_title">تهانينا!</string>
+    <string name="vs_add_time_an_hour_succeed_dialog_content">زاد وقت الاتصال بمقدار ساعة</string>
+    <string name="vs_add_time_an_hour_wait">يرجى الانتظار&#8230;(%s ث)</string>
+    <string name="vs_add_time_an_hour_wait_1">انتظر&#8230;(%s ث)</string>
+
+    <string name="vs_add_time_two_hour">اضغط لإضافة ساعتين</string>
+    <string name="vs_add_time_two_hours">اضغط لإضافة ساعتين</string>
+    <string name="vs_add_time_two_hours_1">أكثر من ساعتين</string>
+    <string name="vs_add_time_two_hours_preparing">جارٍ الإعداد&#8230;</string>
+    <string name="vs_add_time_two_hour_way">عن طريق مشاهدة إعلان فيديو</string>
+    <string name="vs_add_time_two_hour_wait">جارٍ الإعداد&#8230;</string>
+    <string name="vs_add_time_two_hour_succeed">تهانينا! زاد وقت الاتصال بمقدار ساعتين</string>
+    <string name="vs_add_time_two_hour_fail">يجب أن تنتهي من مشاهدة الفيديو لتحصل على المكافأة</string>
+
+    <string name="vs_add_time_get_an_hour">الحصول على ساعة واحدة</string>
+    <string name="vs_add_time_get_later">الحصول فيما بعد</string>
+
+    <string name="vs_feature_apps_bypass_title">إعدادات تجاوز التطبيقات</string>
+    <string name="vs_feature_apps_bypass_title2">تطبيقات تستخدم VPN</string>
+    <string name="vs_feature_app_bypass_tip">لاحظ أنه سيتم تفعيل ذلك في الاتصال التالي</string>
+
+    <string name="vs_feature_settings_title">الإعدادات</string>
+    <string name="vs_feature_settings_title2">إعدادات VPN</string>
+    <string name="vs_setting_button_restart_vpn">إعادة تشغيل VPN</string>
+    <string name="vs_setting_item_dns">DNS عبر UDP</string>
+    <string name="vs_setting_item_ipv6">إعادة توجيه نسبة استخدام الشبكة لـ IPv6</string>
+    <string name="vs_setting_item_tcp">تمكين الفتح السريع لبروتوكول TCP</string>
+
+    <string name="vs_feature_share_title">مشاركة</string>
+    <string name="vs_feature_share_statement">مشاركة رمز الاستجابة السريعة (QR)</string>
+    <string name="vs_feature_share_item_name_whats_app">WhatsApp</string>
+    <string name="vs_feature_share_item_name_sms">رسالة قصيرة SMS</string>
+    <string name="vs_feature_share_item_name_email">بريد إلكتروني</string>
+    <string name="vs_feature_share_item_name_copy_link">نسخ الرابط</string>
+    <string name="vs_feature_share_item_name_more">المزيد</string>
+    <string name="vs_feature_share_title_for_chooser">إكمال الإجراء باستخدام</string>
+    <string name="vs_feature_share_content_text">IronMeta One هو وكيل VPN سريع وغير محدود وثابت وخاص! نوصيك بشدة بتثبيت هذا التطبيق! رابط التنزيل</string>
+    <string name="vs_feature_share_content_email_subject">IronMeta One | وكيل VPN مجاني، VPN سريع، إلغاء الحظر</string>
+
+    <string name="vs_feature_share_item_tip_whats_app">لم تتم مشاركته بنجاح عبر WhatsApp.</string>
+    <string name="vs_feature_share_item_tip_sms">لم تتم مشاركته بنجاح عبر رسالة قصيرة sms.</string>
+    <string name="vs_feature_share_item_tip_email">لم تتم مشاركته بنجاح عبر البريد الإلكتروني.</string>
+    <string name="vs_feature_share_item_tip_copy_link">تم النسخ</string>
+    <string name="vs_feature_share_item_tip_more">لم تتم المشاركة بنجاح عبر المزيد.</string>
+
+    <string name="vs_feature_language_title">اللغة</string>
+
+    <string name="vs_feature_privacy_policy_title">سياسة الخصوصية</string>
+    <string name="vs_privacy_policy_setting">الإعدادات</string>
+
+    <string name="vs_feature_my_vip_account">حسابي VIP الخاص بي</string>
+
+    <string name="vs_feature_terms_of_service_title">شروط الخدمة</string>
+
+        <string name="vs_feature_FAQ_title">الأسئلة الشائعة</string>
+    <string name="vs_faq_question_1">س 1: كيف أستخدم VPN Tomato؟</string>
+    <string name="vs_faq_question_2">س 2: هل VPN Tomato آمن؟</string>
+    <string name="vs_faq_question_3">س 3: لماذا لا أستطيع الاتصال بـ VPN Tomato؟</string>
+    <string name="vs_faq_question_4">س 4: ما الذي يجب عمله إذا كان الاتصال غير مستقر أو بطيئًا؟</string>
+    <string name="vs_faq_question_5">س 5: كيف يتم تحديد عنوان IP أو الخادم أو المنطقة التي تفضلها؟</string>
+    <string name="vs_faq_question_6">س 6: ما الذي يجب عمله إذا كان VPN Tomato لا يوفر عنوان IP أو الخادم أو المنطقة التي تريدها؟</string>
+    <string name="vs_faq_question_7">لا تستخدم P2P أو BitTorrent!</string>
+    <string name="vs_faq_answer_1">اضغط على زر \'انتقال\' فقط. إذا تم عرض \'متصل\'، فهذا يعني أن VPN Tomato يعمل. يرجى تحديد \'أثق بهذا التطبيق\' عند الاتصال في المرة الأولى.</string>
+    <string name="vs_faq_answer_2">إنه آمن بنسبة 100% دون حدود للبيانات والوقت، ولكن غير مسموح باستخدام P2P أو BitTorrent. يستطيع VPN Tomato أيضًا حماية أمان وخصوصية نقطة اتصال WiFi. ولن يسرق أي معلومات مستخدم أبدًا.</string>
+    <string name="vs_faq_answer_3">قد تكون هناك بعض الأسباب: (1) إذا تم عرض \'الشبكة غير متاحة\'، فهذا يعني أن الشبكة غير مستقرة، وأنه ينبغي عليك التأكد من اتصال هاتفك المحمول بالإنترنت. (2) إذا تم عرض \'انتهت مهلة الاتصال\'، فهذا يعني أن الخادم الحالي مشغول أو محظور في منطقتك. يمكنك تحديد خادم آخر أو المحاولة من جديد. (3) إذا تم عرض \'لا تتوفر خوادم الآن\'، فيجب تحديث VPN Tomato إلى أحدث إصدار. (4) إذا لم ينجح كل ما سبق، فيمكنك إزالة تثبيت VPN Tomato وإعادة تثبيته. عادةً سيعمل بشكل جيد.</string>
+    <string name="vs_faq_answer_4">يرجى النقر فوق العلم الوطني أعلى يمين شريط الأدوات في الصفحة الرئيسية، ثم اختيار الخادم الأسرع والأكثر استقرارًا ثم إعادة الاتصال. يوجد الخادم الأسرع عادةً في المنطقة القريبة من البلد الذي تقيم به. إذا كانت جميع الخوادم غير مستقرة، فيرجى إرسال رسالة بريد إلكتروني إلى vpntomato.dev@gmail.com، وسنرد عليك في أقرب وقت ممكن.</string>
+    <string name="vs_faq_answer_5">يرجى النقر فوق العلم الوطني أعلى يمين شريط الأدوات في الصفحة الرئيسية ثم اختر عنوان IP أو المنطقة أو الخادم الذي تفضل وقم بالاتصال.</string>
+    <string name="vs_faq_answer_6">يرجى إرسال بريد إلكتروني إلى vpntomato.dev@gmail.com، سنرد عليك في أقرب وقت ممكن.</string>
+    <string name="vs_faq_answer_7">يرجى عدم استخدام BitTorrent مع VPN أو سيتم حظر حسابك.</string>
+
+    <string name="vs_feature_feedback_title">التعليقات</string>
+    <string name="vs_feature_feedback_rating_guide_toast_slides_up_tip">مرر لأعلى لتقييمنا ووضع تعليق</string>
+    <string name="vs_feedback_rating_text">تقييمك:</string>
+    <string name="vs_feedback_content_text">المحتوى الخاص بك:</string>
+    <string name="vs_feedback_content_hintText">يرجى إدخال تعليقاتك</string>
+    <string name="vs_feedback_email_text">بريدك الإلكتروني:</string>
+    <string name="vs_feedback_email_hintText">يرجى إدخال بريدك الإلكتروني</string>
+    <string name="vs_feedback_no_email_showToast">يرجى إدخال محتوى البريد الإلكتروني</string>
+    <string name="vs_feedback_wrong">حدث خطأ&#8230;</string>
+    <string name="vs_feedback_privacy_policy">جارٍ اتباع سياسة الخصوصية &#8230;&#8230;</string>
+    <string name="vs_feedback_thanks">شكرًا لك على التعليق</string>
+
+    <string name="update_dialog_title">إصدار جديد</string>
+    <string name="update_dialog_desc">تم طرح أحدث إصدار، الذي يحتوي على خوادم أكثر سرعة وإصلاح الكثير من الأخطاء. نقترح إجراء تحديث.</string>
+    <string name="update_dialog_cancel">لاحقًا</string>
+    <string name="update_dialog_ok">التحديث الآن</string>
+
+    <string name="vs_feature_region_selector_title">محدد المنطقة</string>
+    <string name="vs_feature_region_selector_title2">التبديل إلى منطقة أخرى</string>
+    <string name="vs_feature_region_selector_title3">تغيير منطقة VPN</string>
+    <string name="vs_feature_region_selector_no_server">عذرًا لا توجد خوادم</string>
+    <string name="vs_feature_region_change_dialog_title">تغيير المنطقة</string>
+    <string name="vs_feature_region_change_dialog_decs">إذا أردت التغيير أو تحديد بعض المناطق الأخرى للاتصال، فيرجى الضغط على \'تغيير\'</string>
+    <string name="vs_feature_region_change_connecting">إذا أردت التغيير أو تحديد بعض المناطق الأخرى للاتصال، فيرجى الضغط على \'تغيير\'</string>
+    <string name="vs_feature_region_change_disconnecting">إذا أردت التغيير أو تحديد بعض المناطق الأخرى للاتصال، فيرجى الضغط على \'تغيير\'</string>
+    <string name="vs_feature_region_refresh_tips_loading">جارٍ تحديث قائمة الخوادم&#8230;</string>
+    <string name="vs_feature_region_refresh_tips_success">تم التحديث بنجاح</string>
+
+    <string name="summary_title">ملخص</string>
+    <string name="summary_body">تم التنفيذ! قدمنا لك خدمة من أجل</string>
+    <string name="region_pre">المنطقة:%s</string>
+    <string name="traffic_usage">استخدام نسبة استخدام الشبكة</string>
+
+    <string name="get_1_hour">الحصول على ساعة واحدة</string>
+    <string name="get_later">الحصول فيما بعد</string>
+
+    <string name="vs_feature_splash_tip_loading">جارٍ التحميل&#8230;</string>
+
+    <string name="vs_region_default">منطقة عشوائية</string>
+    <string name="vs_region_default2">اختيار تلقائي</string>
+    <string name="vs_region_default_desc">اختر أفضل منطقة</string>
+    <string name="vs_region_default_desc2">البحث عن أفضل خادم</string>
+</resources>

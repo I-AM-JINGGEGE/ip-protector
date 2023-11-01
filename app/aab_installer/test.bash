@@ -1,0 +1,2 @@
+java -jar bundletool.jar build-apks --bundle=./app-release.aab --output=./app.apks --ks=./keystore.jks --ks-pass=file:./keystore.pwd --ks-key-alias=key0 --key-pass=file:key.pwd
+java -jar bundletool.jar install-apks --apks=./app.apks

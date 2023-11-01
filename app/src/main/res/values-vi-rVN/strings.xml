@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vs_common_default">Mặc định</string>
+    <string name="vs_common_unknown">Không rõ</string>
+    <string name="vs_common_auto_choose">Chọn tự động</string>
+    <string name="vs_common_dialog_ok_button">Đã hiểu</string>
+    <string name="vs_common_tips_preparing">Đang chuẩn bị&#8230;</string>
+    <string name="vs_common_tips_loading">Đang tải&#8230;</string>
+    <string name="vs_common_tips_loading2">ĐANG TẢI&#8230;</string>
+    <string name="vs_common_tips_loading3">Đang tải, vui lòng thử lại sau</string>
+    <string name="vs_common_tips_loading_data">Đang tải dữ liệu&#8230; (tối đa 10 giây)</string>
+    <string name="vs_common_tips_network_unavailable">Đã xảy ra lỗi, vui lòng kiểm tra kết nối mạng</string>
+    <string name="vs_common_tips_no_email_app">Bạn không có ứng dụng nào để gửi email. Vui lòng cài đặt ứng dụng email trước</string>
+
+    <string name="vs_common_button_go">KẾT NỐI</string>
+    <string name="vs_common_button_retry">Thử lại</string>
+    <string name="vs_common_button_close">Đóng</string>
+    <string name="vs_common_button_got_it">Đã hiểu</string>
+    <string name="vs_common_button_upload">Tải lên</string>
+    <string name="vs_common_button_submit">Gửi</string>
+    <string name="vs_common_button_success">Thành công</string>
+    <string name="vs_common_button_change">Thay đổi</string>
+    <string name="vs_common_button_cancel">Hủy</string>
+    <string name="vs_common_button_ok">OK</string>
+    <string name="vs_common_button_connected">ĐÃ KẾT NỐI</string>
+    <string name="vs_common_button_disconnected">ĐÃ NGẮT KẾT NỐI</string>
+
+    <string name="vs_common_title_secondary">VPN</string>
+
+    <string name="vs_core_service_state_testing">Đang kết nối&#8230;</string>
+    <string name="vs_core_service_state_testing2">Đang kiểm tra&#8230;</string>
+    <string name="vs_core_service_state_testing_data">Đang kiểm tra&#8230; (tối đa 10 giây)</string>
+    <string name="vs_core_service_state_disconnecting">Đang ngắt kết nối&#8230;</string>
+    <string name="vs_core_service_state_disconnecting2">Đang ngắt kết nối, vui lòng thử lại sau</string>
+    <string name="vs_core_service_state_disconnected">Đã ngắt kết nối</string>
+    <string name="vs_core_service_state_disconnected_timeout">Thời gian kết nối quá lâu, vui lòng kiểm tra lại mạng rồi kết nối lại (nên thay đổi sang một số khu vực khác)</string>
+    <string name="vs_core_service_state_disconnected_timeout2">Thời gian kết nối quá lâu, vui lòng thử lại hoặc chọn các khu vực khác [code=%s]</string>
+    <string name="vs_core_service_state_disconnected_used_up">Đã quá hạn %s giờ dùng thử, vui lòng kết nối lại</string>
+    <string name="vs_core_service_state_disconnected_used_up2">Đã quá hạn dùng thử miễn phí, vui lòng kết nối lại</string>
+    <string name="vs_core_service_state_disconnected_used_up3">Đã quá hạn dùng thử, vui lòng kết nối lại</string>
+    <string name="vs_core_service_state_disconnected_error">Lỗi[code=%s], vui lòng kết nối lại (nên khởi động lại thiết bị để khắc phục)</string>
+    <string name="vs_core_service_state_disconnected_error2">[code=%s], vui lòng kết nối lại (nên khởi động lại thiết bị để khắc phục)</string>
+    <string name="vs_core_service_state_disconnected_error3">Không thành công, vui lòng khởi động lại thiết bị để khắc phục [code=%s]</string>
+    <string name="vs_core_service_state_connecting">Đang kết nối&#8230; 20%</string>
+    <string name="vs_core_service_state_connecting2">Đang kết nối, vui lòng thử lại sau</string>
+    <string name="vs_core_service_state_connected">Đã kết nối</string>
+    <string name="vs_core_service_operate_connect">Chạm để kết nối</string>
+    <string name="vs_core_service_operate_connect2">KẾT NỐI</string>
+    <string name="vs_core_service_operate_connect3">Kết nối với khu vực này</string>
+    <string name="vs_core_service_operate_connect_free">Chạm để kết nối miễn phí</string>
+    <string name="vs_core_service_operate_disconnect">Chạm để ngắt kết nối</string>
+    <string name="vs_core_service_always_vpn_tips">Vui lòng chạm vào nút \“OK\” (đánh dấu vào ô \“Tôi tin tưởng ứng dụng này\”) rồi tắt chế độ \“Always-on VPN\” trong phần cài đặt VPN</string>
+
+    <string name="vs_statement_privacy">Bảo vệ\n quyền riêng tư</string>
+    <string name="vs_statement_ip">Thay đổi\nIP</string>
+    <string name="vs_statement_banned">Mở khóa nội dung bị hạn chế”</string>
+
+    <string name="vs_vad_consent_desc_a">Chúng tôi rất quan tâm đến quyền riêng tư và vấn đề bảo mật dữ liệu của bạn. Chúng tôi sẽ hiển thị quảng cáo thay vì tính phí sử dụng ứng dụng.</string>
+    <string name="vs_vad_consent_desc_b">Chúng tôi có thể tiếp tục sử dụng dữ liệu của bạn để chọn quảng cáo cho bạn được không?</string>
+    <string name="vs_vad_consent_desc_c">Lúc nào bạn cũng có thể thay đổi lựa chọn này đối với $appTitle trong phần cài đặt chính sách về quyền riêng tư. Các đối tác của chúng tôi sẽ thu thập dữ liệu và sử dụng mã định danh đặc biệt trên tài khoản của bạn để hiển thị quảng cáo.</string>
+    <string name="vs_vad_consent_ok">Có, chọn VPN tốc độ nhanh có quảng cáo liên quan</string>
+    <string name="vs_vad_consent_cancel">Không, chọn VPN bình thường có quảng cáo</string>
+
+    <string name="vs_will_disconnect_dialog_title">Bạn muốn ngắt kết nối?</string>
+    <string name="vs_will_disconnect_dialog_cancel">Để sau</string>
+    <string name="vs_will_disconnect_dialog_ok">Ngắt kết nối</string>
+    <string name="vs_will_disconnect_dialog_desc_for_change_region">Nếu muốn kết nối sang các khu vực khác, bạn phải ngắt kết nối trước</string>
+    <string name="vs_will_disconnect_dialog_desc_for_disconnect">Sau khi đã ngắt kết nối, bạn sẽ mất kết nối VPN.</string>
+    <string name="vs_will_disconnect_dialog_desc_for_disconnect2">Nếu bạn nhấn vào \“Ngắt kết nối\”, bạn sẽ mất kết nối VPN.</string>
+
+    <string name="vs_quality_test_button_text">Kiểm tra kết nối?</string>
+    <string name="vs_quality_repair_button_text">Kết nối bị chậm hoặc mất hẳn?</string>
+    <string name="vs_quality_test_result_title">Kết quả kiểm tra</string>
+    <string name="vs_quality_success_result_text">Thành công!\nQuá trình bắt tay HTTPS mất %s ms</string>
+    <string name="vs_quality_fail_result_text">Rất tiếc!\nKhông thấy có kết nối mạng.</string>
+
+    <string name="vs_legal_notices_dialog_title">Thông báo pháp lý</string>
+    <string name="vs_legal_notices_dialog_title2">Không có dịch vụ</string>
+    <string name="vs_legal_notices_dialog_content">Theo luật pháp, chính sách và quy định của từng quốc gia và khu vực, dịch vụ VPN hiện không được cung cấp ở khu vực của bạn.</string>
+    <string name="vs_legal_notices_dialog_content2">Rất tiếc, dịch vụ này hiện không được cung cấp ở khu vực của bạn!</string>
+
+    <string name="vs_privacy_confirm_content">THÔNG TIN CHÚNG TÔI THU THẬP\n\na. Thông tin cá nhân.\nChúng tôi không thu thập thông tin cá nhân. “Thông tin cá nhân” là những thông tin dùng để xác định danh tính của bạn hoặc người khác như họ tên, địa chỉ thường trú/tạm trú, địa chỉ email, điện thoại, số fax, số CMT/CCCD, thông tin lưu trong thiết bị của bạn.\n\nb. Thông tin không xác định danh tính.\nChúng tôi thu thập thông tin không xác định danh tính khi bạn truy cập vào trang web của chúng tôi, có thể kể đến như thông tin thiết bị (không gồm mã thiết bị), hệ điều hành, nhật ký vận hành.\n\nc. Thông tin do bạn cung cấp.\nChúng tôi có thể thu thập thông tin của bạn khi bạn liên lạc với chúng tôi hoặc cung cấp cho chúng tôi.\n\nCÁCH CHÚNG TÔI SỬ DỤNG THÔNG TIN\n\na. Thông tin cá nhân.\nChúng tôi không lưu trữ Thông tin cá nhân và do đó không tiết lộ Thông tin cá nhân của bạn.\n\nb. Thông tin không xác định danh tính.\nChúng tôi không bán, giao dịch hoặc chuyển giao theo cách khác thông tin của bạn cho các bên thứ ba. Chúng tôi không ghép Thông tin không xác định danh tính với Thông tin cá nhân (chẳng hạn như ghép tên bạn với số Thiết bị người dùng của riêng bạn) .\n\nc. Lý do pháp lý\nChúng tôi sẽ truy cập, sử dụng hoặc tiết lộ thông tin của bạn với các tổ chức hoặc thực thể khác theo quy định của pháp luật hiện hành, quy định, quy trình pháp lý hoặc yêu cầu hành pháp của chính phủ; phát hiện, ngăn chặn hoặc có hành động khác đối với các vấn đề kỹ thuật, bảo mật hoặc gian lận; bảo vệ trước hành vi xâm phạm đến quyền lợi, tài sản hoặc sự an toàn của chúng tôi, người dùng của chúng tôi hoặc công chúng theo đúng quy định hoặc sự cho phép của pháp luật.\n\nBẢO MẬT\n\nChúng tôi vô cùng quan tâm đến vấn đề bảo mật thông tin cho bạn. Chúng tôi sẽ không thu thập Thông tin cá nhân, đồng thời sẽ có những biện pháp hành chính, điện tử và vật lý dành riêng cho mục đích bảo vệ Thông tin không xác định danh tính của bạn trước hành vi truy cập và sử dụng trái phép. Xin lưu ý rằng chúng tôi không có biện pháp nào bảo mật bảo vệ thông tin của bạn có thể bảo đảm tuyệt đối trước hành vi truy cập hoặc sử dụng trái phép Thông tin không xác định danh tính không thể xâm nhập của bạn.\n\nThông tin nhạy cảm\n\nChúng tôi yêu cầu bạn không gửi cho chúng tôi, đồng thời không tiết lộ, bất kỳ Thông tin cá nhân nhạy cảm nào (ví dụ: thông tin liên quan đến nguồn gốc chủng tộc hoặc sắc tộc, quan điểm chính trị, tôn giáo hoặc niềm tin khác, sức khỏe, xu hướng tình dục, lý lịch phạm tội hoặc tư cách hội viên của những tổ chức từng tham gia kể cả công đoàn).\n\nLIÊN HỆ VỚI CHÚNG TÔI\n\nNếu bạn có thắc mắc hoặc nhận xét về Chính sách này hoặc phương pháp thực hiện chính sách của chúng tôi, hoặc muốn báo cáo hành vi vi phạm Chính sách hoặc lạm dụng Dịch vụ hoặc Trang web, vui lòng liên hệ với chúng tôi qua địa chỉ one.support@ironmeta.com.</string>
+    <string name="vs_privacy_confirm_button">Tôi đồng ý</string>
+
+    <string name="vs_dialog_add_an_hour">Nhận 1 giờ</string>
+    <string name="vs_dialog_get_later">Nhận sau</string>
+
+    <string name="vs_disconnected_report_title">Báo cáo kết nối</string>
+    <string name="vs_disconnected_report_ip_address">Địa chỉ IP</string>
+    <string name="vs_disconnected_report_duration">Thời lượng</string>
+    <string name="vs_disconnected_report_upload">Tổng số tải lên</string>
+    <string name="vs_disconnected_report_download">Tổng số tải xuống</string>
+
+    <string name="vs_vip_feature_title">Nâng cấp lên VIP</string>
+    <string name="vs_vip_dialog_desc_advantage_a">Không quảng cáo</string>
+    <string name="vs_vip_dialog_desc_advantage_b">Tốc độ nhanh hơn</string>
+    <string name="vs_vip_dialog_desc_advantage_c">Vị trí toàn cầu</string>
+    <string name="vs_vip_state_load">Đang tải nội dung gói&#8230;</string>
+    <string name="vs_vip_state_normal_content">Bạn chưa phải là VIP, vui lòng nâng cấp lên VIP.</string>
+    <string name="vs_vip_state_pending_content">Khoản thanh toán của bạn vẫn đang chờ xử lý, vui lòng truy cập phần \“Gói đăng ký trên Play Store\” để kiểm tra thanh toán và thử lại sau</string>
+    <string name="vs_vip_state_vip_content">Xin chúc mừng!\nBạn đã là người dùng VIP.</string>
+    <string name="vs_vip_dialog_desc_rule">Tài khoản của bạn sẽ tự động gia hạn và thu phí gói đăng ký theo tháng hoặc năm. Bạn có thể hủy bất kỳ lúc nào.</string>
+
+    <string name="vs_rating_dialog_title">Vui lòng đánh giá chúng tôi</string>
+    <string name="vs_rating_dialog_title2">Bạn thích Tomato?</string>
+    <string name="vs_rating_dialog_desc">Chạm vào một ngôi sao để đánh giá</string>
+    <string name="vs_rating_dialog_positive_comment">Cảm ơn bạn rất nhiều :)</string>
+    <string name="vs_rating_dialog_negative_comment">Chúng tôi rất tiếc :(</string>
+    <string name="vs_rating_dialog_conform_button">OK</string>
+    <string name="vs_rating_view_terrible_title">Tệ</string>
+    <string name="vs_rating_view_bad_title">Dở</string>
+    <string name="vs_rating_view_okay_title">Ổn</string>
+    <string name="vs_rating_view_good_title">Tốt</string>
+    <string name="vs_rating_view_great_title">Xuất sắc</string>
+    <string name="vs_rating_select_none_tips">Vui lòng chạm vào một hình mặt cười</string>
+    <string name="vs_rating_feedback_send">Tôi có góp ý</string>
+    <string name="vs_rating_feedback_tip">Trượt lên để đánh giá và góp ý với chúng tôi</string>
+    <string name="vs_rating_thanks_tips">Cảm ơn bạn đã đánh giá</string>
+
+    <string name="vs_add_time_an_hour">Chạm vào để thêm 1 giờ</string>
+    <string name="vs_add_time_an_hour_1">+ 1 GIỜ</string>
+    <string name="vs_add_time_an_hour_succeed_dialog_title">Xin chúc mừng!</string>
+    <string name="vs_add_time_an_hour_succeed_dialog_content">Thời gian kết nối đã tăng thêm 1 giờ</string>
+    <string name="vs_add_time_an_hour_wait">Vui lòng chờ&#8230;(%s giây)</string>
+    <string name="vs_add_time_an_hour_wait_1">chờ&#8230;(%s giây)</string>
+
+    <string name="vs_add_time_two_hour">Chạm vào để thêm 2 giờ</string>
+    <string name="vs_add_time_two_hours">Chạm vào để thêm 2 giờ</string>
+    <string name="vs_add_time_two_hours_1">+ 2 GIỜ</string>
+    <string name="vs_add_time_two_hours_preparing">ĐANG CHUẨN BỊ&#8230;</string>
+    <string name="vs_add_time_two_hour_way">Bằng cách xem một quảng cáo video</string>
+    <string name="vs_add_time_two_hour_wait">Đang chuẩn bị&#8230;</string>
+    <string name="vs_add_time_two_hour_succeed">Xin chúc mừng! Thời gian kết nối đã tăng thêm 2 giờ</string>
+    <string name="vs_add_time_two_hour_fail">Bạn phải xem hết video thì mới được nhận thưởng</string>
+
+    <string name="vs_add_time_get_an_hour">Nhận 1 giờ</string>
+    <string name="vs_add_time_get_later">Nhận sau</string>
+
+    <string name="vs_feature_apps_bypass_title">Cài đặt dùng cho các ứng dụng</string>
+    <string name="vs_feature_apps_bypass_title2">Ứng dụng sử dụng VPN</string>
+    <string name="vs_feature_app_bypass_tip">Xin lưu ý rằng hiệu quả sẽ bắt đầu từ lần kết nối sau</string>
+
+    <string name="vs_feature_settings_title">Cài đặt</string>
+    <string name="vs_feature_settings_title2">Cài đặt VPN</string>
+    <string name="vs_setting_button_restart_vpn">Khởi động lại VPN</string>
+    <string name="vs_setting_item_dns">DNS thay vì UDP</string>
+    <string name="vs_setting_item_ipv6">Chuyển hướng lưu lượng IPv6</string>
+    <string name="vs_setting_item_tcp">Kích hoạt TCP Fast Open</string>
+
+    <string name="vs_feature_share_title">Chia sẻ</string>
+    <string name="vs_feature_share_statement">Chia sẻ mã QR</string>
+    <string name="vs_feature_share_item_name_whats_app">WhatsApp</string>
+    <string name="vs_feature_share_item_name_sms">Tin nhắn SMS</string>
+    <string name="vs_feature_share_item_name_email">E-mail</string>
+    <string name="vs_feature_share_item_name_copy_link">Sao chép liên kết</string>
+    <string name="vs_feature_share_item_name_more">Cách khác</string>
+    <string name="vs_feature_share_title_for_chooser">Hoàn tất hành động bằng</string>
+    <string name="vs_feature_share_content_text">IronMeta One là máy chủ proxy VPN nhanh, ổn định, bảo mật, không giới hạn! Đây là ứng dụng rất hữu ích mà bạn nên cài đặt! Liên kết tải về</string>
+    <string name="vs_feature_share_content_email_subject">IronMeta One | Máy chủ proxy VPN miễn phí, VPN nhanh, vượt mọi rào cản</string>
+
+    <string name="vs_feature_share_item_tip_whats_app">Không chia sẻ được qua WhatsApp.</string>
+    <string name="vs_feature_share_item_tip_sms">Không chia sẻ được qua tin nhắn.</string>
+    <string name="vs_feature_share_item_tip_email">Không chia sẻ được qua email.</string>
+    <string name="vs_feature_share_item_tip_copy_link">Đã sao chép</string>
+    <string name="vs_feature_share_item_tip_more">Không chia sẻ được bằng cách khác.</string>
+
+    <string name="vs_feature_language_title">Ngôn ngữ</string>
+
+    <string name="vs_feature_privacy_policy_title">Chính sách quyền riêng tư</string>
+    <string name="vs_privacy_policy_setting">Cài đặt</string>
+
+    <string name="vs_feature_my_vip_account">Tài khoản VIP của tôi</string>
+
+    <string name="vs_feature_terms_of_service_title">Điều khoản dịch vụ</string>
+
+        <string name="vs_feature_FAQ_title">Câu hỏi thường gặp</string>
+    <string name="vs_faq_question_1">Câu 1: VPN Tomato sử dụng như thế nào?</string>
+    <string name="vs_faq_question_2">Câu 2: VPN Tomato có an toàn không?</string>
+    <string name="vs_faq_question_3">Câu 3: Tại sao VPN Tomato không kết nối được?</string>
+    <string name="vs_faq_question_4">Câu 4: Nên làm gì nếu kết nối không ổn định hoặc bị chậm?</string>
+    <string name="vs_faq_question_5">Câu 5: Chọn IP, máy chủ hoặc khu vực bằng cách nào?</string>
+    <string name="vs_faq_question_6">Câu 6: Nếu VPN Tomato không cung cấp IP, máy chủ hoặc khu vực bạn muốn thì sao?</string>
+    <string name="vs_faq_question_7">Đừng sử dụng P2P hay BitTorrent!</string>
+    <string name="vs_faq_answer_1">Chỉ cần chạm vào nút \“KẾT NỐI\” Nếu màn hình hiện lên \“ĐÃ KẾT NỐI\” nghĩa là VPN Tomata đã bắt đầu hoạt động. Vui lòng chọn ô \“Tôi tin tưởng ứng dụng này\” khi kết nối lần đầu.</string>
+    <string name="vs_faq_answer_2">Đây là ứng dụng an toàn 100%, không giới hạn dữ liệu hay thời gian. Tuy nhiên, ứng dụng không cho phép sử dụng P2P hoặc BitTorrent. VPN Tomato còn có thể bảo vệ tính bảo mật và riêng tư cho điểm truy cập không dây của bạn. Ứng dụng sẽ không bao giờ ăn cắp bất kỳ thông tin nào của người dùng.</string>
+    <string name="vs_faq_answer_3">Một số lý do có thể là: (1) Nếu màn hình hiển thị \“Không có mạng\” thì tức là trạng thái mạng đang không ổn định, bạn nên kiểm tra lại xem điện thoại di động của mình có kết nối mạng không. (2) Nếu màn hình hiển thị \“Thời gian kết nối quá lâu\” thì tức là máy chủ hiện đang bận hoặc bị chặn trong khu vực của bạn. Bạn có thể chọn máy chủ khác hoặc thử lại. (3) Nếu màn hình hiển thị \“Hiện không có máy chủ\” thì bạn phải cập nhật VPN Tomato lên phiên bản mới nhất. (4) Nếu các phương pháp bên trên không hữu hiệu, bạn có thể gỡ VPN Tomato khỏi thiết bị và cài đặt lại. Phương pháp này thường sẽ có hiệu quả.</string>
+    <string name="vs_faq_answer_4">Vui lòng nhấp vào hình quốc kỳ phía trên bên phải thanh công cụ trên trang chủ, sau đó chọn máy chủ nhanh và ổn định nhất rồi kết nối lại. Máy chủ nhanh nhất thường nằm ở khu vực gần quốc gia nơi bạn đang ở. Nếu không có máy chủ nào ổn định, vui lòng gửi email tới vpntomato.dev@gmail.com, chúng tôi sẽ phản hồi bạn sớm nhất có thể.</string>
+    <string name="vs_faq_answer_5">Vui lòng nhấp vào hình quốc kỳ phía trên bên phải thanh công cụ trên trang chủ. Sau đó chọn IP, khu vực hoặc máy chủ bạn muốn rồi kết nối.</string>
+    <string name="vs_faq_answer_6">Vui lòng gửi email tới vpntomato.dev@gmail.com, chúng tôi sẽ phản hồi bạn sớm nhất có thể.</string>
+    <string name="vs_faq_answer_7">Vui lòng không dùng BitTorrent khi đang dùng VPN, nếu không, tài khoản của bạn sẽ bị chặn.</string>
+
+    <string name="vs_feature_feedback_title">Góp ý</string>
+    <string name="vs_feature_feedback_rating_guide_toast_slides_up_tip">Trượt lên để đánh giá và góp ý với chúng tôi</string>
+    <string name="vs_feedback_rating_text">Đánh giá của bạn:</string>
+    <string name="vs_feedback_content_text">Nội dung của bạn:</string>
+    <string name="vs_feedback_content_hintText">Vui lòng điền góp ý</string>
+    <string name="vs_feedback_email_text">Email của bạn:</string>
+    <string name="vs_feedback_email_hintText">Vui lòng điền email của bạn</string>
+    <string name="vs_feedback_no_email_showToast">Vui lòng điền nội dung email</string>
+    <string name="vs_feedback_wrong">Đã có lỗi xảy ra&#8230;</string>
+    <string name="vs_feedback_privacy_policy">Following Privacy Policy &#8230;&#8230;</string>
+    <string name="vs_feedback_thanks">Xin cảm ơn góp ý của bạn</string>
+
+    <string name="update_dialog_title">Phiên bản mới</string>
+    <string name="update_dialog_desc">Phiên bản mới nhất đã được phát hành sau khi sửa lỗi và bổ sung thêm các máy chủ nhanh hơn. Rất mong bạn sớm cập nhật phần mềm.</string>
+    <string name="update_dialog_cancel">Để sau</string>
+    <string name="update_dialog_ok">Cập nhật ngay</string>
+
+    <string name="vs_feature_region_selector_title">Trình chọn khu vực</string>
+    <string name="vs_feature_region_selector_title2">Chuyển sang khu vực khác</string>
+    <string name="vs_feature_region_selector_title3">Thay đổi khu vực VPN</string>
+    <string name="vs_feature_region_selector_no_server">Rất tiếc là không có máy chủ nào</string>
+    <string name="vs_feature_region_change_dialog_title">Bạn muốn thay đổi khu vực?</string>
+    <string name="vs_feature_region_change_dialog_decs">Nếu bạn muốn đổi hoặc chọn khu vực khác để kết nối, vui lòng chạm vào \“Thay đổi\”</string>
+    <string name="vs_feature_region_change_connecting">Nếu bạn muốn đổi hoặc chọn khu vực khác để kết nối, vui lòng chạm vào \“Thay đổi\”</string>
+    <string name="vs_feature_region_change_disconnecting">Nếu bạn muốn đổi hoặc chọn khu vực khác để kết nối, vui lòng chạm vào \“Thay đổi\”</string>
+    <string name="vs_feature_region_refresh_tips_loading">Đang cập nhật lại danh sách máy chủ&#8230;</string>
+    <string name="vs_feature_region_refresh_tips_success">Cập nhật thành công</string>
+
+    <string name="summary_title">Tổng kết</string>
+    <string name="summary_body">Chúng tôi đã rất hân hạnh được phục vụ bạn tại</string>
+    <string name="region_pre">khu vực:%s</string>
+    <string name="traffic_usage">Lưu lượng truy cập</string>
+
+    <string name="get_1_hour">Nhận 1 giờ</string>
+    <string name="get_later">Nhận sau</string>
+
+    <string name="vs_feature_splash_tip_loading">Đang tải&#8230;</string>
+
+    <string name="vs_region_default">Khu vực ngẫu nhiên</string>
+    <string name="vs_region_default2">Chọn tự động</string>
+    <string name="vs_region_default_desc">Chọn khu vực tốt nhất</string>
+    <string name="vs_region_default_desc2">Tìm máy chủ tốt nhất</string>
+</resources>

@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vs_common_default">डिफ़ॉल्ट</string>
+    <string name="vs_common_unknown">अज्ञात</string>
+    <string name="vs_common_auto_choose">स्वचालित चुनें</string>
+    <string name="vs_common_dialog_ok_button">मिल गया</string>
+    <string name="vs_common_tips_preparing">तैयार हो रहा है&#8230;</string>
+    <string name="vs_common_tips_loading">लोड हो रहा है&#8230;</string>
+    <string name="vs_common_tips_loading2">लोड हो रहा है&#8230;</string>
+    <string name="vs_common_tips_loading3">लोड हो रहा है, कृपया बाद में कोशिश करें</string>
+    <string name="vs_common_tips_loading_data">डेटा लोड हो रहा है&#8230; (10 सेकंड तक)</string>
+    <string name="vs_common_tips_network_unavailable">कुछ गलत हो गया, कृपया नेटवर्क की जांच करें</string>
+    <string name="vs_common_tips_no_email_app">ईमेल भेजने के लिए आपके पास कोई ईमेल ऐप नहीं है। कृपया पहले ईमेल ऐप सेट अप करें</string>
+
+    <string name="vs_common_button_go">जाएं</string>
+    <string name="vs_common_button_retry">दुबारा कोशिश करें</string>
+    <string name="vs_common_button_close">बंद करें</string>
+    <string name="vs_common_button_got_it">मिल गया</string>
+    <string name="vs_common_button_upload">अपलोड करें</string>
+    <string name="vs_common_button_submit">सबमिट करें</string>
+    <string name="vs_common_button_success">सफलता</string>
+    <string name="vs_common_button_change">बदलें</string>
+    <string name="vs_common_button_cancel">कैंसिल</string>
+    <string name="vs_common_button_ok">सही</string>
+    <string name="vs_common_button_connected">कनेक्ट हो गया</string>
+    <string name="vs_common_button_disconnected">डिस्कनेक्ट हो गया</string>
+
+    <string name="vs_common_title_secondary">वीपीएन</string>
+
+    <string name="vs_core_service_state_testing">कनेक्ट हो रहा है&#8230;</string>
+    <string name="vs_core_service_state_testing2">टेस्टिंग&#8230;</string>
+    <string name="vs_core_service_state_testing_data">टेस्टिंग&#8230;(10 सेकंड तक)</string>
+    <string name="vs_core_service_state_disconnecting">डिस्कनेक्ट हो रहा है&#8230;</string>
+    <string name="vs_core_service_state_disconnecting2">डिस्कनेक्ट हो रहा है, कृपया बाद में कोशिश करें</string>
+    <string name="vs_core_service_state_disconnected">डिस्कनेक्ट हो गया</string>
+    <string name="vs_core_service_state_disconnected_timeout">कनेक्शन का समय बीत गया, कृपया नेटवर्क की जांच करें और दुबारा कनेक्ट करें (बेहतर है कि क्षेत्र बदल लें)</string>
+    <string name="vs_core_service_state_disconnected_timeout2">कनेक्शन टाइमआउट हो गया, कृपया दुबारा कोशिश करें या किन्हीं अन्य क्षेत्रों को चुनें [code=%s]</string>
+    <string name="vs_core_service_state_disconnected_used_up">%s घंटों का ट्रायल टाइम बीत चुका है, कृपया दुबारा कनेक्ट करें</string>
+    <string name="vs_core_service_state_disconnected_used_up2">फ्री ट्रायल टाइम बीत चुका है, कृपया दुबारा कनेक्ट करें</string>
+    <string name="vs_core_service_state_disconnected_used_up3">ट्रायल टाइम बीत चुका है, कृपया दुबारा कनेक्ट करें</string>
+    <string name="vs_core_service_state_disconnected_error">त्रुटि[code=%s], कृपया दुबारा कनेक्ट करें (ठीक करने के लिए डिवाइस को रीबूट करना बेहतर रहेगा)</string>
+    <string name="vs_core_service_state_disconnected_error2">[code=%s], कृपया दुबारा कनेक्ट करें (ठीक करने के लिए डिवाइस को रीबूट करना बेहतर रहेगा)</string>
+    <string name="vs_core_service_state_disconnected_error3">फेल हुआ, रिपेयर करने के लिए डिवाइस को रीबूट करें [code=%s]</string>
+    <string name="vs_core_service_state_connecting">कनेक्ट हो रहा है&#8230;20%</string>
+    <string name="vs_core_service_state_connecting2">कनेक्ट हो रहा है, कृपया बाद में कोशिश करें</string>
+    <string name="vs_core_service_state_connected">कनेक्ट हो चुका है</string>
+    <string name="vs_core_service_operate_connect">कनेक्ट करने के लिए दबाएं</string>
+    <string name="vs_core_service_operate_connect2">आगे बढ़ें</string>
+    <string name="vs_core_service_operate_connect3">इस क्षेत्र से कनेक्ट करें</string>
+    <string name="vs_core_service_operate_connect_free">फ़्री कनेक्ट करने के लिए दबाएं</string>
+    <string name="vs_core_service_operate_disconnect">डिस्कनेक्ट करने के लिए दबाएं</string>
+    <string name="vs_core_service_always_vpn_tips">कृपया \'OK\' (tick \'I trust this application\') दबाएं या VPN सेटिंग्स पर \'Always-on VPN\' को बंद कर दें</string>
+
+    <string name="vs_statement_privacy">निजता की\nसुरक्षा की जाएगी</string>
+    <string name="vs_statement_ip">आईपी बदल\nदी जाएगी</string>
+    <string name="vs_statement_banned">प्रतिबंधित अनलॉक हो जाएगा"</string>
+
+    <string name="vs_vad_consent_desc_a">हम आपकी निजता और डेटा सुरक्षा का ख्याल रखते हैं। हम विज्ञापन दिखाकर इस ऐप को फ्री रखते हैं।</string>
+    <string name="vs_vad_consent_desc_b">क्या हम आपके डेटा का उपयोग आपके अनुकूल विज्ञापन दिखाने के लिए करना जारी रख सकते हैं?</string>
+    <string name="vs_vad_consent_desc_c">$appTitle के लिए आप अपनी पसंद निजता नीति सेटिंग्स में कभी भी बदल सकते हैं। हमारे भागीदार डेटा संग्रह करेंगे और आपकी डिवाइस पर एक विशिष्ट आइडेंटिफायर का उपयोग कर आपको विज्ञापन दिखाएंगे।</string>
+    <string name="vs_vad_consent_ok">हां, प्रासंगिक विज्ञापनों के साथ तेज VPN</string>
+    <string name="vs_vad_consent_cancel">नहीं, विज्ञापनों के साथ सामान्य VPN</string>
+
+    <string name="vs_will_disconnect_dialog_title">डिस्कनेक्ट हो जाएगा?</string>
+    <string name="vs_will_disconnect_dialog_cancel">बाद में</string>
+    <string name="vs_will_disconnect_dialog_ok">डिस्कनेक्ट</string>
+    <string name="vs_will_disconnect_dialog_desc_for_change_region">अगर आप अन्य क्षेत्रों से कनेक्ट करना चाहते हैं तो आपको पहले डिस्कनेक्ट करना होगा</string>
+    <string name="vs_will_disconnect_dialog_desc_for_disconnect">डिस्कनेक्ट होने के बाद आपका VPNकनेक्शन टूट जाएगा।</string>
+    <string name="vs_will_disconnect_dialog_desc_for_disconnect2">अगर आप \'Disconnect\' को दबाएंगे तो आपका VPN कनेक्शन टूट जाएगा।</string>
+
+    <string name="vs_quality_test_button_text">कनेक्टिविटी की जांच करें?</string>
+    <string name="vs_quality_repair_button_text">धीमी है या चालू नहीं है?</string>
+    <string name="vs_quality_test_result_title">टेस्ट परिणाम</string>
+    <string name="vs_quality_success_result_text">सफलता!\nHTTPS हैंडशेक में %s मिलीसेकेंड लगे</string>
+    <string name="vs_quality_fail_result_text">उफ़!\nइंटरनेट कनेक्शन को पहचानने में विफल।</string>
+
+    <string name="vs_legal_notices_dialog_title">कानूनी नोटिस</string>
+    <string name="vs_legal_notices_dialog_title2">सेवा अनुपलब्ध</string>
+    <string name="vs_legal_notices_dialog_content">प्रत्येक देश और क्षेत्र के कानूनों, नीतियों और विनियमों के अनुसार आपके क्षेत्र में VPN सेवा उपलब्ध नहीं है।</string>
+    <string name="vs_legal_notices_dialog_content2">माफ करें, अभी आपके क्षेत्र में सेवा उपलब्ध नहीं है।</string>
+
+    <string name="vs_privacy_confirm_content">हम कौन सी जानकारी एकत्र करते हैं\n\na. व्यक्तिगत जानकारी।\nहम व्यक्तिगत जानकारी एकत्र नहीं करते हैं। “व्यक्तिगत जानकारी” ऐसी जानकारी होती है जो आपकी या अन्य व्यक्ति की पहचान कराती है, जैसे आपका पहला नाम और अंतिम नाम, भौतिक पता, ईमेल पता, फोन नंबर, फैक्स, SSN, आपकी डिवाइस में जमा जानकारी।\n\nb. गैर-व्यक्तिगत जानकारी।\nजब आप हमारी वेबसाइट पर आते हैं तो हम आपकी गैर-व्यक्तिगत जानकारी एकत्र करते हैं, जिसमें आपकी डिवाइस की जानकारी (डिवाइस की आईडी छोड़कर), ऑपरेशन सिस्टम, लॉग शामिल हैं।\n\nc. वह जानकारी जो आप देते हैं।\nहम आपकी जानकारी तब एकत्र कर सकते हैं जब आप हमसे संवाद करते हैं या जब आप हमें देते हैं।\n\nहम जानकारी का उपयोग कैसे करते हैं\n\na. व्यक्तिगत जानकारी।\nहम व्यक्तिगत जानकारी संग्रहित नहीं करते और इसलिए आपकी व्यक्तिगत जानकारी किसी को प्रकट नहीं करते हैं।\n\nb. गैर-व्यक्तिगत जानकारी.\nहम आपकी जानकारी बाहरी पक्षों को बिक्री, व्यापार या किसी अन्य प्रकार से ट्रांसफर नहीं करते हैं। हम गैर-व्यक्तिगत जानकारी को व्यक्तिगत जानकारी के साथ नहीं मिलाते हैं (जैसे आपके नाम को आपकी विशिष्ट यूज़र डिवाइस संख्या के साथ जोड़ना)।\n\nc. कानूनी कारण\nहम आपकी जानकारी को उन स्थितियों में ऐक्सेस करेंगे, इस्तेमाल करेंगे या अन्य संगठनों या संस्थाओं को बताएंगे जब यह किसी लागू कानून, विनियमन, कानूनी प्रक्रिया या सरकार के प्रवर्तनीय अनुरोध के कारण आवश्यक हो; जालसाजी, सुरक्षा या तकनीकी मुद्दों का पता लगाने, रोकने या अन्य कारणों से जब जरूरी हो; हमारे, हमारे उपयोगकर्ताओं या जनता के अधिकारों, संपत्ति या सुरक्षा को क्षति पहुंचाने से रोकने के लिए कानूनी तौर पर जब जरूरी या मंजूर हो।\n\nसुरक्षा\n\nहम आपकी जानकारी की गोपनीयता सुरक्षित करने का बहुत ध्यान रखते हैं। हम व्यक्तिगत जानकारी नहीं एकत्र करते हैं और आपकी गैर-व्यक्तिगत जानकारी को अनधिकृत हाथों में जाने और इस्तेमाल होने से रोकने के लिए प्रशासनिक, भौतिक और इलेक्ट्रॉनिक उपायों को लागू करते हैं। कृपया अवगत रहें कि आपकी जानकारी की रक्षा करने के लिए लागू किया गया हमारा कोई भी सुरक्षा उपाय यह संपूर्ण गारंटी नहीं देता है कि आपकी गैर-व्यक्तिगत जानकारी जो अभेद्य है वह अनधिकृत हाथों में जाने या इस्तेमाल होने से बच जाएगी।\n\nसंवेदनशील जानकारी\n\nहम यह आग्रह करते हैं कि आप कोई भी संवेदनशील व्यक्तिगत जानकारी (जैसे, नस्लीय या जातीय मूल से संबंधित जानकारी, राजनैतिक विचार, धार्मिक या अन्य आस्थाएं, स्वास्थ्य, यौन अभिविन्यास, आपराधिक पृष्ठभूमि या पुराने संगठनों की सदस्यता, जिसमें श्रमिक संघों की सदस्यता भी शामिल है) किसी ऐप्लीकेशन, सेवा या साइट पर या द्वारा हमारे पास, या अन्यथा हमें न भेजें और न प्रकट करें।\n\nहमसे संपर्क करें\n\nअगर इस नीति या हमारी निजता प्रथाओं के संबंध में यदि आप कोई प्रश्न या टिप्पणी करना चाहते हैं अथवा नीति के उल्लंघन या सेवाओं या साइट के दुरुपयोग के संबंध में शिकायत करना चाहते हैं तो कृपया हमसे one.support@ironmeta.com पर संपर्क करें।</string>
+    <string name="vs_privacy_confirm_button">मैं सहमत हूं</string>
+
+    <string name="vs_dialog_add_an_hour">1 घंटे के लिए प्राप्त करें</string>
+    <string name="vs_dialog_get_later">बाद में प्राप्त करें</string>
+
+    <string name="vs_disconnected_report_title">कनेक्शन रिपोर्ट</string>
+    <string name="vs_disconnected_report_ip_address">आईपी पता</string>
+    <string name="vs_disconnected_report_duration">अवधि</string>
+    <string name="vs_disconnected_report_upload">कुल अपलोड</string>
+    <string name="vs_disconnected_report_download">कुल डाउनलोड</string>
+
+    <string name="vs_vip_feature_title">VIP में अपग्रेड करें</string>
+    <string name="vs_vip_dialog_desc_advantage_a">विज्ञापन मुक्त</string>
+    <string name="vs_vip_dialog_desc_advantage_b">तेज गति</string>
+    <string name="vs_vip_dialog_desc_advantage_c">विश्व भर में लोकेशन</string>
+    <string name="vs_vip_state_load">प्लान लोड हो रहे हैं&#8230;</string>
+    <string name="vs_vip_state_normal_content">आप VIP नहीं हैं, कृपया अपग्रेड करें।</string>
+    <string name="vs_vip_state_pending_content">आपकी खरीद लंबित है, खरीद की जांच करने के लिए कृपया \'Play Store Subscription\' पर जाएं, और बाद में कोशिश करें।</string>
+    <string name="vs_vip_state_vip_content">बधाई!\nआप VIP यूज़र बन गए।</string>
+    <string name="vs_vip_dialog_desc_rule">सदस्यता का रिन्यूअल अपने आप होता है और आपके अकाउंट से प्रत्येक माह या वर्ष शुल्क लिया जाएगा। आप किसी भी समय इसे कैंसिल कर सकते हैं।</string>
+
+    <string name="vs_rating_dialog_title">कृपया हमें रेट करें</string>
+    <string name="vs_rating_dialog_title2">Tomato पसंद हैं?</string>
+    <string name="vs_rating_dialog_desc">अपनी रेटिंग सेट करने के लिए कोई स्टार दबाएं</string>
+    <string name="vs_rating_dialog_positive_comment">यह जानकर हमें बहुत खुशी है :)</string>
+    <string name="vs_rating_dialog_negative_comment">यह जानकर हमें दुख हुआ :(</string>
+    <string name="vs_rating_dialog_conform_button">ओके</string>
+    <string name="vs_rating_view_terrible_title">बहुत बुरा</string>
+    <string name="vs_rating_view_bad_title">बुरा</string>
+    <string name="vs_rating_view_okay_title">ओके</string>
+    <string name="vs_rating_view_good_title">अच्छा</string>
+    <string name="vs_rating_view_great_title">शानदार</string>
+    <string name="vs_rating_select_none_tips">कृपया कोई स्माइली फ़ेस दबाएं</string>
+    <string name="vs_rating_feedback_send">मेरे पास कुछ फ़ीडबैक है</string>
+    <string name="vs_rating_feedback_tip">हमें रेटिंग और फ़ीडबैक देने के लिए स्लाइड अप करें</string>
+    <string name="vs_rating_thanks_tips">रेटिंग के लिए आपका धन्यवाद</string>
+
+    <string name="vs_add_time_an_hour">1 घंटा बढ़ाने के लिए दबाएं</string>
+    <string name="vs_add_time_an_hour_1">+ 1 घंटा</string>
+    <string name="vs_add_time_an_hour_succeed_dialog_title">बधाई!</string>
+    <string name="vs_add_time_an_hour_succeed_dialog_content">कनेक्शन की अवधि एक घंटा बढ़ गई है</string>
+    <string name="vs_add_time_an_hour_wait">कृपया इंतजार करें&#8230;(%s सेकंड)</string>
+    <string name="vs_add_time_an_hour_wait_1">इंतजार&#8230;(%s सेकंड)</string>
+
+    <string name="vs_add_time_two_hour">2 घंटा बढ़ाने के लिए दबाएं</string>
+    <string name="vs_add_time_two_hours">2 घंटे बढ़ाने के लिए दबाएं</string>
+    <string name="vs_add_time_two_hours_1">+ 2 घंटे</string>
+    <string name="vs_add_time_two_hours_preparing">तैयार हो रहा है&#8230;</string>
+    <string name="vs_add_time_two_hour_way">वीडियो विज्ञापन देखते हुए</string>
+    <string name="vs_add_time_two_hour_wait">तैयार हो रहा है&#8230;</string>
+    <string name="vs_add_time_two_hour_succeed">बधाई! कनेक्शन की अवधि 2 घंटे बढ़ गई है</string>
+    <string name="vs_add_time_two_hour_fail">रिवार्ड प्राप्त करने के लिए आपको वीडियो पूरा देखना होगा</string>
+
+    <string name="vs_add_time_get_an_hour">1 घंटे के लिए प्राप्त करें</string>
+    <string name="vs_add_time_get_later">बाद में प्राप्त करें</string>
+
+    <string name="vs_feature_apps_bypass_title">ऐप्स बाईपास सेटिंग्स</string>
+    <string name="vs_feature_apps_bypass_title2">VPN इस्तेमाल करने वाले ऐप्स</string>
+    <string name="vs_feature_app_bypass_tip">ध्यान रखें कि यह अगले कनेक्शन में प्रभावी होगा</string>
+
+    <string name="vs_feature_settings_title">सेटिंग्स</string>
+    <string name="vs_feature_settings_title2">VPN सेटिंग्स</string>
+    <string name="vs_setting_button_restart_vpn">VPN रीस्टार्ट करें</string>
+    <string name="vs_setting_item_dns">DNS के बजाय UDP</string>
+    <string name="vs_setting_item_ipv6">IPv6 ट्रैफिक को रीडाइरेक्ट करें </string>
+    <string name="vs_setting_item_tcp">TCP फास्ट ओपन को इनेबल करें</string>
+
+    <string name="vs_feature_share_title">शेयर</string>
+    <string name="vs_feature_share_statement">QR कोड शेयर करें</string>
+    <string name="vs_feature_share_item_name_whats_app">WhatsApp</string>
+    <string name="vs_feature_share_item_name_sms">SMS</string>
+    <string name="vs_feature_share_item_name_email">ई-मेल</string>
+    <string name="vs_feature_share_item_name_copy_link">लिंक कॉपी करें</string>
+    <string name="vs_feature_share_item_name_more">और अधिक</string>
+    <string name="vs_feature_share_title_for_chooser">इसके द्वारा कार्य पूरा करें</string>
+    <string name="vs_feature_share_content_text">नेटकैप्सूल VPN एक तेज, असीमित, टिकाऊ और निजी VPN प्रॉक्सी है! इस ऐप को इंस्टॉल करने की आपसे अत्यधिक अनुशंसा की जाती है! लिंक डाउनलोड करें</string>
+    <string name="vs_feature_share_content_email_subject">नेटकैप्सूल VPN | फ्री VPN प्रॉक्सी, फास्ट VPN, अनब्लॉक</string>
+
+    <string name="vs_feature_share_item_tip_whats_app">Whatsapp के द्वारा इसे असफल रूप सेशेयर करें।</string>
+    <string name="vs_feature_share_item_tip_sms">SMS के द्वारा इसे असफल रूप से शेयर करें।</string>
+    <string name="vs_feature_share_item_tip_email">ईमेल के द्वारा इसे असफल रूप से शेयर करें।</string>
+    <string name="vs_feature_share_item_tip_copy_link">कॉपी हो गया</string>
+    <string name="vs_feature_share_item_tip_more">अन्य से इसे असफल रूप से शेयर करें।</string>
+
+    <string name="vs_feature_language_title">भाषा</string>
+
+    <string name="vs_feature_privacy_policy_title">निजता नीति</string>
+    <string name="vs_privacy_policy_setting">सेटिंग्स</string>
+
+    <string name="vs_feature_my_vip_account">मेरा VIP अकाउंट</string>
+
+    <string name="vs_feature_terms_of_service_title">सेवा की शर्तें</string>
+
+        <string name="vs_feature_FAQ_title">अक्सर पूछे जाने वाले प्रश्न</string>
+    <string name="vs_faq_question_1">प्र1: VPN Tomato का उपयोग कैसे करें?</string>
+    <string name="vs_faq_question_2">प्र2: क्या VPN Tomato सुरक्षित है?</string>
+    <string name="vs_faq_question_3">प्र3: VPN Tomato कनेक्ट क्यों न\हीं हो रहा है?</string>
+    <string name="vs_faq_question_4">प्र4: अगर कनेक्शन अस्थिर या धीमा है तो क्या करें?</string>
+    <string name="vs_faq_question_5">प्र5: अपना IP, सर्वर या पसंद का क्षेत्र कैसे चुनें?</string>
+    <string name="vs_faq_question_6">प्र6: अगर VPN Tomato IPN, सर्वर या आपकी पसंद का क्षेत्र उपलब्ध न कराए तो क्या करें?</string>
+    <string name="vs_faq_question_7">पी2पी (P2P) या बिटटॉरेंट (BitTorrent) का इस्तेमाल न\ करें!</string>
+    <string name="vs_faq_answer_1">सिर्फ \'GO\' बटन को दबाएं। अगर \'CONNECTED\' दिखाई दे तो इसका मतलब है VPN Tomato काम कर रहा है। कृपया पहली बार कनेक्ट करने पर \'I trust this application\' पर टिक करें।</string>
+    <string name="vs_faq_answer_2">यह असीमित डेटा या समय के साथ 100% सुरक्षित है, पर पी2पी या बिटटॉरेंट की अनुमति नहीं है। साथ ही, VPN Tomato आपके वाईफाई हॉटस्पॉट की सुरक्षा और निजता को सुरक्षित रख सकता है। यह किसी यूज़र\की जानकारी कभी नहीं चुराएगा।</string>
+    <string name="vs_faq_answer_3">कुछ कारण हो सकते हैं: (1) अगर यह \'Network Unavailable\' दिखाए तो इसका अर्थ है कि नेटवर्क स्थिर नहीं है, यह पक्का कर लें कि आपका फोन इंटरनेट से जुड़ा है। (2) अगर यह \'Connection timeout\' दिखाए तो इसका अर्थ है कि मौजूदा सर्वर व्यस्त है या आपके क्षेत्र में प्रतिबंधित है। आप कोई और सर्वर चुन सकते हैं या दुबारा कोशिश कर सकते हैं। (3) अगर यह \'No servers available now\' दिखाए तो आपको VPN Tomatoके नवीनतम वर्ज़न में अपडेट करना होगा। (4) अगर उपरोक्त सभी उपाय काम न आएं तो आप VPN Tomato को अनइंस्टॉल कर फिर से इंस्टॉल कर सकते हैं। आम तौर पर यह ठीक से काम करेगा।</string>
+    <string name="vs_faq_answer_4">कृपया होमपेज पर टूलबार के सबसे ऊपर दाएं राष्ट्रीय ध्वज को क्लिक करें, फिर सबसे तेज और स्थिर सर्वर को चुनें और फिर से कनेक्ट करें।  आम तौर पर आप जिस देश में हैं, उसके करीबी क्षेत्र में सबसे तेज सर्वर होता है। अगर सभी सर्वर स्थिर नहीं हैं तो कृपया vpntomato.dev@gmail.com पर ईमेल करें, हम आपको यथासंभव शीघ्र उत्तर देंगे।</string>
+    <string name="vs_faq_answer_5">कृपया होमपेज पर टूलबार के सबसे ऊपर दाएं राष्ट्रीय ध्वज को क्लिक करें। इसके बाद अपनी पसंद का IP, क्षेत्र या सर्वर चुनें और कनेक्ट करें।</string>
+    <string name="vs_faq_answer_6">कृपया vpntomato.dev@gmail.com पर ईमेल करें, हम आपको यथासंभव शीघ्र उत्तर देंगे।</string>
+    <string name="vs_faq_answer_7">कृपया VPN के साथ बिटटॉरेंट का इस्तेमाल न करें, अन्यथा आपका अकाउंट ब्लॉक हो जाएगा।</string>
+
+    <string name="vs_feature_feedback_title">फीडबैक</string>
+    <string name="vs_feature_feedback_rating_guide_toast_slides_up_tip">हमें रेटिंग और फीडबैक देने के लिए स्लाइड अप करें</string>
+    <string name="vs_feedback_rating_text">आपकी रेटिंग:</string>
+    <string name="vs_feedback_content_text">आपका कंटेंट:</string>
+    <string name="vs_feedback_content_hintText">कृपया अपना फीडबैक दें</string>
+    <string name="vs_feedback_email_text">आपका ईमेल:</string>
+    <string name="vs_feedback_email_hintText">कृपया अपनी ईमेल दर्ज करें</string>
+    <string name="vs_feedback_no_email_showToast">कृपया अपने कंटेंट ईमेल दर्ज करें</string>
+    <string name="vs_feedback_wrong">कुछ गलत हो गया&#8230;</string>
+    <string name="vs_feedback_privacy_policy">निजता नीति का पालन हो रहा है&#8230;..</string>
+    <string name="vs_feedback_thanks">आपके फीडबैक के लिए धन्यवाद</string>
+
+    <string name="update_dialog_title">नया वर्ज़न</string>
+    <string name="update_dialog_desc">नवीनतम वर्ज़न जारी हो चुका है, जिसमें ज्यादा तेज सर्वर और कई तरह के बग्स का समाधान है। हम अपडेट करने का सुझाव देते हैं।</string>
+    <string name="update_dialog_cancel">बाद में</string>
+    <string name="update_dialog_ok">अभी अपडेट करें</string>
+
+    <string name="vs_feature_region_selector_title">क्षेत्र चयनकर्ता</string>
+    <string name="vs_feature_region_selector_title2">अन्य क्षेत्र में जाएं</string>
+    <string name="vs_feature_region_selector_title3">VPN क्षेत्र बदलें</string>
+    <string name="vs_feature_region_selector_no_server">माफ करें, कोई सर्वर नहीं है</string>
+    <string name="vs_feature_region_change_dialog_title">क्षेत्र बदलें?</string>
+    <string name="vs_feature_region_change_dialog_decs">अगर आप क्षेत्र बदलना चाहते हैं या किन्हीं अन्य क्षेत्रों को चुनना चाहते हैं तो कृपया \'Change\' दबाएं</string>
+    <string name="vs_feature_region_change_connecting">अगर आप क्षेत्र बदलना चाहते हैं या किन्हीं अन्य क्षेत्रों को चुनना चाहते हैं तो कृपया \'Change\' दबाएं</string>
+    <string name="vs_feature_region_change_disconnecting">अगर आप क्षेत्र बदलना चाहते हैं या किन्हीं अन्य क्षेत्रों को चुनना चाहते हैं तो कृपया \'Change\' दबाएं</string>
+    <string name="vs_feature_region_refresh_tips_loading">सर्वर सूची रीफ्रेश हो रही है&#8230;</string>
+    <string name="vs_feature_region_refresh_tips_success">रीफ्रेश सफल</string>
+
+    <string name="summary_title">सारांश</string>
+    <string name="summary_body">सम्मानित ! हमने आपकी सेवा की </string>
+    <string name="region_pre">क्षेत्र:%s</string>
+    <string name="traffic_usage">ट्रैफिक का उपयोग</string>
+
+    <string name="get_1_hour">1 घंटे के लिए प्राप्त करें</string>
+    <string name="get_later">बाद में प्राप्त करें</string>
+
+    <string name="vs_feature_splash_tip_loading">लोड हो रहा है&#8230;</string>
+
+    <string name="vs_region_default">रैंडम क्षेत्र</string>
+    <string name="vs_region_default2">ऑटो चुनाव</string>
+    <string name="vs_region_default_desc">सर्वश्रेष्ठ क्षेत्र चुनें</string>
+    <string name="vs_region_default_desc2">सर्वश्रेष्ठ सर्वर खोजें</string>
+</resources>

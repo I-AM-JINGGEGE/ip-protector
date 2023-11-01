@@ -1,0 +1,222 @@
+// build properties
+def buildProperties = new Properties()
+buildProperties.load(new FileInputStream(rootProject.file('build.properties')))
+
+// keystore properties
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(rootProject.file('keystore.properties')))
+
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion rootProject.buildToolsVersion
+
+    signingConfigs {
+        release {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
+        }
+    }
+
+    lintOptions {
+        disable 'InvalidPackage'
+        checkReleaseBuilds false
+    }
+
+    defaultConfig {
+        applicationId rootProject.applicationId
+
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+
+        versionName buildProperties.versionName
+        versionCode buildProperties.versionCode.toInteger()
+
+        buildConfigField "String", "PUBLISH_SENCONDS", "\"" + System.currentTimeSeconds().intValue() + "\""
+
+        // for bundle
+        ndk {
+            abiFilters 'armeabi-v7a', 'arm64-v8a'
+        }
+
+//        // for apk
+//        ndk {
+//            abiFilters 'armeabi-v7a'
+//        }
+    }
+
+    compileOptions {
+        sourceCompatibility javaVersion
+        targetCompatibility javaVersion
+    }
+
+    viewBinding {
+        enabled = true
+    }
+    
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            zipAlignEnabled true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            packagingOptions {
+                doNotStrip "lib/*/libimc.so"
+            }
+        }
+
+        debug {
+            signingConfig signingConfigs.release
+            packagingOptions {
+                jniLibs {
+                    useLegacyPackaging = true
+                }
+                doNotStrip "lib/*/libimc.so"
+            }
+        }
+    }
+    flavorDimensions "channel"
+    productFlavors {
+        gp {
+            buildConfigField "String", "CNL", "\"gp\""
+        }
+        apk {
+            buildConfigField "String", "CNL", "\"apk\""
+        }
+        _9apps {
+            buildConfigField "String", "CNL", "\"rqn586454c3\""
+        }
+        hxiao5 {
+            buildConfigField "String", "CNL", "\"hxiao5\""
+        }
+        shareit {
+            buildConfigField "String", "CNL", "\"shareit\""
+        }
+        newinsight {
+            buildConfigField "String", "CNL", "\"rqn4fd8ad08\""
+        }
+        samsung {
+            buildConfigField "String", "CNL", "\"rqn6bbb1a47\""
+        }
+        vivo {
+            buildConfigField "String", "CNL", "\"rqn970ccc5b\""
+        }
+        xiaomi {
+            buildConfigField "String", "CNL", "\"rqn43cf8eed\""
+        }
+        oppo {
+            buildConfigField "String", "CNL", "\"rqnd16086d3\""
+        }
+        huawei {
+            buildConfigField "String", "CNL", "\"rqnb42f280d\""
+        }
+        transsion{
+            buildConfigField "String", "CNL", "\"rqnc24c17c6\""
+        }
+    }
+    productFlavors.all { flavor ->
+        flavor.dimension = "channel"
+    }
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            def flavorsName = productFlavors[0].name
+            def outputsName = 'ironmeta-one-gp-latest.apk'
+            if (flavorsName == 'apk') {
+                outputsName = 'ironmeta-one-latest-release.apk'
+            } else if (flavorsName == '_9apps') {
+                outputsName = 'ironmeta-one-9apps-latest.apk'
+            } else if (flavorsName == 'hxiao5') {
+                outputsName = 'ironmeta-one-hxiao5-latest.apk'
+            } else if (flavorsName == 'shareit') {
+                outputsName = 'ironmeta-one-shareit-latest.apk'
+            } else if (flavorsName == 'newinsight') {
+                outputsName = 'ironmeta-one-newinsight-latest.apk'
+            } else if (flavorsName == 'samsung') {
+                outputsName = "ironmeta-one-samsung-$versionCode-latest.apk"
+            } else if (flavorsName == 'vivo') {
+                outputsName = "ironmeta-one-vivo-$versionCode-latest.apk"
+            } else if (flavorsName == 'xiaomi') {
+                outputsName = "ironmeta-one-xiaomi-$versionCode-latest.apk"
+            } else if (flavorsName == 'oppo') {
+                outputsName = "ironmeta-one-oppo-$versionCode-latest.apk"
+            } else if (flavorsName == 'huawei') {
+                outputsName = "ironmeta-one-huawei-$versionCode-latest.apk"
+            }else if (flavorsName == 'transsion') {
+                outputsName = "ironmeta-one-transsion-latest.apk"
+            }
+            outputFileName = outputsName
+        }
+    }
+    ndkVersion '20.1.5948944'
+}
+
+dependencies {
+    // androidx
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
+    implementation 'androidx.appcompat:appcompat:1.4.0'
+
+    // androidx work manager
+    implementation "androidx.work:work-runtime:2.7.1"
+
+    // androidx lifecycle
+    implementation("androidx.lifecycle:lifecycle-process:${rootProject.lifecycleVersion}")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:${rootProject.lifecycleVersion}")
+
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2"
+
+    // utils
+    implementation 'com.google.code.gson:gson:2.8.9'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.3'
+    implementation 'com.tencent:mmkv-static:1.2.14'
+
+    implementation(platform("com.google.firebase:firebase-bom:31.0.3"))
+    // firebase
+    implementation 'com.google.firebase:firebase-config-ktx'
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
+
+    // ironmeta tahiti sdk
+//    implementation project(path: ':ironmeta')
+
+    implementation 'com.google.android.gms:play-services-ads-identifier:18.0.1'
+    implementation 'com.android.installreferrer:installreferrer:2.2'
+
+    // ImageLoader
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+
+    //pag
+    implementation 'com.tencent.tav:libpag:4.0.5.82'
+
+    //google admob
+    implementation("com.google.android.gms:play-services-ads:22.0.0")
+
+    //roiquery
+    implementation 'com.lovinjoy:datatowerai-core:2.0.3'
+
+    implementation 'com.adjust.sdk:adjust-android:4.33.3'
+
+    implementation("com.github.JessYanCoding:AndroidAutoSize:v1.2.1")
+
+    //retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    implementation 'com.geyifeng.immersionbar:immersionbar:3.2.2'
+    implementation 'com.geyifeng.immersionbar:immersionbar-ktx:3.2.2'
+
+    implementation 'com.jaeger.statusbarutil:library:1.5.1'
+
+    //vpn sdk for google play bundle release
+    releaseImplementation 'ironmeta:ironmeta-iphider-ss-rust-sdk-meta:nightly-20231101-0630-release'
+    //vpn sdk for debug
+    debugImplementation 'ironmeta:ironmeta-iphider-ss-rust-sdk-meta:nightly-20231101-0441-debug'
+}

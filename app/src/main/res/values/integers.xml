@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="page_in_animation_duration">400</integer>
+    <integer name="page_out_animation_duration">50</integer>
+    <integer name="connecting_animation_duration">1000</integer>
+    <integer name="connected_animation_duration">12000</integer>
+</resources>

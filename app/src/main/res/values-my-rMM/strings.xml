@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vs_common_default">ပုံသေ</string>
+    <string name="vs_common_unknown">မသိရှိ</string>
+    <string name="vs_common_auto_choose">အလိုအလျောက် ရွေးပါ</string>
+    <string name="vs_common_dialog_ok_button">ရပါပြီ</string>
+    <string name="vs_common_tips_preparing">ပြင်ဆင်နေသည်&#8230;</string>
+    <string name="vs_common_tips_loading">လုပ်ဆောင်နေသည်&#8230;</string>
+    <string name="vs_common_tips_loading2">လုပ်ဆောင်နေသည်&#8230;</string>
+    <string name="vs_common_tips_loading3">လုပ်ဆောင်နေသည်၊ နောက်မှ ကြိုးစားကြည့်ပေးပါ</string>
+    <string name="vs_common_tips_loading_data">ဒေတာကို လုပ်ဆောင်နေသည်&#8230; (10 စက္ကန့်အထိ)</string>
+    <string name="vs_common_tips_network_unavailable">တစ်ခုခုမှားနေပါသည်၊ ကွန်ရက်ကို စစ်ကြည့်ပေးပါ</string>
+    <string name="vs_common_tips_no_email_app">အီးမေးလ်များပေးပို့ရန် သင့်တွင် အီးမေးလ်အက်ပ်မရှိပါ။ အီးမေးလ်အက်ပ်ကို အရင်ဆုံး သတ်မှတ်ပေးပါ</string>
+
+    <string name="vs_common_button_go">သွားပါ</string>
+    <string name="vs_common_button_retry">ပြန်ကြိုးစားပါ</string>
+    <string name="vs_common_button_close">ပိတ်ပါ</string>
+    <string name="vs_common_button_got_it">ရပါပြီ</string>
+    <string name="vs_common_button_upload">အပ်လုဒ်လုပ်မည်</string>
+    <string name="vs_common_button_submit">တင်ပြမည်</string>
+    <string name="vs_common_button_success">အောင်မြင်သည်</string>
+    <string name="vs_common_button_change">ပြောင်းမည်</string>
+    <string name="vs_common_button_cancel">ပယ်ဖျက်မည်</string>
+    <string name="vs_common_button_ok">အိုကေ</string>
+    <string name="vs_common_button_connected">ချိတ်ဆက်ထားသည်</string>
+    <string name="vs_common_button_disconnected">ချိတ်ဆက်မှုဖြုတ်ထားသည်</string>
+
+    <string name="vs_common_title_secondary">VPN</string>
+
+    <string name="vs_core_service_state_testing">ချိတ်ဆက်နေသည်&#8230;</string>
+    <string name="vs_core_service_state_testing2">စမ်းသပ်နေသည်&#8230;</string>
+    <string name="vs_core_service_state_testing_data">စမ်းသပ်နေသည်&#8230;(10 စက္ကန့်အထိ)</string>
+    <string name="vs_core_service_state_disconnecting">ချိတ်ဆက်မှုဖြုတ်နေသည်&#8230;</string>
+    <string name="vs_core_service_state_disconnecting2">ချိတ်ဆက်မှုဖြုတ်နေသည်၊ နောက်မှ ကြိုးစားကြည့်ပေးပါ</string>
+    <string name="vs_core_service_state_disconnected">ချိတ်ဆက်မှုဖြုတ်ထားသည်</string>
+    <string name="vs_core_service_state_disconnected_timeout">ချိတ်ဆက်မှု အချိန်ကုန်သွားပါသည်။ ကွန်ရက်ကို စစ်ဆေးပြီး ထပ်မံ၍ ပြန်ချိတ်ဆက်ပေးပါ (အချို့သော အခြားဒေသများကို ပြောင်းလျှင် ပိုကောင်းပါသည်)</string>
+    <string name="vs_core_service_state_disconnected_timeout2">ချိတ်ဆက်မှု အချိန်ကုန်သွားပါသည်။ အခြားဒေသများကို ပြန်ကြိုးစားကြည့်ပေးပါ သို့မဟုတ် ရွေးကြည့်ပေးပါ [code=%s]</string>
+    <string name="vs_core_service_state_disconnected_used_up">နာရီ%s အစမ်းအချိန် သက်တမ်းကုန်သွားပါသည်။ ပြန်ချိတ်ဆက်ပေးပါ</string>
+    <string name="vs_core_service_state_disconnected_used_up2">အခမဲ့ အစမ်းအချိန် သက်တမ်းကုန်သွားပါသည်။ ပြန်ချိတ်ဆက်ပေးပါ</string>
+    <string name="vs_core_service_state_disconnected_used_up3">အစမ်းအချိန် သက်တမ်းကုန်သွားပါသည်၊ ပြန်ချိတ်ဆက်ပေးပါ</string>
+    <string name="vs_core_service_state_disconnected_error">အမှား[code=%s]၊ ထပ်မံ၍ ပြန်ချိတ်ဆက်ပေးပါ (ပြင်ဆင်ရန်အတွက် စက်ကို ပြန်လည်စတင်ခြင်းမှာ ပိုကောင်းပါသည်)</string>
+    <string name="vs_core_service_state_disconnected_error2">[code=%s]၊ ထပ်မံ၍ ပြန်ချိတ်ဆက်ပေးပါ(ပြင်ဆင်ရန်အတွက် စက်ကို ပြန်လည်စတင်ခြင်းမှာ ပိုကောင်းပါသည်)</string>
+    <string name="vs_core_service_state_disconnected_error3">မအောင်မြင်ခဲ့ပါ၊ ပြင်ဆင်ရန် သင်၏စက်ကို ပြန်လည်စတင်ပေးပါ [code=%s]</string>
+    <string name="vs_core_service_state_connecting">ချိတ်ဆက်နေသည်&#8230;20%</string>
+    <string name="vs_core_service_state_connecting2">ချိတ်ဆက်နေသည်၊ နောက်မှ ကြိုးစားကြည့်ပေးပါ</string>
+    <string name="vs_core_service_state_connected">ချိတ်ဆက်ထားသည်</string>
+    <string name="vs_core_service_operate_connect">ချိတ်ဆက်ရန် နှိပ်ပါ</string>
+    <string name="vs_core_service_operate_connect2">သွားပါ</string>
+    <string name="vs_core_service_operate_connect3">ဤဒေသတွင် ချိတ်ဆက်မည်</string>
+    <string name="vs_core_service_operate_connect_free">အခမဲ့ချိတ်ဆက်မှုကို နှိပ်ပါ</string>
+    <string name="vs_core_service_operate_disconnect">ချိတ်ဆက်မှုဖြုတ်ရန် နှိပ်ပါ</string>
+    <string name="vs_core_service_always_vpn_tips">\'အိုကေ\' ကို နှိပ်ပါ (\'ဤအက်ပလီကေးရှင်းကို ယုံကြည်ပါသည်\' ကိုအမှတ်ခြစ်ပါ) သို့မဟုတ် VPN ဆက်တင်များတွင် \'VPN အမြဲဖွင့်ထားမည်\' ကို ပိတ်ပါ</string>
+
+    <string name="vs_statement_privacy">ကိုယ်ရေးလုံခြုံမှုကို\nကာကွယ်ပေးပါလိမ့်မည်</string>
+    <string name="vs_statement_ip">IP ကို\nပြောင်းလဲပေးပါလိမ့်မည်</string>
+    <string name="vs_statement_banned">တားမြစ်ထားမှုကို လော့ခ်ဖွင့်ပေးလိုက်ပါလိမ့်မည်"</string>
+
+    <string name="vs_vad_consent_desc_a">ကျွန်ုပ်တို့သည် သင်၏ကိုယ်ရေးလုံခြုံမှုနှင့် ဒေတာလုံခြုံရေးကို ဂရုစိုက်အလေးထားပါသည်။ ကြော်ငြာများကိုပြသခြင်းဖြင့် ဤအက်ပ်ကို အခမဲ့ပေးထားပါသည်။</string>
+    <string name="vs_vad_consent_desc_b">ကျွန်ုပ်တို့သည် သင့်အတွက် စိတ်ကြိုက်ကြော်ငြာများကို ဆက်လက်၍ အသုံးပြုနိုင်ပါသလား။</string>
+    <string name="vs_vad_consent_desc_c">သင်သည် ကိုယ်ရေးလုံခြုံမှုမူဝါဒ ဆက်တင်များတွင် $appTitle အတွက် သင်၏ရွေးချယ်မှုကို အချိန်မရွေး ပြောင်းလဲနိုင်ပါသည်။ ကျွန်ုပ်တို့၏ပါတနာများသည် ဒေတာများကို စုစည်းကာ သင်၏ကြော်ငြာများကိုပြသရန် သင့်စက်ရှိ စက်ပစ္စည်းခွဲခြားသတ်မှတ်သည့်အချက်အလက်ကို အသုံးပြုပါလိမ့်မည်။</string>
+    <string name="vs_vad_consent_ok">ဟုတ်ပါသည်၊ သက်ဆိုင်ရာကြော်ငြာများပါရှိသည့် မြန်ဆန်သော VPN ဖြစ်ပါသည်</string>
+    <string name="vs_vad_consent_cancel">မဟုတ်ပါ၊ ကြော်ငြာများပါရှိသည့် သာမန် VPN ဖြစ်ပါသည်</string>
+
+    <string name="vs_will_disconnect_dialog_title">ချိတ်ဆက်မှုဖြုတ်မည်လား။</string>
+    <string name="vs_will_disconnect_dialog_cancel">နောက်မှ</string>
+    <string name="vs_will_disconnect_dialog_ok">ချိတ်ဆက်မှုဖြုတ်ပါ</string>
+    <string name="vs_will_disconnect_dialog_desc_for_change_region">အခြားဒေသများထံ ချိတ်ဆက်လိုပါက၊ ချိတ်ဆက်မှုကို ဦးစွာ ဖြုတ်ရပါမည်</string>
+    <string name="vs_will_disconnect_dialog_desc_for_disconnect">ချိတ်ဆက်မှုဖြုတ်ပြီးနောက်၊ သင်သည် VPN ချိတ်ဆက်မှုကို လက်လွတ်သွားပါလိမ့်မည်။</string>
+    <string name="vs_will_disconnect_dialog_desc_for_disconnect2">\'ချိတ်ဆက်မှုဖြုတ်ပါ\' ကို နှိပ်လိုက်ပါက၊ သင်သည် VPN ချိတ်ဆက်မှုကို လက်လွတ်သွားပါလိမ့်မည်။</string>
+
+    <string name="vs_quality_test_button_text">ချိတ်ဆက်နိုင်မှုကို စမ်းသပ်မည်လား။</string>
+    <string name="vs_quality_repair_button_text">နှေးနေပါသလား သို့မဟုတ် အလုပ်လုပ်ဆောင်မှုမရှိ ဖြစ်နေပါသလား။</string>
+    <string name="vs_quality_test_result_title">စမ်းသပ်မှုရလဒ်</string>
+    <string name="vs_quality_success_result_text">အောင်မြင်သည်။\nHTTPS ချိတ်ဆက်မှုသည် %s ms ကြာမြင့်ပါသည်</string>
+    <string name="vs_quality_fail_result_text">စိတ်မကောင်းပါ။\nအင်တာနက်ချိတ်ဆက်မှုကို စုံစမ်းရန်ကြိုးစားခြင်း မအောင်မြင်ပါ။</string>
+
+    <string name="vs_legal_notices_dialog_title">တရားဝင်သတိပေးစာများ</string>
+    <string name="vs_legal_notices_dialog_title2">ဝန်ဆောင်မှုမရရှိနိုင်ပါ</string>
+    <string name="vs_legal_notices_dialog_content">နိုင်ငံနှင့် ဒေသတစ်ခုချင်းစီ၏ ဥပဒေများ၊ မူဝါဒများနှင့် စည်းမျဉ်းများနှင့်အညီ၊ VPN ဝန်ဆောင်မှုကို သင်၏ဒေသတွင် ဖြည့်ဆည်းမပေးထားပါ။</string>
+    <string name="vs_legal_notices_dialog_content2">ဝမ်းနည်းပါသည်၊ လက်ရှိတွင် သင်၏ဒေသ၌ ဝန်ဆောင်မှုကို ဖြည့်ဆည်းပေးမထားပါ။</string>
+
+    <string name="vs_privacy_confirm_content">ကျွန်ုပ်တို့ရယူထားသောအချက်အလက်များ\n\nက။ ကိုယ်ရေးကိုယ်တာအချက်အလက်များ။\nကျွန်ုပ်တို့သည် ကိုယ်ရေးကိုယ်တာအချက်အလက်များကို ရယူခြင်းမရှိပါ။ "ကိုယ်ရေးကိုယ်တာအချက်အလက်များ" သည် သင်၏ ကိုယ်ပိုင်အမည်နှင့် မျိုးရိုးအမည်၊ နေထိုင်ရာလိပ်စာများ၊ အီးမေးလ်လိပ်စာများ၊ တယ်လီဖုန်း၊ ဖက်စ်၊ SSN၊ သင်၏စက်အတွင်းတွင် သိမ်းဆည်းထားသော အချက်အလက်များကဲ့သို့သော သင် သို့မဟုတ် အခြားလူကို ခွဲခြားသိရှိနိုင်သည့်အချက်အလက်များ ဖြစ်ပါသည်။\n\nခ။ ကိုယ်ရေးကိုယ်တာမဟုတ်သော အချက်အလက်များ။\nကျွန်ုပ်တို့၏ဝဘ်ဆိုက်ထံ သွားရောက်သည့်အခါ ကျွန်ုပ်တို့သည် သင်၏ စက်အချက်အလက်များ (စက် ID မပါဝင်ပါ)၊ စက်လည်ပတ်သည့်စနစ်၊ မှတ်တမ်းများအပါအဝင် သင်၏ ကိုယ်ရေးကိုယ်တာမဟုတ်သော အချက်အလက်များကို စုစည်းရယူပါသည်။\n\nဂ။ သင်ပေးထားသော အချက်အလက်များ။\nကျွန်ုပ်တို့နှင့် ဆက်သွယ်ဆက်ဆံသည့်အခါ သင်၏အချက်အလက်များ သို့မဟုတ် သင်ပေးထားသော သင်၏အချက်အလက်များကို စုစည်းရယူနိုင်ပါသည်။\n\nအချက်အလက်များကို အသုံးပြုသည့်ပုံစံ\n\nက။ ကိုယ်ရေးကိုယ်တာအချက်အလက်များ။\nကျွန်ုပ်တို့သည် ကိုယ်ရေးကိုယ်တာအချက်အလက်များကို သိမ်းဆည်းထားခြင်းမရှိသောကြောင့် သင်၏ ကိုယ်ရေးကိုယ်တာအချက်အလက်များကို ထုတ်ဖော်ပြခြင်းမရှိပါ။\n\nခ။ ကိုယ်ရေးကိုယ်တာမဟုတ်သော အချက်အလက်များ။\nကျွန်ုပ်တို့သည် သင်၏အချက်အလက်များကို ပြင်ပအဖွဲ့အစည်းများထံ ရောင်းချခြင်း၊ ရောင်းဝယ်ခြင်း၊ သို့မဟုတ် တစ်နည်းအားဖြင့် လွှဲပြောင်းခြင်းမျိုး မပြုလုပ်ပါ။ ကျွန်ုပ်တို့သည် (သင်၏အမည်ကို သင်၏ သီးခြား အသုံးပြုသူ စက်ပစ္စည်းနံပါတ်ဖြင့် ပေါင်းစပ်ထားခြင်းကဲ့သို့သော) ကိုယ်ရေးကိုယ်တာအချက်အလက်များဖြင့် သင်၏ ကိုယ်ရေးကိုယ်တာမဟုတ်သော အချက်အလက်များကို ပေါင်းစပ်ခြင်းမရှိပါ။\n\nဂ။ ဥပဒေ အကြောင်းရင်းခံများ\nကျွန်ုပ်တို့သည် သက်ဆိုင်သော ဥပဒေ၊ စည်းမျဉ်း၊ ဥပဒေလုပ်ငန်းစဉ် သို့မဟုတ် အစိုးရမှ ပြဌာန်းထားသည့် တောင်းဆိုချက် တစ်စုံတစ်ရာကို လိုအပ်သော အကြောင်းရင်းများအတွက် အခြားသောအဖွဲ့အစည်းများ သို့မဟုတ် အဖွဲ့များနှင့်အတူ သင်၏အချက်အလက်များကို ဝင်ကြည့်ခြင်း၊ အသုံးပြုခြင်း သို့မဟုတ် ထုတ်ဖော်ပြောဆိုခြင်း၊ တစ်နည်းနည်းဖြင့် လိမ်လည်ခြင်း၊ လုံခြုရေး သို့မဟုတ် နည်းပညာဆိုင်ရာ ပြဿနာများကို စုံစမ်းထောက်လှမ်းခြင်း၊ ကာကွယ်တားဆီးခြင်း၊ ဥပဒေအရ လိုအပ်သည့်အတိုင်း သို့မဟုတ် ခွင့်ပြုထားသည့်အတိုင်း ကျွန်ုပ်တို့၊ ကျွန်ုပ်တို့၏အသုံးပြုသူများ သို့မဟုတ် အများပြည်သူ၏ ရပိုင်ခွင့်များ၊ ပိုင်ဆိုင်မှု သို့မဟုတ် ဘေးကင်းမှုကို အန္တရာယ်ဖြစ်စေနိုင်မှုမှ ကာကွယ်ပေးပါလိမ့်မည်။\n\nလုံခြုံရေး\n\nသင့်အချက်အလက်များ၏ လျို့ဝှက်မှုကို လုံခြုံစေခြင်းနှင့်ပတ်သက်၍ ကျွန်ုပ်တို့ အလွန်သတိကြီးစွာထားပါသည်။ ကျွန်ုပ်တို့သည် ကိုယ်ရေးကိုယ်တာအချက်အလက်များကို စုစည်းရယူခြင်းမရှိပါ၊ ကျွန်ုပ်တို့သည် သင်၏ ကိုယ်ရေးကိုယ်တာမဟုတ်သော အချက်အလက်များကို အခွင့်မရှိဘဲ ဝင်ရောက်ကာ အသုံးပြုမှုမှ ကာကွယ်ရန် စီမံခန့်ခွဲရေး၊ စာရွက်စာတမ်းနှင့် အီလက်ထရောနစ် စီမံချက်များကို အသုံးပြုပါသည်။ သင်၏အချက်အလက်များကို ကာကွယ်ရန် ကျွန်ုပ်တို့လုပ်ဆောင်သော လုံခြုံရေးစီမံချက်များသည် သင်၏ ကိုယ်ရေးကိုယ်တာမဟုတ်သည့် တားဆီးထားသော အချက်အလက်များကို အခွင့်မရှိဘဲ ဝင်ရောက်မှု သို့မဟုတ် အသုံးပြုမှု မဖြစ်စေနိုင်ဟု လုံးဝအာမခံထားခြင်းမျိုး မရှိကြောင်း သတိပြုပါ။\n\nအရေးကြီးသောအချက်အလက်များ\n\nအက်ပလီကေးရှင်း၊ ဝန်ဆောင်မှုများ သို့မဟုတ် ဝဘ်ဆိုက်ဒ် သို့မဟုတ် ကျွန်ုပ်တို့ထံရောက်ရှိမည့် အခြားနည်းလမ်းများဖြင့် သို့မဟုတ် ၎င်းတို့မှတစ်ဆင့် အရေးကြီးသော ကိုယ်ရေးအချက်အလက် (ဥပမာ၊ လူမျိုးရေး သို့မဟုတ် မျိုးနွယ်စုဆိုင်ရာ ဇစ်မြစ်၊ နိုင်ငံရေးထင်မြင်ချက်များ၊ ကိုးကွယ်ယုံကြည်မှု သို့မဟုတ် အခြားသော ယုံကြည်မှုများ၊ ကျန်းမာရေး၊ လိင်နှစ်သက်မှု၊ ရာဇဝတ်မှုနောက်ခံ သို့မဟုတ် အလုပ်သမားသမဂ္ဂ အဖွဲ့ဝင်ဖြစ်မှုအပါအဝင် ယခင်အဖွဲ့အစည်းများတွင် အဖွဲ့ဝင်ဖြစ်မှု) ကို ကျွန်ုပ်တို့ထံ ပေးပို့ခြင်း၊ ဖွင့်ဟဖော်ပြခြင်းမျိုး မပြုလုပ်ရန် ပြောကြားလိုပါသည်။\n\nကျွန်ုပ်တို့ထံဆက်သွယ်ရန်\n\nဤမူဝါဒ သို့မဟုတ် ကျွန်ုပ်တို့၏ ကိုယ်ရေးလုံခြုံမှုကျင့်ထုံးများနှင့်ပတ်သက်၍ မေးမြန်းလိုသည်များ သို့မဟုတ် မှတ်ချက်ပြုလိုသည်များရှိလျှင်ဖြစ်စေ ဤမူဝါဒအပေါ် ချိုးဖောက်မှုများ သို့မဟုတ် ဝန်ဆောင်မှုများ သို့မဟုတ် ဝဘ်ဆိုက်ဒ်အား အလွဲသုံးစားလုပ်မှုတို့ကို သတင်းပေးပို့ရန် ကျွန်ုပ်တို့ထံ one.support@ironmeta.com မှတဆင့် ဆက်သွယ်ပေးပါ။</string>
+    <string name="vs_privacy_confirm_button">ကျွန်ုပ်သဘောတူပါသည်</string>
+
+    <string name="vs_dialog_add_an_hour">1 နာရီ ရယူမည်</string>
+    <string name="vs_dialog_get_later">နောက်မှ ရယူမည်</string>
+
+    <string name="vs_disconnected_report_title">ချိတ်ဆက်မှု သတင်းပေးပို့ချက်</string>
+    <string name="vs_disconnected_report_ip_address">IP လိပ်စာ</string>
+    <string name="vs_disconnected_report_duration">ကြာချိန်</string>
+    <string name="vs_disconnected_report_upload">အပ်လုဒ် စုစုပေါင်း</string>
+    <string name="vs_disconnected_report_download">ဒေါင်းလုဒ် စုစုပေါင်း</string>
+
+    <string name="vs_vip_feature_title">VIP သို့အဆင့်မြှင့်မည်</string>
+    <string name="vs_vip_dialog_desc_advantage_a">ကြော်ငြာများမပါပါ</string>
+    <string name="vs_vip_dialog_desc_advantage_b">ပိုမြန်သောအမြန်နှုန်း</string>
+    <string name="vs_vip_dialog_desc_advantage_c">ကမ္ဘာတစ်ဝှမ်းတည်နေရာများ</string>
+    <string name="vs_vip_state_load">အစီအစဉ်များကို လုပ်ဆောင်နေသည်&#8230;</string>
+    <string name="vs_vip_state_normal_content">သင်သည် VIP မဟုတ်ပါ၊ အဆင့်မြှင့်ပေးပါ။</string>
+    <string name="vs_vip_state_pending_content">သင်၏ဝယ်ယူမှုကို ဆိုင်းငံ့ထားပါသည်၊ ဝယ်ယူမှုကို စစ်ဆေးရန် \'Play Store စာရင်းသွင်းမှု\' ထံသွားပြီး နောက်တစ်ကြိမ် ကြိုးစားကြည့်ပါ</string>
+    <string name="vs_vip_state_vip_content">ဂုဏ်ယူပါတယ်။\nသင်သည် VIP အသုံးပြုသူတစ်ဦး ဖြစ်သွားပါပြီ။</string>
+    <string name="vs_vip_dialog_desc_rule">စာရင်းသွင်းမှုကို အလိုအလျောက် အသစ်ပြန်လုပ်လိုက်ပြီး သင်၏အကောင့်ကို လစဉ် သို့မဟုတ် နှစ်စဉ် ငွေကောက်ခံပါလိမ့်မည်။ သင်သည် အချိန်မရွေး ပယ်ဖျက်နိုင်ပါသည်။</string>
+
+    <string name="vs_rating_dialog_title">ကျွန်ုပ်တို့ကို အမှတ်ပေးပေးပါ</string>
+    <string name="vs_rating_dialog_title2">Tomato ကို လိုက်ခ်လုပ်မည်လား။</string>
+    <string name="vs_rating_dialog_desc">သင်၏အဆင့်သတ်မှတ်ပေးခြင်းကို သတ်မှတ်ရန် ကြယ်တစ်ပွင့်ကို နှိပ်ပါ</string>
+    <string name="vs_rating_dialog_positive_comment">ကြားသိရသည့်အတွက် အလွန်ပျော်ရွှင်မိပါသည် :)</string>
+    <string name="vs_rating_dialog_negative_comment">ကြားသိရသည့်အတွက် ဝမ်းနည်းမိပါသည် :(</string>
+    <string name="vs_rating_dialog_conform_button">အိုကေ</string>
+    <string name="vs_rating_view_terrible_title">အလွန်ဆိုးရွားသည်</string>
+    <string name="vs_rating_view_bad_title">ဆိုးရွားသည်</string>
+    <string name="vs_rating_view_okay_title">အိုကေ</string>
+    <string name="vs_rating_view_good_title">ကောင်းသည်</string>
+    <string name="vs_rating_view_great_title">အလွန်ကောင်းသည်</string>
+    <string name="vs_rating_select_none_tips">အပြုံးမျက်နှာလေးကို နှိပ်ပေးပါ</string>
+    <string name="vs_rating_feedback_send">ကျွန်ုပ်တွင် တုံ့ပြန်ပြောကြားချက်အချို့ ရှိပါသည်</string>
+    <string name="vs_rating_feedback_tip">ကျွန်ုပ်တို့ကို အမှတ်ပေးကာ တုံ့ပြန်ဖြေကြားချက်ပေးရန် အပေါ်သို့ လျှောတွန်းပါ</string>
+    <string name="vs_rating_thanks_tips">သင်၏ အဆင့်သတ်မှတ်ပေးခြင်းအတွက် ကျေးဇူးတင်ရှိပါသည်</string>
+
+    <string name="vs_add_time_an_hour">1 နာရီထပ်ထည့်ရန် နှိပ်ပါ</string>
+    <string name="vs_add_time_an_hour_1">+ 1 နာရီ</string>
+    <string name="vs_add_time_an_hour_succeed_dialog_title">ဂုဏ်ယူပါတယ်။</string>
+    <string name="vs_add_time_an_hour_succeed_dialog_content">ချိတ်ဆက်ချိန်ကို 1 နာရီ တိုးထားပါသည်</string>
+    <string name="vs_add_time_an_hour_wait">ခေတ္တစောင့်ဆိုင်းပေးပါ&#8230;(%s s)</string>
+    <string name="vs_add_time_an_hour_wait_1">စောင့်ဆိုင်းပေးပါ&#8230;(%s s)</string>
+
+    <string name="vs_add_time_two_hour">2 နာရီထပ်ထည့်ရန် နှိပ်ပါ</string>
+    <string name="vs_add_time_two_hours">2 နာရီထပ်ထည့်ရန် နှိပ်ပါ</string>
+    <string name="vs_add_time_two_hours_1">+ 2 နာရီ</string>
+    <string name="vs_add_time_two_hours_preparing">ပြင်ဆင်နေသည်&#8230;</string>
+    <string name="vs_add_time_two_hour_way">ဗီဒီယိုကြော်ငြာတစ်ခုကို ကြည့်ခြင်းဖြင့်</string>
+    <string name="vs_add_time_two_hour_wait">ပြင်ဆင်နေသည်&#8230;</string>
+    <string name="vs_add_time_two_hour_succeed">ဂုဏ်ယူပါတယ်။ ချိတ်ဆက်ချိန်ကို 2 နာရီ တိုးထားပါသည်</string>
+    <string name="vs_add_time_two_hour_fail">ဆုချီးမြှင့်မှုရယူရန် ဗီဒီယို ပြီးဆုံးသည်အထိ ကြည့်ရပါမည်</string>
+
+    <string name="vs_add_time_get_an_hour">1 နာရီ ရယူမည်</string>
+    <string name="vs_add_time_get_later">နောက်မှ ရယူမည်</string>
+
+    <string name="vs_feature_apps_bypass_title">အက်ပ်များကို ဖြတ်ကျော်မှု ဆက်တင်များ</string>
+    <string name="vs_feature_apps_bypass_title2">VPN အသုံးပြုနေသည့်အက်ပ်များ</string>
+    <string name="vs_feature_app_bypass_tip">နောက်လာမည့်ချိတ်ဆက်မှုတွင် ၎င်းက သက်ရောက်မှုရှိလိမ့်မည်ဖြစ်သည်ကို မှတ်သားပေးပါ</string>
+
+    <string name="vs_feature_settings_title">ဆက်တင်များ</string>
+    <string name="vs_feature_settings_title2">VPN ဆက်တင်များ</string>
+    <string name="vs_setting_button_restart_vpn">VPN ကို ပြန်စတင်မည်</string>
+    <string name="vs_setting_item_dns">UDP ပေါ်ရှိ DNS</string>
+    <string name="vs_setting_item_ipv6">IPv6 လမ်းကြောင်းထံ ပြန်၍လမ်းညွှန်ပါ</string>
+    <string name="vs_setting_item_tcp">TCP အမြန်ဖွင့်ခြင်းကို ဖွင့်ပါ</string>
+
+    <string name="vs_feature_share_title">မျှဝေပါ</string>
+    <string name="vs_feature_share_statement">QR ကုဒ်မျှဝေပါ</string>
+    <string name="vs_feature_share_item_name_whats_app">WhatsApp</string>
+    <string name="vs_feature_share_item_name_sms">SMS</string>
+    <string name="vs_feature_share_item_name_email">အီးမေးလ်</string>
+    <string name="vs_feature_share_item_name_copy_link">လင့်ခ်ကို ကူးယူမည်</string>
+    <string name="vs_feature_share_item_name_more">ပို၍</string>
+    <string name="vs_feature_share_title_for_chooser">ဖော်ပြပါကိုသုံး၍ လုပ်ဆောင်ချက်ကို အပြီးသတ်မည်</string>
+    <string name="vs_feature_share_content_text">IronMeta One သည် မြန်ဆန်ကာ၊ ကန့်သတ်ထားမှုမရှိဘဲ သီးသန့်ဖြစ်သော VPN ပရောက်ဇီဖြစ်ပါသည်။ ဤအက်ပ်ကို ထည့်သွင်းရန် အလွန်ထောက်ခံထားပါသည်။ ဒေါင်းလုဒ်လင့်ခ်</string>
+    <string name="vs_feature_share_content_email_subject">IronMeta One | အခမဲ့ VPN ပရောက်ဇီ၊ လျင်မြန်သော VPN၊ ပိတ်ဆို့ထားမှုကိုပိတ်မည်</string>
+
+    <string name="vs_feature_share_item_tip_whats_app">WhatsApp ဖြင့် ၎င်းကိုမျှဝေမှု မအောင်မြင်ပါ။</string>
+    <string name="vs_feature_share_item_tip_sms">sms ဖြင့် ၎င်းကိုမျှဝေမှု မအောင်မြင်ပါ။</string>
+    <string name="vs_feature_share_item_tip_email">အီးမေးလ်ဖြင့် ၎င်းကိုမျှဝေမှု မအောင်မြင်ပါ။</string>
+    <string name="vs_feature_share_item_tip_copy_link">ကူးယူထားသည်</string>
+    <string name="vs_feature_share_item_tip_more">ပိုမိုသောအရာဖြင့် ၎င်းကိုမျှဝေမှု မအောင်မြင်ပါ။</string>
+
+    <string name="vs_feature_language_title">ဘာသာစကား</string>
+
+    <string name="vs_feature_privacy_policy_title">ကိုယ်ရေးလုံခြုံမှုမူဝါဒ</string>
+    <string name="vs_privacy_policy_setting">ဆက်တင်များ</string>
+
+    <string name="vs_feature_my_vip_account">ကျွန်ုပ်၏ VIP အကောင့်</string>
+
+    <string name="vs_feature_terms_of_service_title">ဝန်ဆောင်မှုစည်းကမ်းများ</string>
+
+        <string name="vs_feature_FAQ_title">FAQ</string>
+    <string name="vs_faq_question_1">မေး1- VPN Tomato ကို ဘယ်လိုသုံးရမှာပါလဲ။</string>
+    <string name="vs_faq_question_2">မေး2- VPN Tomato က လုံခြုံပါသလား။</string>
+    <string name="vs_faq_question_3">မေး3- VPN Tomato ကို ဘာလို့ ချိတ်ဆက်လို့မရတာပါလဲ။</string>
+    <string name="vs_faq_question_4">မေး4- ချိတ်ဆက်မှု မတည်ငြိမ်ပါက သို့မဟုတ် နှေးနေပါက ဘယ်လိုလုပ်ရမှာပါလဲ။</string>
+    <string name="vs_faq_question_5">မေး5- နှစ်သက်သော IP၊ ဆာဗာ သို့မဟုတ် ဒေသကို ဘယ်လိုရွေးရမှာပါလဲ။</string>
+    <string name="vs_faq_question_6">မေး6- VPN Tomato က သင် လိုလားသော IP၊ ဆာဗာ သို့မဟုတ် ဒေသကို မဖြည့်ဆည်းပေးပါက ဘာလုပ်ရမှာပါလဲ။</string>
+    <string name="vs_faq_question_7">P2P သို့မဟုတ် BitTorrent ကို မသုံးပါနှင့်။</string>
+    <string name="vs_faq_answer_1">\'သွားပါ\' ခလုတ်ကိုသာနှိပ်ပါ။ ၎င်းက \'ချိတ်ဆက်ထားသည်\' ဟုပြသပါသည်၊ VPN Tomato အလုပ်လုပ်ဆောင်သည်ဟု ဆိုလိုပါသည်။ သင် ပထမဆုံးအကြိမ် ချိတ်ဆက်ချိန်တွင် \'ဤအက်ပလီကေးရှင်းကို ယုံကြည်ပါသည်\' ကိုအမှတ်ခြစ်ပေးပါ။</string>
+    <string name="vs_faq_answer_2">၎င်းက အကန့်အသတ်မရှိသော ဒေတာနှင့် အချိန်တို့ဖြင့် 100% ဘေးကင်းလုံခြုံမှုရှိသော်လည်း P2P သို့မဟုတ် BitTorrent ကို ခွင့်မပြုထားပါ။ ထို့အတူ၊ VPN Tomato သည် သင်၏ WiFi ဟော့စပေါ့ လုံခြုံရေးနှင့် ကိုယ်ရေးလုံခြုံမှုကို ကာကွယ်ပေးပါသည်။ ၎င်းက သုံးစွဲသူ၏အချက်အလက်များကို လုံးဝ ခိုးယူလိမ့်မည်မဟုတ်ပါ။</string>
+    <string name="vs_faq_answer_3">ထို့အတွက် အကြောင်းရင်းအချို့ရှိပါသည်- (1) ၎င်းက \'ကွန်ရက်မရရှိနိုင်ပါ\' ကို ပြသပါက၊ ကွန်ရက်က တည်ငြိမ်မှုမရှိဘဲ သင်၏မိုဘိုင်းဖုန်းကို အင်တာနက်တွင် ချိတ်ဆက်ထားကြောင်း သေချာအောင်လုပ်သင့်သည်ဟု ဆိုလိုပါသည်။ (2) ၎င်းက \'ချိတ်ဆက်မှု အချိန်ကုန်သွားပါသည်\' ဟုပြသပါက၊ လက်ရှိဆာဗာ မအားလပ်ပါ သို့မဟုတ် သင့်ဒေသတွင် ပိတ်ဆို့တားမြစ်ထားသည်ဟု ဆိုလိုက်ပါသည်။ သင်သည် အခြားဆာဗာကို ရွေးချယ်နိုင်ပါသည်၊ သို့မဟုတ် ထပ်မံကြိုးစားနိုင်ပါသည်။ (3) ၎င်းက \'ယခု ဆာဗာများကိုမရရှိနိုင်ပါ\' ဟုပြသပါက၊ သင်သည် VPN Tomato ကို နောက်ဆုံးဗားရှင်းသို့ အပ်ဒိတ်လုပ်ရန် လိုအပ်ပါသည်။ (4) အထက်ပါအားလုံးက အလုပ်မဖြစ်ပါက၊ သင်သည် VPN Tomato ကို ထည့်သွင်းထားမှု ပယ်ဖျက်ကာ၊ ၎င်းကို ပြန်လည်၍ထည့်သွင်းနိုင်ပါသည်။ များသောအားဖြင့် ၎င်းက ကောင်းမွန်စွာ အလုပ်လုပ်ပါလိမ့်မည်။</string>
+    <string name="vs_faq_answer_4">ပင်မစာမျက်နှာရှိ တူးလ်ဘား၏ ညာဘက်ထိပ်ဆုံးတွင် နိုင်ငံအလံကို နှိပ်ပြီးနောက် အမြန်ဆုံးနှင့် တည်ငြိမ်မှုအရှိဆုံးဆာဗာကို ရွေးချယ်ကာ ပြန်ချိတ်ဆက်ပါ။ များသောအားဖြင့် အမြန်ဆုံးဆာဗာသည် သင်ရှိနေသောနိုင်ငံနှင့် နီးကပ်သောဒေသတွင် ဖြစ်ပါသည်။ ဆာဗာများအားလုံး မတည်ငြိမ်ပါက၊ vpntomato.dev@gmail.com ထံ အီးမေးလ်ပေးပို့ပေးပါ၊ ကျွန်ုပ်တို့ သင့်ထံသို့ တတ်နိုင်သမျှအမြန်ဆုံး အကြောင်းပြန်ပေးပါမည်။</string>
+    <string name="vs_faq_answer_5">ပင်မစာမျက်နှာရှိ တူးလ်ဘား၏ ညာဘက်ထိပ်ဆုံးတွင် နိုင်ငံတော်အလံကို နှိပ်ပါ။ ထို့နောက် သင် နှစ်သက်ကာ ချိတ်ဆက်လိုသော IP၊ ဒေသ သို့မဟုတ် ဆာဗာကို ရွေးပါ။</string>
+    <string name="vs_faq_answer_6">vpntomato.dev@gmail.com ထံ အီးမေးလ်ပေးပို့ပေးပါ၊ ကျွန်ုပ်တို့ သင့်ထံသို့ တတ်နိုင်သမျှအမြန်ဆုံး အကြောင်းပြန်ပေးပါမည်။</string>
+    <string name="vs_faq_answer_7">BitTorrent ကို VPN ဖြင့်အသုံးမပြုပါနှင့်၊ သို့မဟုတ်ပါက သင့်အကောင့် ပိတ်ဆို့ခြင်းခံရပါလိမ့်မည်။</string>
+
+    <string name="vs_feature_feedback_title">တုံ့ပြန်ဖြေကြားချက်</string>
+    <string name="vs_feature_feedback_rating_guide_toast_slides_up_tip">ကျွန်ုပ်တို့ကို အမှတ်ပေးကာ တုံ့ပြန်ဖြေကြားချက်ပေးရန် အပေါ်သို့ လျှောတွန်းပါ</string>
+    <string name="vs_feedback_rating_text">သင်၏အမှတ်ပေးခြင်း-</string>
+    <string name="vs_feedback_content_text">သင်၏အကြောင်းအရာ-</string>
+    <string name="vs_feedback_content_hintText">သင်၏တုံ့ပြန်ဖြေကြားချက်ကို ထည့်သွင်းပေးပါ</string>
+    <string name="vs_feedback_email_text">သင်၏အီးမေးလ်-</string>
+    <string name="vs_feedback_email_hintText">သင်၏အီးမေးလ်ကို ထည့်သွင်းပေးပါ</string>
+    <string name="vs_feedback_no_email_showToast">သင်၏အကြောင်းအရာအီးမေးလ်ကို ထည့်သွင်းပေးပါ</string>
+    <string name="vs_feedback_wrong">တစ်ခုခုမှားနေပါသည်&#8230;</string>
+    <string name="vs_feedback_privacy_policy">ကိုယ်ရေးလုံခြုံမှုမူဝါဒကို လိုက်နာပါသည် &#8230;</string>
+    <string name="vs_feedback_thanks">သင်၏တုံ့ပြန်ဖြေကြားချက်အတွက် ကျေးဇူးတင်ရှိပါသည်</string>
+
+    <string name="update_dialog_title">ဗားရှင်းအသစ်</string>
+    <string name="update_dialog_desc">ပိုမိုမြန်ဆန်သော ဆာဗာများရှိပြီး ဘဂ်အများအပြားကို ပြင်ဆင်ထားပြီးဖြစ်သော နောက်ဆုံးရဗားရှင်းကို ထုတ်ထားပြီးဖြစ်ပါသည်။ အပ်ဒိတ်လုပ်ရန် ကျွန်ုပ်တို့အကြံပြုပါသည်။</string>
+    <string name="update_dialog_cancel">နောက်မှ</string>
+    <string name="update_dialog_ok">ယခုအပ်ဒိတ်လုပ်မည်</string>
+
+    <string name="vs_feature_region_selector_title">ဒေသရွေးချယ်သည့်အရာ</string>
+    <string name="vs_feature_region_selector_title2">အခြားဒေသသို့ပြောင်းပါ</string>
+    <string name="vs_feature_region_selector_title3">VPN ဒေသကိုပြောင်းပါ</string>
+    <string name="vs_feature_region_selector_no_server">ဝမ်းနည်းပါသည်၊ ဆာဗာများမရှိပါ</string>
+    <string name="vs_feature_region_change_dialog_title">ဒေသပြောင်းပါမည်လား။</string>
+    <string name="vs_feature_region_change_dialog_decs">ချိတ်ဆက်ရန်အတွက် အခြားသောဒေသအချို့ထံ ပြောင်းလိုပါက သို့မဟုတ် ရွေးလိုပါက၊ \'ပြောင်းမည်\' ကို နှိပ်ပေးပါ</string>
+    <string name="vs_feature_region_change_connecting">ချိတ်ဆက်ရန်အတွက် အခြားသောဒေသအချို့ထံ ပြောင်းလိုပါက သို့မဟုတ် ရွေးလိုပါက၊ \'ပြောင်းမည်\' ကို နှိပ်ပေးပါ</string>
+    <string name="vs_feature_region_change_disconnecting">ချိတ်ဆက်ရန်အတွက် အခြားသောဒေသအချို့ထံ ပြောင်းလိုပါက သို့မဟုတ် ရွေးလိုပါက၊ \'ပြောင်းမည်\' ကို နှိပ်ပေးပါ</string>
+    <string name="vs_feature_region_refresh_tips_loading">ဆာဗာစာရင်းကို ပြန်လည်စတင်နေသည်&#8230;</string>
+    <string name="vs_feature_region_refresh_tips_success">အောင်မြင်စွာ ပြန်လည်စတင်လိုက်ပါပြီ</string>
+
+    <string name="summary_title">အနှစ်ချုပ်</string>
+    <string name="summary_body">ဂုဏ်ယူမိပါသည်။ ကျွန်ုပ်တို့က သင့်အတွက် ဝန်ဆောင်မှုပေးနေသည့်အရာမှာ</string>
+    <string name="region_pre">ဒေသ-%s</string>
+    <string name="traffic_usage">လမ်းကြောအသုံးပြုမှု</string>
+
+    <string name="get_1_hour">1 နာရီ ရယူမည်</string>
+    <string name="get_later">နောက်မှ ရယူမည်</string>
+
+    <string name="vs_feature_splash_tip_loading">လုပ်ဆောင်နေသည်&#8230;</string>
+
+    <string name="vs_region_default">ကျပန်းဒေသ</string>
+    <string name="vs_region_default2">အော်တိုရွေးချယ်မှု</string>
+    <string name="vs_region_default_desc">အကောင်းဆုံးဒေသကို ရွေးပါ</string>
+    <string name="vs_region_default_desc2">အကောင်းဆုံးဆာဗာကို ရှာပါ</string>
+</resources>
