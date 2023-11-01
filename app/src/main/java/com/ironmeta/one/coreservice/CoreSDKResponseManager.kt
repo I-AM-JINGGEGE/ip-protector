@@ -76,7 +76,7 @@ object CoreSDKResponseManager {
         catch (e: IServers.GeoRestrictedException) {
             LegalManager.getInstance(MainApplication.context).logNotInLegalRegion()
         } catch (ignore: Exception) {
-            throw ignore
+
         }
         fetchResponseRefreshingAsLiveData.postValue(false)
         fetchResponse?.let {
