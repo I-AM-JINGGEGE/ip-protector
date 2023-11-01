@@ -23,71 +23,28 @@ import java.util.Timer
 import kotlin.concurrent.schedule
 
 class AdPresenter(adUnitSet: UserAdConfig.AdUnitSet, val context: Context) : IAdPresenterProxy {
-    private var adInterstitialMap: HashMap<String, AdInterstitialAdmob>? = null
-    private var adRewardedMap: HashMap<String, AdRewarded>? = null
     private var adNative: AdNative? = null
-    private var adAppOpenMap: HashMap<String, AdAppOpenAdmob>? = null
+    private var adInterstitial: AdInterstitialAdmob? = null
 
     init {
         initAds(adUnitSet, context)
-    }
-    
-    private fun getInterstitialAdOrCreate(adPlacement: String): AdInterstitialAdmob? {
-        return adInterstitialMap?.let {
-            val interstitial = it[adPlacement] ?: AdInterstitialAdmob(
-                (if (BuildConfig.DEBUG) generateAdUnitDebugId(AdFormat.INTERSTITIAL, AdPlatform.ADMOB) else getReleaseAdUnitId(adPlacement)), context
-            )
-            it[adPlacement] = interstitial
-            interstitial
-        }
-    }
-
-    private fun getAppOpenAdOrCreate(adPlacement: String): AdAppOpenAdmob? {
-        return adAppOpenMap?.let {
-            val appOpen = it[adPlacement] ?: AdAppOpenAdmob(
-                (if (BuildConfig.DEBUG) generateAdUnitDebugId(AdFormat.APP_OPEN, AdPlatform.ADMOB) else getReleaseAdUnitId(adPlacement)), context
-            )
-            it[adPlacement] = appOpen
-            appOpen
-        }
-    }
-
-    private fun getRewardedAdOrCreate(adPlacement: String): AdRewarded? {
-        return adRewardedMap?.let {
-            val rewarded = it[adPlacement] ?: AdRewarded((if (BuildConfig.DEBUG) generateAdUnitDebugId(AdFormat.REWARDED, AdPlatform.ADMOB) else getReleaseAdUnitId(adPlacement)))
-            it[adPlacement] = rewarded
-            rewarded
-        }
-    }
-
-    private fun getReleaseAdUnitId(adPlacement: String): String {
-        return when (adPlacement) {
-            AdConstant.AdPlacement.I_APP_START_DISCONNECT -> AdConstant.AdUnitId.I_APP_START_DISCONNECT
-            AdConstant.AdPlacement.I_APP_START_CONNECT -> AdConstant.AdUnitId.I_APP_START_CONNECT
-            AdConstant.AdPlacement.I_CONNECTED -> AdConstant.AdUnitId.I_CONNECTED
-            AdConstant.AdPlacement.I_DISCONNECT -> AdConstant.AdUnitId.I_DISCONNECT
-            AdConstant.AdPlacement.I_HOME_RESTART_DISCONNECT -> AdConstant.AdUnitId.I_HOME_RESTART_DISCONNECT
-            AdConstant.AdPlacement.I_HOME_RESTART_CONNECT -> AdConstant.AdUnitId.I_HOME_RESTART_CONNECT
-            AdConstant.AdPlacement.I_ADD_TIME_MAIN_PAGE_1 -> AdConstant.AdUnitId.I_ADD_TIME_MAIN_PAGE_1
-            AdConstant.AdPlacement.I_ADD_TIME_MAIN_PAGE_2 -> AdConstant.AdUnitId.I_ADD_TIME_MAIN_PAGE_2
-            AdConstant.AdPlacement.I_ADD_TIME_1_REPORT_PAGE -> AdConstant.AdUnitId.I_ADD_TIME_1_REPORT_PAGE
-            AdConstant.AdPlacement.I_ADD_TIME_2_REPORT_PAGE -> AdConstant.AdUnitId.I_ADD_TIME_2_REPORT_PAGE
-            AdConstant.AdPlacement.I_AFTER_REWARDED -> AdConstant.AdUnitId.I_AFTER_REWARDED
-            AdConstant.AdPlacement.I_CONNECTIVITY_TEST -> AdConstant.AdUnitId.I_CONNECTIVITY_TEST
-            AdConstant.AdPlacement.I_BACK_HOME_CONNECTED -> AdConstant.AdUnitId.I_BACK_HOME_CONNECTED
-            AdConstant.AdPlacement.I_BACK_HOME_DISCONNECTED -> AdConstant.AdUnitId.I_BACK_HOME_DISCONNECTED
-            AdConstant.AdPlacement.R_ADD_TIME -> AdConstant.AdUnitId.R_ADD_TIME
-            else -> ""
-        }
     }
 
     private fun initAds(adUnitSet: UserAdConfig.AdUnitSet, context: Context) {
         if (adUnitSet.switch != true) {
             return
         }
-        adInterstitialMap = HashMap()
-        adAppOpenMap = HashMap()
-        adRewardedMap = HashMap()
+        adUnitSet.interstitial?.let { list ->
+            if (list.isEmpty()) {
+                return@let
+            }
+            when (list[0].adPlatform) {
+                AdPlatform.ADMOB.id.toString() -> {
+                    val adUnitId = if (BuildConfig.DEBUG) generateAdUnitDebugId(AdFormat.INTERSTITIAL, AdPlatform.ADMOB) else list[0].id
+                    adInterstitial = AdInterstitialAdmob(adUnitId, context)
+                }
+            }
+        }
         adUnitSet.native?.let { list ->
             if (list.isEmpty()) {
                 return@let
@@ -109,16 +66,16 @@ class AdPresenter(adUnitSet: UserAdConfig.AdUnitSet, val context: Context) : IAd
                 val loadListenerProxy = object : AdLoadListener {
                     override fun onAdLoaded() {
                         loadListener?.onAdLoaded()
-                        DTAdReport.reportLoadEnd(getInterstitialAdOrCreate(adPlacement)?.adId?:"", AdType.INTERSTITIAL, com.roiquery.ad.AdPlatform.ADMOB, (System.currentTimeMillis() - loadStart), true, getInterstitialAdOrCreate(adPlacement)?.seq?:"")
+                        DTAdReport.reportLoadEnd(adInterstitial?.adId?:"", AdType.INTERSTITIAL, com.roiquery.ad.AdPlatform.ADMOB, (System.currentTimeMillis() - loadStart), true, adInterstitial?.seq?:"")
                     }
 
                     override fun onFailure(errorCode: Int, errorMessage: String) {
-                        DTAdReport.reportLoadEnd(getInterstitialAdOrCreate(adPlacement)?.adId?:"", AdType.INTERSTITIAL, com.roiquery.ad.AdPlatform.ADMOB, (System.currentTimeMillis() - loadStart), false, getInterstitialAdOrCreate(adPlacement)?.seq?:"", errorCode, errorMessage)
+                        DTAdReport.reportLoadEnd(adInterstitial?.adId?:"", AdType.INTERSTITIAL, com.roiquery.ad.AdPlatform.ADMOB, (System.currentTimeMillis() - loadStart), false, adInterstitial?.seq?:"", errorCode, errorMessage)
                         if (loadTimes == 1 && errorCode != AdRequest.ERROR_CODE_NO_FILL && errorCode != AdRequest.ERROR_CODE_MEDIATION_NO_FILL) {
                             Timer().schedule(2000) {
                                 loadTimes ++
                                 GlobalScope.launch(Dispatchers.Main) {
-                                    getInterstitialAdOrCreate(adPlacement)?.loadAd(loadListener)
+                                    adInterstitial?.loadAd(loadListener)
                                 }
                             }
                         } else {
@@ -126,53 +83,9 @@ class AdPresenter(adUnitSet: UserAdConfig.AdUnitSet, val context: Context) : IAd
                         }
                     }
                 }
-                getInterstitialAdOrCreate(adPlacement)?.loadAd(loadListenerProxy)
+                adInterstitial?.loadAd(loadListenerProxy)
                 loadTimes = 1
-                DTAdReport.reportLoadBegin(getInterstitialAdOrCreate(adPlacement)?.adId?:"", AdType.INTERSTITIAL, com.roiquery.ad.AdPlatform.ADMOB, getInterstitialAdOrCreate(adPlacement)?.seq?:"")
-            }
-            AdFormat.APP_OPEN -> {
-                var loadTimes = 0
-                val loadListenerProxy = object : AdLoadListener {
-                    override fun onAdLoaded() {
-                        loadListener?.onAdLoaded()
-                    }
-
-                    override fun onFailure(errorCode: Int, errorMessage: String) {
-                        if (loadTimes == 1 && errorCode != AdRequest.ERROR_CODE_NO_FILL && errorCode != AdRequest.ERROR_CODE_MEDIATION_NO_FILL) {
-                            Timer().schedule(2000) {
-                                GlobalScope.launch(Dispatchers.Main) {
-                                    getAppOpenAdOrCreate(adPlacement)?.loadAd(loadListener)
-                                }
-                            }
-                        } else {
-                            loadListener?.onFailure(errorCode, errorMessage)
-                        }
-                    }
-                }
-                getAppOpenAdOrCreate(adPlacement)?.loadAd(loadListenerProxy)
-                loadTimes = 1
-            }
-            AdFormat.REWARDED -> {
-                var loadTimes = 0
-                val loadListenerProxy = object : AdLoadListener {
-                    override fun onAdLoaded() {
-                        loadListener?.onAdLoaded()
-                    }
-
-                    override fun onFailure(errorCode: Int, errorMessage: String) {
-                        if (loadTimes == 1) {
-                            Timer().schedule(2000) {
-                                GlobalScope.launch(Dispatchers.Main) {
-                                    getRewardedAdOrCreate(adPlacement)?.loadAd(loadListener)
-                                }
-                            }
-                        } else {
-                            loadListener?.onFailure(errorCode, errorMessage)
-                        }
-                    }
-                }
-                getRewardedAdOrCreate(adPlacement)?.loadAd(loadListenerProxy)
-                loadTimes = 1
+                DTAdReport.reportLoadBegin(adInterstitial?.adId?:"", AdType.INTERSTITIAL, com.roiquery.ad.AdPlatform.ADMOB, adInterstitial?.seq?:"")
             }
         }
     }
@@ -192,13 +105,7 @@ class AdPresenter(adUnitSet: UserAdConfig.AdUnitSet, val context: Context) : IAd
     override fun isLoadedExceptNative(adFormat: AdFormat, adPlacement: String): Boolean {
         return when (adFormat) {
             AdFormat.INTERSTITIAL -> {
-                getInterstitialAdOrCreate(adPlacement)?.isLoaded() == true
-            }
-            AdFormat.REWARDED -> {
-                getRewardedAdOrCreate(adPlacement)?.isLoaded() == true
-            }
-            AdFormat.APP_OPEN -> {
-                getAppOpenAdOrCreate(adPlacement)?.isLoaded() == true
+                adInterstitial?.isLoaded() == true
             }
             else -> {
                 false
@@ -218,13 +125,7 @@ class AdPresenter(adUnitSet: UserAdConfig.AdUnitSet, val context: Context) : IAd
     ) {
         when (adFormat) {
             AdFormat.INTERSTITIAL -> {
-                getInterstitialAdOrCreate(adPlacement)?.show(activity, listener, adPlacement)
-            }
-            AdFormat.REWARDED -> {
-                getRewardedAdOrCreate(adPlacement)?.show(activity, listener, adPlacement)
-            }
-            AdFormat.APP_OPEN -> {
-                getAppOpenAdOrCreate(adPlacement)?.show(activity, listener, adPlacement)
+                adInterstitial?.show(activity, listener, adPlacement)
             }
         }
     }
@@ -330,16 +231,7 @@ class AdPresenter(adUnitSet: UserAdConfig.AdUnitSet, val context: Context) : IAd
     override fun logToShow(type: AdFormat, adPlacement: String) {
         when (type) {
             AdFormat.INTERSTITIAL -> {
-                getInterstitialAdOrCreate(adPlacement)?.logToShow(adPlacement)
-            }
-            AdFormat.NATIVE -> {
-
-            }
-            AdFormat.APP_OPEN -> {
-                getAppOpenAdOrCreate(adPlacement)?.logToShow(adPlacement)
-            }
-            AdFormat.REWARDED -> {
-                getRewardedAdOrCreate(adPlacement)?.logToShow(adPlacement)
+                adInterstitial?.logToShow(adPlacement)
             }
         }
     }
