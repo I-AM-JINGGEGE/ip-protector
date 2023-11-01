@@ -108,9 +108,7 @@ class MainApplication : Application(), IIMSDKApplication {
         //ROIQuery
         initROIQuery()
         // log
-        if (!ProcessUtils.isInMainProcess(this)) {
-            FirebaseApp.initializeApp(this) // firebase crashlytics has to call FirebaseApp.initializeApp firstly on non-main process
-        }
+        FirebaseApp.initializeApp(this)
 
         // analytics
         VlogManager.getInstance(this)
