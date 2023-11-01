@@ -2,8 +2,8 @@ package com.ironmeta.one.ui
 
 import android.animation.ValueAnimator
 import android.os.Bundle
-import android.util.Log
 import android.view.animation.DecelerateInterpolator
+import androidx.lifecycle.lifecycleScope
 import com.ironmeta.one.MainApplication
 import com.ironmeta.one.R
 import com.ironmeta.one.ads.AdPresenterWrapper
@@ -16,7 +16,11 @@ import com.ironmeta.one.databinding.SplashLayoutBinding
 import com.ironmeta.one.ui.common.CommonAppCompatActivity
 import com.ironmeta.tahiti.TahitiCoreServiceStateInfoManager
 import com.jaeger.library.StatusBarUtil
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.libpag.PAGFile
+import org.libpag.PAGView
 import java.lang.Exception
 
 class SplashActivity : CommonAppCompatActivity() {
@@ -91,10 +95,29 @@ class SplashActivity : CommonAppCompatActivity() {
     }
 
     private fun startAnimation() {
-        binding.loading.composition =
-            PAGFile.Load(MainApplication.context.assets, "loading.pag")
-        binding.loading.setRepeatCount(1)
-        binding.loading.play()
+        val delayMills = 2400L
+        binding.loading.apply {
+            composition = PAGFile.Load(MainApplication.context.assets, "loading.pag")
+            lifecycleScope.launch(Dispatchers.IO) {
+                playLoadingOnce(this@apply)
+                delay(delayMills)
+                playLoadingOnce(this@apply)
+                delay(delayMills)
+                playLoadingOnce(this@apply)
+                delay(delayMills)
+                playLoadingOnce(this@apply)
+                delay(delayMills)
+                playLoadingOnce(this@apply)
+            }
+        }
+    }
+
+    private fun playLoadingOnce(pagView: PAGView) {
+        lifecycleScope.launch(Dispatchers.Main) {
+            pagView.stop()
+            pagView.progress = 0.0
+            pagView.play()
+        }
     }
 
     private fun startCountingDown() {
