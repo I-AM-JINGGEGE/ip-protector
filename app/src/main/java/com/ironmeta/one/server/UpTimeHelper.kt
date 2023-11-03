@@ -55,8 +55,6 @@ object UpTimeHelper {
                 RuntimeException("isRunning=${IMSDK.uptimeLimit.ongoing.isRunning}").printStackTrace()
                 e.printStackTrace()
             }
-        } else {
-            Log.i("jingjing", "running")
         }
     }
 

@@ -59,7 +59,7 @@ class MainApplication : Application(), IIMSDKApplication {
     override val app: Application = this
     override val configureClass: KClass<out Any> = MainActivity::class
     override val applicationId: String = BuildConfig.APPLICATION_ID
-    override val notification: IIMSDKApplication.CustomNotification get() = ConnectionInfoNotification(this@MainApplication)
+    override val notification: IIMSDKApplication.CustomNotification get() = ConnectionInfoNotification.getInstance(this@MainApplication)
     var isCold = false
     override fun onCreate() {
         super.onCreate()
@@ -197,7 +197,7 @@ class MainApplication : Application(), IIMSDKApplication {
         }, 1000, RemoteConfigManager.getInstance().reportBeatDuration)
         NetworkManager.getInstance(this).connectedAsLiveData
             .observeForever { connected: Boolean? ->
-                if (!connected!! || TahitiCoreServiceStateInfoManager.getInstance(this)
+                if (connected != true || TahitiCoreServiceStateInfoManager.getInstance(this)
                         .coreServiceConnected
                 ) {
                     return@observeForever

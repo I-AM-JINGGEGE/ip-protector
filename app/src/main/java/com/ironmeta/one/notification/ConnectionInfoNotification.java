@@ -56,7 +56,6 @@ public class ConnectionInfoNotification implements IIMSDKApplication.CustomNotif
         if (coreServiceState == null) {
             return;
         }
-
         updateNotification(coreServiceState);
 
         if (CoreServiceStateConstants.isConnected(coreServiceState)) {
@@ -98,7 +97,7 @@ public class ConnectionInfoNotification implements IIMSDKApplication.CustomNotif
             if (vpnServer != null) {
                 notificationLayout.setViewVisibility(R.id.contentImage, View.VISIBLE);
                 notificationLayout.setViewVisibility(R.id.content, View.VISIBLE);
-                notificationLayout.setImageViewResource(R.id.contentImage, RegionUtils.getRegionFlagImageResource(context, vpnServer.getZoneId()));
+                notificationLayout.setImageViewResource(R.id.contentImage, RegionUtils.getRegionFlagImageResource(context, vpnServer.getCountry()));
                 notificationLayout.setTextViewText(R.id.content, RegionUtils.getRegionName(context, vpnServer.getZoneId()));
             }
             //time count down
@@ -169,7 +168,20 @@ public class ConnectionInfoNotification implements IIMSDKApplication.CustomNotif
         mTrafficStats = trafficStats;
     };
 
-    public ConnectionInfoNotification(Context vpnService) {
+    private static ConnectionInfoNotification instance;
+
+    public static ConnectionInfoNotification getInstance(Context context) {
+        if (instance == null) {
+            synchronized (ConnectionInfoNotification.class) {
+                if (instance == null) {
+                    instance = new ConnectionInfoNotification(context);
+                }
+            }
+        }
+        return instance;
+    }
+
+    private ConnectionInfoNotification(Context vpnService) {
         context = vpnService;
         mBuilder = new NotificationCompat.Builder(context, NotificationConstants.NOTIFICATION_CHANNEL_INFO_ID)
                 .setSmallIcon(R.mipmap.ic_notification)
@@ -293,12 +305,12 @@ public class ConnectionInfoNotification implements IIMSDKApplication.CustomNotif
     @Nullable
     @Override
     public NotificationCompat.Builder getBuilder() {
-        return mBuilder;
+        return null;
     }
 
     @Override
     public boolean getHasToDismissAfterDisconnection() {
-        return false;
+        return true;
     }
 
     @Nullable

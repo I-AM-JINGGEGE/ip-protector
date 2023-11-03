@@ -23,8 +23,6 @@ class TahitiCoreServiceStateInfoManager private constructor() {
     var coreServiceConnected = false
     private val mCoreServiceConnectedAsLiveData = MutableLiveData<Boolean>()
     val coreServiceState = VpnState.Idle
-    val coreServiceConnectedAsLiveData: LiveData<Boolean>
-        get() = Transformations.distinctUntilChanged(mCoreServiceConnectedAsLiveData)
 
     fun getCoreServiceStateAsLiveData(): LiveData<VpnState> {
         return vpnState
@@ -40,7 +38,7 @@ class TahitiCoreServiceStateInfoManager private constructor() {
     init {
         vpnState.observeForever { vpnState: VpnState ->
             YoLog.i(TAG, "stateChanged, state: $vpnState")
-            coreServiceConnected = vpnState == VpnState.Connected
+            coreServiceConnected = (vpnState == VpnState.Connected)
             mCoreServiceConnectedAsLiveData.postValue(coreServiceConnected)
         }
         initUsedUp()

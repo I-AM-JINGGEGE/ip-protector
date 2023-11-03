@@ -88,7 +88,7 @@ public class ServerListRecyclerViewAdapter extends RecyclerView.Adapter<ServerLi
         }
 
         void bind(Context context, String regionUUIDSelected, FetchResponse.ServerZone vpnServerRegion) {
-            regionIcon.setImageResource(RegionUtils.getRegionFlagImageResource(context, vpnServerRegion.getId()));
+            regionIcon.setImageResource(RegionUtils.getRegionFlagImageResource(context, vpnServerRegion.getCountry()));
             int signalIvId;
             switch (vpnServerRegion.getSignalStrength()) {
                 case Lost:

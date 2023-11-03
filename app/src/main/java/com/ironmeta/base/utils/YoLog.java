@@ -6,8 +6,10 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.ironmeta.one.BuildConfig;
+
 public class YoLog {
-    private volatile static boolean sPrintSwitch = false;
+    private volatile static boolean sPrintSwitch = BuildConfig.DEBUG;
 
     public static void init(@NonNull Context context, boolean debug) {
         sPrintSwitch = debug;

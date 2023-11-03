@@ -21,7 +21,7 @@ public class ProcessUtils {
     public static boolean isInServiceProcess(@NonNull Context context) {
         Context appContext = context.getApplicationContext();
         String processName = getProcessName(appContext);
-        return processName != null && processName.endsWith(":service");
+        return processName != null && processName.endsWith(":bg");
     }
 
     @Nullable
