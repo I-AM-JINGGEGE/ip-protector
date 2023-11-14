@@ -27,6 +27,7 @@ import com.ironmeta.one.base.utils.ThreadUtils
 import com.ironmeta.one.comboads.network.UserProfileRetrofit
 import com.ironmeta.one.config.RemoteConfigManager
 import com.ironmeta.one.constants.KvStoreConstants
+import com.ironmeta.one.constants.RemoteConstants
 import com.ironmeta.one.coreservice.CoreSDKResponseManager
 import com.ironmeta.one.coreservice.CoreServiceManager
 import com.ironmeta.one.notification.ConnectionInfoNotification
@@ -194,7 +195,7 @@ class MainApplication : Application(), IIMSDKApplication {
                         })
                 }
             }
-        }, 1000, RemoteConfigManager.getInstance().reportBeatDuration)
+        }, 1000, RemoteConstants.REPORT_BEAT_DURATION_VALUE_DEFAULT)
         NetworkManager.getInstance(this).connectedAsLiveData
             .observeForever { connected: Boolean? ->
                 if (connected != true || TahitiCoreServiceStateInfoManager.getInstance(this)
