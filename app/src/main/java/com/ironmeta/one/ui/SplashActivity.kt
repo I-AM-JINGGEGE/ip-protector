@@ -108,6 +108,12 @@ class SplashActivity : CommonAppCompatActivity() {
                 playLoadingOnce(this@apply)
                 delay(delayMills)
                 playLoadingOnce(this@apply)
+                delay(delayMills)
+                playLoadingOnce(this@apply)
+                delay(delayMills)
+                playLoadingOnce(this@apply)
+                delay(delayMills)
+                playLoadingOnce(this@apply)
             }
         }
     }
