@@ -214,6 +214,7 @@ dependencies {
     implementation 'com.geyifeng.immersionbar:immersionbar-ktx:3.2.2'
 
     implementation 'com.jaeger.statusbarutil:library:1.5.1'
+    implementation 'com.google.android.ump:user-messaging-platform:2.2.0'
 
     //vpn sdk for google play bundle release
     releaseImplementation 'ironmeta:ironmeta-iphider-ss-rust-sdk-meta:nightly-20231101-0630-release'

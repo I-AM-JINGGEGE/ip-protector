@@ -28,6 +28,11 @@ import androidx.lifecycle.ProcessLifecycleOwner;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.ump.ConsentForm;
+import com.google.android.ump.ConsentInformation;
+import com.google.android.ump.ConsentRequestParameters;
+import com.google.android.ump.FormError;
+import com.google.android.ump.UserMessagingPlatform;
 import com.ironmeta.one.base.net.NetworkManager;
 import com.ironmeta.one.base.utils.LogUtils;
 import com.ironmeta.one.base.utils.ThreadUtils;
@@ -178,6 +183,20 @@ public class MainActivity extends CommonAppCompatActivity implements OnClickDisc
                 onRemainTimeZero();
             }
         });
+        GDPR_CMP();
+    }
+
+    private void GDPR_CMP() {
+        ConsentRequestParameters params = new ConsentRequestParameters
+                .Builder()
+                .build();
+        ConsentInformation consentInformation = UserMessagingPlatform.getConsentInformation(this);
+        consentInformation.requestConsentInfoUpdate(
+                this,
+                params,
+                (ConsentInformation.OnConsentInfoUpdateSuccessListener) () ->
+                        UserMessagingPlatform.loadAndShowConsentFormIfRequired(MainActivity.this, formError -> {}),
+                formError -> {});
     }
 
     private boolean launchFromNotification = false;
