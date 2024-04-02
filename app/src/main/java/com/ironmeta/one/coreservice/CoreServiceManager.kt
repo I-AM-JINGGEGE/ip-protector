@@ -1,6 +1,7 @@
 package com.ironmeta.one.coreservice
 
 import android.content.Context
+import android.util.Log
 import androidx.annotation.MainThread
 import androidx.lifecycle.MutableLiveData
 import com.ironmeta.base.vstore.VstoreManager
@@ -8,6 +9,7 @@ import com.ironmeta.one.MainApplication
 import com.ironmeta.one.R
 import com.ironmeta.one.base.utils.LogUtils
 import com.ironmeta.one.region.RegionConstants
+import com.ironmeta.one.region.RegionConstants.KEY_CONNECTED_VPN_IP
 import com.ironmeta.one.server.UpTimeHelper
 import com.ironmeta.tahiti.TahitiCoreServiceAppsBypassUtils
 import com.ironmeta.tahiti.TahitiCoreServiceStateInfoManager
@@ -75,10 +77,11 @@ class CoreServiceManager private constructor(context: Context) {
 
     private suspend fun connectToServer(serverZone: FetchResponse.ServerZone?) {
         isConnectingAsLiveData.postValue(true)
-        IMSDK.withResponse(CoreSDKResponseManager.fetchResponseAsLiveData.value!!)
+        val response = IMSDK.withResponse(CoreSDKResponseManager.fetchResponseAsLiveData.value!!)
             .toServerZone(serverZone?.id ?: RegionConstants.REGION_UUID_DEFAULT)
             .bypassPackageNames(TahitiCoreServiceAppsBypassUtils.getAppsBypassPackageName(MainApplication.context).toList())
             .connect()
+        VstoreManager.getInstance(MainApplication.instance).encode(false, KEY_CONNECTED_VPN_IP, response.host?.host ?: "")
         isConnectingAsLiveData.postValue(false)
     }
 
@@ -86,6 +89,7 @@ class CoreServiceManager private constructor(context: Context) {
         isConnectingAsLiveData.postValue(true)
         val response = IMSDK.withResponse(CoreSDKResponseManager.fetchResponseAsLiveData.value!!)
             .bypassPackageNames(TahitiCoreServiceAppsBypassUtils.getAppsBypassPackageName(MainApplication.context).toList()).toBest(null).connect()
+        VstoreManager.getInstance(MainApplication.instance).encode(false, KEY_CONNECTED_VPN_IP, response.host?.host ?: "")
         isConnectingAsLiveData.postValue(false)
         return response.zoneId
     }

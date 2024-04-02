@@ -68,7 +68,10 @@ class ConnectedFragment : CommonFragment {
             }
         }
         binding.speed.setOnClickListener {
-            AdPresenterWrapper.getInstance().loadAdExceptNative(AdFormat.INTERSTITIAL, AdConstant.AdPlacement.I_CONNECTIVITY_TEST, null)
+            AdPresenterWrapper.getInstance().loadAdExceptNative(
+                AdFormat.INTERSTITIAL,
+                AdConstant.AdPlacement.I_CONNECTIVITY_TEST,
+                null, "network test[main]")
             ConnectivityTestDialog(requireActivity()).apply {
                 setCancelable(false)
                 setDialogOnClickListener(object : DialogListener {

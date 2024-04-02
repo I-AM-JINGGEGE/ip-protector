@@ -10,6 +10,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
@@ -33,6 +34,7 @@ import com.google.android.ump.ConsentInformation;
 import com.google.android.ump.ConsentRequestParameters;
 import com.google.android.ump.FormError;
 import com.google.android.ump.UserMessagingPlatform;
+import com.ironmeta.one.ads.network.IpUtil;
 import com.ironmeta.one.base.net.NetworkManager;
 import com.ironmeta.one.base.utils.LogUtils;
 import com.ironmeta.one.base.utils.ThreadUtils;
@@ -48,8 +50,8 @@ import com.ironmeta.one.coreservice.ProgressListener;
 import com.ironmeta.one.coreservice.FakeConnectingProgressManager;
 import com.ironmeta.one.report.AppReport;
 import com.ironmeta.one.report.ReportConstants;
+import com.ironmeta.one.report.VpnReporter;
 import com.ironmeta.one.ui.ConnectedReportActivity;
-import com.ironmeta.one.ui.DisconnectReportActivity;
 import com.ironmeta.one.ui.SplashActivity;
 import com.ironmeta.one.ui.common.CommonAppCompatActivity;
 import com.ironmeta.one.ui.common.CommonDialog;
@@ -135,19 +137,7 @@ public class MainActivity extends CommonAppCompatActivity implements OnClickDisc
                         mHomeViewModel.stopShowLoadingAd();
                     }
                 }
-            });
-        }
-    });
-
-    private ActivityResultLauncher disconnectReportLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
-        if (result.getResultCode() == Activity.RESULT_OK) {
-//            String adPlacement = AdConstant.AdPlacement.I_DISCONNECT;
-//            AdPresenterWrapper.Companion.getInstance().logToShow(AdFormat.INTERSTITIAL, adPlacement);
-//            mHomeViewModel.observeInterstitialLoading10s(this, adPlacement).observe(MainActivity.this, aBoolean -> {
-//                if (aBoolean) {
-//                    AdPresenterWrapper.Companion.getInstance().showAdExceptNative(MainActivity.this, AdFormat.INTERSTITIAL, adPlacement, null);
-//                }
-//            });
+            }, "second page back");
         }
     });
 
@@ -168,9 +158,9 @@ public class MainActivity extends CommonAppCompatActivity implements OnClickDisc
             String adPlacementN = TahitiCoreServiceStateInfoManager.getInstance(getApplicationContext()).getCoreServiceConnected() ? AdConstant.AdPlacement.N_CONNECTED : AdConstant.AdPlacement.N_DISCONNECT;
             // disable disconnected interstitial ads
             if (TahitiCoreServiceStateInfoManager.getInstance(getApplicationContext()).getCoreServiceConnected()) {
-                AdPresenterWrapper.Companion.getInstance().loadAdExceptNative(AdFormat.INTERSTITIAL, adPlacementI, null);
+                AdPresenterWrapper.Companion.getInstance().loadAdExceptNative(AdFormat.INTERSTITIAL, adPlacementI, null, "after presenter init");
+                AdPresenterWrapper.Companion.getInstance().loadNativeAd(adPlacementN, null, "after presenter init");
             }
-            AdPresenterWrapper.Companion.getInstance().loadNativeAd(adPlacementN, null);
         });
         SupportUtils.checkToShowRating(this);
         mConnectedViewModel =
@@ -261,12 +251,21 @@ public class MainActivity extends CommonAppCompatActivity implements OnClickDisc
             String source = intent.getStringExtra(ReportConstants.Param.SOURCE);
             AppReport.setConnectionSource(TextUtils.isEmpty(source) ? ReportConstants.AppReport.SOURCE_CONNECTION_NOTIFICATION : source);
             AppReport.reportToConnection();
-            CoreServiceManager.getInstance(this).connect(null);
+            connect();
         } else if (action == ActionActivityConstants.KEY_EXTRA_ACTION_VALUE_CORE_SERVICE_DISCONNECTED) {
         } else if (action == KEY_EXTRA_ACTION_VALUE_ADD_TIME) {
             launchFromNotification = true;
             onAddOneHourClick(ReportConstants.AppReport.SOURCE_ADD_TIME_NOTIFICATION);
         }
+    }
+
+    private void connect() {
+        new Handler().postDelayed(() -> {
+            DisconnectFragment fragment = (DisconnectFragment) getSupportFragmentManager().findFragmentById(R.id.content_fragment_container);
+            if (fragment != null && fragment.isAdded()) {
+                fragment.connect(VpnReporter.PARAM_VALUE_FROM_NOTIFICATION);
+            }
+        }, 1000);
     }
 
     private void showSplashActivity() {
@@ -291,7 +290,9 @@ public class MainActivity extends CommonAppCompatActivity implements OnClickDisc
         }
         intent.putExtra(SplashActivity.AD_PLACEMENT, adLocation);
         intent.putExtra(SplashActivity.IS_COLD_START, isCreate);
-        AdPresenterWrapper.Companion.getInstance().loadAdExceptNative(AdFormat.INTERSTITIAL, adLocation, null);
+        if (vpnConnected) {
+            AdPresenterWrapper.Companion.getInstance().loadAdExceptNative(AdFormat.INTERSTITIAL, adLocation, null, "cold start");
+        }
         splashActivityResultLauncher.launch(intent);
     }
 
@@ -411,12 +412,11 @@ public class MainActivity extends CommonAppCompatActivity implements OnClickDisc
                         public void onFailure(int errorCode, @NonNull String errorMessage) {
 
                         }
-                    });
-                    AdPresenterWrapper.Companion.getInstance().loadNativeAd(AdConstant.AdPlacement.N_CONNECTED, null);
+                    }, "vpn connected");
+                    AdPresenterWrapper.Companion.getInstance().loadNativeAd(AdConstant.AdPlacement.N_CONNECTED, null, "vpn connected");
                     break;
                 }
                 case Stopped: {
-                    AdPresenterWrapper.Companion.getInstance().loadNativeAd(AdConstant.AdPlacement.N_DISCONNECT, null);
                     checkToShowDisconnectReportActivity();
                     if (FakeConnectingProgressManager.Companion.getInstance().isWaitingForConnecting() || FakeConnectingProgressManager.Companion.getInstance().isProgressingAfterConnected()) {
                         FakeConnectingProgressManager.Companion.getInstance().notifyFinish();
@@ -446,21 +446,6 @@ public class MainActivity extends CommonAppCompatActivity implements OnClickDisc
 
     private void checkToShowDisconnectReportActivity() {
         // disable disconnected interstitial ads
-        boolean condition = false;
-
-        if (mNeedShowDisconnectReport && condition) {
-            AdPresenterWrapper.Companion.getInstance().loadAdExceptNative(AdFormat.INTERSTITIAL, AdConstant.AdPlacement.I_DISCONNECT, null);
-            Intent intent = new Intent(this, DisconnectReportActivity.class);
-            intent.putExtra(DisconnectReportActivity.EXTRA_CONNECTED_MILLISECONDS, mConnectedMilliSeconds);
-            intent.putExtra(DisconnectReportActivity.EXTRA_TRAFFIC_STATS, mTrafficStats);
-            if (mVpnServer != null) {
-                intent.putExtra(DisconnectReportActivity.EXTRA_REGION_CODE, mVpnServer.getHost());
-                intent.putExtra(DisconnectReportActivity.EXTRA_REGION_NAME, mVpnServer.getHost());
-            }
-            disconnectReportLauncher.launch(intent);
-            overridePendingTransition(R.anim.page_in, R.anim.page_out);
-            mNeedShowDisconnectReport = false;
-        }
         showDisconnectFragment(false);
     }
 
@@ -505,7 +490,6 @@ public class MainActivity extends CommonAppCompatActivity implements OnClickDisc
             super.onBackPressed();
         });
         dialog.show();
-        return;
     }
 
     private CommonDialog mLegalNoticeDialog;
@@ -648,7 +632,7 @@ public class MainActivity extends CommonAppCompatActivity implements OnClickDisc
                 mHomeViewModel.stopShowLoadingAd();
                 ToastUtils.showToast(MainActivity.this, getResources().getString(R.string.add_time_fail));
             }
-        });
+        }, (adPlacement == AdConstant.AdPlacement.I_ADD_TIME_MAIN_PAGE_1) ? "add time 1[main]" : "add time 2[main]");
     }
 
     @Override

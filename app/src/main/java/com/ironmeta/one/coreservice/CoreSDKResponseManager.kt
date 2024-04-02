@@ -11,6 +11,7 @@ import com.ironmeta.one.MainApplication
 import com.ironmeta.one.base.net.NetworkManager
 import com.ironmeta.one.base.utils.LogUtils
 import com.ironmeta.one.region.RegionConstants
+import com.ironmeta.one.report.VpnReporter
 import com.ironmeta.one.ui.support.LegalManager
 import com.sdk.ssmod.IMSDK
 import com.sdk.ssmod.IRefreshListener
@@ -33,7 +34,7 @@ object CoreSDKResponseManager {
             if (it) {
                 GlobalScope.launch(Dispatchers.IO) {
                     try {
-                        acquireFromNetwork()
+                        acquireFromNetwork("network valid")
                     } catch (ignore: Exception) {
                     } finally {
                         CoreServiceManager.getInstance(MainApplication.context).syncServerCountryCodeSelected(RegionConstants.REGION_CODE_DEFAULT)
@@ -44,8 +45,10 @@ object CoreSDKResponseManager {
     }
 
     // Region acquire from network
-    suspend fun acquireFromNetwork() {
+    suspend fun acquireFromNetwork(from: String) {
         LogUtils.i(TAG, "obtainFromNetwork")
+        var start = System.currentTimeMillis()
+        VpnReporter.reportServerRequestStart(from)
         fetchResponseRefreshingAsLiveData.postValue(true)
         val deviceId = if (BuildConfig.DEBUG) "ffa198c7f63f7bd2" else getAndroidId(MainApplication.context)
         try {
@@ -59,12 +62,17 @@ object CoreSDKResponseManager {
             throw e
         }
         catch (e: IServers.GeoRestrictedException) {
+            VpnReporter.reportServersRefreshFinish(from, false, -1, e.toString(), System.currentTimeMillis() - start, 0)
             LegalManager.getInstance(MainApplication.context).logNotInLegalRegion()
         } catch (ignore: Exception) {
-
+            VpnReporter.reportServersRefreshFinish(from, false, -2, ignore.toString(), System.currentTimeMillis() - start, 0)
         }
         fetchResponseRefreshingAsLiveData.postValue(false)
+        if (fetchResponse == null) {
+            VpnReporter.reportServersRefreshFinish(from, false, -3, "fetchResponse is null", System.currentTimeMillis() - start, 0)
+        }
         fetchResponse?.let {
+            VpnReporter.reportServersRefreshFinish(from, true, 0, "", cost = (System.currentTimeMillis() - start), areaCount = (it.serverZones?.size ?: 0))
             fetchResponseAsLiveData.postValue(it)
         }
     }

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.view.animation.AnimationSet
 import android.view.animation.AnimationUtils
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.ironmeta.one.MainActivity
 import com.ironmeta.one.MainActivityViewModel
@@ -16,6 +17,7 @@ import com.ironmeta.one.R
 import com.ironmeta.one.ads.AdPresenterWrapper
 import com.ironmeta.one.ads.constant.AdConstant
 import com.ironmeta.one.ads.format.ViewStyle
+import com.ironmeta.one.base.utils.LogUtils
 import com.ironmeta.one.base.utils.ToastUtils
 import com.ironmeta.one.coreservice.CoreServiceManager
 import com.ironmeta.one.coreservice.FakeConnectingProgressManager
@@ -25,12 +27,20 @@ import com.ironmeta.one.databinding.DisconnectFragmentLayoutBinding
 import com.ironmeta.one.region.RegionUtils
 import com.ironmeta.one.report.AppReport
 import com.ironmeta.one.report.ReportConstants
+import com.ironmeta.one.report.RequestVpnPermissionContract
+import com.ironmeta.one.report.VpnReporter
 import com.ironmeta.one.ui.common.CommonFragment
 import com.ironmeta.one.ui.regionselector2.ServerListActivity
 import com.ironmeta.tahiti.TahitiCoreServiceStateInfoManager
 import com.ironmeta.tahiti.constants.CoreServiceStateConstants
 import com.sdk.ssmod.IMSDK
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import java.lang.Exception
+import kotlin.coroutines.resume
+import kotlin.coroutines.suspendCoroutine
+import kotlin.jvm.internal.Ref
 
 class DisconnectFragment : CommonFragment {
     companion object {
@@ -60,10 +70,10 @@ class DisconnectFragment : CommonFragment {
 
     private fun initView() {
         binding.disconnectAnimLayout.setOnClickListener {
-            connect()
+            connect(VpnReporter.PARAM_VALUE_FROM_BUTTON)
         }
         binding.clickTipsText.setOnClickListener {
-            connect()
+            connect(VpnReporter.PARAM_VALUE_FROM_TAP_TEXT)
         }
         binding.serverInter.setOnClickListener {
             if (getInstance().isStart() || getInstance().isWaitingForConnecting() || getInstance().isProgressingAfterConnected()) {
@@ -79,22 +89,39 @@ class DisconnectFragment : CommonFragment {
         playIdleAnimations()
         arguments?.apply {
             if (getBoolean(EXTRA_AUTO_CONNECT)) {
-                connect()
+                connect(VpnReporter.PARAM_VALUE_FROM_FIX_NETWORK)
             }
         }
     }
 
-    private fun connect() {
+    fun connect(from: String) {
         if (getInstance().isStart() || getInstance().isWaitingForConnecting() || getInstance().isProgressingAfterConnected()) {
             context?.apply {
                 ToastUtils.showToast(this, this.getString(R.string.vs_core_service_state_connecting2))
             }
             return
         }
-        AppReport.setConnectionSource(ReportConstants.AppReport.SOURCE_CONNECTION_PAGE_MAIN)
-        AppReport.reportToConnection()
-        CoreServiceManager.getInstance(requireContext()).connect(null)
-        getInstance().stateLiveData.value = FakeConnectionState(FakeConnectionState.STATE_START, 0F)
+        GlobalScope.launch {
+            VpnReporter.reportToStartConnect(from)
+            if (!requestVpnPermission()) {
+                return@launch
+            }
+            VpnReporter.reportStartConnect(from)
+            CoreServiceManager.getInstance(requireContext()).connect(null)
+            getInstance().stateLiveData.postValue(FakeConnectionState(FakeConnectionState.STATE_START, 0F))
+        }
+    }
+    private var requestVpnPermissionCallbackRef = Ref.ObjectRef<(Boolean) -> Unit>()
+    private val requestVpnPermissionContract =
+        registerForActivityResult(RequestVpnPermissionContract()) {
+            requestVpnPermissionCallbackRef.element?.invoke(it)
+        }
+    private suspend fun requestVpnPermission() = suspendCoroutine<Boolean> { continuation ->
+        requestVpnPermissionCallbackRef.element = {
+            requestVpnPermissionCallbackRef.element = null
+            continuation.resume(it)
+        }
+        requestVpnPermissionContract.launch(Unit)
     }
 
     private fun playIdleAnimations() {

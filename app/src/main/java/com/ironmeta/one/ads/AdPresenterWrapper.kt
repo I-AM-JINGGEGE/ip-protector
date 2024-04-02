@@ -17,7 +17,7 @@ import com.ironmeta.one.ads.proxy.IAdPresenterProxy
 import com.ironmeta.one.ads.proxy.RewardedAdShowListener
 import com.ironmeta.one.comboads.network.UserProfileRetrofit
 import com.ironmeta.one.report.AppReport
-import com.ironmeta.one.report.ReportConstants
+import com.ironmeta.one.report.VpnReporter
 import com.ironmeta.one.utils.TimeUtils
 import com.ironmeta.tahiti.TahitiCoreServiceStateInfoManager
 import kotlinx.coroutines.Dispatchers
@@ -50,12 +50,6 @@ class AdPresenterWrapper private constructor() : IAdPresenterProxy {
             }
             if (userProfile != null) {
                 countDownLatch.countDown()
-                AppReport.reportAdInitEnd(
-                    TahitiCoreServiceStateInfoManager.getInstance(context).coreServiceConnected,
-                    true,
-                    ReportConstants.ErrorCode.AD_INIT_END_CODE_USER_PROFILE_EXIST,
-                    ReportConstants.ErrorMessage.AD_INIT_END_USER_PROFILE_EXIST
-                )
                 return@observeForever
             }
             if (adUserProfileRequesting) {
@@ -65,12 +59,6 @@ class AdPresenterWrapper private constructor() : IAdPresenterProxy {
                 getAdUserProfile()
             } else {
                 countDownLatch.countDown()
-                AppReport.reportAdInitEnd(
-                    TahitiCoreServiceStateInfoManager.getInstance(context).coreServiceConnected,
-                    false,
-                    ReportConstants.ErrorCode.AD_INIT_END_CODE_OLD_USER,
-                    ReportConstants.ErrorMessage.AD_INIT_END_OLD_USER
-                )
             }
         }
         GlobalScope.launch {
@@ -84,29 +72,21 @@ class AdPresenterWrapper private constructor() : IAdPresenterProxy {
     }
 
     private fun getAdUserProfile() {
+        val start = System.currentTimeMillis()
         adUserProfileRequesting = true
+        VpnReporter.reportAdConfigRequestStart()
         UserProfileRetrofit.getInstance().getUserProfile(context, object : Callback<UserAdConfig> {
             override fun onResponse(call: Call<UserAdConfig>, response: Response<UserAdConfig>) {
+                VpnReporter.reportAdConfigRequestEnd(0, "", true, userProfile, System.currentTimeMillis() - start)
                 userProfile = response.body()
                 adUserProfileRequesting = false
                 countDownLatch.countDown()
-                AppReport.reportAdInitEnd(
-                    TahitiCoreServiceStateInfoManager.getInstance(context).coreServiceConnected,
-                    true,
-                    ReportConstants.ErrorCode.AD_INIT_END_CODE_REQUEST_SUCCESS,
-                    ReportConstants.ErrorMessage.AD_INIT_END_REQUEST_SUCCESS
-                )
             }
 
             override fun onFailure(call: Call<UserAdConfig>, t: Throwable) {
+                VpnReporter.reportAdConfigRequestEnd(-1, "${t.message ?: t.toString()}", false, null, System.currentTimeMillis() - start)
                 adUserProfileRequesting = false
                 countDownLatch.countDown()
-                AppReport.reportAdInitEnd(
-                    TahitiCoreServiceStateInfoManager.getInstance(context).coreServiceConnected,
-                    false,
-                    ReportConstants.ErrorCode.AD_INIT_END_CODE_REQUEST_FAIL,
-                    ReportConstants.ErrorMessage.AD_INIT_END_REQUEST_FAIL + ". " + t.message
-                )
             }
         })
     }
@@ -120,7 +100,16 @@ class AdPresenterWrapper private constructor() : IAdPresenterProxy {
 
     private var adUserProfileRequesting = false
 
-    override fun loadAdExceptNative(type: AdFormat, adPlacement: String, loadListener: AdLoadListener?) {
+    override fun loadAdExceptNative(
+        type: AdFormat,
+        adPlacement: String,
+        loadListener: AdLoadListener?,
+        from: String
+    ) {
+        if (!TahitiCoreServiceStateInfoManager.getInstance(context).coreServiceConnected) {
+            loadListener?.onFailure(-4, "vpn not connected")
+            return
+        }
         val listener = object : AdLoadListener {
             override fun onAdLoaded() {
                 loadListener?.onAdLoaded()
@@ -146,10 +135,16 @@ class AdPresenterWrapper private constructor() : IAdPresenterProxy {
                 }
             }
         }
-        loadAdInternal(type, adPlacement, listener)
+        loadAdInternal(type, adPlacement, listener, from)
     }
 
-    override fun loadNativeAd(adPlacement: String, loadListener: AdLoadListener?) {
+    override fun loadNativeAd(adPlacement: String, loadListener: AdLoadListener?, from: String) {
+        if (!TahitiCoreServiceStateInfoManager.getInstance(context).coreServiceConnected) {
+            loadListener?.onFailure(-4, "vpn not connected")
+            return
+        }
+        VpnReporter.reportAdLoadStart(AdFormat.NATIVE, from)
+        val start = System.currentTimeMillis()
         val listener = object : AdLoadListener {
             override fun onAdLoaded() {
                 loadListener?.onAdLoaded()
@@ -162,21 +157,29 @@ class AdPresenterWrapper private constructor() : IAdPresenterProxy {
         }
         when (TahitiCoreServiceStateInfoManager.getInstance(context).coreServiceConnected) {
             true -> {
-                mAdPresenterConnected?.loadNativeAd(adPlacement, listener)
+                if (mAdPresenterConnected == null) {
+                    VpnReporter.reportAdLoadEnd(AdFormat.NATIVE, -1, "no ad config", false, from, System.currentTimeMillis() - start)
+                }
+                mAdPresenterConnected?.loadNativeAd(adPlacement, listener, from)
             }
             false -> {
-                mAdPresenterDisconnected?.loadNativeAd(adPlacement, listener)
+                mAdPresenterDisconnected?.loadNativeAd(adPlacement, listener, from)
             }
         }
     }
 
-    private fun loadAdInternal(type: AdFormat, adPlacement: String, loadListener: AdLoadListener?) {
+    private fun loadAdInternal(type: AdFormat, adPlacement: String, loadListener: AdLoadListener?, from: String) {
+        VpnReporter.reportAdLoadStart(type, from)
+        val start = System.currentTimeMillis()
         when (TahitiCoreServiceStateInfoManager.getInstance(context).coreServiceConnected) {
             true -> {
-                mAdPresenterConnected?.loadAdExceptNative(type, adPlacement, loadListener) ?: AppReport.reportAdIgnoreLoading(true, type)
+                if (mAdPresenterConnected == null) {
+                    VpnReporter.reportAdLoadEnd(type, -1, "no ad config", false, from, System.currentTimeMillis() - start)
+                }
+                mAdPresenterConnected?.loadAdExceptNative(type, adPlacement, loadListener, from) ?: AppReport.reportAdIgnoreLoading(true, type)
             }
             false -> {
-                mAdPresenterDisconnected?.loadAdExceptNative(type, adPlacement, loadListener) ?: AppReport.reportAdIgnoreLoading(false, type)
+                mAdPresenterDisconnected?.loadAdExceptNative(type, adPlacement, loadListener, from) ?: AppReport.reportAdIgnoreLoading(false, type)
             }
         }
     }
@@ -235,7 +238,7 @@ class AdPresenterWrapper private constructor() : IAdPresenterProxy {
                         override fun onAdFailToShow(errorCode: Int, errorMessage: String) {
                             listener?.onAdFailToShow(errorCode, errorMessage)
                             if (type == AdFormat.INTERSTITIAL) {
-                                loadAdInternal(type, adPlacement, null)
+                                loadAdInternal(type, adPlacement, null, "ad fail to show")
                             }
                         }
 
@@ -269,7 +272,7 @@ class AdPresenterWrapper private constructor() : IAdPresenterProxy {
                         override fun onAdFailToShow(errorCode: Int, errorMessage: String) {
                             listener?.onAdFailToShow(errorCode, errorMessage)
                             if (type == AdFormat.INTERSTITIAL) {
-                                loadAdInternal(type, adPlacement, null)
+                                loadAdInternal(type, adPlacement, null, "ad fail to show")
                             }
                         }
 
@@ -312,7 +315,7 @@ class AdPresenterWrapper private constructor() : IAdPresenterProxy {
 
             override fun onAdClicked() {
                 markNativeAdShown(placementId)
-                loadNativeAd(placementId, null)
+                loadNativeAd(placementId, null, "ad clicked")
                 listener?.onAdClicked()
 
             }
@@ -348,7 +351,7 @@ class AdPresenterWrapper private constructor() : IAdPresenterProxy {
 
             override fun onAdClicked() {
                 markNativeAdShown(placementId)
-                loadNativeAd(placementId, null)
+                loadNativeAd(placementId, null, "ad clicked")
                 listener?.onAdClicked()
 
             }
@@ -393,7 +396,7 @@ class AdPresenterWrapper private constructor() : IAdPresenterProxy {
             override fun onAdClicked() {
                 listener?.onAdClicked()
                 markNativeAdShown(placementId)
-                loadNativeAd(placementId, null)
+                loadNativeAd(placementId, null, "ad clicked")
             }
         }
         return when (TahitiCoreServiceStateInfoManager.getInstance(context).coreServiceConnected) {

@@ -15,6 +15,7 @@ import com.ironmeta.one.ads.proxy.AdShowListener
 import com.ironmeta.one.ads.proxy.RewardedAdShowListener
 import com.ironmeta.one.report.AdReport
 import com.ironmeta.one.report.ReportConstants
+import com.ironmeta.one.report.VpnReporter
 import com.roiquery.ad.AdPlatform
 import com.roiquery.ad.AdType
 import com.roiquery.ad.DTAdReport
@@ -27,8 +28,10 @@ class AdRewarded(var adId: String) {
     private var seq = DTAdReport.generateUUID()
     private var placementId: String? = null
 
-    fun loadAd(listener: AdLoadListener?) {
+    fun loadAd(listener: AdLoadListener?, from: String) {
+        val start = System.currentTimeMillis()
         if (isLoadingAd) {
+            VpnReporter.reportAdLoadEnd(AdFormat.REWARDED, -3, "current is loading", false, from, 0L)
             return
         }
         if (mRewardedAd != null) {
@@ -41,12 +44,14 @@ class AdRewarded(var adId: String) {
         var adRequest = AdRequest.Builder().build()
         RewardedAd.load(MainApplication.instance.applicationContext, adId, adRequest, object : RewardedAdLoadCallback() {
             override fun onAdFailedToLoad(adError: LoadAdError) {
+                VpnReporter.reportAdLoadEnd(AdFormat.REWARDED, adError.code, adError.message, false, from, System.currentTimeMillis() - start)
                 isLoadingAd = false
                 mRewardedAd = null
                 callBack?.onFailure(adError.code, adError.message)
             }
 
             override fun onAdLoaded(rewardedAd: RewardedAd) {
+                VpnReporter.reportAdLoadEnd(AdFormat.REWARDED, 0, "", true, from, System.currentTimeMillis() - start)
                 mRewardedAd = rewardedAd
                 setAdShowCallback()
                 isLoadingAd = false

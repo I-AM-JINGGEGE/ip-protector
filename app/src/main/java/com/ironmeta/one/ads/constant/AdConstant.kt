@@ -6,7 +6,6 @@ class AdConstant {
             const val I_APP_START_DISCONNECT = "i_app_start_disconnect"
             const val I_APP_START_CONNECT = "i_app_start_connect"
             const val I_CONNECTED = "i_connected"
-            const val I_DISCONNECT = "i_disconnect"
             const val I_HOME_RESTART_DISCONNECT = "i_home_restart_disconnect"
             const val I_HOME_RESTART_CONNECT = "i_home_restart_connect"
             const val I_ADD_TIME_MAIN_PAGE_1 = "i_add_time_main_page_1"

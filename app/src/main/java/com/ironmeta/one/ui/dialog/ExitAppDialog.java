@@ -46,7 +46,7 @@ public class ExitAppDialog extends Dialog implements LifecycleOwner {
         mGotBTN = findViewById(R.id.btn_yes);
         mNativeAdContainer = findViewById(R.id.native_ad_container);
         String adPlacement = TahitiCoreServiceStateInfoManager.getInstance(getContext()).getCoreServiceConnected() ? AdConstant.AdPlacement.N_EXIT_CONNECTED : AdConstant.AdPlacement.N_EXIT_DISCONNECTED;
-        AdPresenterWrapper.Companion.getInstance().loadNativeAd(adPlacement, null);
+        AdPresenterWrapper.Companion.getInstance().loadNativeAd(adPlacement, null, "exit app dialog");
         AdPresenterWrapper.Companion.getInstance().getNativeAdLoadLiveData().observe(this, result -> {
             View view = AdPresenterWrapper.Companion.getInstance().getNativeAdExitAppView(adPlacement, mNativeAdContainer, null);
             if (result && view != null) {

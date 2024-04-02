@@ -55,11 +55,16 @@ class ConnectedReportActivity : CommonAppCompatActivity() {
         startAnimations()
         initViewModel()
         StatusBarUtil.setTransparent(this)
-        AdPresenterWrapper.getInstance().loadNativeAd(AdConstant.AdPlacement.N_CONNECTED_REPORT, null)
+        AdPresenterWrapper.getInstance().loadNativeAd(
+            AdConstant.AdPlacement.N_CONNECTED_REPORT,
+            null, "connected report")
     }
     private fun initView() {
         binding.testButton.setOnClickListener {
-            AdPresenterWrapper.getInstance().loadAdExceptNative(AdFormat.INTERSTITIAL, AdConstant.AdPlacement.I_CONNECTIVITY_TEST, null)
+            AdPresenterWrapper.getInstance().loadAdExceptNative(
+                AdFormat.INTERSTITIAL,
+                AdConstant.AdPlacement.I_CONNECTIVITY_TEST,
+                null, "network test[report]")
             ConnectivityTestDialog(this).apply {
                 setCancelable(false)
                 setDialogOnClickListener(object : ConnectivityTestDialog.DialogListener {
@@ -127,39 +132,41 @@ class ConnectedReportActivity : CommonAppCompatActivity() {
                 ToastUtils.showToast(this@ConnectedReportActivity, resources.getString(R.string.add_time_fail))
             }
         }, ADD_TIME_MAX_DURATION_VALUE_DEFAULT)
-        AdPresenterWrapper.getInstance().loadAdExceptNative(AdFormat.INTERSTITIAL, adPlacement, object : AdLoadListener {
-            override fun onAdLoaded() {
-                canceled[0] = true
-                mHomeViewModel.stopShowLoadingAd()
-                mHomeViewModel.addTimeA(addedMinutes).observe(this@ConnectedReportActivity) { aBoolean: Boolean ->
-                    if (!aBoolean) {
-                        return@observe
-                    }
-                    AdPresenterWrapper.getInstance().logToShow(AdFormat.INTERSTITIAL, adPlacement)
-                    if (AdPresenterWrapper.getInstance().isLoadedExceptNative(AdFormat.INTERSTITIAL, adPlacement)) {
-                        AdPresenterWrapper.getInstance().showAdExceptNative(this@ConnectedReportActivity, AdFormat.INTERSTITIAL, adPlacement, object : AdShowListener {
-                            override fun onAdShown() {}
+        AdPresenterWrapper.getInstance().loadAdExceptNative(
+            AdFormat.INTERSTITIAL, adPlacement,
+            object : AdLoadListener {
+                override fun onAdLoaded() {
+                    canceled[0] = true
+                    mHomeViewModel.stopShowLoadingAd()
+                    mHomeViewModel.addTimeA(addedMinutes).observe(this@ConnectedReportActivity) { aBoolean: Boolean ->
+                        if (!aBoolean) {
+                            return@observe
+                        }
+                        AdPresenterWrapper.getInstance().logToShow(AdFormat.INTERSTITIAL, adPlacement)
+                        if (AdPresenterWrapper.getInstance().isLoadedExceptNative(AdFormat.INTERSTITIAL, adPlacement)) {
+                            AdPresenterWrapper.getInstance().showAdExceptNative(this@ConnectedReportActivity, AdFormat.INTERSTITIAL, adPlacement, object : AdShowListener {
+                                override fun onAdShown() {}
 
-                            override fun onAdFailToShow(errorCode: Int, errorMessage: String) {}
+                                override fun onAdFailToShow(errorCode: Int, errorMessage: String) {}
 
-                            override fun onAdClosed() {
-                                showAddTimeSuccessDialog(addedMinutes)
-                            }
+                                override fun onAdClosed() {
+                                    showAddTimeSuccessDialog(addedMinutes)
+                                }
 
-                            override fun onAdClicked() {}
-                        })
-                    } else {
-                        showAddTimeSuccessDialog(addedMinutes)
+                                override fun onAdClicked() {}
+                            })
+                        } else {
+                            showAddTimeSuccessDialog(addedMinutes)
+                        }
                     }
                 }
-            }
 
-            override fun onFailure(errorCode: Int, errorMessage: String) {
-                canceled[0] = true
-                mHomeViewModel.stopShowLoadingAd()
-                ToastUtils.showToast(this@ConnectedReportActivity, resources.getString(R.string.add_time_fail))
-            }
-        })
+                override fun onFailure(errorCode: Int, errorMessage: String) {
+                    canceled[0] = true
+                    mHomeViewModel.stopShowLoadingAd()
+                    ToastUtils.showToast(this@ConnectedReportActivity, resources.getString(R.string.add_time_fail))
+                }
+            }, if (adPlacement == AdConstant.AdPlacement.I_ADD_TIME_1_REPORT_PAGE) "add time 1[report]" else "add time 2[report]")
     }
 
     private fun startAnimations() {

@@ -14,6 +14,7 @@ import com.ironmeta.one.ads.proxy.AdLoadListener
 import com.ironmeta.one.ads.proxy.AdShowListener
 import com.ironmeta.one.report.AdReport
 import com.ironmeta.one.report.ReportConstants
+import com.ironmeta.one.report.VpnReporter
 import com.roiquery.ad.AdPlatform
 import com.roiquery.ad.AdType
 import com.roiquery.ad.DTAdReport
@@ -27,8 +28,9 @@ class AdInterstitialAdmob(var adId: String, val context: Context) {
         get() = field
     private var placementId: String? = null
 
-    fun loadAd(listener: AdLoadListener?) {
+    fun loadAd(listener: AdLoadListener?, from: String) {
         if (isLoadingAd) {
+            VpnReporter.reportAdLoadEnd(AdFormat.INTERSTITIAL, -3, "current is loading", false, from, 0L)
             return
         }
         if (mInterstitialAd != null) {

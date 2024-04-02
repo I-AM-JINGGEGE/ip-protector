@@ -36,7 +36,9 @@ class DisconnectReportActivity : CommonAppCompatActivity() {
         initView()
         initViewModel()
         StatusBarUtil.setTransparent(this)
-        AdPresenterWrapper.getInstance().loadNativeAd(AdConstant.AdPlacement.N_DISCONNECT_REPORT, null)
+        AdPresenterWrapper.getInstance().loadNativeAd(
+            AdConstant.AdPlacement.N_DISCONNECT_REPORT,
+            null, "disconnect report")
     }
 
     private fun initView() {

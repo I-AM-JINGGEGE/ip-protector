@@ -32,6 +32,7 @@ import com.ironmeta.one.coreservice.CoreSDKResponseManager
 import com.ironmeta.one.coreservice.CoreServiceManager
 import com.ironmeta.one.notification.ConnectionInfoNotification
 import com.ironmeta.one.notification.NotificationConstants
+import com.ironmeta.one.region.RegionConstants.KEY_CONNECTED_VPN_IP
 import com.ironmeta.one.report.AppReport
 import com.ironmeta.one.ui.support.SupportUtils
 import com.ironmeta.one.utils.SystemPropertyUtils
@@ -68,7 +69,6 @@ class MainApplication : Application(), IIMSDKApplication {
         context = this.applicationContext
         isCold = true
         initApp()
-        AppReport.init()
     }
 
     val appName: String
@@ -116,7 +116,11 @@ class MainApplication : Application(), IIMSDKApplication {
         FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(!BuildConfig.DEBUG)
         initNotification()
         RemoteConfigManager.getInstance()
-        CoreSDKResponseManager.initNetworkObserver()
+        IMSDK.vpnState.observeForever {
+            if (it == IMSDK.VpnState.Stopped || it == IMSDK.VpnState.Idle) {
+                VstoreManager.getInstance(instance).encode(false, KEY_CONNECTED_VPN_IP, "")
+            }
+        }
     }
 
     private fun initAdjust() {
@@ -148,14 +152,10 @@ class MainApplication : Application(), IIMSDKApplication {
         //ads
         initAd()
 
-        //force refresh once
-        GlobalScope.launch {
-            CoreSDKResponseManager.acquireFromNetwork()
-        }
-
         SupportUtils.logAppColdStart(this)
         initAdjust()
         ProcessLifecycleOwner.get().lifecycle.addObserver(mLifecycleObserver)
+        CoreSDKResponseManager.initNetworkObserver()
     }
 
     private val mLifecycleObserver: LifecycleObserver =

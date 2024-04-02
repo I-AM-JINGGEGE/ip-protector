@@ -3,36 +3,17 @@ package com.ironmeta.one.report;
 import android.text.TextUtils;
 
 import com.ironmeta.base.utils.YoLog;
-import com.ironmeta.one.MainApplication;
 import com.ironmeta.one.ads.constant.AdFormat;
-import com.ironmeta.one.ads.network.IpUtil;
 import com.ironmeta.one.annotation.ConnectionSource;
-import com.ironmeta.one.annotation.ServerSource;
-import com.ironmeta.one.base.net.NetworkManager;
 import com.ironmeta.one.ui.widget.RatingBar;
-import com.sdk.ssmod.IMSDK;
 
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * @author Tom J
- * @package com.ironmeta.one.report
- * @description <p>上报服务器和用户行为相关信息</p>
- * @date 2021/8/25 9:33 上午
- */
 public class AppReport {
     private static final String TAG = AppReport.class.getSimpleName();
 
     private static String sConnectionSource = null;
-
-    private static long mConnectStartTime = 0;
-
-    public static void init(){
-        IMSDK.INSTANCE.getVpnState().observeForever(state -> {
-            reportConnectionSuccess(IpUtil.INSTANCE.getConnectedIdAddress());
-        });
-    }
 
     public static void reportClickAddTime1(String source) {
         YoLog.i(TAG, "reportClickAddTime1@ source : " + source);
@@ -43,40 +24,6 @@ public class AppReport {
 
     public static void setConnectionSource(@ConnectionSource String source){
         sConnectionSource = source;
-    }
-
-    public static void reportServerRefreshStart(String host, @ServerSource String source) {
-        YoLog.i(TAG, "reportServerRefreshStart@ host : " + host + ", source = " + source);
-        Map<String, Object> params = new HashMap<>();
-        params.put(ReportConstants.AppReport.KEY_SOURCE, source);
-        params.put(ReportConstants.AppReport.KEY_HOST, host);
-        // ROIQueryAnalytics.track(ReportConstants.AppReport.ACTION_SERVERS_REFRESH_START, params);
-    }
-
-    public static void reportServerRefreshFinish(String host, @ServerSource String source,String result, String errorCode, String errorMessage, long durationMills) {
-        if (source == null) {
-            YoLog.i(TAG, "reportServerRefreshFinish@ source is null");
-            return;
-        }
-        boolean networkEnabled = NetworkManager.getInstance(MainApplication.Companion.getContext()).getConnected();
-        String connectedIp = IpUtil.INSTANCE.getConnectedIdAddress();
-        YoLog.i(TAG, "reportServerRefreshFinish@ host: " + host + " ,result : " + result + ", source: " + source + ", errorCode:" + errorCode + " ,errorMessage: " + errorMessage + ", network enabled: " + networkEnabled + ", connected ip: " + connectedIp + ", duration: " + durationMills);
-        Map<String, Object> params = new HashMap<>();
-        params.put(ReportConstants.AppReport.KEY_SOURCE, source);
-        params.put(ReportConstants.AppReport.KEY_RESULT, result);
-        params.put(ReportConstants.AppReport.KEY_HOST, host);
-        if (!TextUtils.isEmpty(errorCode)) {
-            params.put(ReportConstants.AppReport.KEY_ERROR_CODE, errorCode);
-        }
-        if (!TextUtils.isEmpty(errorMessage)) {
-            params.put(ReportConstants.AppReport.KEY_ERROR_MSG, errorMessage);
-        }
-        if (!TextUtils.isEmpty(connectedIp)) {
-            params.put(ReportConstants.AppReport.KEY_IP_ADDRESS, connectedIp);
-        }
-        params.put(ReportConstants.AppReport.KEY_DURATION, durationMills);
-        params.put(ReportConstants.AppReport.KEY_NETWORK_ENABLED, networkEnabled);
-        // ROIQueryAnalytics.track(ReportConstants.AppReport.ACTION_SERVERS_REFRESH_FINISH, params);
     }
 
     public static void reportToConnection() {

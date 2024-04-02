@@ -14,6 +14,7 @@ import com.ironmeta.one.ads.format.*
 import com.ironmeta.one.ads.proxy.AdLoadListener
 import com.ironmeta.one.ads.proxy.AdShowListener
 import com.ironmeta.one.ads.proxy.IAdPresenterProxy
+import com.ironmeta.one.report.VpnReporter
 import com.roiquery.ad.AdType
 import com.roiquery.ad.DTAdReport
 import kotlinx.coroutines.Dispatchers
@@ -58,24 +59,29 @@ class AdPresenter(adUnitSet: UserAdConfig.AdUnitSet, val context: Context) : IAd
         }
     }
 
-    override fun loadAdExceptNative(adFormat: AdFormat, adPlacement: String, loadListener: AdLoadListener?) {
+    override fun loadAdExceptNative(
+        adFormat: AdFormat,
+        adPlacement: String,
+        loadListener: AdLoadListener?,
+        from: String
+    ) {
         when (adFormat) {
             AdFormat.INTERSTITIAL -> {
                 var loadStart = System.currentTimeMillis()
                 var loadTimes = 0
                 val loadListenerProxy = object : AdLoadListener {
                     override fun onAdLoaded() {
+                        VpnReporter.reportAdLoadEnd(AdFormat.INTERSTITIAL, 0, "", true, from, System.currentTimeMillis() - loadStart)
                         loadListener?.onAdLoaded()
-                        DTAdReport.reportLoadEnd(adInterstitial?.adId?:"", AdType.INTERSTITIAL, com.roiquery.ad.AdPlatform.ADMOB, (System.currentTimeMillis() - loadStart), true, adInterstitial?.seq?:"")
                     }
 
                     override fun onFailure(errorCode: Int, errorMessage: String) {
-                        DTAdReport.reportLoadEnd(adInterstitial?.adId?:"", AdType.INTERSTITIAL, com.roiquery.ad.AdPlatform.ADMOB, (System.currentTimeMillis() - loadStart), false, adInterstitial?.seq?:"", errorCode, errorMessage)
+                        VpnReporter.reportAdLoadEnd(AdFormat.INTERSTITIAL, errorCode, errorMessage, false, from, System.currentTimeMillis() - loadStart)
                         if (loadTimes == 1 && errorCode != AdRequest.ERROR_CODE_NO_FILL && errorCode != AdRequest.ERROR_CODE_MEDIATION_NO_FILL) {
                             Timer().schedule(2000) {
                                 loadTimes ++
                                 GlobalScope.launch(Dispatchers.Main) {
-                                    adInterstitial?.loadAd(loadListener)
+                                    adInterstitial?.loadAd(loadListener, from)
                                 }
                             }
                         } else {
@@ -83,20 +89,23 @@ class AdPresenter(adUnitSet: UserAdConfig.AdUnitSet, val context: Context) : IAd
                         }
                     }
                 }
-                adInterstitial?.loadAd(loadListenerProxy)
+                adInterstitial?.loadAd(loadListenerProxy, from)
                 loadTimes = 1
                 DTAdReport.reportLoadBegin(adInterstitial?.adId?:"", AdType.INTERSTITIAL, com.roiquery.ad.AdPlatform.ADMOB, adInterstitial?.seq?:"")
             }
         }
     }
 
-    override fun loadNativeAd(adPlacement: String, loadListener: AdLoadListener?) {
+    override fun loadNativeAd(adPlacement: String, loadListener: AdLoadListener?, from: String) {
+        val start = System.currentTimeMillis()
         adNative?.loadAd(object : NativeAdLoadListener {
             override fun onAdLoaded() {
+                VpnReporter.reportAdLoadEnd(AdFormat.NATIVE, 0, "", true, from, System.currentTimeMillis() - start)
                 loadListener?.onAdLoaded()
             }
 
             override fun onAdLoadFail(code: Int, message: String) {
+                VpnReporter.reportAdLoadEnd(AdFormat.NATIVE, code, message, false, from, System.currentTimeMillis() - start)
                 loadListener?.onFailure(code, message)
             }
         })

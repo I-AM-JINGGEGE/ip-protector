@@ -41,14 +41,6 @@ public class VstoreManager {
         return mmkv;
     }
 
-    @UiThread
-    public MMKV createCustomStoreClient(String storeId, int mode) {
-        if (mStoreMap.containsKey(storeId)) {
-            throw new RuntimeException();
-        }
-        return createMMKV(storeId, mode);
-    }
-
     @NonNull
     private MMKV getMmkv(boolean usedByMainProcessOnly) {
         return Objects.requireNonNull(usedByMainProcessOnly ? mStoreMap.get(STORE_ID_FOR_MAIN_PROCESS) : mStoreMap.get(STORE_ID_FOR_MULTI_PROCESS));
