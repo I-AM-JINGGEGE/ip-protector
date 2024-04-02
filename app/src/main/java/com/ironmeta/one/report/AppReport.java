@@ -1,12 +1,6 @@
 package com.ironmeta.one.report;
 
-import static com.ironmeta.one.report.ReportConstants.AppReport.ACTION_VPN_CONNECT;
-
-import android.content.Context;
-import android.os.SystemClock;
 import android.text.TextUtils;
-
-import androidx.lifecycle.LiveData;
 
 import com.ironmeta.base.utils.YoLog;
 import com.ironmeta.one.MainApplication;
@@ -16,11 +10,6 @@ import com.ironmeta.one.annotation.ConnectionSource;
 import com.ironmeta.one.annotation.ServerSource;
 import com.ironmeta.one.base.net.NetworkManager;
 import com.ironmeta.one.ui.widget.RatingBar;
-import com.ironmeta.tahiti.TahitiCoreServiceStateInfoManager;
-import com.ironmeta.tahiti.constants.CoreServiceStateConstants;
-import com.roiquery.analytics.DTAnalytics;
-import com.roiquery.analytics.DTAnalyticsUtils;
-import com.roiquery.analytics.ROIQueryAnalytics;
 import com.sdk.ssmod.IMSDK;
 
 import java.util.HashMap;

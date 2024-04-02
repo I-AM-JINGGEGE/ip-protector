@@ -348,7 +348,7 @@ public class MainActivity extends CommonAppCompatActivity implements OnClickDisc
         TahitiCoreServiceStateInfoManager.getInstance(this).getCoreServiceStateAsLiveData().observe(this, serviceState -> {
             switch (serviceState) {
                 case Connecting:
-                    if (FakeConnectingProgressManager.Companion.getInstance().isStart() || FakeConnectingProgressManager.Companion.getInstance().isWaitingForConnecting() || FakeConnectingProgressManager.Companion.getInstance().isProgressingAfterConnected()) {
+                    if (FakeConnectingProgressManager.Companion.getInstance().isWaitingForConnecting() || FakeConnectingProgressManager.Companion.getInstance().isProgressingAfterConnected()) {
                         return;
                     }
                     FakeConnectingProgressManager.Companion.getInstance().start(new ProgressListener() {

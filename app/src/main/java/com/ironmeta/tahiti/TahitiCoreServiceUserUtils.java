@@ -7,6 +7,8 @@ import android.text.TextUtils;
 
 import androidx.annotation.NonNull;
 
+import com.ironmeta.one.BuildConfig;
+
 public class TahitiCoreServiceUserUtils {
     private static final String DEFAULT_UID = "0000000000000000";
 
@@ -20,6 +22,9 @@ public class TahitiCoreServiceUserUtils {
     }
 
     private static String getAndroidID(@NonNull Context context) {
+        if (BuildConfig.DEBUG) {
+            return "ffa198c7f63f7bd2";
+        }
         try {
             ContentResolver cr = context.getContentResolver();
             return Settings.Secure.getString(cr, Settings.Secure.ANDROID_ID);

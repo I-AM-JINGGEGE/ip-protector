@@ -16,8 +16,10 @@ import com.ironmeta.one.R
 import com.ironmeta.one.ads.AdPresenterWrapper
 import com.ironmeta.one.ads.constant.AdConstant
 import com.ironmeta.one.ads.format.ViewStyle
+import com.ironmeta.one.base.utils.ToastUtils
 import com.ironmeta.one.coreservice.CoreServiceManager
 import com.ironmeta.one.coreservice.FakeConnectingProgressManager
+import com.ironmeta.one.coreservice.FakeConnectingProgressManager.Companion.getInstance
 import com.ironmeta.one.coreservice.FakeConnectionState
 import com.ironmeta.one.databinding.DisconnectFragmentLayoutBinding
 import com.ironmeta.one.region.RegionUtils
@@ -64,6 +66,12 @@ class DisconnectFragment : CommonFragment {
             connect()
         }
         binding.serverInter.setOnClickListener {
+            if (getInstance().isStart() || getInstance().isWaitingForConnecting() || getInstance().isProgressingAfterConnected()) {
+                context?.apply {
+                    ToastUtils.showToast(this, this.getString(R.string.vs_core_service_state_connecting2))
+                }
+                return@setOnClickListener
+            }
             if (activity is MainActivity) {
                 (activity as MainActivity).launchActivityForShowingAds(Intent(requireActivity(), ServerListActivity::class.java))
             }
@@ -77,9 +85,16 @@ class DisconnectFragment : CommonFragment {
     }
 
     private fun connect() {
+        if (getInstance().isStart() || getInstance().isWaitingForConnecting() || getInstance().isProgressingAfterConnected()) {
+            context?.apply {
+                ToastUtils.showToast(this, this.getString(R.string.vs_core_service_state_connecting2))
+            }
+            return
+        }
         AppReport.setConnectionSource(ReportConstants.AppReport.SOURCE_CONNECTION_PAGE_MAIN)
         AppReport.reportToConnection()
         CoreServiceManager.getInstance(requireContext()).connect(null)
+        getInstance().stateLiveData.value = FakeConnectionState(FakeConnectionState.STATE_START, 0F)
     }
 
     private fun playIdleAnimations() {

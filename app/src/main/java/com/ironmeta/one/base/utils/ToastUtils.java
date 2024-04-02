@@ -12,7 +12,7 @@ public class ToastUtils {
             return;
         }
 
-        showToast(context.getApplicationContext(), content, Toast.LENGTH_LONG);
+        showToast(context.getApplicationContext(), content, Toast.LENGTH_SHORT);
     }
 
     private static void showToast(@NonNull final Context appContext, @NonNull final String content, final int duration) {

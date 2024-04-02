@@ -29,21 +29,7 @@ object CoreSDKResponseManager {
     val fetchResponseRefreshingAsLiveData = MutableLiveData<Boolean>()
 
     fun initNetworkObserver() {
-        val observer: Observer<Boolean> = Observer {
-            if (it) {
-                GlobalScope.launch(Dispatchers.IO) {
-                    try {
-                        acquireFromNetwork()
-                    } catch (ignore: Exception) {
-                    }
-                }
-            }
-        }
-        val vpnStateLiveData: LiveData<Boolean> = Transformations.map(IMSDK.vpnState) {
-            it == IMSDK.VpnState.Connected
-        }
         NetworkManager.getInstance(MainApplication.instance).connectedAsLiveData.observeForever {
-            vpnStateLiveData.removeObserver(observer)
             if (it) {
                 GlobalScope.launch(Dispatchers.IO) {
                     try {
@@ -53,7 +39,6 @@ object CoreSDKResponseManager {
                         CoreServiceManager.getInstance(MainApplication.context).syncServerCountryCodeSelected(RegionConstants.REGION_CODE_DEFAULT)
                     }
                 }
-                vpnStateLiveData.observeForever(observer)
             }
         }
     }
