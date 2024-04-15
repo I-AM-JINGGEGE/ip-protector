@@ -225,10 +225,7 @@ class MainApplication : Application(), IIMSDKApplication {
     }
 
     private fun initAd() {
-        // Admob will not be initialized after 48 hours of installation - operating strategy
-        if (TimeUtils.isNewUser(this)) {
-            MobileAds.initialize(this)
-        }
+        MobileAds.initialize(this)
     }
 
     private fun initROIQuery() {

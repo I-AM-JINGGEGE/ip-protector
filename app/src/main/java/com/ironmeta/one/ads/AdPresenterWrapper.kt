@@ -55,11 +55,7 @@ class AdPresenterWrapper private constructor() : IAdPresenterProxy {
             if (adUserProfileRequesting) {
                 return@observeForever
             }
-            if (TimeUtils.isNewUser(context)) {
-                getAdUserProfile()
-            } else {
-                countDownLatch.countDown()
-            }
+            getAdUserProfile()
         }
         GlobalScope.launch {
             countDownLatch.await()

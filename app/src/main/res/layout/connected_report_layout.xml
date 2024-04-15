@@ -299,13 +299,24 @@
                     android:textColor="@color/white"
                     style="@style/report_text_content_2"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <FrameLayout
+                android:id="@+id/native_ad_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/white_radius_4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/download_layout"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="20dp"/>
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/test_suggestion_layout"
                 android:layout_width="match_parent"
                 android:layout_height="110dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/add_time_btn_dark"
-                app:layout_constraintTop_toBottomOf="@id/download_layout">
+                app:layout_constraintTop_toBottomOf="@id/native_ad_container">
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/test_image"
@@ -345,17 +356,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
-            <FrameLayout
-                android:id="@+id/native_ad_container"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/white_radius_4dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/test_suggestion_layout"
-                android:visibility="gone"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="20dp"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/rating_layout"
@@ -364,7 +364,7 @@
                 android:background="@drawable/grey_radius_4dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/native_ad_container"
+                app:layout_constraintTop_toBottomOf="@id/test_suggestion_layout"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="65dp">
                 <androidx.appcompat.widget.AppCompatImageView
