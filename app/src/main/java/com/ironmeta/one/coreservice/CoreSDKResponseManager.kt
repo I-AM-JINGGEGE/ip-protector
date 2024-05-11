@@ -1,10 +1,6 @@
 package com.ironmeta.one.coreservice
 
-import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
-import androidx.lifecycle.Transformations
 import com.adjust.sdk.AndroidIdUtil.getAndroidId
 import com.ironmeta.one.BuildConfig
 import com.ironmeta.one.MainApplication
@@ -14,13 +10,11 @@ import com.ironmeta.one.region.RegionConstants
 import com.ironmeta.one.report.VpnReporter
 import com.ironmeta.one.ui.support.LegalManager
 import com.sdk.ssmod.IMSDK
-import com.sdk.ssmod.IRefreshListener
 import com.sdk.ssmod.IServers
 import com.sdk.ssmod.api.http.beans.FetchResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import retrofit2.Response
 import java.util.Collections
 
 object CoreSDKResponseManager {
@@ -52,7 +46,7 @@ object CoreSDKResponseManager {
         fetchResponseRefreshingAsLiveData.postValue(true)
         val deviceId = if (BuildConfig.DEBUG) "ffa198c7f63f7bd2" else getAndroidId(MainApplication.context)
         try {
-            fetchResponse = IMSDK.servers.refresh(deviceId, null, null)
+            fetchResponse = IMSDK.servers.refresh(deviceId, null)
                 ?.also {
                 it.serverZones?.apply {
                     Collections.shuffle(this)

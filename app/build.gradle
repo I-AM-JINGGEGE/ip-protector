@@ -217,7 +217,7 @@ dependencies {
     implementation 'com.google.android.ump:user-messaging-platform:2.2.0'
 
     //vpn sdk for google play bundle release
-    releaseImplementation 'ironmeta:ironmeta-iphider-ss-rust-sdk-meta:nightly-20231101-0630-release'
+    releaseImplementation 'ironmeta:ironmeta-iphider-ss-rust-sdk-meta:nightly-20240511-0823-release'
     //vpn sdk for debug
-    debugImplementation 'ironmeta:ironmeta-iphider-ss-rust-sdk-meta:nightly-20231101-0441-debug'
+    debugImplementation 'ironmeta:ironmeta-iphider-ss-rust-sdk-meta:nightly-20240511-0730-debug'
 }

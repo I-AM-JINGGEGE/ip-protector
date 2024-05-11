@@ -88,7 +88,7 @@ class CoreServiceManager private constructor(context: Context) {
     private suspend fun connectToBest(): String? {
         isConnectingAsLiveData.postValue(true)
         val response = IMSDK.withResponse(CoreSDKResponseManager.fetchResponseAsLiveData.value!!)
-            .bypassPackageNames(TahitiCoreServiceAppsBypassUtils.getAppsBypassPackageName(MainApplication.context).toList()).toBest(null).connect()
+            .bypassPackageNames(TahitiCoreServiceAppsBypassUtils.getAppsBypassPackageName(MainApplication.context).toList()).toBest().connect()
         VstoreManager.getInstance(MainApplication.instance).encode(false, KEY_CONNECTED_VPN_IP, response.host?.host ?: "")
         isConnectingAsLiveData.postValue(false)
         return response.zoneId
