@@ -16,7 +16,7 @@ import android.os.StatFs;
 import android.util.DisplayMetrics;
 import android.webkit.WebSettings;
 
-import com.roiquery.analytics.ROIQueryAnalytics;
+import ai.datatower.analytics.ROIQueryAnalytics;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

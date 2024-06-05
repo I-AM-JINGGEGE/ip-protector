@@ -15,9 +15,9 @@ import com.ironmeta.one.ads.proxy.AdShowListener
 import com.ironmeta.one.report.AdReport
 import com.ironmeta.one.report.ReportConstants
 import com.ironmeta.one.report.VpnReporter
-import com.roiquery.ad.AdPlatform
-import com.roiquery.ad.AdType
-import com.roiquery.ad.DTAdReport
+import ai.datatower.ad.AdPlatform
+import ai.datatower.ad.AdType
+import ai.datatower.ad.DTAdReport
 
 class AdInterstitialAdmob(var adId: String, val context: Context) {
     private var mInterstitialAd: InterstitialAd? = null
@@ -100,7 +100,7 @@ class AdInterstitialAdmob(var adId: String, val context: Context) {
                     AdPlatform.ADMOB,
                     placementId ?: "",
                     seq,
-                    valueMicros.toString(),
+                    valueMicros.toDouble() / 1000000,
                     currencyCode,
                     precisionType.toString(),
                     mutableMapOf<String, Any>().apply {

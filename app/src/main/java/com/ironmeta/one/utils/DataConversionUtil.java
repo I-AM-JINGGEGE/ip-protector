@@ -2,8 +2,8 @@ package com.ironmeta.one.utils;
 
 import android.os.Bundle;
 
-import com.roiquery.ad.AdPlatform;
-import com.roiquery.ad.AdType;
+import ai.datatower.ad.AdPlatform;
+import ai.datatower.ad.AdType;
 
 import java.util.HashMap;
 import java.util.Iterator;

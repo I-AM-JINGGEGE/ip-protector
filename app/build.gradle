@@ -200,7 +200,7 @@ dependencies {
     implementation("com.google.android.gms:play-services-ads:22.0.0")
 
     //roiquery
-    implementation 'com.lovinjoy:datatowerai-core:2.0.3'
+    implementation 'com.lovinjoy:datatowerai-core:3.0.1'
 
     implementation 'com.adjust.sdk:adjust-android:4.33.3'
 

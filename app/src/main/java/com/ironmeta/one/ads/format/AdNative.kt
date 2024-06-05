@@ -19,9 +19,9 @@ import com.ironmeta.one.databinding.UnifiedNativeAdSmallBlackBinding
 import com.ironmeta.one.databinding.UnifiedNativeAdSmallWhiteBinding
 import com.ironmeta.one.report.AdReport
 import com.ironmeta.one.report.ReportConstants
-import com.roiquery.ad.AdPlatform
-import com.roiquery.ad.AdType
-import com.roiquery.ad.DTAdReport
+import ai.datatower.ad.AdPlatform
+import ai.datatower.ad.AdType
+import ai.datatower.ad.DTAdReport
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -43,7 +43,7 @@ class AdNative(val context: Context, var adId: String) {
                         AdPlatform.ADMOB,
                         placementId ?: "",
                         seq ?: "",
-                        adValue.valueMicros.toString(),
+                        adValue.valueMicros.toDouble() / 1000000,
                         adValue.currencyCode,
                         adValue.precisionType.toString(),
                         mutableMapOf<String, Any>().apply {

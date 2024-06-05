@@ -39,9 +39,9 @@ import com.ironmeta.one.utils.SystemPropertyUtils
 import com.ironmeta.one.utils.TimeUtils
 import com.ironmeta.one.vlog.VlogManager
 import com.ironmeta.tahiti.TahitiCoreServiceStateInfoManager
-import com.roiquery.analytics.DT
-import com.roiquery.analytics.DTAnalytics
-import com.roiquery.analytics.OnDataTowerIdListener
+import ai.datatower.analytics.DT
+import ai.datatower.analytics.DTAnalytics
+import ai.datatower.analytics.OnDataTowerIdListener
 import com.sdk.ssmod.IIMSDKApplication
 import com.sdk.ssmod.IMSDK
 import kotlinx.coroutines.Dispatchers

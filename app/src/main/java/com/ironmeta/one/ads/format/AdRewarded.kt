@@ -16,9 +16,9 @@ import com.ironmeta.one.ads.proxy.RewardedAdShowListener
 import com.ironmeta.one.report.AdReport
 import com.ironmeta.one.report.ReportConstants
 import com.ironmeta.one.report.VpnReporter
-import com.roiquery.ad.AdPlatform
-import com.roiquery.ad.AdType
-import com.roiquery.ad.DTAdReport
+import ai.datatower.ad.AdPlatform
+import ai.datatower.ad.AdType
+import ai.datatower.ad.DTAdReport
 
 class AdRewarded(var adId: String) {
     private var mRewardedAd: RewardedAd? = null
@@ -97,7 +97,7 @@ class AdRewarded(var adId: String) {
                     AdPlatform.ADMOB,
                     placementId ?: "",
                     seq,
-                    valueMicros.toString(),
+                    valueMicros.toDouble() / 1000000,
                     currencyCode,
                     precisionType.toString(),
                     mutableMapOf<String, Any>().apply {

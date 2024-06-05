@@ -4,7 +4,7 @@ import com.ironmeta.one.ads.bean.UserAdConfig
 import com.ironmeta.one.ads.constant.AdFormat
 import com.ironmeta.one.ads.network.IpUtil
 import com.ironmeta.one.base.utils.LogUtils
-import com.roiquery.analytics.DTAnalytics
+import ai.datatower.analytics.DTAnalytics
 import org.json.JSONObject
 
 object VpnReporter {

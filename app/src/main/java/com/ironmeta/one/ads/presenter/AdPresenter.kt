@@ -15,8 +15,8 @@ import com.ironmeta.one.ads.proxy.AdLoadListener
 import com.ironmeta.one.ads.proxy.AdShowListener
 import com.ironmeta.one.ads.proxy.IAdPresenterProxy
 import com.ironmeta.one.report.VpnReporter
-import com.roiquery.ad.AdType
-import com.roiquery.ad.DTAdReport
+import ai.datatower.ad.AdType
+import ai.datatower.ad.DTAdReport
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -91,7 +91,7 @@ class AdPresenter(adUnitSet: UserAdConfig.AdUnitSet, val context: Context) : IAd
                 }
                 adInterstitial?.loadAd(loadListenerProxy, from)
                 loadTimes = 1
-                DTAdReport.reportLoadBegin(adInterstitial?.adId?:"", AdType.INTERSTITIAL, com.roiquery.ad.AdPlatform.ADMOB, adInterstitial?.seq?:"")
+                DTAdReport.reportLoadBegin(adInterstitial?.adId?:"", AdType.INTERSTITIAL, ai.datatower.ad.AdPlatform.ADMOB, adInterstitial?.seq?:"")
             }
         }
     }
@@ -145,16 +145,16 @@ class AdPresenter(adUnitSet: UserAdConfig.AdUnitSet, val context: Context) : IAd
         listener: AdShowListener?
     ): View? {
         val adNative = adNative ?: return null
-        DTAdReport.reportToShow("${adNative?.adId}", AdType.NATIVE, com.roiquery.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
+        DTAdReport.reportToShow("${adNative?.adId}", AdType.NATIVE, ai.datatower.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
         return adNative.getNativeAdExitAppView(parent, placementId, object : NativeAdShowListener {
             override fun onAdImpression() {
-                DTAdReport.reportShow("${adNative?.adId}", AdType.NATIVE, com.roiquery.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
+                DTAdReport.reportShow("${adNative?.adId}", AdType.NATIVE, ai.datatower.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
                 listener?.onAdShown()
             }
 
             override fun onAdClicked() {
-                DTAdReport.reportClick("${adNative?.adId}", AdType.NATIVE, com.roiquery.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
-                DTAdReport.reportConversionByClick("${adNative?.adId}", AdType.NATIVE, com.roiquery.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
+                DTAdReport.reportClick("${adNative?.adId}", AdType.NATIVE, ai.datatower.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
+                DTAdReport.reportConversionByClick("${adNative?.adId}", AdType.NATIVE, ai.datatower.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
                 listener?.onAdClicked()
             }
 
@@ -167,16 +167,16 @@ class AdPresenter(adUnitSet: UserAdConfig.AdUnitSet, val context: Context) : IAd
         parent: ViewGroup,
         listener: AdShowListener?
     ): View? {
-        DTAdReport.reportToShow("${adNative?.adId}", AdType.NATIVE, com.roiquery.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
+        DTAdReport.reportToShow("${adNative?.adId}", AdType.NATIVE, ai.datatower.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
         return adNative?.getNativeAdMediumView(bigStyle, parent, placementId, object : NativeAdShowListener {
             override fun onAdImpression() {
-                DTAdReport.reportShow("${adNative?.adId}", AdType.NATIVE, com.roiquery.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
+                DTAdReport.reportShow("${adNative?.adId}", AdType.NATIVE, ai.datatower.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
                 listener?.onAdShown()
             }
 
             override fun onAdClicked() {
-                DTAdReport.reportClick("${adNative?.adId}", AdType.NATIVE, com.roiquery.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
-                DTAdReport.reportConversionByClick("${adNative?.adId}", AdType.NATIVE, com.roiquery.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
+                DTAdReport.reportClick("${adNative?.adId}", AdType.NATIVE, ai.datatower.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
+                DTAdReport.reportConversionByClick("${adNative?.adId}", AdType.NATIVE, ai.datatower.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
                 listener?.onAdClicked()
             }
 
@@ -184,16 +184,16 @@ class AdPresenter(adUnitSet: UserAdConfig.AdUnitSet, val context: Context) : IAd
     }
 
     override fun getNativeAdSmallView(style: ViewStyle, placementId: String, parent: ViewGroup, listener: AdShowListener?): View? {
-        DTAdReport.reportToShow("${adNative?.adId}", AdType.NATIVE, com.roiquery.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
+        DTAdReport.reportToShow("${adNative?.adId}", AdType.NATIVE, ai.datatower.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
         return adNative?.getNativeAdSmallView(parent, style, placementId, object : NativeAdShowListener {
             override fun onAdImpression() {
-                DTAdReport.reportShow("${adNative?.adId}", AdType.NATIVE, com.roiquery.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
+                DTAdReport.reportShow("${adNative?.adId}", AdType.NATIVE, ai.datatower.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
                 listener?.onAdShown()
             }
 
             override fun onAdClicked() {
-                DTAdReport.reportClick("${adNative?.adId}", AdType.NATIVE, com.roiquery.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
-                DTAdReport.reportConversionByClick("${adNative?.adId}", AdType.NATIVE, com.roiquery.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
+                DTAdReport.reportClick("${adNative?.adId}", AdType.NATIVE, ai.datatower.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
+                DTAdReport.reportConversionByClick("${adNative?.adId}", AdType.NATIVE, ai.datatower.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
                 listener?.onAdClicked()
             }
         })

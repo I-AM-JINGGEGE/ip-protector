@@ -11,7 +11,7 @@ import com.ironmeta.one.base.net.NetworkManager;
 import com.ironmeta.one.base.utils.DeviceUtils;
 import com.ironmeta.one.base.utils.ThreadUtils;
 import com.ironmeta.tahiti.TahitiCoreServiceUserUtils;
-import com.roiquery.analytics.ROIQueryAnalytics;
+import ai.datatower.analytics.ROIQueryAnalytics;
 
 public class VlogManager {
     private static VlogManager sVlogManager = null;
