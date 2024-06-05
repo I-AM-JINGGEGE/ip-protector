@@ -16,12 +16,12 @@ import android.os.StatFs;
 import android.util.DisplayMetrics;
 import android.webkit.WebSettings;
 
-import ai.datatower.analytics.ROIQueryAnalytics;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.List;
+
+import ai.datatower.analytics.DTAnalytics;
 
 public class SystemPropertyUtils {
 
@@ -76,7 +76,7 @@ public class SystemPropertyUtils {
 
 
     public static void track(Context context) {
-        ROIQueryAnalytics.userSetOnce(getSystemPropertiesForUserSet(context));
+        DTAnalytics.userSetOnce(getSystemPropertiesForUserSet(context));
     }
 
     private static JSONObject getSystemPropertiesForUserSet(Context context) {

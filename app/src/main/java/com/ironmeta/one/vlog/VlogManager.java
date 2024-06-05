@@ -11,7 +11,8 @@ import com.ironmeta.one.base.net.NetworkManager;
 import com.ironmeta.one.base.utils.DeviceUtils;
 import com.ironmeta.one.base.utils.ThreadUtils;
 import com.ironmeta.tahiti.TahitiCoreServiceUserUtils;
-import ai.datatower.analytics.ROIQueryAnalytics;
+
+import ai.datatower.analytics.DTAnalytics;
 
 public class VlogManager {
     private static VlogManager sVlogManager = null;
@@ -36,7 +37,7 @@ public class VlogManager {
         mFirebaseAnalytics.setUserProperty(VlogConstants.UserProperty.U_OS_COUNTRY, DeviceUtils.getOSCountry(mAppContext));
         mFirebaseAnalytics.setUserProperty(VlogConstants.UserProperty.U_OS_LANG, DeviceUtils.getOSLang(mAppContext));
 
-        mFirebaseAnalytics.getAppInstanceId().addOnSuccessListener(s -> ROIQueryAnalytics.setFirebaseAppInstanceId(s));
+        mFirebaseAnalytics.getAppInstanceId().addOnSuccessListener(s -> DTAnalytics.setFirebaseAppInstanceId(s));
     }
 
     public void logEvent(@NonNull String event, @Nullable Bundle params) {
