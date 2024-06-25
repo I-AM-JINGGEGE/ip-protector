@@ -35,7 +35,6 @@ android {
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
 
-        versionName buildProperties.versionName
         versionCode buildProperties.versionCode.toInteger()
 
         buildConfigField "String", "PUBLISH_SENCONDS", "\"" + System.currentTimeSeconds().intValue() + "\""
@@ -86,72 +85,19 @@ android {
     productFlavors {
         gp {
             buildConfigField "String", "CNL", "\"gp\""
-        }
-        apk {
-            buildConfigField "String", "CNL", "\"apk\""
-        }
-        _9apps {
-            buildConfigField "String", "CNL", "\"rqn586454c3\""
-        }
-        hxiao5 {
-            buildConfigField "String", "CNL", "\"hxiao5\""
-        }
-        shareit {
-            buildConfigField "String", "CNL", "\"shareit\""
-        }
-        newinsight {
-            buildConfigField "String", "CNL", "\"rqn4fd8ad08\""
-        }
-        samsung {
-            buildConfigField "String", "CNL", "\"rqn6bbb1a47\""
-        }
-        vivo {
-            buildConfigField "String", "CNL", "\"rqn970ccc5b\""
+            versionName buildProperties.versionName
         }
         xiaomi {
-            buildConfigField "String", "CNL", "\"rqn43cf8eed\""
+            buildConfigField "String", "CNL", "\"dtneaa1461b\""
+            versionName "Xiaomi_" + buildProperties.versionName
         }
-        oppo {
-            buildConfigField "String", "CNL", "\"rqnd16086d3\""
+        transsion {
+            buildConfigField "String", "CNL", "\"dtn9a658c8e\""
+            versionName "Transsion_" + buildProperties.versionName
         }
-        huawei {
-            buildConfigField "String", "CNL", "\"rqnb42f280d\""
-        }
-        transsion{
-            buildConfigField "String", "CNL", "\"rqnc24c17c6\""
-        }
-    }
-    productFlavors.all { flavor ->
-        flavor.dimension = "channel"
-    }
-    android.applicationVariants.all { variant ->
-        variant.outputs.all {
-            def flavorsName = productFlavors[0].name
-            def outputsName = 'ironmeta-one-gp-latest.apk'
-            if (flavorsName == 'apk') {
-                outputsName = 'ironmeta-one-latest-release.apk'
-            } else if (flavorsName == '_9apps') {
-                outputsName = 'ironmeta-one-9apps-latest.apk'
-            } else if (flavorsName == 'hxiao5') {
-                outputsName = 'ironmeta-one-hxiao5-latest.apk'
-            } else if (flavorsName == 'shareit') {
-                outputsName = 'ironmeta-one-shareit-latest.apk'
-            } else if (flavorsName == 'newinsight') {
-                outputsName = 'ironmeta-one-newinsight-latest.apk'
-            } else if (flavorsName == 'samsung') {
-                outputsName = "ironmeta-one-samsung-$versionCode-latest.apk"
-            } else if (flavorsName == 'vivo') {
-                outputsName = "ironmeta-one-vivo-$versionCode-latest.apk"
-            } else if (flavorsName == 'xiaomi') {
-                outputsName = "ironmeta-one-xiaomi-$versionCode-latest.apk"
-            } else if (flavorsName == 'oppo') {
-                outputsName = "ironmeta-one-oppo-$versionCode-latest.apk"
-            } else if (flavorsName == 'huawei') {
-                outputsName = "ironmeta-one-huawei-$versionCode-latest.apk"
-            }else if (flavorsName == 'transsion') {
-                outputsName = "ironmeta-one-transsion-latest.apk"
-            }
-            outputFileName = outputsName
+        samsung {
+            buildConfigField "String", "CNL", "\"dtn08376b2d\""
+            versionName "Samsung_" + buildProperties.versionName
         }
     }
     ndkVersion '20.1.5948944'
