@@ -165,5 +165,5 @@ dependencies {
     //vpn sdk for google play bundle release
     releaseImplementation 'ironmeta:ironmeta-iphider-ss-rust-sdk-meta:nightly-20240511-0823-release'
     //vpn sdk for debug
-    debugImplementation 'ironmeta:ironmeta-iphider-ss-rust-sdk-meta:nightly-20240511-0730-debug'
+    debugImplementation 'ironmeta:ironmeta-iphider-ss-rust-sdk-meta:nightly-20240710-1430-debug'
 }
