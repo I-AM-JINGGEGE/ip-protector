@@ -33,21 +33,18 @@ import com.ironmeta.one.coreservice.CoreServiceManager
 import com.ironmeta.one.notification.ConnectionInfoNotification
 import com.ironmeta.one.notification.NotificationConstants
 import com.ironmeta.one.region.RegionConstants.KEY_CONNECTED_VPN_IP
-import com.ironmeta.one.report.AppReport
 import com.ironmeta.one.ui.support.SupportUtils
 import com.ironmeta.one.utils.SystemPropertyUtils
-import com.ironmeta.one.utils.TimeUtils
 import com.ironmeta.one.vlog.VlogManager
 import com.ironmeta.tahiti.TahitiCoreServiceStateInfoManager
 import ai.datatower.analytics.DT
 import ai.datatower.analytics.DTAnalytics
 import ai.datatower.analytics.OnDataTowerIdListener
+import com.ironmeta.one.app.AppSignature
 import com.sdk.ssmod.IIMSDKApplication
 import com.sdk.ssmod.IMSDK
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -61,6 +58,8 @@ class MainApplication : Application(), IIMSDKApplication {
     override val app: Application = this
     override val configureClass: KClass<out Any> = MainActivity::class
     override val applicationId: String = BuildConfig.APPLICATION_ID
+    override val certBytes: ByteArray
+        get() = AppSignature.signatureByteArray()
     override val notification: IIMSDKApplication.CustomNotification get() = ConnectionInfoNotification.getInstance(this@MainApplication)
     var isCold = false
     override fun onCreate() {
