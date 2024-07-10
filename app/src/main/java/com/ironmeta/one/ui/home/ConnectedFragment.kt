@@ -191,19 +191,19 @@ class ConnectedFragment : CommonFragment {
     }
 
     private val observer = Observer<Boolean> { result ->
-//        if (result) {
-//            binding.nativeAdContainer.apply {
-//                removeAllViews()
-//                AdPresenterWrapper.getInstance().getNativeAdSmallView(
-//                    ViewStyle.WHITE, AdConstant.AdPlacement.N_CONNECTED,
-//                    this,
-//                    null
-//                )?.let {
-//                    addView(it)
-//                    invalidate()
-//                }
-//            }
-//        }
+        if (result) {
+            binding.nativeAdContainer.apply {
+                removeAllViews()
+                AdPresenterWrapper.getInstance().getNativeAdSmallView(
+                    ViewStyle.WHITE, AdConstant.AdPlacement.N_CONNECTED,
+                    this,
+                    null
+                )?.let {
+                    addView(it)
+                    invalidate()
+                }
+            }
+        }
     }
 
     override fun onResume() {

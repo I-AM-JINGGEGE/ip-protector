@@ -65,7 +65,7 @@ public class NetworkManager {
         }
         IntentFilter filter = new IntentFilter();
         filter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
-        BroadcastReceiver receiver = new BroadcastReceiver() {
+        appContext.registerReceiver(new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
                 if (intent == null || intent.getAction() == null) {
@@ -76,12 +76,7 @@ public class NetworkManager {
                 }
                 updateConnectivity(context);
             }
-        };
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            appContext.registerReceiver(receiver, filter, Context.RECEIVER_EXPORTED);
-        } else {
-            appContext.registerReceiver(receiver, filter);
-        }
+        }, filter);
     }
 
     @UiThread
