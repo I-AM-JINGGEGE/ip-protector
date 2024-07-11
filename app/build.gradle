@@ -50,6 +50,13 @@ android {
 //        }
     }
 
+    packagingOptions {
+        jniLibs {
+            useLegacyPackaging = true
+        }
+        doNotStrip "lib/*/libimc.so"
+    }
+
     compileOptions {
         sourceCompatibility javaVersion
         targetCompatibility javaVersion
@@ -65,20 +72,10 @@ android {
             zipAlignEnabled true
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-
-            packagingOptions {
-                doNotStrip "lib/*/libimc.so"
-            }
         }
 
         debug {
             signingConfig signingConfigs.release
-            packagingOptions {
-                jniLibs {
-                    useLegacyPackaging = true
-                }
-                doNotStrip "lib/*/libimc.so"
-            }
         }
     }
     flavorDimensions "channel"
@@ -163,7 +160,7 @@ dependencies {
     implementation 'com.google.android.ump:user-messaging-platform:2.2.0'
 
     //vpn sdk for google play bundle release
-    releaseImplementation 'ironmeta:ironmeta-iphider-ss-rust-sdk-meta:nightly-20240511-0823-release'
+    releaseImplementation 'ironmeta:ironmeta-iphider-ss-rust-sdk-meta:nightly-20240711-0812-release'
     //vpn sdk for debug
-    debugImplementation 'ironmeta:ironmeta-iphider-ss-rust-sdk-meta:nightly-20240710-1430-debug'
+    debugImplementation 'ironmeta:ironmeta-iphider-ss-rust-sdk-meta:nightly-20240711-0728-debug'
 }
