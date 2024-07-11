@@ -8,7 +8,7 @@ import com.ironmeta.one.MainApplication
 
 object AppSignature {
     private val packageManager get() = MainApplication.instance.packageManager!!
-    private val appInfo get() = packageManager.getApplicationInfo("com.nocardteam.take.off", 0)
+    private val appInfo get() = packageManager.getApplicationInfo("com.ironmeta.ip.hider", 0)
     private val packageInfo: PackageInfo
         @SuppressLint("PackageManagerGetSignatures")
         get() = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
