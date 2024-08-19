@@ -18,6 +18,7 @@ import com.ironmeta.one.ads.AdPresenterWrapper
 import com.ironmeta.one.ads.constant.AdConstant
 import com.ironmeta.one.ads.constant.AdFormat
 import com.ironmeta.one.ads.format.ViewStyle
+import com.ironmeta.one.config.RemoteConfigManager
 import com.ironmeta.one.databinding.ConnectedFragmentLayoutBinding
 import com.ironmeta.one.region.RegionUtils
 import com.ironmeta.one.report.ReportConstants
@@ -191,19 +192,19 @@ class ConnectedFragment : CommonFragment {
     }
 
     private val observer = Observer<Boolean> { result ->
-//        if (result) {
-//            binding.nativeAdContainer.apply {
-//                removeAllViews()
-//                AdPresenterWrapper.getInstance().getNativeAdSmallView(
-//                    ViewStyle.WHITE, AdConstant.AdPlacement.N_CONNECTED,
-//                    this,
-//                    null
-//                )?.let {
-//                    addView(it)
-//                    invalidate()
-//                }
-//            }
-//        }
+        if (result && RemoteConfigManager.getInstance().connectedNativeAdSwitch) {
+            binding.nativeAdContainer.apply {
+                removeAllViews()
+                AdPresenterWrapper.getInstance().getNativeAdSmallView(
+                    ViewStyle.WHITE, AdConstant.AdPlacement.N_CONNECTED,
+                    this,
+                    null
+                )?.let {
+                    addView(it)
+                    invalidate()
+                }
+            }
+        }
     }
 
     override fun onResume() {

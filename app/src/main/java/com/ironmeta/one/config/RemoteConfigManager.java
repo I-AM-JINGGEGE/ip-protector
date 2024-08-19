@@ -49,6 +49,7 @@ public class RemoteConfigManager {
         defaultValues.put(RemoteConstants.DEFAULT_APP_OPEN_COUNT,RemoteConstants.DEFAULT_APP_OPEN_COUNT_VALUE_DEFAULT);
         defaultValues.put(RemoteConstants.OPEN_AD_LOAD_MAX_DURATION,RemoteConstants.OPEN_AD_LOAD_MAX_DURATION_VALUE_DEFAULT);
         defaultValues.put(RemoteConstants.REPORT_BEAT_DURATION,RemoteConstants.REPORT_BEAT_DURATION_VALUE_DEFAULT);
+        defaultValues.put(RemoteConstants.CONNECTED_NATIVE_AD_SWITCH,RemoteConstants.CONNECTED_NATIVE_AD_SWITCH_DEFAULT);
         return defaultValues;
     }
 
@@ -64,7 +65,7 @@ public class RemoteConfigManager {
         return FirebaseRemoteConfig.getInstance().getLong(RemoteConstants.DEFAULT_APP_OPEN_COUNT);
     }
 
-    public long getUpdateVersion() {
-        return FirebaseRemoteConfig.getInstance().getLong(RemoteConstants.UPDATE_VERSION);
+    public Boolean getConnectedNativeAdSwitch() {
+        return FirebaseRemoteConfig.getInstance().getBoolean(RemoteConstants.CONNECTED_NATIVE_AD_SWITCH);
     }
 }
