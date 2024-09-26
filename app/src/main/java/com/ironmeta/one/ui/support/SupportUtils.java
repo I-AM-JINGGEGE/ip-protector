@@ -6,18 +6,17 @@ import android.text.TextUtils;
 
 import androidx.annotation.NonNull;
 
+import com.google.android.gms.tasks.Task;
+import com.google.android.play.core.review.ReviewException;
+import com.google.android.play.core.review.ReviewInfo;
+import com.google.android.play.core.review.ReviewManager;
+import com.google.android.play.core.review.ReviewManagerFactory;
+import com.google.android.play.core.review.model.ReviewErrorCode;
 import com.ironmeta.base.vstore.VstoreManager;
 import com.ironmeta.one.R;
-import com.ironmeta.one.base.utils.AppStoreUtils;
 import com.ironmeta.one.base.utils.LogUtils;
 import com.ironmeta.one.base.utils.OSUtils;
-import com.ironmeta.one.base.utils.ToastUtils;
 import com.ironmeta.one.constants.KvStoreConstants;
-import com.ironmeta.one.report.AppReport;
-import com.ironmeta.one.report.ReportConstants;
-import com.ironmeta.one.ui.dialog.RatingDialog;
-import com.ironmeta.one.ui.rating.RatingGuideToast;
-import com.ironmeta.one.ui.widget.RatingBar;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -44,6 +43,7 @@ public class SupportUtils {
             return false;
         }
         Context appContext = activity.getApplicationContext();
+
         if (isMarkedDoNotShowRateDialog(appContext)) {
             return false;
         }
@@ -57,26 +57,20 @@ public class SupportUtils {
             return false;
         }
 
-        RatingDialog ratingDialog = new RatingDialog(activity);
-        ratingDialog.setConfirmBtnClickListener(() -> {
-            RatingBar.Type ratingGrade = ratingDialog.getRatingGrade();
-            if (ratingGrade == null) {
-                ToastUtils.showToast(appContext, appContext.getResources().getString(R.string.vs_rating_select_none_tips));
-                return;
-            } else if (ratingGrade == RatingBar.Type.TERRIBLE || ratingGrade == RatingBar.Type.BAD || ratingGrade == RatingBar.Type.OK) {
-                sendFeedback(appContext);
-            } else if (ratingGrade == RatingBar.Type.GREAT || ratingGrade == RatingBar.Type.GOOD) {
-                if (AppStoreUtils.openPlayStoreOnlyWithUrl(appContext, GP_LINK)) {
-                    RatingGuideToast.go(appContext);
-                }
-            } else {
-                ToastUtils.showToast(appContext, appContext.getResources().getString(R.string.vs_rating_thanks_tips));
-            }
-            AppReport.reportClickRate(ReportConstants.AppReport.SOURCE_RATE_DIALOG, ratingGrade);
-            ratingDialog.dismiss();
-        });
         try {
-            ratingDialog.show();
+            ReviewManager manager = ReviewManagerFactory.create(appContext);
+            Task<ReviewInfo> request = manager.requestReviewFlow();
+            request.addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    ReviewInfo reviewInfo = task.getResult();
+                    Task<Void> flow = manager.launchReviewFlow(activity, reviewInfo);
+                    flow.addOnCompleteListener(task1 -> {
+                    });
+                } else {
+                    // There was some problem, log or handle the error code.
+                    @ReviewErrorCode int reviewErrorCode = ((ReviewException) task.getException()).getErrorCode();
+                }
+            });
             setRatingShownDay(appContext);
         } catch (Exception e) {
             //https://console.firebase.google.com/u/0/project/ironmeta-one/crashlytics/app/android:com.ironmeta.one/issues/6e70bcbdd57fabd84ac11a42e8d2d12a?time=last-seven-days&sessionEventKey=63DC305D01AC000146FEC252E7B46FC1_1774110435651949943

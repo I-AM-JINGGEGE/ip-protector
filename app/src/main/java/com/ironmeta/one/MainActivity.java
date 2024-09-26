@@ -162,7 +162,6 @@ public class MainActivity extends CommonAppCompatActivity implements OnClickDisc
                 AdPresenterWrapper.Companion.getInstance().loadNativeAd(adPlacementN, null, "after presenter init");
             }
         });
-        SupportUtils.checkToShowRating(this);
         mConnectedViewModel =
                 new ViewModelProvider(this).get(ConnectedViewModel.class);
         mConnectedViewModel.getUsedUpRemainSecondsAsLiveData().observe(this, connectedSeconds -> {
@@ -645,6 +644,7 @@ public class MainActivity extends CommonAppCompatActivity implements OnClickDisc
         congratulationsDialog.setCancelable(false);
         congratulationsDialog.setDialogOnClickListener(() -> {
             congratulationsDialog.cancel();
+            SupportUtils.checkToShowRating(this);
         });
         congratulationsDialog.setMessage(getString(R.string.increased_x_minutes, addedMinutes));
         congratulationsDialog.show();

@@ -281,7 +281,10 @@ class ConnectedReportActivity : CommonAppCompatActivity() {
     private fun showAddTimeSuccessDialog(addedMinutes: Int) {
         CongratulationsDialog(this).apply {
             setCancelable(false)
-            setDialogOnClickListener { cancel() }
+            setDialogOnClickListener {
+                cancel()
+                SupportUtils.checkToShowRating(this@ConnectedReportActivity)
+            }
             setMessage(getString(R.string.increased_x_minutes, addedMinutes))
             show()
         }

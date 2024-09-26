@@ -160,7 +160,13 @@ dependencies {
     implementation 'com.google.android.ump:user-messaging-platform:2.2.0'
 
     //vpn sdk for google play bundle release
-    releaseImplementation 'ironmeta:ironmeta-iphider-ss-rust-sdk-meta:nightly-20240711-1100-release'
+    releaseImplementation('ironmeta:ironmeta-iphider-ss-rust-sdk-meta:nightly-20240711-1100-release') {
+        exclude group: "org.connectbot.jsocks", module: "jsocks"
+    }
     //vpn sdk for debug
-    debugImplementation 'ironmeta:ironmeta-iphider-ss-rust-sdk-meta:nightly-20240711-1030-debug'
+    debugImplementation('ironmeta:ironmeta-iphider-ss-rust-sdk-meta:nightly-20240711-1030-debug') {
+        exclude group: "org.connectbot.jsocks", module: "jsocks"
+    }
+    implementation("com.google.android.play:review:2.0.1")
+    implementation("com.google.android.play:review-ktx:2.0.1")
 }
