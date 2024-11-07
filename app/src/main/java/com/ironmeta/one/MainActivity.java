@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.ViewTreeObserver;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -27,11 +28,13 @@ import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.ProcessLifecycleOwner;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.ump.ConsentForm;
 import com.google.android.ump.ConsentInformation;
 import com.google.android.ump.ConsentRequestParameters;
+import com.google.android.ump.FormError;
 import com.google.android.ump.UserMessagingPlatform;
+import com.ironmeta.one.ads.network.IpUtil;
 import com.ironmeta.one.base.net.NetworkManager;
 import com.ironmeta.one.base.utils.LogUtils;
 import com.ironmeta.one.base.utils.ThreadUtils;
@@ -396,7 +399,20 @@ public class MainActivity extends CommonAppCompatActivity implements OnClickDisc
                     if (FakeConnectingProgressManager.Companion.getInstance().isWaitingForConnecting()) {
                         FakeConnectingProgressManager.Companion.getInstance().notifyVPNConnected();
                     }
-                    initAdSdk();
+                    AdPresenterWrapper.Companion.getInstance().loadAdExceptNative(AdFormat.INTERSTITIAL, AdConstant.AdPlacement.I_CONNECTED, new AdLoadListener() {
+                        @Override
+                        public void onAdLoaded() {
+                            if (FakeConnectingProgressManager.Companion.getInstance().isWaitingForConnecting() || FakeConnectingProgressManager.Companion.getInstance().isProgressingAfterConnected()) {
+                                FakeConnectingProgressManager.Companion.getInstance().notifyFinish();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(int errorCode, @NonNull String errorMessage) {
+
+                        }
+                    }, "vpn connected");
+                    AdPresenterWrapper.Companion.getInstance().loadNativeAd(AdConstant.AdPlacement.N_CONNECTED, null, "vpn connected");
                     break;
                 }
                 case Stopped: {
@@ -416,54 +432,6 @@ public class MainActivity extends CommonAppCompatActivity implements OnClickDisc
         });
     }
 
-    private boolean loadedAds = false;
-    private boolean initAdsSDK = false;
-    private Handler mLoadDelayHandler = new Handler();
-    private Runnable mInitAdSDKDelayRunnable = () -> {
-        if (!loadedAds) {
-            loadedAds = true;
-        }
-    };
-
-    private void initAdSdk() {
-        mLoadDelayHandler.postDelayed(mInitAdSDKDelayRunnable, 15000);
-        if (initAdsSDK) {
-            if (!loadedAds) {
-                loadAdsAfterConnected();
-                loadedAds = true;
-            }
-        } else {
-            new Thread(() -> {
-                MobileAds.initialize(getApplicationContext(), initializationStatus -> {
-                    initAdsSDK = true;
-                    if (!loadedAds) {
-                        mLoadDelayHandler.post(() -> {
-                            loadAdsAfterConnected();
-                        });
-                        loadedAds = true;
-                    }
-                });
-            }).start();
-        }
-    }
-
-    private void loadAdsAfterConnected() {
-        AdPresenterWrapper.Companion.getInstance().loadAdExceptNative(AdFormat.INTERSTITIAL, AdConstant.AdPlacement.I_CONNECTED, new AdLoadListener() {
-            @Override
-            public void onAdLoaded() {
-                if (FakeConnectingProgressManager.Companion.getInstance().isWaitingForConnecting() || FakeConnectingProgressManager.Companion.getInstance().isProgressingAfterConnected()) {
-                    FakeConnectingProgressManager.Companion.getInstance().notifyFinish();
-                }
-            }
-
-            @Override
-            public void onFailure(int errorCode, @NonNull String errorMessage) {
-
-            }
-        }, "vpn connected");
-        AdPresenterWrapper.Companion.getInstance().loadNativeAd(AdConstant.AdPlacement.N_CONNECTED, null, "vpn connected");
-    }
-
     private void checkToShowNextPageAfterCountingDown() {
         if (TahitiCoreServiceStateInfoManager.getInstance(MainApplication.Companion.getContext()).getCoreServiceConnected()) {
             showConnectedReportActivity();
@@ -471,8 +439,6 @@ public class MainActivity extends CommonAppCompatActivity implements OnClickDisc
         } else if (currentFragmentClass != DisconnectFragment.class){
             showDisconnectFragment(false);
         }
-        mLoadDelayHandler.removeCallbacks(mInitAdSDKDelayRunnable);
-        loadedAds = false;
     }
 
     private boolean mNeedShowDisconnectReport = false;

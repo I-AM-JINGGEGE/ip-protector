@@ -149,7 +149,7 @@ class MainApplication : Application(), IIMSDKApplication {
         SystemPropertyUtils.track(this)
 
         //ads
-//        initAd()
+        initAd()
 
         SupportUtils.logAppColdStart(this)
         initAdjust()
