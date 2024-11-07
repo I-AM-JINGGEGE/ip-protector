@@ -91,7 +91,6 @@ class AdPresenter(adUnitSet: UserAdConfig.AdUnitSet, val context: Context) : IAd
                 }
                 adInterstitial?.loadAd(loadListenerProxy, from)
                 loadTimes = 1
-                DTAdReport.reportLoadBegin(adInterstitial?.adId?:"", AdType.INTERSTITIAL, ai.datatower.ad.AdPlatform.ADMOB, adInterstitial?.seq?:"")
             }
         }
     }
@@ -108,7 +107,7 @@ class AdPresenter(adUnitSet: UserAdConfig.AdUnitSet, val context: Context) : IAd
                 VpnReporter.reportAdLoadEnd(AdFormat.NATIVE, code, message, false, from, System.currentTimeMillis() - start)
                 loadListener?.onFailure(code, message)
             }
-        })
+        }, from)
     }
 
     override fun isLoadedExceptNative(adFormat: AdFormat, adPlacement: String): Boolean {

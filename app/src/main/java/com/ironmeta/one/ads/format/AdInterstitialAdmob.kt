@@ -30,7 +30,6 @@ class AdInterstitialAdmob(var adId: String, val context: Context) {
 
     fun loadAd(listener: AdLoadListener?, from: String) {
         if (isLoadingAd) {
-            VpnReporter.reportAdLoadEnd(AdFormat.INTERSTITIAL, -3, "current is loading", false, from, 0L)
             return
         }
         if (mInterstitialAd != null) {
@@ -39,6 +38,7 @@ class AdInterstitialAdmob(var adId: String, val context: Context) {
         }
         callBack = listener
         isLoadingAd = true
+        VpnReporter.reportAdLoadStart(AdFormat.INTERSTITIAL, from)
         var adRequest = AdRequest.Builder().build()
         InterstitialAd.load(context,adId, adRequest, object : InterstitialAdLoadCallback() {
             override fun onAdFailedToLoad(adError: LoadAdError) {

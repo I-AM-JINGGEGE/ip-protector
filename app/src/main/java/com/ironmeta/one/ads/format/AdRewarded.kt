@@ -31,7 +31,6 @@ class AdRewarded(var adId: String) {
     fun loadAd(listener: AdLoadListener?, from: String) {
         val start = System.currentTimeMillis()
         if (isLoadingAd) {
-            VpnReporter.reportAdLoadEnd(AdFormat.REWARDED, -3, "current is loading", false, from, 0L)
             return
         }
         if (mRewardedAd != null) {
@@ -40,7 +39,7 @@ class AdRewarded(var adId: String) {
         }
         callBack = listener
         isLoadingAd = true
-
+        VpnReporter.reportAdLoadStart(AdFormat.REWARDED, from)
         var adRequest = AdRequest.Builder().build()
         RewardedAd.load(MainApplication.instance.applicationContext, adId, adRequest, object : RewardedAdLoadCallback() {
             override fun onAdFailedToLoad(adError: LoadAdError) {

@@ -16,6 +16,7 @@ import com.ironmeta.one.report.ReportConstants
 import ai.datatower.ad.AdPlatform
 import ai.datatower.ad.AdType
 import ai.datatower.ad.DTAdReport
+import com.ironmeta.one.report.VpnReporter
 
 class AdAppOpenAdmob(var adId: String, val context: Context) {
     private var mAppOpenAd: AppOpenAd? = null
@@ -25,7 +26,7 @@ class AdAppOpenAdmob(var adId: String, val context: Context) {
     private var seq = DTAdReport.generateUUID()
     private var placementId: String? = null
 
-    fun loadAd(listener: AdLoadListener?) {
+    fun loadAd(listener: AdLoadListener?, from: String) {
         if (isLoadingAd) {
             return
         }
@@ -35,6 +36,7 @@ class AdAppOpenAdmob(var adId: String, val context: Context) {
         }
         callBack = listener
         isLoadingAd = true
+        VpnReporter.reportAdLoadStart(AdFormat.APP_OPEN, from)
         var adRequest = AdRequest.Builder().build()
         AppOpenAd.load(context, adId, adRequest, object : AppOpenAd.AppOpenAdLoadCallback() {
             override fun onAdFailedToLoad(adError: LoadAdError) {

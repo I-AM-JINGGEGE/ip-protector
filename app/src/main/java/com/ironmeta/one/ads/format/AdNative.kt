@@ -22,6 +22,7 @@ import com.ironmeta.one.report.ReportConstants
 import ai.datatower.ad.AdPlatform
 import ai.datatower.ad.AdType
 import ai.datatower.ad.DTAdReport
+import com.ironmeta.one.report.VpnReporter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -76,7 +77,7 @@ class AdNative(val context: Context, var adId: String) {
         )
         .build()
 
-    fun loadAd(loadListener: NativeAdLoadListener?) {
+    fun loadAd(loadListener: NativeAdLoadListener?, from: String) {
         mNativeAdLoadListener = loadListener
         if (adLoader.isLoading) {
             return
@@ -85,6 +86,7 @@ class AdNative(val context: Context, var adId: String) {
             loadListener?.onAdLoaded()
             return
         }
+        VpnReporter.reportAdLoadStart(AdFormat.NATIVE, from)
         seq = DTAdReport.generateUUID()
         adLoader.loadAd(AdRequest.Builder().build())
     }
