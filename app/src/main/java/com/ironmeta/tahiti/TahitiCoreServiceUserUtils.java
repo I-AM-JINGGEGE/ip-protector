@@ -21,7 +21,7 @@ public class TahitiCoreServiceUserUtils {
         return DEFAULT_UID;
     }
 
-    private static String getAndroidID(@NonNull Context context) {
+    public static String getAndroidID(@NonNull Context context) {
         if (BuildConfig.DEBUG) {
             return "ffa198c7f63f7bd2";
         }

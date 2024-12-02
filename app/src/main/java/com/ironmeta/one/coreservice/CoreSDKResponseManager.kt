@@ -1,7 +1,6 @@
 package com.ironmeta.one.coreservice
 
 import androidx.lifecycle.MutableLiveData
-import com.adjust.sdk.AndroidIdUtil.getAndroidId
 import com.ironmeta.one.BuildConfig
 import com.ironmeta.one.MainApplication
 import com.ironmeta.one.base.net.NetworkManager
@@ -9,6 +8,7 @@ import com.ironmeta.one.base.utils.LogUtils
 import com.ironmeta.one.region.RegionConstants
 import com.ironmeta.one.report.VpnReporter
 import com.ironmeta.one.ui.support.LegalManager
+import com.ironmeta.tahiti.TahitiCoreServiceUserUtils
 import com.sdk.ssmod.IMSDK
 import com.sdk.ssmod.IServers
 import com.sdk.ssmod.api.http.beans.FetchResponse
@@ -44,7 +44,7 @@ object CoreSDKResponseManager {
         var start = System.currentTimeMillis()
         VpnReporter.reportServerRequestStart(from)
         fetchResponseRefreshingAsLiveData.postValue(true)
-        val deviceId = if (BuildConfig.DEBUG) "ffa198c7f63f7bd2" else getAndroidId(MainApplication.context)
+        val deviceId = if (BuildConfig.DEBUG) "ffa198c7f63f7bd2" else TahitiCoreServiceUserUtils.getAndroidID(MainApplication.context)
         try {
             fetchResponse = IMSDK.servers.refresh(deviceId, null)
                 ?.also {

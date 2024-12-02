@@ -13,8 +13,6 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ProcessLifecycleOwner
 import androidx.work.Configuration
 import androidx.work.WorkManager
-import com.adjust.sdk.Adjust
-import com.adjust.sdk.AdjustConfig
 import com.google.android.gms.ads.MobileAds
 import com.google.firebase.FirebaseApp
 import com.google.firebase.crashlytics.FirebaseCrashlytics
@@ -40,6 +38,7 @@ import com.ironmeta.tahiti.TahitiCoreServiceStateInfoManager
 import ai.datatower.analytics.DT
 import ai.datatower.analytics.DTAnalytics
 import ai.datatower.analytics.OnDataTowerIdListener
+import com.appsflyer.AppsFlyerLib
 import com.ironmeta.one.app.AppSignature
 import com.sdk.ssmod.IIMSDKApplication
 import com.sdk.ssmod.IMSDK
@@ -122,15 +121,13 @@ class MainApplication : Application(), IIMSDKApplication {
         }
     }
 
-    private fun initAdjust() {
+    private fun initAttribution() {
         DTAnalytics.getDataTowerId(object : OnDataTowerIdListener {
             override fun onDataTowerIdCompleted(dataTowerId: String) {
-                Adjust.addSessionCallbackParameter("dt_id", dataTowerId)
-                val appToken = "genwl7nmrbb4"
-                val environment: String =
-                    if (BuildConfig.DEBUG) AdjustConfig.ENVIRONMENT_SANDBOX else AdjustConfig.ENVIRONMENT_PRODUCTION
-                val config = AdjustConfig(this@MainApplication, appToken, environment)
-                Adjust.onCreate(config)
+                AppsFlyerLib.getInstance().init("EE7PYVutxibbyKm2b5bA93", null, this@MainApplication)
+                AppsFlyerLib.getInstance().start(this@MainApplication)
+                val appsFlyerUID = AppsFlyerLib.getInstance().getAppsFlyerUID(this@MainApplication)
+                DTAnalytics.setAppsFlyerId(appsFlyerUID)
             }
         })
     }
@@ -152,7 +149,7 @@ class MainApplication : Application(), IIMSDKApplication {
         initAd()
 
         SupportUtils.logAppColdStart(this)
-        initAdjust()
+        initAttribution()
         ProcessLifecycleOwner.get().lifecycle.addObserver(mLifecycleObserver)
         CoreSDKResponseManager.initNetworkObserver()
     }

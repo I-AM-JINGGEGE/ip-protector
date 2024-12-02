@@ -34,8 +34,6 @@
 -keep class org.libpag.** {*;}
 -keep class androidx.exifinterface.** {*;}
 
-#adjust
--keep class com.adjust.sdk.** { *; }
 -keep class com.google.android.gms.common.ConnectionResult {
     int SUCCESS;
 }
@@ -47,3 +45,6 @@
     boolean isLimitAdTrackingEnabled();
 }
 -keep public class com.android.installreferrer.** { *; }
+
+-keep class com.appsflyer.** { *; }
+-keep class kotlin.jvm.internal.** { *; }

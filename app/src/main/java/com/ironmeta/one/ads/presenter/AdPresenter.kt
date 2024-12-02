@@ -92,6 +92,8 @@ class AdPresenter(adUnitSet: UserAdConfig.AdUnitSet, val context: Context) : IAd
                 adInterstitial?.loadAd(loadListenerProxy, from)
                 loadTimes = 1
             }
+
+            else -> {}
         }
     }
 
@@ -135,6 +137,8 @@ class AdPresenter(adUnitSet: UserAdConfig.AdUnitSet, val context: Context) : IAd
             AdFormat.INTERSTITIAL -> {
                 adInterstitial?.show(activity, listener, adPlacement)
             }
+
+            else -> {}
         }
     }
 
@@ -209,6 +213,8 @@ class AdPresenter(adUnitSet: UserAdConfig.AdUnitSet, val context: Context) : IAd
                     AdPlatform.ADMOB -> {
                         return AdConstant.AdUnitId.ADMOB_INTERSTITIAL_ID_TEST
                     }
+
+                    else -> {}
                 }
             }
             AdFormat.NATIVE -> {
@@ -216,6 +222,8 @@ class AdPresenter(adUnitSet: UserAdConfig.AdUnitSet, val context: Context) : IAd
                     AdPlatform.ADMOB -> {
                         return AdConstant.AdUnitId.ADMOB_NATIVE_ID_TEST
                     }
+
+                    else -> {}
                 }
             }
             AdFormat.REWARDED -> {
@@ -223,6 +231,8 @@ class AdPresenter(adUnitSet: UserAdConfig.AdUnitSet, val context: Context) : IAd
                     AdPlatform.ADMOB -> {
                         return AdConstant.AdUnitId.ADMOB_REWARDED_ID_TEST
                     }
+
+                    else -> {}
                 }
             }
             AdFormat.APP_OPEN -> {
@@ -230,6 +240,8 @@ class AdPresenter(adUnitSet: UserAdConfig.AdUnitSet, val context: Context) : IAd
                     AdPlatform.ADMOB -> {
                         return AdConstant.AdUnitId.ADMOB_APP_OPEN_ID_TEST
                     }
+
+                    else -> {}
                 }
             }
         }
@@ -241,6 +253,8 @@ class AdPresenter(adUnitSet: UserAdConfig.AdUnitSet, val context: Context) : IAd
             AdFormat.INTERSTITIAL -> {
                 adInterstitial?.logToShow(adPlacement)
             }
+
+            else -> {}
         }
     }
 

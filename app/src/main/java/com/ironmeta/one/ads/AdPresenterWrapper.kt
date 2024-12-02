@@ -116,6 +116,8 @@ class AdPresenterWrapper private constructor() : IAdPresenterProxy {
                     AdFormat.APP_OPEN -> {
                         appOpenAdLoadLiveData.value = true
                     }
+
+                    else -> {}
                 }
             }
 

@@ -9,7 +9,7 @@ buildscript {
 
         javaVersion = JavaVersion.VERSION_11
 
-        kotlinVersion = '1.6.10'
+        kotlinVersion = '1.8.0'
         coroutinesVersion = '1.6.0'
         lifecycleVersion = '2.3.1'
     }
