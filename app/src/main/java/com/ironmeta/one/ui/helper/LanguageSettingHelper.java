@@ -11,6 +11,7 @@ import android.util.DisplayMetrics;
 import com.ironmeta.base.vstore.VstoreManager;
 import com.ironmeta.one.MainActivity;
 import com.ironmeta.one.R;
+import com.ironmeta.one.base.utils.DeviceUtils;
 import com.ironmeta.one.ui.bean.LanguageItem;
 
 import java.util.ArrayList;
@@ -92,10 +93,11 @@ public class LanguageSettingHelper {
     }
 
     public void initLanguageLocale(Activity activity) {
+        String countryCode = DeviceUtils.getOSCountry(activity);
         String zoneCodeSelected = obtainLanguageZoneCodeSelected();
         Resources resources = context.getResources();
         Configuration configuration = resources.getConfiguration();
-        Locale locale = new Locale(zoneCodeSelected, "");
+        Locale locale = new Locale(zoneCodeSelected, countryCode);
         configuration.setLocale(locale);
         DisplayMetrics dm = resources.getDisplayMetrics();
         resources.updateConfiguration(configuration, dm);
