@@ -7,7 +7,7 @@ import android.net.VpnService
 import androidx.activity.result.contract.ActivityResultContract
 
 class RequestVpnPermissionContract : ActivityResultContract<Unit, Boolean>() {
-    override fun createIntent(context: Context, input: Unit?): Intent =
+    override fun createIntent(context: Context, input: Unit): Intent =
         VpnService.prepare(context)
 
     override fun parseResult(resultCode: Int, intent: Intent?): Boolean =
@@ -15,7 +15,7 @@ class RequestVpnPermissionContract : ActivityResultContract<Unit, Boolean>() {
 
     override fun getSynchronousResult(
         context: Context,
-        input: Unit?
+        input: Unit
     ): SynchronousResult<Boolean>? =
         if (VpnService.prepare(context) != null) {
             null

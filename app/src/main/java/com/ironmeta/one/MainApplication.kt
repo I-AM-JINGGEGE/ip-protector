@@ -39,7 +39,6 @@ import ai.datatower.analytics.DT
 import ai.datatower.analytics.DTAnalytics
 import ai.datatower.analytics.OnDataTowerIdListener
 import com.appsflyer.AppsFlyerLib
-import com.ironmeta.one.app.AppSignature
 import com.sdk.ssmod.IIMSDKApplication
 import com.sdk.ssmod.IMSDK
 import kotlinx.coroutines.Dispatchers
@@ -57,9 +56,15 @@ class MainApplication : Application(), IIMSDKApplication {
     override val app: Application = this
     override val configureClass: KClass<out Any> = MainActivity::class
     override val applicationId: String = BuildConfig.APPLICATION_ID
-    override val certBytes: ByteArray
-        get() = AppSignature.signatureByteArray()
     override val notification: IIMSDKApplication.CustomNotification get() = ConnectionInfoNotification.getInstance(this@MainApplication)
+    override fun onServiceDisconnected() {
+
+    }
+
+    override fun onBinderDied() {
+
+    }
+
     var isCold = false
     override fun onCreate() {
         super.onCreate()

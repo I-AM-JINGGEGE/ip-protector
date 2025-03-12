@@ -44,7 +44,7 @@ object CoreSDKResponseManager {
         var start = System.currentTimeMillis()
         VpnReporter.reportServerRequestStart(from)
         fetchResponseRefreshingAsLiveData.postValue(true)
-        val deviceId = if (BuildConfig.DEBUG) "ffa198c7f63f7bd2" else TahitiCoreServiceUserUtils.getAndroidID(MainApplication.context)
+        val deviceId = TahitiCoreServiceUserUtils.getAndroidID(MainApplication.context)
         try {
             fetchResponse = IMSDK.servers.refresh(deviceId, null)
                 ?.also {

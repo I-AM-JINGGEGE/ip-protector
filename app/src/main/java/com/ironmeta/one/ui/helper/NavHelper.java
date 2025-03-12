@@ -40,35 +40,18 @@ public class NavHelper {
     }
 
     public void navToAnother(MainActivity activity, int itemId) {
-        switch (itemId) {
-            case R.id.item_apps_bypass_settings: {
-                activity.launchActivityForShowingAds(new Intent(activity, AppsBypassSettingsActivity.class));
-            }
-            break;
-
-            case R.id.item_server_list: {
-                activity.launchActivityForShowingAds(new Intent(activity, ServerListActivity.class));
-            }
-            break;
-
-            case R.id.item_language: {
-                activity.launchActivityForShowingAds(new Intent(activity, LanguageSettingActivity.class));
-            }
-            break;
-
-            case R.id.item_share: {
-                activity.launchActivityForShowingAds(new Intent(activity, ShareActivity.class));
-            }
-            break;
-
-            case R.id.item_privacy_policy: {
-                activity.launchActivityForShowingAds(new Intent(activity, PrivacyPolicyActivity.class));
-            }
-            break;
-            case R.id.item_feedback: {
-                SupportUtils.sendFeedback(activity);
-            }
-            break;
+        if (itemId == R.id.item_apps_bypass_settings) {
+            activity.launchActivityForShowingAds(new Intent(activity, AppsBypassSettingsActivity.class));
+        } else if (itemId == R.id.item_server_list) {
+            activity.launchActivityForShowingAds(new Intent(activity, ServerListActivity.class));
+        } else if (itemId == R.id.item_language) {
+            activity.launchActivityForShowingAds(new Intent(activity, LanguageSettingActivity.class));
+        } else if (itemId == R.id.item_share) {
+            activity.launchActivityForShowingAds(new Intent(activity, ShareActivity.class));
+        } else if (itemId == R.id.item_privacy_policy) {
+            activity.launchActivityForShowingAds(new Intent(activity, PrivacyPolicyActivity.class));
+        } else if (itemId == R.id.item_feedback) {
+            SupportUtils.sendFeedback(activity);
         }
     }
 
@@ -83,43 +66,27 @@ public class NavHelper {
             TextView itemTV = view.findViewById(R.id.text_item);
             int itemIcon = -1;
             String itemTitle = null;
-            switch (menu.getItem(i).getItemId()) {
-                case R.id.item_apps_bypass_settings: {
-                    itemIcon = R.mipmap.ic_apps_bypass_settings;
-                    itemTitle = context.getApplicationContext().getString(R.string.vs_feature_apps_bypass_title);
-                }
-                break;
-
-                case R.id.item_server_list: {
-                    itemIcon = R.mipmap.ic_server_list;
-                    itemTitle = context.getApplicationContext().getString(R.string.vs_feature_region_selector_title);
-                }
-                break;
-
-                case R.id.item_language: {
-                    itemIcon = R.mipmap.ic_language;
-                    itemTitle = context.getApplicationContext().getString(R.string.vs_feature_language_title);
-                }
-                break;
-
-                case R.id.item_share: {
-                    itemIcon = R.mipmap.ic_share;
-                    itemTitle = context.getApplicationContext().getString(R.string.vs_feature_share_title);
-                }
-                break;
-
-                case R.id.item_privacy_policy: {
-                    itemIcon = R.mipmap.ic_privacy_policy;
-                    itemTitle = context.getApplicationContext().getString(R.string.vs_feature_privacy_policy_title);
-                }
-                break;
-
-                case R.id.item_feedback: {
-                    itemIcon = R.mipmap.ic_faq;
-                    itemTitle = context.getApplicationContext().getString(R.string.vs_feature_feedback_title);
-                }
-                break;
+            int itemId = menu.getItem(i).getItemId();
+            if (itemId == R.id.item_apps_bypass_settings) {
+                itemIcon = R.mipmap.ic_apps_bypass_settings;
+                itemTitle = context.getApplicationContext().getString(R.string.vs_feature_apps_bypass_title);
+            } else if (itemId == R.id.item_server_list) {
+                itemIcon = R.mipmap.ic_server_list;
+                itemTitle = context.getApplicationContext().getString(R.string.vs_feature_region_selector_title);
+            } else if (itemId == R.id.item_language) {
+                itemIcon = R.mipmap.ic_language;
+                itemTitle = context.getApplicationContext().getString(R.string.vs_feature_language_title);
+            } else if (itemId == R.id.item_share) {
+                itemIcon = R.mipmap.ic_share;
+                itemTitle = context.getApplicationContext().getString(R.string.vs_feature_share_title);
+            } else if (itemId == R.id.item_privacy_policy) {
+                itemIcon = R.mipmap.ic_privacy_policy;
+                itemTitle = context.getApplicationContext().getString(R.string.vs_feature_privacy_policy_title);
+            } else if (itemId == R.id.item_feedback) {
+                itemIcon = R.mipmap.ic_faq;
+                itemTitle = context.getApplicationContext().getString(R.string.vs_feature_feedback_title);
             }
+
             itemIV.setImageResource(itemIcon);
             itemTV.setText(itemTitle);
         }

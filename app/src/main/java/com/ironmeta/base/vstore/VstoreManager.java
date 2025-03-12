@@ -4,10 +4,9 @@ import android.content.Context;
 import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.UiThread;
-
-import com.getkeepsafe.relinker.ReLinker;
 import com.tencent.mmkv.MMKV;
+
+import org.extra.relinker.ReLinker;
 
 import java.util.HashMap;
 import java.util.Map;
