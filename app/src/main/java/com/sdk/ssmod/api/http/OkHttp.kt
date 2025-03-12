@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit
 private val BASE_URL_PROD = if (BuildConfig.DEBUG) {
     "https://test.ironmeta.com"
 } else {
-    "https://api.nocardteam.com"
+    "https://api.duckymario.com"
 }
 
 fun newOkHttpClient(): OkHttpClient =
