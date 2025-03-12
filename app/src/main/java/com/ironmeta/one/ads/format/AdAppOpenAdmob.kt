@@ -16,6 +16,7 @@ import com.ironmeta.one.report.ReportConstants
 import ai.datatower.ad.AdPlatform
 import ai.datatower.ad.AdType
 import ai.datatower.ad.DTAdReport
+import android.text.TextUtils
 import com.ironmeta.one.report.VpnReporter
 
 class AdAppOpenAdmob(var adId: String, val context: Context) {
@@ -58,27 +59,51 @@ class AdAppOpenAdmob(var adId: String, val context: Context) {
         mAppOpenAd?.fullScreenContentCallback = object: FullScreenContentCallback() {
             override fun onAdClicked() {
                 mAdShowListener?.onAdClicked()
-                DTAdReport.reportClick(adId, AdType.INTERSTITIAL, AdPlatform.ADMOB, placementId ?: "", seq)
-                DTAdReport.reportConversionByClick(adId, AdType.INTERSTITIAL, AdPlatform.ADMOB, placementId ?: "", seq)
+                val apAddress = IpUtil.getConnectedIdAddress()
+                DTAdReport.reportClick(adId, AdType.INTERSTITIAL, AdPlatform.ADMOB, placementId ?: "", seq, mutableMapOf<String, Any>().apply {
+                    if (!TextUtils.isEmpty(apAddress)) {
+                        put(ReportConstants.Param.IP_ADDRESS, apAddress)
+                    }
+                })
+                DTAdReport.reportConversionByClick(adId, AdType.INTERSTITIAL, AdPlatform.ADMOB, placementId ?: "", seq, mutableMapOf<String, Any>().apply {
+                    if (!TextUtils.isEmpty(apAddress)) {
+                        put(ReportConstants.Param.IP_ADDRESS, apAddress)
+                    }
+                })
             }
 
             override fun onAdDismissedFullScreenContent() {
                 mAppOpenAd = null
                 mAdShowListener?.onAdClosed()
-                DTAdReport.reportClose(adId, AdType.INTERSTITIAL, AdPlatform.ADMOB, placementId ?: "", seq)
+                val apAddress = IpUtil.getConnectedIdAddress()
+                DTAdReport.reportClose(adId, AdType.INTERSTITIAL, AdPlatform.ADMOB, placementId ?: "", seq, mutableMapOf<String, Any>().apply {
+                    if (!TextUtils.isEmpty(apAddress)) {
+                        put(ReportConstants.Param.IP_ADDRESS, apAddress)
+                    }
+                })
             }
 
             override fun onAdFailedToShowFullScreenContent(adError: AdError) {
                 mAppOpenAd = null
                 mAdShowListener?.onAdFailToShow(adError.code, adError.message)
-                DTAdReport.reportShowFailed(adId, AdType.INTERSTITIAL, AdPlatform.ADMOB, placementId ?: "", seq, adError.code, adError.message)
+                val apAddress = IpUtil.getConnectedIdAddress()
+                DTAdReport.reportShowFailed(adId, AdType.INTERSTITIAL, AdPlatform.ADMOB, placementId ?: "", seq, adError.code, adError.message,mutableMapOf<String, Any>().apply {
+                    if (!TextUtils.isEmpty(apAddress)) {
+                        put(ReportConstants.Param.IP_ADDRESS, apAddress)
+                    }
+                })
             }
 
             override fun onAdImpression() {}
 
             override fun onAdShowedFullScreenContent() {
                 mAdShowListener?.onAdShown()
-                DTAdReport.reportShow(adId, AdType.INTERSTITIAL, AdPlatform.ADMOB, placementId ?: "", seq)
+                val apAddress = IpUtil.getConnectedIdAddress()
+                DTAdReport.reportShow(adId, AdType.INTERSTITIAL, AdPlatform.ADMOB, placementId ?: "", seq, mutableMapOf<String, Any>().apply {
+                    if (!TextUtils.isEmpty(apAddress)) {
+                        put(ReportConstants.Param.IP_ADDRESS, apAddress)
+                    }
+                })
 //                AdEventLogger.logInterstitialAdShow(MainApplication.getContext())
             }
         }
@@ -122,6 +147,17 @@ class AdAppOpenAdmob(var adId: String, val context: Context) {
     fun logToShow(placementId: String) {
         this.placementId = placementId
         seq = DTAdReport.generateUUID()
-        DTAdReport.reportToShow(adId, AdType.INTERSTITIAL, AdPlatform.ADMOB, placementId, seq)
+        val apAddress = IpUtil.getConnectedIdAddress()
+        DTAdReport.reportToShow(
+            adId,
+            AdType.INTERSTITIAL,
+            AdPlatform.ADMOB,
+            placementId,
+            seq,
+            mutableMapOf<String, Any>().apply {
+                if (!TextUtils.isEmpty(apAddress)) {
+                    put(ReportConstants.Param.IP_ADDRESS, apAddress)
+                }
+            })
     }
 }

@@ -30,7 +30,6 @@ import com.ironmeta.one.coreservice.CoreSDKResponseManager
 import com.ironmeta.one.coreservice.CoreServiceManager
 import com.ironmeta.one.notification.ConnectionInfoNotification
 import com.ironmeta.one.notification.NotificationConstants
-import com.ironmeta.one.region.RegionConstants.KEY_CONNECTED_VPN_IP
 import com.ironmeta.one.ui.support.SupportUtils
 import com.ironmeta.one.utils.SystemPropertyUtils
 import com.ironmeta.one.vlog.VlogManager
@@ -39,6 +38,7 @@ import ai.datatower.analytics.DT
 import ai.datatower.analytics.DTAnalytics
 import ai.datatower.analytics.OnDataTowerIdListener
 import com.appsflyer.AppsFlyerLib
+import com.ironmeta.one.region.RegionConstants.KEY_PROFILE_VPN_IP
 import com.sdk.ssmod.IIMSDKApplication
 import com.sdk.ssmod.IMSDK
 import kotlinx.coroutines.Dispatchers
@@ -121,7 +121,7 @@ class MainApplication : Application(), IIMSDKApplication {
         RemoteConfigManager.getInstance()
         IMSDK.vpnState.observeForever {
             if (it == IMSDK.VpnState.Stopped || it == IMSDK.VpnState.Idle) {
-                VstoreManager.getInstance(instance).encode(false, KEY_CONNECTED_VPN_IP, "")
+                VstoreManager.getInstance(instance).encode(false, KEY_PROFILE_VPN_IP, "")
             }
         }
     }

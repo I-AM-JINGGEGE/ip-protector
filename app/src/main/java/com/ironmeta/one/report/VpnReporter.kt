@@ -57,7 +57,7 @@ object VpnReporter {
         DTAnalytics.track("ad_load_start", JSONObject().apply {
             put("ad_type", adType.name)
             put("from", source ?: "default")
-            put("ip_address", IpUtil.getConnectedIdAddress())
+            put(ReportConstants.Param.IP_ADDRESS, IpUtil.getConnectedIdAddress())
 
             LogUtils.i("VpnReporter", "ad_load_start [${this}]")
         })
@@ -70,7 +70,7 @@ object VpnReporter {
             errorMsg?.apply {
                 put("error_msg", this)
             }
-            put("ip_address", IpUtil.getConnectedIdAddress())
+            put(ReportConstants.Param.IP_ADDRESS, IpUtil.getConnectedIdAddress())
 
             put("success", success)
             put("from", from)
@@ -92,7 +92,7 @@ object VpnReporter {
     fun reportNativeAdBeAdd(location: String) {
         DTAnalytics.track("native_ad_will_add", JSONObject().apply {
             put("placement", location)
-
+            put(ReportConstants.Param.IP_ADDRESS, IpUtil.getConnectedIdAddress())
             LogUtils.i("VpnReporter", "native_ad_will_add [${this}]")
         })
     }
@@ -100,7 +100,7 @@ object VpnReporter {
     fun reportInitNativeAdObserver(location: String) {
         DTAnalytics.track("native_init_observer", JSONObject().apply {
             put("placement", location)
-
+            put(ReportConstants.Param.IP_ADDRESS, IpUtil.getConnectedIdAddress())
             LogUtils.i("VpnReporter", "native_init_observer [${this}]")
         })
     }

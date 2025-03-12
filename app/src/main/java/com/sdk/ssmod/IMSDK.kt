@@ -19,7 +19,10 @@ import com.github.shadowsocks.bg.BaseService
 import com.github.shadowsocks.imsvc.ImsvcService
 import com.github.shadowsocks.utils.Action
 import com.google.firebase.crashlytics.FirebaseCrashlytics
+import com.ironmeta.base.vstore.VstoreManager
 import com.ironmeta.one.BuildConfig
+import com.ironmeta.one.MainApplication.Companion.instance
+import com.ironmeta.one.region.RegionConstants.KEY_PROFILE_VPN_IP
 import com.sdk.ssmod.IMSDK.VpnState
 import com.sdk.ssmod.IMSDK.WithResponseBuilder.*
 import com.sdk.ssmod.api.http.beans.*
@@ -142,6 +145,7 @@ object IMSDK {
         enableIPv6Support: Boolean = false
     ) {
         if (!isVpnAvailable) return
+        VstoreManager.getInstance(instance).encode(false, KEY_PROFILE_VPN_IP, host)
         ShadowsocksServiceStarter(name, host, port, password, packageNames, enableIPv6Support).run()
     }
 

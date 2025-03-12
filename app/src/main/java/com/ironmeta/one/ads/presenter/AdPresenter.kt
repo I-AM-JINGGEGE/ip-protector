@@ -17,6 +17,9 @@ import com.ironmeta.one.ads.proxy.IAdPresenterProxy
 import com.ironmeta.one.report.VpnReporter
 import ai.datatower.ad.AdType
 import ai.datatower.ad.DTAdReport
+import android.text.TextUtils
+import com.ironmeta.one.ads.network.IpUtil
+import com.ironmeta.one.report.ReportConstants
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -148,16 +151,24 @@ class AdPresenter(adUnitSet: UserAdConfig.AdUnitSet, val context: Context) : IAd
         listener: AdShowListener?
     ): View? {
         val adNative = adNative ?: return null
-        DTAdReport.reportToShow("${adNative?.adId}", AdType.NATIVE, ai.datatower.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
+        DTAdReport.reportToShow("${adNative?.adId}", AdType.NATIVE, ai.datatower.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "", mutableMapOf<String, Any>().apply {
+            put(ReportConstants.Param.IP_ADDRESS, IpUtil.getConnectedIdAddress())
+        })
         return adNative.getNativeAdExitAppView(parent, placementId, object : NativeAdShowListener {
             override fun onAdImpression() {
-                DTAdReport.reportShow("${adNative?.adId}", AdType.NATIVE, ai.datatower.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
+                DTAdReport.reportShow("${adNative?.adId}", AdType.NATIVE, ai.datatower.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "", mutableMapOf<String, Any>().apply {
+                    put(ReportConstants.Param.IP_ADDRESS, IpUtil.getConnectedIdAddress())
+                })
                 listener?.onAdShown()
             }
 
             override fun onAdClicked() {
-                DTAdReport.reportClick("${adNative?.adId}", AdType.NATIVE, ai.datatower.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
-                DTAdReport.reportConversionByClick("${adNative?.adId}", AdType.NATIVE, ai.datatower.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
+                DTAdReport.reportClick("${adNative?.adId}", AdType.NATIVE, ai.datatower.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "", mutableMapOf<String, Any>().apply {
+                    put(ReportConstants.Param.IP_ADDRESS, IpUtil.getConnectedIdAddress())
+                })
+                DTAdReport.reportConversionByClick("${adNative?.adId}", AdType.NATIVE, ai.datatower.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "", mutableMapOf<String, Any>().apply {
+                    put(ReportConstants.Param.IP_ADDRESS, IpUtil.getConnectedIdAddress())
+                })
                 listener?.onAdClicked()
             }
 
@@ -170,16 +181,24 @@ class AdPresenter(adUnitSet: UserAdConfig.AdUnitSet, val context: Context) : IAd
         parent: ViewGroup,
         listener: AdShowListener?
     ): View? {
-        DTAdReport.reportToShow("${adNative?.adId}", AdType.NATIVE, ai.datatower.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
+        DTAdReport.reportToShow("${adNative?.adId}", AdType.NATIVE, ai.datatower.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "", mutableMapOf<String, Any>().apply {
+            put(ReportConstants.Param.IP_ADDRESS, IpUtil.getConnectedIdAddress())
+        })
         return adNative?.getNativeAdMediumView(bigStyle, parent, placementId, object : NativeAdShowListener {
             override fun onAdImpression() {
-                DTAdReport.reportShow("${adNative?.adId}", AdType.NATIVE, ai.datatower.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
+                DTAdReport.reportShow("${adNative?.adId}", AdType.NATIVE, ai.datatower.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "", mutableMapOf<String, Any>().apply {
+                    put(ReportConstants.Param.IP_ADDRESS, IpUtil.getConnectedIdAddress())
+                })
                 listener?.onAdShown()
             }
 
             override fun onAdClicked() {
-                DTAdReport.reportClick("${adNative?.adId}", AdType.NATIVE, ai.datatower.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
-                DTAdReport.reportConversionByClick("${adNative?.adId}", AdType.NATIVE, ai.datatower.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
+                DTAdReport.reportClick("${adNative?.adId}", AdType.NATIVE, ai.datatower.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "", mutableMapOf<String, Any>().apply {
+                    put(ReportConstants.Param.IP_ADDRESS, IpUtil.getConnectedIdAddress())
+                })
+                DTAdReport.reportConversionByClick("${adNative?.adId}", AdType.NATIVE, ai.datatower.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "", mutableMapOf<String, Any>().apply {
+                    put(ReportConstants.Param.IP_ADDRESS, IpUtil.getConnectedIdAddress())
+                })
                 listener?.onAdClicked()
             }
 
@@ -187,16 +206,24 @@ class AdPresenter(adUnitSet: UserAdConfig.AdUnitSet, val context: Context) : IAd
     }
 
     override fun getNativeAdSmallView(style: ViewStyle, placementId: String, parent: ViewGroup, listener: AdShowListener?): View? {
-        DTAdReport.reportToShow("${adNative?.adId}", AdType.NATIVE, ai.datatower.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
+        DTAdReport.reportToShow("${adNative?.adId}", AdType.NATIVE, ai.datatower.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "", mutableMapOf<String, Any>().apply {
+            put(ReportConstants.Param.IP_ADDRESS, IpUtil.getConnectedIdAddress())
+        })
         return adNative?.getNativeAdSmallView(parent, style, placementId, object : NativeAdShowListener {
             override fun onAdImpression() {
-                DTAdReport.reportShow("${adNative?.adId}", AdType.NATIVE, ai.datatower.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
+                DTAdReport.reportShow("${adNative?.adId}", AdType.NATIVE, ai.datatower.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "", mutableMapOf<String, Any>().apply {
+                    put(ReportConstants.Param.IP_ADDRESS, IpUtil.getConnectedIdAddress())
+                })
                 listener?.onAdShown()
             }
 
             override fun onAdClicked() {
-                DTAdReport.reportClick("${adNative?.adId}", AdType.NATIVE, ai.datatower.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
-                DTAdReport.reportConversionByClick("${adNative?.adId}", AdType.NATIVE, ai.datatower.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "")
+                DTAdReport.reportClick("${adNative?.adId}", AdType.NATIVE, ai.datatower.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "", mutableMapOf<String, Any>().apply {
+                    put(ReportConstants.Param.IP_ADDRESS, IpUtil.getConnectedIdAddress())
+                })
+                DTAdReport.reportConversionByClick("${adNative?.adId}", AdType.NATIVE, ai.datatower.ad.AdPlatform.ADMOB, placementId, adNative?.seq ?: "", mutableMapOf<String, Any>().apply {
+                    put(ReportConstants.Param.IP_ADDRESS, IpUtil.getConnectedIdAddress())
+                })
                 listener?.onAdClicked()
             }
         })

@@ -19,6 +19,7 @@ import com.ironmeta.one.report.VpnReporter
 import ai.datatower.ad.AdPlatform
 import ai.datatower.ad.AdType
 import ai.datatower.ad.DTAdReport
+import android.text.TextUtils
 
 class AdRewarded(var adId: String) {
     private var mRewardedAd: RewardedAd? = null
@@ -63,27 +64,51 @@ class AdRewarded(var adId: String) {
         mRewardedAd?.fullScreenContentCallback = object: FullScreenContentCallback() {
             override fun onAdClicked() {
                 mAdShowListener?.onAdClicked()
-                DTAdReport.reportClick(adId, AdType.REWARDED, AdPlatform.ADMOB, placementId ?: "", seq)
-                DTAdReport.reportConversionByClick(adId, AdType.REWARDED, AdPlatform.ADMOB, placementId ?: "", seq)
+                val apAddress = IpUtil.getConnectedIdAddress()
+                DTAdReport.reportClick(adId, AdType.REWARDED, AdPlatform.ADMOB, placementId ?: "", seq, mutableMapOf<String, Any>().apply {
+                    if (!TextUtils.isEmpty(apAddress)) {
+                        put(ReportConstants.Param.IP_ADDRESS, apAddress)
+                    }
+                })
+                DTAdReport.reportConversionByClick(adId, AdType.REWARDED, AdPlatform.ADMOB, placementId ?: "", seq, mutableMapOf<String, Any>().apply {
+                    if (!TextUtils.isEmpty(apAddress)) {
+                        put(ReportConstants.Param.IP_ADDRESS, apAddress)
+                    }
+                })
             }
 
             override fun onAdDismissedFullScreenContent() {
                 mRewardedAd = null
                 mAdShowListener?.onAdClosed()
-                DTAdReport.reportClose(adId, AdType.REWARDED, AdPlatform.ADMOB, placementId ?: "", seq)
+                val apAddress = IpUtil.getConnectedIdAddress()
+                DTAdReport.reportClose(adId, AdType.REWARDED, AdPlatform.ADMOB, placementId ?: "", seq, mutableMapOf<String, Any>().apply {
+                    if (!TextUtils.isEmpty(apAddress)) {
+                        put(ReportConstants.Param.IP_ADDRESS, apAddress)
+                    }
+                })
             }
 
             override fun onAdFailedToShowFullScreenContent(adError: AdError) {
                 mRewardedAd = null
                 mAdShowListener?.onAdFailToShow(adError.code, adError.message)
-                DTAdReport.reportShowFailed(adId, AdType.REWARDED, AdPlatform.ADMOB, placementId ?: "", seq, adError.code, adError.message)
+                val apAddress = IpUtil.getConnectedIdAddress()
+                DTAdReport.reportShowFailed(adId, AdType.REWARDED, AdPlatform.ADMOB, placementId ?: "", seq, adError.code, adError.message, mutableMapOf<String, Any>().apply {
+                    if (!TextUtils.isEmpty(apAddress)) {
+                        put(ReportConstants.Param.IP_ADDRESS, apAddress)
+                    }
+                })
             }
 
             override fun onAdImpression() {}
 
             override fun onAdShowedFullScreenContent() {
                 mAdShowListener?.onAdShown()
-                DTAdReport.reportShow(adId, AdType.REWARDED, AdPlatform.ADMOB, placementId ?: "", seq)
+                val apAddress = IpUtil.getConnectedIdAddress()
+                DTAdReport.reportShow(adId, AdType.REWARDED, AdPlatform.ADMOB, placementId ?: "", seq, mutableMapOf<String, Any>().apply {
+                    if (!TextUtils.isEmpty(apAddress)) {
+                        put(ReportConstants.Param.IP_ADDRESS, apAddress)
+                    }
+                })
             }
         }
 
@@ -130,6 +155,11 @@ class AdRewarded(var adId: String) {
     fun logToShow(placementId: String) {
         this.placementId = placementId
         seq = DTAdReport.generateUUID()
-        DTAdReport.reportToShow(adId, AdType.REWARDED, AdPlatform.ADMOB, placementId, seq)
+        val apAddress = IpUtil.getConnectedIdAddress()
+        DTAdReport.reportToShow(adId, AdType.REWARDED, AdPlatform.ADMOB, placementId, seq, mutableMapOf<String, Any>().apply {
+            if (!TextUtils.isEmpty(apAddress)) {
+                put(ReportConstants.Param.IP_ADDRESS, apAddress)
+            }
+        })
     }
 }
