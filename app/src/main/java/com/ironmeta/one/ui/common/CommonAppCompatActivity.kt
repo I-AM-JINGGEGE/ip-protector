@@ -3,6 +3,7 @@ package com.ironmeta.one.ui.common
 import android.app.ProgressDialog
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.adjust.sdk.Adjust
 import com.gyf.immersionbar.ktx.immersionBar
 import com.ironmeta.one.R
 import com.ironmeta.one.ads.AdPresenterWrapper
@@ -57,9 +58,11 @@ open class CommonAppCompatActivity : AppCompatActivity(), CustomAdapt {
 
     override fun onResume() {
         super.onResume()
+        Adjust.onResume()
     }
 
     override fun onPause() {
         super.onPause()
+        Adjust.onPause()
     }
 }

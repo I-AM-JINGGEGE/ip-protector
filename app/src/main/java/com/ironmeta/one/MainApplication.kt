@@ -38,7 +38,8 @@ import com.ironmeta.tahiti.TahitiCoreServiceStateInfoManager
 import ai.datatower.analytics.DT
 import ai.datatower.analytics.DTAnalytics
 import ai.datatower.analytics.OnDataTowerIdListener
-import com.appsflyer.AppsFlyerLib
+import com.adjust.sdk.Adjust
+import com.adjust.sdk.AdjustConfig
 import com.ironmeta.one.app.AppSignature
 import com.sdk.ssmod.IIMSDKApplication
 import com.sdk.ssmod.IMSDK
@@ -124,10 +125,12 @@ class MainApplication : Application(), IIMSDKApplication {
     private fun initAttribution() {
         DTAnalytics.getDataTowerId(object : OnDataTowerIdListener {
             override fun onDataTowerIdCompleted(dataTowerId: String) {
-                AppsFlyerLib.getInstance().init("EE7PYVutxibbyKm2b5bA93", null, this@MainApplication)
-                AppsFlyerLib.getInstance().start(this@MainApplication)
-                val appsFlyerUID = AppsFlyerLib.getInstance().getAppsFlyerUID(this@MainApplication)
-                DTAnalytics.setAppsFlyerId(appsFlyerUID)
+                //请注意：下面一行代码必须要在 Adjust.onCreate() 之前调用
+                Adjust.addGlobalCallbackParameter("dt_id", dataTowerId)
+                val appToken = "genwl7nmrbb4"
+                val environment = if (BuildConfig.DEBUG) AdjustConfig.ENVIRONMENT_SANDBOX else AdjustConfig.ENVIRONMENT_PRODUCTION
+                val config = AdjustConfig(context, appToken, environment)
+                Adjust.initSdk(config)
             }
         })
     }

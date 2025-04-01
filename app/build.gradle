@@ -146,7 +146,7 @@ dependencies {
     implementation 'com.lovinjoy:datatowerai-core:3.0.1'
 
     // https://mvnrepository.com/artifact/com.appsflyer/af-android-sdk
-    implementation 'com.appsflyer:af-android-sdk:6.15.2'
+    implementation 'com.adjust.sdk:adjust-android:5.2.0'
 
     implementation("com.github.JessYanCoding:AndroidAutoSize:v1.2.1")
 

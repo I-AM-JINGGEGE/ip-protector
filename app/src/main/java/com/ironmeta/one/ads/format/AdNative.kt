@@ -21,6 +21,8 @@ import com.ironmeta.one.report.AdReport
 import ai.datatower.ad.AdPlatform
 import ai.datatower.ad.AdType
 import ai.datatower.ad.DTAdReport
+import com.adjust.sdk.Adjust
+import com.adjust.sdk.AdjustAdRevenue
 import com.ironmeta.one.base.utils.LogUtils
 import com.ironmeta.one.report.ReportConstants.Param.IP_ADDRESS
 import com.ironmeta.one.report.VpnReporter
@@ -37,7 +39,7 @@ class AdNative(val context: Context, var adId: String) {
     private var mNativeAdShowListener: NativeAdShowListener? = null
     private val adLoader = AdLoader.Builder(context, adId)
         .forNativeAd { ad: NativeAd ->
-            ad.setOnPaidEventListener {adValue ->
+            ad.setOnPaidEventListener { adValue ->
                 GlobalScope.launch(Dispatchers.Main) {
                     DTAdReport.reportPaid(
                         adId,
@@ -54,6 +56,13 @@ class AdNative(val context: Context, var adId: String) {
                         }
                     )
                     AdReport.reportAdImpressionRevenue(adValue, AdFormat.NATIVE, context)
+                }
+                mNativeAd?.apply {
+                    // send ad revenue info to Adjust
+                    val adRevenue = AdjustAdRevenue("admob_sdk")
+                    adRevenue.setRevenue(adValue.valueMicros / 1000000.0, adValue.currencyCode)
+                    responseInfo?.loadedAdapterResponseInfo?.let { adRevenue.adRevenueNetwork = it.adSourceName }
+                    Adjust.trackAdRevenue(adRevenue)
                 }
             }
             mNativeAd = ad
