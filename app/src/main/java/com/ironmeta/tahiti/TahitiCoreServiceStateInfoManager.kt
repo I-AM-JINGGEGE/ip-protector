@@ -37,8 +37,11 @@ class TahitiCoreServiceStateInfoManager private constructor() {
 
     init {
         vpnState.observeForever { vpnState: VpnState ->
-            YoLog.i(TAG, "stateChanged, state: $vpnState")
+            YoLog.i("VpnReporter", "stateChanged, state: $vpnState")
             coreServiceConnected = (vpnState == VpnState.Connected)
+            if (coreServiceConnected) {
+                YoLog.i("VpnReporter", "已连接服务器: ${IMSDK.connectedServer.value?.host?.host}")
+            }
             mCoreServiceConnectedAsLiveData.postValue(coreServiceConnected)
         }
         initUsedUp()

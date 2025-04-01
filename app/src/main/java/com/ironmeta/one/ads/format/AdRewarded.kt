@@ -14,11 +14,12 @@ import com.ironmeta.one.ads.proxy.AdLoadListener
 import com.ironmeta.one.ads.proxy.AdShowListener
 import com.ironmeta.one.ads.proxy.RewardedAdShowListener
 import com.ironmeta.one.report.AdReport
-import com.ironmeta.one.report.ReportConstants
 import com.ironmeta.one.report.VpnReporter
 import ai.datatower.ad.AdPlatform
 import ai.datatower.ad.AdType
 import ai.datatower.ad.DTAdReport
+import com.ironmeta.one.base.utils.LogUtils
+import com.ironmeta.one.report.ReportConstants.Param.IP_ADDRESS
 
 class AdRewarded(var adId: String) {
     private var mRewardedAd: RewardedAd? = null
@@ -63,27 +64,42 @@ class AdRewarded(var adId: String) {
         mRewardedAd?.fullScreenContentCallback = object: FullScreenContentCallback() {
             override fun onAdClicked() {
                 mAdShowListener?.onAdClicked()
-                DTAdReport.reportClick(adId, AdType.REWARDED, AdPlatform.ADMOB, placementId ?: "", seq)
-                DTAdReport.reportConversionByClick(adId, AdType.REWARDED, AdPlatform.ADMOB, placementId ?: "", seq)
+                DTAdReport.reportClick(adId, AdType.REWARDED, AdPlatform.ADMOB, placementId ?: "", seq, mutableMapOf<String, Any>().apply {
+                    put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
+                    LogUtils.i("VpnReporter", "rewarded - click [${this}]")
+                })
+                DTAdReport.reportConversionByClick(adId, AdType.REWARDED, AdPlatform.ADMOB, placementId ?: "", seq, mutableMapOf<String, Any>().apply {
+                    put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
+                    LogUtils.i("VpnReporter", "rewarded - conversion [${this}]")
+                })
             }
 
             override fun onAdDismissedFullScreenContent() {
                 mRewardedAd = null
                 mAdShowListener?.onAdClosed()
-                DTAdReport.reportClose(adId, AdType.REWARDED, AdPlatform.ADMOB, placementId ?: "", seq)
+                DTAdReport.reportClose(adId, AdType.REWARDED, AdPlatform.ADMOB, placementId ?: "", seq, mutableMapOf<String, Any>().apply {
+                    put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
+                    LogUtils.i("VpnReporter", "rewarded - close [${this}]")
+                })
             }
 
             override fun onAdFailedToShowFullScreenContent(adError: AdError) {
                 mRewardedAd = null
                 mAdShowListener?.onAdFailToShow(adError.code, adError.message)
-                DTAdReport.reportShowFailed(adId, AdType.REWARDED, AdPlatform.ADMOB, placementId ?: "", seq, adError.code, adError.message)
+                DTAdReport.reportShowFailed(adId, AdType.REWARDED, AdPlatform.ADMOB, placementId ?: "", seq, adError.code, adError.message, mutableMapOf<String, Any>().apply {
+                    put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
+                    LogUtils.i("VpnReporter", "rewarded - fail show [${this}]")
+                })
             }
 
             override fun onAdImpression() {}
 
             override fun onAdShowedFullScreenContent() {
                 mAdShowListener?.onAdShown()
-                DTAdReport.reportShow(adId, AdType.REWARDED, AdPlatform.ADMOB, placementId ?: "", seq)
+                DTAdReport.reportShow(adId, AdType.REWARDED, AdPlatform.ADMOB, placementId ?: "", seq, mutableMapOf<String, Any>().apply {
+                    put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
+                    LogUtils.i("VpnReporter", "rewarded - show [${this}]")
+                })
             }
         }
 
@@ -98,9 +114,9 @@ class AdRewarded(var adId: String) {
                     seq,
                     valueMicros.toDouble() / 1000000,
                     currencyCode,
-                    precisionType.toString(),
-                    mutableMapOf<String, Any>().apply {
-                        put(ReportConstants.Param.IP_ADDRESS, IpUtil.getConnectedIdAddress())
+                    precisionType.toString(), mutableMapOf<String, Any>().apply {
+                        put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
+                        LogUtils.i("VpnReporter", "rewarded - paid [${this}]")
                     }
                 )
                 AdReport.reportAdImpressionRevenue(this, AdFormat.REWARDED, MainApplication.instance.applicationContext)
@@ -116,6 +132,14 @@ class AdRewarded(var adId: String) {
                 if (mAdShowListener is RewardedAdShowListener) {
                     (mAdShowListener as RewardedAdShowListener)?.onRewarded()
                 }
+                DTAdReport.reportRewarded(adId, AdType.REWARDED, AdPlatform.ADMOB, placementId ?: "", seq, mutableMapOf<String, Any>().apply {
+                    put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
+                    LogUtils.i("VpnReporter", "rewarded - rewarded [${this}]")
+                })
+                DTAdReport.reportConversionByRewarded(adId, AdType.REWARDED, AdPlatform.ADMOB, placementId ?: "", seq, mutableMapOf<String, Any>().apply {
+                    put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
+                    LogUtils.i("VpnReporter", "rewarded - conversion [${this}]")
+                })
             }
         } catch (e: Exception) {}
     }
@@ -130,6 +154,9 @@ class AdRewarded(var adId: String) {
     fun logToShow(placementId: String) {
         this.placementId = placementId
         seq = DTAdReport.generateUUID()
-        DTAdReport.reportToShow(adId, AdType.REWARDED, AdPlatform.ADMOB, placementId, seq)
+        DTAdReport.reportToShow(adId, AdType.REWARDED, AdPlatform.ADMOB, placementId, seq, mutableMapOf<String, Any>().apply {
+            put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
+            LogUtils.i("VpnReporter", "rewarded - to show [${this}]")
+        })
     }
 }

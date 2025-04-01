@@ -16,6 +16,8 @@ import com.ironmeta.one.report.ReportConstants
 import ai.datatower.ad.AdPlatform
 import ai.datatower.ad.AdType
 import ai.datatower.ad.DTAdReport
+import com.ironmeta.one.base.utils.LogUtils
+import com.ironmeta.one.report.ReportConstants.Param.IP_ADDRESS
 import com.ironmeta.one.report.VpnReporter
 
 class AdAppOpenAdmob(var adId: String, val context: Context) {
@@ -58,27 +60,42 @@ class AdAppOpenAdmob(var adId: String, val context: Context) {
         mAppOpenAd?.fullScreenContentCallback = object: FullScreenContentCallback() {
             override fun onAdClicked() {
                 mAdShowListener?.onAdClicked()
-                DTAdReport.reportClick(adId, AdType.INTERSTITIAL, AdPlatform.ADMOB, placementId ?: "", seq)
-                DTAdReport.reportConversionByClick(adId, AdType.INTERSTITIAL, AdPlatform.ADMOB, placementId ?: "", seq)
+                DTAdReport.reportClick(adId, AdType.INTERSTITIAL, AdPlatform.ADMOB, placementId ?: "", seq, mutableMapOf<String, Any>().apply {
+                    put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
+                    LogUtils.i("VpnReporter", "app open - click [${this}]")
+                })
+                DTAdReport.reportConversionByClick(adId, AdType.INTERSTITIAL, AdPlatform.ADMOB, placementId ?: "", seq, mutableMapOf<String, Any>().apply {
+                    put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
+                    LogUtils.i("VpnReporter", "app open - conversion [${this}]")
+                })
             }
 
             override fun onAdDismissedFullScreenContent() {
                 mAppOpenAd = null
                 mAdShowListener?.onAdClosed()
-                DTAdReport.reportClose(adId, AdType.INTERSTITIAL, AdPlatform.ADMOB, placementId ?: "", seq)
+                DTAdReport.reportClose(adId, AdType.INTERSTITIAL, AdPlatform.ADMOB, placementId ?: "", seq, mutableMapOf<String, Any>().apply {
+                    put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
+                    LogUtils.i("VpnReporter", "app open - close [${this}]")
+                })
             }
 
             override fun onAdFailedToShowFullScreenContent(adError: AdError) {
                 mAppOpenAd = null
                 mAdShowListener?.onAdFailToShow(adError.code, adError.message)
-                DTAdReport.reportShowFailed(adId, AdType.INTERSTITIAL, AdPlatform.ADMOB, placementId ?: "", seq, adError.code, adError.message)
+                DTAdReport.reportShowFailed(adId, AdType.INTERSTITIAL, AdPlatform.ADMOB, placementId ?: "", seq, adError.code, adError.message, mutableMapOf<String, Any>().apply {
+                    put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
+                    LogUtils.i("VpnReporter", "app open - fail show [${this}]")
+                })
             }
 
             override fun onAdImpression() {}
 
             override fun onAdShowedFullScreenContent() {
                 mAdShowListener?.onAdShown()
-                DTAdReport.reportShow(adId, AdType.INTERSTITIAL, AdPlatform.ADMOB, placementId ?: "", seq)
+                DTAdReport.reportShow(adId, AdType.INTERSTITIAL, AdPlatform.ADMOB, placementId ?: "", seq, mutableMapOf<String, Any>().apply {
+                    put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
+                    LogUtils.i("VpnReporter", "app open - show [${this}]")
+                })
 //                AdEventLogger.logInterstitialAdShow(MainApplication.getContext())
             }
         }
@@ -94,9 +111,9 @@ class AdAppOpenAdmob(var adId: String, val context: Context) {
                     seq,
                     valueMicros.toDouble() / 1000000,
                     currencyCode,
-                    precisionType.toString(),
-                    mutableMapOf<String, Any>().apply {
-                        put(ReportConstants.Param.IP_ADDRESS, IpUtil.getConnectedIdAddress())
+                    precisionType.toString(), mutableMapOf<String, Any>().apply {
+                        put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
+                        LogUtils.i("VpnReporter", "app open - paid [${this}]")
                     }
                 )
                 AdReport.reportAdImpressionRevenue(this, AdFormat.APP_OPEN, context)
@@ -122,6 +139,9 @@ class AdAppOpenAdmob(var adId: String, val context: Context) {
     fun logToShow(placementId: String) {
         this.placementId = placementId
         seq = DTAdReport.generateUUID()
-        DTAdReport.reportToShow(adId, AdType.INTERSTITIAL, AdPlatform.ADMOB, placementId, seq)
+        DTAdReport.reportToShow(adId, AdType.INTERSTITIAL, AdPlatform.ADMOB, placementId, seq, mutableMapOf<String, Any>().apply {
+            put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
+            LogUtils.i("VpnReporter", "app open - to show [${this}]")
+        })
     }
 }

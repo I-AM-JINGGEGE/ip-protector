@@ -13,7 +13,6 @@ public class ReportConstants {
         public static final String KEY_RATE_ITEM = "rate_item";
         public static final String KEY_SOURCE = "source";
         public static final String KEY_HOST = "host";
-        public static final String KEY_IP_ADDRESS = "ip_address";
         public static final String KEY_RESULT = "result";
         public static final String KEY_ERROR_CODE = "error_code";
         public static final String KEY_ERROR_MSG = "error_msg";

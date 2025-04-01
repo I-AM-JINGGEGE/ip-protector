@@ -5,6 +5,7 @@ import com.ironmeta.one.ads.constant.AdFormat
 import com.ironmeta.one.ads.network.IpUtil
 import com.ironmeta.one.base.utils.LogUtils
 import ai.datatower.analytics.DTAnalytics
+import com.ironmeta.one.report.ReportConstants.Param.IP_ADDRESS
 import org.json.JSONObject
 
 object VpnReporter {
@@ -57,7 +58,7 @@ object VpnReporter {
         DTAnalytics.track("ad_load_start", JSONObject().apply {
             put("ad_type", adType.name)
             put("from", source ?: "default")
-            put("ip_address", IpUtil.getConnectedIdAddress())
+            put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
 
             LogUtils.i("VpnReporter", "ad_load_start [${this}]")
         })
@@ -70,7 +71,7 @@ object VpnReporter {
             errorMsg?.apply {
                 put("error_msg", this)
             }
-            put("ip_address", IpUtil.getConnectedIdAddress())
+            put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
 
             put("success", success)
             put("from", from)

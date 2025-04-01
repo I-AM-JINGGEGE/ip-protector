@@ -81,6 +81,7 @@ class CoreServiceManager private constructor(context: Context) {
             .toServerZone(serverZone?.id ?: RegionConstants.REGION_UUID_DEFAULT)
             .bypassPackageNames(TahitiCoreServiceAppsBypassUtils.getAppsBypassPackageName(MainApplication.context).toList())
             .connect()
+        LogUtils.e("VpnReporter", "connectToServer ${response.host?.host}")
         VstoreManager.getInstance(MainApplication.instance).encode(false, KEY_CONNECTED_VPN_IP, response.host?.host ?: "")
         isConnectingAsLiveData.postValue(false)
     }
@@ -89,6 +90,7 @@ class CoreServiceManager private constructor(context: Context) {
         isConnectingAsLiveData.postValue(true)
         val response = IMSDK.withResponse(CoreSDKResponseManager.fetchResponseAsLiveData.value!!)
             .bypassPackageNames(TahitiCoreServiceAppsBypassUtils.getAppsBypassPackageName(MainApplication.context).toList()).toBest().connect()
+        LogUtils.e("VpnReporter", "connectToBest ${response.host?.host}")
         VstoreManager.getInstance(MainApplication.instance).encode(false, KEY_CONNECTED_VPN_IP, response.host?.host ?: "")
         isConnectingAsLiveData.postValue(false)
         return response.zoneId

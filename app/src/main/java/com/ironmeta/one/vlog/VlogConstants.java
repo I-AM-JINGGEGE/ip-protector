@@ -18,7 +18,6 @@ public class VlogConstants {
         public static final String V_FILLED = "v_filled";
         public static final String V_ERROR_MSG = "v_error_msg";
         public static final String DOMAIN = "domain";
-        public static final String IP = "ip_address";
         public static final String LOAD_TIME = "load_time";
 
         public static final String V_TO_CONNECT_REGION_UUID = "v_to_connect_region_uuid";

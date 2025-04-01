@@ -48,15 +48,6 @@ public class AppReport {
         // DTAnalytics.track(ReportConstants.AppReport.ACTION_CONNECTION_START, params);
     }
 
-    private static void reportConnectionSuccess(String ip) {
-        YoLog.i(TAG, "reportConnectionSuccess@  " + sConnectionSource + ", ip:" + ip);
-        Map<String, Object> params = new HashMap<>();
-        params.put(ReportConstants.AppReport.KEY_SOURCE, sConnectionSource);
-        params.put(ReportConstants.AppReport.KEY_IP_ADDRESS, ip);
-        // DTAnalytics.track(ReportConstants.AppReport.ACTION_CONNECTION_SUCCESS, params);
-        // DTAnalyticsUtils.trackTimerStart(ACTION_VPN_CONNECT);
-    }
-
     public static void reportConnectionFail(String errorCode, String errorMessage) {
         YoLog.i(TAG, "reportConnectionFail@ errorCode : " + errorCode + " ,errorMessage: " + errorMessage);
         boolean isErrorCodeEmpty = TextUtils.isEmpty(errorCode);
