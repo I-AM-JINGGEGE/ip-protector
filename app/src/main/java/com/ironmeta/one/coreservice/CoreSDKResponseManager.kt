@@ -62,9 +62,7 @@ object CoreSDKResponseManager {
             VpnReporter.reportServersRefreshFinish(from, false, -2, ignore.toString(), System.currentTimeMillis() - start, 0)
         }
         fetchResponseRefreshingAsLiveData.postValue(false)
-        if (fetchResponse == null) {
-            VpnReporter.reportServersRefreshFinish(from, false, -3, "fetchResponse is null", System.currentTimeMillis() - start, 0)
-        }
+
         fetchResponse?.let {
             VpnReporter.reportServersRefreshFinish(from, true, 0, "", cost = (System.currentTimeMillis() - start), areaCount = (it.serverZones?.size ?: 0))
             fetchResponseAsLiveData.postValue(it)
