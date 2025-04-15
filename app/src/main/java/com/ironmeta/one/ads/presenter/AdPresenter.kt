@@ -71,12 +71,10 @@ class AdPresenter(adUnitSet: UserAdConfig.AdUnitSet, val context: Context) : IAd
                 var loadTimes = 0
                 val loadListenerProxy = object : AdLoadListener {
                     override fun onAdLoaded() {
-                        VpnReporter.reportAdLoadEnd(AdFormat.INTERSTITIAL, 0, "", true, from, System.currentTimeMillis() - loadStart)
                         loadListener?.onAdLoaded()
                     }
 
                     override fun onFailure(errorCode: Int, errorMessage: String) {
-                        VpnReporter.reportAdLoadEnd(AdFormat.INTERSTITIAL, errorCode, errorMessage, false, from, System.currentTimeMillis() - loadStart)
                         if (loadTimes == 1 && errorCode != AdRequest.ERROR_CODE_NO_FILL && errorCode != AdRequest.ERROR_CODE_MEDIATION_NO_FILL) {
                             Timer().schedule(2000) {
                                 loadTimes ++
@@ -98,15 +96,12 @@ class AdPresenter(adUnitSet: UserAdConfig.AdUnitSet, val context: Context) : IAd
     }
 
     override fun loadNativeAd(adPlacement: String, loadListener: AdLoadListener?, from: String) {
-        val start = System.currentTimeMillis()
         adNative?.loadAd(object : NativeAdLoadListener {
             override fun onAdLoaded() {
-                VpnReporter.reportAdLoadEnd(AdFormat.NATIVE, 0, "", true, from, System.currentTimeMillis() - start)
                 loadListener?.onAdLoaded()
             }
 
             override fun onAdLoadFail(code: Int, message: String) {
-                VpnReporter.reportAdLoadEnd(AdFormat.NATIVE, code, message, false, from, System.currentTimeMillis() - start)
                 loadListener?.onFailure(code, message)
             }
         }, from)

@@ -44,13 +44,21 @@ class AdInterstitialAdmob(var adId: String, val context: Context) {
         }
         callBack = listener
         isLoadingAd = true
-        VpnReporter.reportAdLoadStart(AdFormat.INTERSTITIAL, from)
+        val start = System.currentTimeMillis()
+        DTAdReport.reportLoadBegin(adId, AdType.INTERSTITIAL, AdPlatform.ADMOB, seq, mutableMapOf<String, Any>().apply {
+            put("from", from)
+            put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
+        })
         var adRequest = AdRequest.Builder().build()
         InterstitialAd.load(context,adId, adRequest, object : InterstitialAdLoadCallback() {
             override fun onAdFailedToLoad(adError: LoadAdError) {
                 isLoadingAd = false
                 mInterstitialAd = null
                 callBack?.onFailure(adError.code, adError.message)
+                DTAdReport.reportLoadEnd(adId, AdType.INTERSTITIAL, AdPlatform.ADMOB, System.currentTimeMillis() - start, false, seq, adError.code, adError.message, mutableMapOf<String, Any>().apply {
+                    put("from", from)
+                    put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
+                })
             }
 
             override fun onAdLoaded(interstitialAd: InterstitialAd) {
@@ -58,6 +66,10 @@ class AdInterstitialAdmob(var adId: String, val context: Context) {
                 setAdShowCallback()
                 isLoadingAd = false
                 callBack?.onAdLoaded()
+                DTAdReport.reportLoadEnd(adId, AdType.INTERSTITIAL, AdPlatform.ADMOB, System.currentTimeMillis() - start, true, seq, 0, "", mutableMapOf<String, Any>().apply {
+                    put("from", from)
+                    put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
+                })
             }
         })
     }

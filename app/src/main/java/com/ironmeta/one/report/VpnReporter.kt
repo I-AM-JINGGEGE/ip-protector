@@ -1,11 +1,8 @@
 package com.ironmeta.one.report
 
-import com.ironmeta.one.ads.bean.UserAdConfig
-import com.ironmeta.one.ads.constant.AdFormat
-import com.ironmeta.one.ads.network.IpUtil
-import com.ironmeta.one.base.utils.LogUtils
 import ai.datatower.analytics.DTAnalytics
-import com.ironmeta.one.report.ReportConstants.Param.IP_ADDRESS
+import com.ironmeta.one.ads.bean.UserAdConfig
+import com.ironmeta.one.base.utils.LogUtils
 import org.json.JSONObject
 
 object VpnReporter {
@@ -51,68 +48,6 @@ object VpnReporter {
             put("areaCount", areaCount)
 
             LogUtils.i("VpnReporter", "servers_refresh_finish [${this}]")
-        })
-    }
-
-    fun reportAdLoadStart(adType: AdFormat, source: String?) {
-        DTAnalytics.track("ad_load_start", JSONObject().apply {
-            put("ad_type", adType.name)
-            put("from", source ?: "default")
-            put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
-
-            LogUtils.i("VpnReporter", "ad_load_start [${this}]")
-        })
-    }
-
-    fun reportAdLoadEnd(adType: AdFormat, errorCode: Int, errorMsg: String?, success: Boolean, from: String, cost: Long) {
-        DTAnalytics.track("ad_load_end", JSONObject().apply {
-            put("ad_type", adType.name)
-            put("error_code", errorCode)
-            errorMsg?.apply {
-                put("error_msg", this)
-            }
-            put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
-
-            put("success", success)
-            put("from", from)
-            put("cost", cost)
-
-            LogUtils.i("VpnReporter", "ad_load_end [${this}]")
-        })
-    }
-
-    fun reportNativeAdFailShow(errorCode: Int, errorMsg: String) {
-        DTAnalytics.track("native_ad_fail_show", JSONObject().apply {
-            put("error_code", errorCode)
-            put("error_msg", errorMsg)
-
-            LogUtils.i("VpnReporter", "native_ad_fail_show [${this}]")
-        })
-    }
-
-    fun reportNativeAdBeAdd(location: String) {
-        DTAnalytics.track("native_ad_will_add", JSONObject().apply {
-            put("placement", location)
-
-            LogUtils.i("VpnReporter", "native_ad_will_add [${this}]")
-        })
-    }
-
-    fun reportInitNativeAdObserver(location: String) {
-        DTAnalytics.track("native_init_observer", JSONObject().apply {
-            put("placement", location)
-
-            LogUtils.i("VpnReporter", "native_init_observer [${this}]")
-        })
-    }
-
-    fun reportNativeAdObserverChange(location: String, result: Boolean, loaded: Boolean) {
-        DTAnalytics.track("native_observer_change", JSONObject().apply {
-            put("placement", location)
-            put("result", result)
-            put("loaded", loaded)
-
-            LogUtils.i("VpnReporter", "native_observer_change [${this}]")
         })
     }
 

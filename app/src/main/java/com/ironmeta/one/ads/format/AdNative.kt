@@ -27,12 +27,13 @@ import com.appsflyer.AppsFlyerLib
 import com.appsflyer.attribution.AppsFlyerRequestListener
 import com.ironmeta.one.base.utils.LogUtils
 import com.ironmeta.one.report.ReportConstants.Param.IP_ADDRESS
-import com.ironmeta.one.report.VpnReporter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class AdNative(val context: Context, var adId: String) {
+    private var start = 0L
+    private var from = ""
     private var mNativeAd: NativeAd? = null
     private var mGarbageList = arrayListOf<NativeAd>()
     var seq: String = DTAdReport.generateUUID()
@@ -77,10 +78,18 @@ class AdNative(val context: Context, var adId: String) {
             }
             mNativeAd = ad
             mNativeAdLoadListener?.onAdLoaded()
+            DTAdReport.reportLoadEnd(adId, AdType.NATIVE, AdPlatform.ADMOB, System.currentTimeMillis() - start, true, seq, 0, "", mutableMapOf<String, Any>().apply {
+                put("from", from)
+                put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
+            })
         }
         .withAdListener(object : AdListener() {
             override fun onAdFailedToLoad(adError: LoadAdError) {
                 mNativeAdLoadListener?.onAdLoadFail(adError.code, adError.message)
+                DTAdReport.reportLoadEnd(adId, AdType.NATIVE, AdPlatform.ADMOB, System.currentTimeMillis() - start, false, seq, adError.code, adError.message, mutableMapOf<String, Any>().apply {
+                    put("from", from)
+                    put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
+                })
             }
 
             override fun onAdClicked() {
@@ -119,7 +128,12 @@ class AdNative(val context: Context, var adId: String) {
             loadListener?.onAdLoaded()
             return
         }
-        VpnReporter.reportAdLoadStart(AdFormat.NATIVE, from)
+        start = System.currentTimeMillis()
+        this.from = from
+        DTAdReport.reportLoadBegin(adId, AdType.NATIVE, AdPlatform.ADMOB, seq, mutableMapOf<String, Any>().apply {
+            put("from", from)
+            put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
+        })
         seq = DTAdReport.generateUUID()
         adLoader.loadAd(AdRequest.Builder().build())
     }

@@ -40,13 +40,21 @@ class AdAppOpenAdmob(var adId: String, val context: Context) {
         }
         callBack = listener
         isLoadingAd = true
-        VpnReporter.reportAdLoadStart(AdFormat.APP_OPEN, from)
+        val start = System.currentTimeMillis()
+        DTAdReport.reportLoadBegin(adId, AdType.APP_OPEN, AdPlatform.ADMOB, seq, mutableMapOf<String, Any>().apply {
+            put("from", from)
+            put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
+        })
         var adRequest = AdRequest.Builder().build()
         AppOpenAd.load(context, adId, adRequest, object : AppOpenAd.AppOpenAdLoadCallback() {
             override fun onAdFailedToLoad(adError: LoadAdError) {
                 isLoadingAd = false
                 mAppOpenAd = null
                 callBack?.onFailure(adError.code, adError.message)
+                DTAdReport.reportLoadEnd(adId, AdType.APP_OPEN, AdPlatform.ADMOB, System.currentTimeMillis() - start, false, seq, adError.code, adError.message, mutableMapOf<String, Any>().apply {
+                    put("from", from)
+                    put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
+                })
             }
 
             override fun onAdLoaded(appOpenAd: AppOpenAd) {
@@ -54,6 +62,10 @@ class AdAppOpenAdmob(var adId: String, val context: Context) {
                 setAdShowCallback()
                 isLoadingAd = false
                 callBack?.onAdLoaded()
+                DTAdReport.reportLoadEnd(adId, AdType.APP_OPEN, AdPlatform.ADMOB, System.currentTimeMillis() - start, true, seq, 0, "", mutableMapOf<String, Any>().apply {
+                    put("from", from)
+                    put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
+                })
             }
         })
     }
