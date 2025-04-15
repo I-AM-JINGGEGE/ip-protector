@@ -12,12 +12,12 @@ import com.ironmeta.one.ads.network.IpUtil
 import com.ironmeta.one.ads.proxy.AdLoadListener
 import com.ironmeta.one.ads.proxy.AdShowListener
 import com.ironmeta.one.report.AdReport
-import com.ironmeta.one.report.ReportConstants
 import ai.datatower.ad.AdPlatform
 import ai.datatower.ad.AdType
 import ai.datatower.ad.DTAdReport
-import com.adjust.sdk.Adjust
-import com.adjust.sdk.AdjustAdRevenue
+import com.appsflyer.AFInAppEventParameterName
+import com.appsflyer.AFInAppEventType
+import com.appsflyer.AppsFlyerLib
 import com.ironmeta.one.base.utils.LogUtils
 import com.ironmeta.one.report.ReportConstants.Param.IP_ADDRESS
 import com.ironmeta.one.report.VpnReporter
@@ -121,11 +121,10 @@ class AdAppOpenAdmob(var adId: String, val context: Context) {
                 AdReport.reportAdImpressionRevenue(this, AdFormat.APP_OPEN, context)
             }
             mAppOpenAd?.apply {
-                // send ad revenue info to Adjust
-                val adRevenue = AdjustAdRevenue("admob_sdk")
-                adRevenue.setRevenue(adValue.valueMicros / 1000000.0, adValue.currencyCode)
-                responseInfo.loadedAdapterResponseInfo?.let { adRevenue.adRevenueNetwork = it.adSourceName }
-                Adjust.trackAdRevenue(adRevenue)
+                AppsFlyerLib.getInstance().logEvent(context, AFInAppEventType.AD_VIEW, mutableMapOf<String?, Any?>().apply {
+                    put(AFInAppEventParameterName.CURRENCY, adValue.currencyCode)
+                    put(AFInAppEventParameterName.REVENUE, adValue.valueMicros / 1000000.0)
+                })
             }
         }
     }
