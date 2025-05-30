@@ -119,7 +119,7 @@ dependencies {
     // utils
     implementation 'com.google.code.gson:gson:2.8.9'
     implementation 'com.squareup.okhttp3:okhttp:4.9.3'
-    implementation 'com.tencent:mmkv-static:1.2.14'
+    implementation 'com.tencent:mmkv-static:1.3.7'
 
     implementation(platform("com.google.firebase:firebase-bom:31.0.3"))
     // firebase
