@@ -3,6 +3,7 @@ package com.vpn.android.ui
 import android.animation.ValueAnimator
 import android.os.Bundle
 import android.view.animation.DecelerateInterpolator
+import android.view.animation.LinearInterpolator
 import com.jaeger.library.StatusBarUtil
 import com.vpn.android.MainApplication
 import com.vpn.android.R
@@ -36,7 +37,6 @@ class SplashActivity : CommonAppCompatActivity() {
         StatusBarUtil.setTransparent(this)
 
         binding.progressBar.setCompletedColor(resources.getColor(R.color.progress_completed, null))
-        binding.progressBar.setCompletedBorderColor(resources.getColor(R.color.progress_completed_border, null))
         binding.progressBar.setUncompletedColor(resources.getColor(R.color.progress_uncompleted, null))
         binding.progressBar.setProgressImage(R.mipmap.progress_indicator)
 
@@ -94,12 +94,11 @@ class SplashActivity : CommonAppCompatActivity() {
 
     private fun startCountingDown() {
         mValueAnimator = ValueAnimator.ofInt(0, 100).apply {
-            interpolator = DecelerateInterpolator(1.2F)
+            interpolator = LinearInterpolator()
             duration = mLoadingTime
             addUpdateListener {
                 val progress = it.animatedValue as Int
                 binding.progressBar.setProgress(progress.toFloat() / 100)
-                binding.progressNumber.text = "$progress%"
                 if (progress == 100) {
                     finish()
                 }

@@ -1,11 +1,17 @@
 package com.vpn.android.widget
 
 import android.content.Context
-import android.graphics.*
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.Canvas
+import android.graphics.Paint
+import android.graphics.Rect
+import android.graphics.RectF
 import android.util.AttributeSet
 import android.view.View
 import androidx.core.content.ContextCompat
 import com.vpn.android.R
+import com.vpn.android.utils.SystemPropertyUtils
 
 class CustomProgressBar @JvmOverloads constructor(
     context: Context,
@@ -13,9 +19,7 @@ class CustomProgressBar @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
 
-    private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val completedPaint = Paint(Paint.ANTI_ALIAS_FLAG)
-    private val borderPaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val uncompletedPaint = Paint(Paint.ANTI_ALIAS_FLAG)
     
     private var progressBitmap: Bitmap? = null
@@ -26,6 +30,7 @@ class CustomProgressBar @JvmOverloads constructor(
     private var _progress: Float = 0f // 0.0 - 1.0
     private var progressBarHeight: Float = 0f
     private var cornerRadius: Float = 0f
+    private var strokeWidth = SystemPropertyUtils.dp2px(context, 4f)
     
     // 颜色配置
     private var completedColor: Int = ContextCompat.getColor(context, R.color.progress_completed)
@@ -34,22 +39,15 @@ class CustomProgressBar @JvmOverloads constructor(
     
     // 图片配置
     private var progressImageResId: Int = R.drawable.ic_progress_indicator
-    private var imageHeightRatio: Float = 2.2f // 图片高度是进度条高度的2.2倍
-    
+
     init {
         initPaints()
-        loadProgressImage()
     }
     
     private fun initPaints() {
         // 已完成部分的填充颜色
         completedPaint.style = Paint.Style.FILL
         completedPaint.color = completedColor
-        
-        // 已完成部分的边框颜色
-        borderPaint.style = Paint.Style.STROKE
-        borderPaint.strokeWidth = 4f
-        borderPaint.color = completedBorderColor
         
         // 未完成部分的颜色
         uncompletedPaint.style = Paint.Style.FILL
@@ -58,21 +56,16 @@ class CustomProgressBar @JvmOverloads constructor(
     
     private fun loadProgressImage() {
         try {
-            progressBitmap = BitmapFactory.decodeResource(resources, progressImageResId)
-        } catch (e: Exception) {
-            // 如果图片加载失败，创建一个默认的圆形指示器
-            createDefaultProgressIndicator()
-        }
-    }
-    
-    private fun createDefaultProgressIndicator() {
-        val size = (progressBarHeight * imageHeightRatio).toInt()
-        progressBitmap = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888)
-        val canvas = Canvas(progressBitmap!!)
-        val paint = Paint(Paint.ANTI_ALIAS_FLAG)
-        paint.color = completedBorderColor
-        paint.style = Paint.Style.FILL
-        canvas.drawCircle(size / 2f, size / 2f, size / 2f, paint)
+            val originalBitmap = BitmapFactory.decodeResource(resources, progressImageResId)
+            // 创建一个与当前高度一样大小的 bitmap
+            val targetSize = height
+            if (targetSize > 0 && originalBitmap != null) {
+                progressBitmap = Bitmap.createScaledBitmap(originalBitmap, targetSize, targetSize, true)
+                originalBitmap.recycle() // 释放原始 bitmap
+            } else {
+                progressBitmap = originalBitmap
+            }
+        } catch (e: Exception) {  }
     }
     
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
@@ -81,13 +74,14 @@ class CustomProgressBar @JvmOverloads constructor(
         cornerRadius = progressBarHeight / 2f
         
         // 更新进度条区域
-        progressRect.set(0f, 0f, w.toFloat(), progressBarHeight)
-        
+        progressRect.set(0f, progressBarHeight/4, w.toFloat(), progressBarHeight-progressBarHeight/4)
+
+        loadProgressImage()
+
         // 更新图片区域
-        val imageHeight = progressBarHeight * imageHeightRatio
-        val imageWidth = progressBitmap?.width?.toFloat() ?: imageHeight
-        val imageY = (progressBarHeight - imageHeight) / 2f
-        imageRect.set(0f, imageY, imageWidth, imageY + imageHeight)
+        val imageHeight = progressBarHeight
+        val imageWidth = imageHeight
+        imageRect.set(0f, 0f, imageWidth, progressBarHeight)
     }
     
     override fun onDraw(canvas: Canvas) {
@@ -101,14 +95,8 @@ class CustomProgressBar @JvmOverloads constructor(
         
         // 绘制已完成部分
         if (completedWidth > 0) {
-            val completedRect = RectF(0f, 0f, completedWidth, progressBarHeight)
+            val completedRect = RectF(0f + strokeWidth, progressBarHeight/4 + strokeWidth, completedWidth - strokeWidth, progressBarHeight-progressBarHeight/4 - strokeWidth)
             canvas.drawRoundRect(completedRect, cornerRadius, cornerRadius, completedPaint)
-        }
-        
-        // 绘制已完成部分的边框
-        if (completedWidth > 0) {
-            val borderRect = RectF(0f, 0f, completedWidth, progressBarHeight)
-            canvas.drawRoundRect(borderRect, cornerRadius, cornerRadius, borderPaint)
         }
         
         // 绘制进度指示器图片
@@ -117,16 +105,18 @@ class CustomProgressBar @JvmOverloads constructor(
     
     private fun drawProgressIndicator(canvas: Canvas, completedWidth: Float) {
         progressBitmap?.let { bitmap ->
-            val imageHeight = progressBarHeight * imageHeightRatio
-            val imageWidth = bitmap.width * (imageHeight / bitmap.height)
-            val imageY = (progressBarHeight - imageHeight) / 2f
+            // 计算图片尺寸，确保图片不会太大
+            val imageHeight = progressBarHeight
+            val imageWidth = imageHeight
+
+            // 计算图片位置，确保图片完整显示在进度条上方
             val imageX = completedWidth - imageWidth / 2f
             
-            // 确保图片不会超出边界
+            // 确保图片不会超出左右边界
             val clampedX = imageX.coerceIn(0f, width - imageWidth)
             
-            val srcRect = Rect(0, 0, bitmap.width, bitmap.height)
-            val dstRect = RectF(clampedX, imageY, clampedX + imageWidth, imageY + imageHeight)
+            val srcRect = Rect(0, 0, imageWidth.toInt(), imageHeight.toInt())
+            val dstRect = RectF(clampedX, 0f, clampedX + imageWidth, imageHeight)
             
             canvas.drawBitmap(bitmap, srcRect, dstRect, null)
         }
@@ -155,15 +145,6 @@ class CustomProgressBar @JvmOverloads constructor(
     }
     
     /**
-     * 设置已完成部分的边框颜色
-     */
-    fun setCompletedBorderColor(color: Int) {
-        completedBorderColor = color
-        borderPaint.color = color
-        invalidate()
-    }
-    
-    /**
      * 设置未完成部分的颜色
      */
     fun setUncompletedColor(color: Int) {
@@ -178,14 +159,6 @@ class CustomProgressBar @JvmOverloads constructor(
     fun setProgressImage(resId: Int) {
         progressImageResId = resId
         loadProgressImage()
-        invalidate()
-    }
-    
-    /**
-     * 设置图片高度比例
-     */
-    fun setImageHeightRatio(ratio: Float) {
-        imageHeightRatio = ratio
         invalidate()
     }
 }
