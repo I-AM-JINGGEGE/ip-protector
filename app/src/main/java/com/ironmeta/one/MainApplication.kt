@@ -30,7 +30,6 @@ import com.ironmeta.one.coreservice.CoreSDKResponseManager
 import com.ironmeta.one.coreservice.CoreServiceManager
 import com.ironmeta.one.notification.ConnectionInfoNotification
 import com.ironmeta.one.notification.NotificationConstants
-import com.ironmeta.one.region.RegionConstants.KEY_CONNECTED_VPN_IP
 import com.ironmeta.one.ui.support.SupportUtils
 import com.ironmeta.one.utils.SystemPropertyUtils
 import com.ironmeta.one.vlog.VlogManager
@@ -40,7 +39,7 @@ import ai.datatower.analytics.DTAnalytics
 import ai.datatower.analytics.OnDataTowerIdListener
 import com.appsflyer.AFLogger
 import com.appsflyer.AppsFlyerLib
-import com.ironmeta.one.app.AppSignature
+import com.ironmeta.one.region.RegionConstants.KEY_PROFILE_VPN_IP
 import com.sdk.ssmod.IIMSDKApplication
 import com.sdk.ssmod.IMSDK
 import kotlinx.coroutines.Dispatchers
@@ -58,9 +57,15 @@ class MainApplication : Application(), IIMSDKApplication {
     override val app: Application = this
     override val configureClass: KClass<out Any> = MainActivity::class
     override val applicationId: String = BuildConfig.APPLICATION_ID
-    override val certBytes: ByteArray
-        get() = AppSignature.signatureByteArray()
     override val notification: IIMSDKApplication.CustomNotification get() = ConnectionInfoNotification.getInstance(this@MainApplication)
+    override fun onServiceDisconnected() {
+
+    }
+
+    override fun onBinderDied() {
+
+    }
+
     var isCold = false
     override fun onCreate() {
         super.onCreate()
@@ -117,7 +122,7 @@ class MainApplication : Application(), IIMSDKApplication {
         RemoteConfigManager.getInstance()
         IMSDK.vpnState.observeForever {
             if (it == IMSDK.VpnState.Stopped || it == IMSDK.VpnState.Idle) {
-                VstoreManager.getInstance(instance).encode(false, KEY_CONNECTED_VPN_IP, "")
+                VstoreManager.getInstance(instance).encode(false, KEY_PROFILE_VPN_IP, "")
             }
         }
     }

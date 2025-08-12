@@ -2,13 +2,10 @@ package com.ironmeta.tahiti
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.os.RemoteException
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
 import com.ironmeta.base.utils.YoLog
-import com.ironmeta.one.base.utils.LiveDataUtils
 import com.sdk.ssmod.IMSDK
 import com.sdk.ssmod.IMSDK.VpnState
 import com.sdk.ssmod.IMSDK.connectedServer
@@ -16,7 +13,6 @@ import com.sdk.ssmod.IMSDK.trafficStats
 import com.sdk.ssmod.IMSDK.vpnState
 import com.sdk.ssmod.beans.TrafficStats
 import java.time.Duration
-import kotlin.time.Duration.Companion.milliseconds
 
 class TahitiCoreServiceStateInfoManager private constructor() {
     val coreServiceConnectedServerAsLiveData: LiveData<IMSDK.WithResponseBuilder.ConnectedTo?> = connectedServer
