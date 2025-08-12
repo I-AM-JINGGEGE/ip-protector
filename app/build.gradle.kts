@@ -155,26 +155,27 @@ dependencies {
     val lifecycleVersion: String by rootProject.extra
     val firebaseBomVersion: String by rootProject.extra
 
-    implementation("com.google.android.material:material:1.6.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.2")
-    implementation("androidx.appcompat:appcompat:1.4.0")
+    implementation("com.google.android.material:material:1.12.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.2.1")
+    implementation("androidx.appcompat:appcompat:1.7.1")
 
     // androidx work manager
-    implementation("androidx.work:work-runtime:2.7.1")
+    implementation("androidx.work:work-runtime:2.10.3")
 
     // androidx lifecycle
     implementation("androidx.lifecycle:lifecycle-process:$lifecycleVersion")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion")
 
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
 
     // utils
-    implementation("com.google.code.gson:gson:2.9.0")
-    implementation("com.squareup.okhttp3:okhttp:4.9.3")
+    implementation("com.google.code.gson:gson:2.10.1")
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation("com.tencent:mmkv-static:1.2.14")
+    implementation("com.tencent:mmkv-static:1.3.7") // do not modify mmkv version!
+    implementation("com.getkeepsafe.relinker:relinker:1.4.5")
 
     implementation(platform("com.google.firebase:firebase-bom:$firebaseBomVersion"))
     implementation("com.google.firebase:firebase-crashlytics-ktx")
@@ -189,18 +190,19 @@ dependencies {
     implementation("com.android.installreferrer:installreferrer:2.2")
 
     // ImageLoader
-    implementation("com.github.bumptech.glide:glide:4.12.0")
+    implementation("com.github.bumptech.glide:glide:4.16.0")
 
     // pag
-    implementation("com.tencent.tav:libpag:4.0.5.82")
+    implementation("com.tencent.tav:libpag:4.4.35")
 
     //google admob
-    implementation("com.google.android.gms:play-services-ads:22.0.0")
+    implementation("com.google.android.gms:play-services-ads:24.5.0")
 
-    // roiquery
-    implementation("com.lovinjoy:datatowerai-core:3.0.1")
+    //roiquery
+    implementation("ai.datatower:core:3.2.0")
 
-    implementation("com.appsflyer:af-android-sdk:6.15.2")
+    // https://mvnrepository.com/artifact/com.appsflyer/af-android-sdk
+    implementation("com.appsflyer:af-android-sdk:6.17.2")
 
     implementation("com.github.JessYanCoding:AndroidAutoSize:v1.2.1")
 
@@ -208,16 +210,8 @@ dependencies {
     implementation("com.geyifeng.immersionbar:immersionbar-ktx:3.2.2")
 
     implementation("com.jaeger.statusbarutil:library:1.5.1")
-    implementation("com.google.android.ump:user-messaging-platform:2.2.0")
+    implementation("com.google.android.ump:user-messaging-platform:3.2.0")
 
-//    //vpn sdk for google play bundle release
-//    releaseImplementation('ironmeta:ironmeta-iphider-ss-rust-sdk-meta:nightly-20240711-1100-release') {
-//        exclude group: "org.connectbot.jsocks", module: "jsocks"
-//    }
-//    //vpn sdk for debug
-//    debugImplementation('ironmeta:ironmeta-iphider-ss-rust-sdk-meta:nightly-20240711-1030-debug') {
-//        exclude group: "org.connectbot.jsocks", module: "jsocks"
-//    }
-    implementation("com.google.android.play:review:2.0.1")
-    implementation("com.google.android.play:review-ktx:2.0.1")
+    implementation("com.google.android.play:review:2.0.2")
+    implementation("com.google.android.play:review-ktx:2.0.2")
 }

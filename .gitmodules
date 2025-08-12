@@ -17,3 +17,12 @@
 [submodule "core/src/main/rust/shadowsocks-rust"]
 	path = core/src/main/rust/shadowsocks-rust
 	url = https://github.com/shadowsocks/shadowsocks-rust.git
+[submodule "android/app/src/main/jni/shadowsocks-libev"]
+	path = android/app/src/main/jni/shadowsocks-libev
+	url = https://github.com/shadowsocks/shadowsocks-libev.git
+[submodule "core/core/src/main/jni/shadowsocks-libev"]
+	path = core/core/src/main/jni/shadowsocks-libev
+	url = https://github.com/shadowsocks/shadowsocks-libev.git
+[submodule "core/src/main/jni/shadowsocks-libev"]
+	path = core/src/main/jni/shadowsocks-libev
+	url = https://github.com/shadowsocks/shadowsocks-libev.git
