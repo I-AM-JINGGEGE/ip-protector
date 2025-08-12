@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.ironmeta.one"
     android:installLocation="internalOnly">
     <!-- base begin -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -95,9 +94,10 @@
             android:name=".ui.support.TermsOfServiceActivity"
             android:screenOrientation="portrait" /> <!-- work manager begin -->
 
+        <!-- Sample AdMob App ID: ca-app-pub-3940256099942544~3347511713 -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-5185269921085518~3585392376" />
+            android:value="${ADMOB_APP_ID_VALUE}" />
 
     </application>
 

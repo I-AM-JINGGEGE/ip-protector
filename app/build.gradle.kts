@@ -23,7 +23,6 @@ plugins {
 setupApp()
 
 android {
-    val applicationId: String by rootProject.extra
     val compileSdkVersion: Int by rootProject.extra
     val minSdkVersion: Int by rootProject.extra
     val targetSdkVersion: Int by rootProject.extra
@@ -48,11 +47,9 @@ android {
         abortOnError = false
     }
 
-    namespace = "com.ironmeta.one"
+    namespace = "com.vpn.android"
 
     defaultConfig {
-        this.applicationId = applicationId
-
         minSdk = minSdkVersion
         targetSdk = targetSdkVersion
 
@@ -68,6 +65,17 @@ android {
 //            debugSymbolLevel = "FULL"
         }
         multiDexEnabled = true
+    }
+
+    flavorDimensions.add("develop_env")
+
+    // 只保留 debugFlavorDebug 和 releaseFlavorRelease
+    variantFilter {
+        val names = flavors.map { it.name }
+        if ((names.contains("debugFlavor") && buildType.name != "debug") ||
+            (names.contains("releaseFlavor") && buildType.name != "release")) {
+            ignore = true
+        }
     }
 
     splits {
@@ -132,19 +140,36 @@ android {
     flavorDimensions.add("channel")
 
     productFlavors {
+        // develop_env dimension flavors
+        create("debugFlavor") {
+            applicationId = "com.vpn.android.debug"
+            dimension = "develop_env"
+            manifestPlaceholders["ADMOB_APP_ID_VALUE"] = "ca-app-pub-3940256099942544~3347511713"
+        }
+        create("releaseFlavor") {
+            dimension = "develop_env"
+            manifestPlaceholders["ADMOB_APP_ID_VALUE"] = "ca-app-pub-3524349910671665~9934853233"
+        }
+        
+        // channel dimension flavors
         create("gp") {
+            applicationId = "com.vpn.android.release"
+            dimension = "channel"
             buildConfigField("String", "CNL", "\"gp\"")
             versionName = buildProperties["versionName"] as String
         }
         create("xiaomi") {
+            dimension = "channel"
             buildConfigField("String", "CNL", "\"dtneaa1461b\"")
             versionName = "Xiaomi_" + buildProperties["versionName"]
         }
         create("transsion") {
+            dimension = "channel"
             buildConfigField("String", "CNL", "\"dtn9a658c8e\"")
             versionName = "Transsion_" + buildProperties["versionName"]
         }
         create("samsung") {
+            dimension = "channel"
             buildConfigField("String", "CNL", "\"dtn08376b2d\"")
             versionName = "Samsung_" + buildProperties["versionName"]
         }

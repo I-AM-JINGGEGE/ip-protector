@@ -221,7 +221,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/star_icon"
                     android:text="@string/rate_content"/>
-                <com.ironmeta.one.ui.widget.RatingBar
+                <com.vpn.android.ui.widget.RatingBar
                     android:id="@+id/rating_bar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

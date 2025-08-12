@@ -3,7 +3,6 @@ package com.sdk.ssmod
 import android.annotation.SuppressLint
 import android.app.Application
 import android.content.BroadcastReceiver
-import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
@@ -19,10 +18,10 @@ import com.github.shadowsocks.bg.BaseService
 import com.github.shadowsocks.imsvc.ImsvcService
 import com.github.shadowsocks.utils.Action
 import com.google.firebase.crashlytics.FirebaseCrashlytics
-import com.ironmeta.base.vstore.VstoreManager
-import com.ironmeta.one.BuildConfig
-import com.ironmeta.one.MainApplication.Companion.instance
-import com.ironmeta.one.region.RegionConstants.KEY_PROFILE_VPN_IP
+import com.vpn.base.vstore.VstoreManager
+import com.vpn.android.BuildConfig
+import com.vpn.android.MainApplication.Companion.instance
+import com.vpn.android.region.RegionConstants.KEY_PROFILE_VPN_IP
 import com.sdk.ssmod.IMSDK.VpnState
 import com.sdk.ssmod.IMSDK.WithResponseBuilder.*
 import com.sdk.ssmod.api.http.beans.*

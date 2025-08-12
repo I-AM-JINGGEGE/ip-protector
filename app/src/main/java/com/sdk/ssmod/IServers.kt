@@ -2,7 +2,7 @@ package com.sdk.ssmod
 
 import android.annotation.SuppressLint
 import android.provider.Settings
-import com.ironmeta.one.BuildConfig
+import com.vpn.android.BuildConfig
 import com.sdk.ssmod.IServers.GeoRestrictedException
 import com.sdk.ssmod.api.http.beans.FetchResponse
 import com.sdk.ssmod.api.http.newRetrofit

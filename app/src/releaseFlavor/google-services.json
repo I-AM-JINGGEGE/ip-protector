@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "637448465396",
+    "project_id": "qr-barcode-quick-scan",
+    "storage_bucket": "qr-barcode-quick-scan.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:637448465396:android:d1f90e3e44d62d9702a7a1",
+        "android_client_info": {
+          "package_name": "com.vpn.android.release"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZJx24XzoMIpCNI6W7sGRnbihR4NVeEwY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

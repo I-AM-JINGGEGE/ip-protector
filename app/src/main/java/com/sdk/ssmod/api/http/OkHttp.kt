@@ -1,6 +1,6 @@
 package com.sdk.ssmod.api.http
 
-import com.ironmeta.one.BuildConfig
+import com.vpn.android.BuildConfig
 import com.sdk.ssmod.util.IMAesUtil
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient

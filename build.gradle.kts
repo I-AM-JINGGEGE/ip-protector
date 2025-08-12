@@ -8,11 +8,11 @@ plugins {
 buildscript {
     apply(from = "repositories.gradle.kts")
     rootProject.extra.apply {
-        set("applicationId", "com.ironmeta.ip.hider")
+        set("applicationId", "com.vpn.android")
         set("compileSdkVersion", 35)
         set("buildToolsVersion", "34.0.0")
         set("minSdkVersion", 26)
-        set("targetSdkVersion", 34)
+        set("targetSdkVersion", 35)
 
         set("javaVersion", JavaVersion.VERSION_17)
         set("coroutinesVersion", "1.9.0")
