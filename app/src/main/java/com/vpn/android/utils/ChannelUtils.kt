@@ -1,16 +1,9 @@
-package com.vpn.android.utils;
+package com.vpn.android.utils
 
+import com.vpn.android.BuildConfig
 
-public class ChannelUtils {
-    private final static String CHANNEL_GP = "gp";
-    private final static String CHANNEL_NEWINSIGHT = "rqn4fd8ad08";
-
-    public static boolean isGooglePlay(String cnl) {
-        return CHANNEL_GP.equals(cnl);
+object ChannelUtils {
+    fun isDebugFlavor(): Boolean {
+        return BuildConfig.APPLICATION_ID == "com.vpn.android.debug"
     }
-
-    public static boolean isNewInsight(String cnl) {
-        return CHANNEL_NEWINSIGHT.equals(cnl);
-    }
-
 }

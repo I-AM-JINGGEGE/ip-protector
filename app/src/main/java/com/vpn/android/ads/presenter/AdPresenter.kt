@@ -14,6 +14,7 @@ import com.vpn.android.ads.format.*
 import com.vpn.android.ads.proxy.AdLoadListener
 import com.vpn.android.ads.proxy.AdShowListener
 import com.vpn.android.ads.proxy.IAdPresenterProxy
+import com.vpn.android.utils.ChannelUtils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -38,7 +39,7 @@ class AdPresenter(adUnitSet: UserAdConfig.AdUnitSet, val context: Context) : IAd
             }
             when (list[0].adPlatform) {
                 AdPlatform.ADMOB.id.toString() -> {
-                    val adUnitId = if (BuildConfig.APPLICATION_ID == "com.vpn.android.debug") {
+                    val adUnitId = if (ChannelUtils.isDebugFlavor()) {
                         generateAdUnitDebugId(AdFormat.INTERSTITIAL, AdPlatform.ADMOB)
                     } else {
                         list[0].id
@@ -53,7 +54,7 @@ class AdPresenter(adUnitSet: UserAdConfig.AdUnitSet, val context: Context) : IAd
             }
             when (list[0].adPlatform) {
                 AdPlatform.ADMOB.id.toString() -> {
-                    val adUnitId = if (BuildConfig.APPLICATION_ID == "com.vpn.android.debug") {
+                    val adUnitId = if (ChannelUtils.isDebugFlavor()) {
                         generateAdUnitDebugId(AdFormat.NATIVE, AdPlatform.ADMOB)
                     } else {
                         list[0].id

@@ -217,9 +217,6 @@ dependencies {
     // ImageLoader
     implementation("com.github.bumptech.glide:glide:4.16.0")
 
-    // pag
-    implementation("com.tencent.tav:libpag:4.4.35")
-
     //google admob
     implementation("com.google.android.gms:play-services-ads:24.5.0")
 
@@ -239,4 +236,7 @@ dependencies {
 
     implementation("com.google.android.play:review:2.0.2")
     implementation("com.google.android.play:review-ktx:2.0.2")
+
+    // Lottie animation
+    implementation("com.airbnb.android:lottie:6.4.0")
 }

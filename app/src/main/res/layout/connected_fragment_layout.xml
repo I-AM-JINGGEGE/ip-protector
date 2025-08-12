@@ -278,12 +278,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/click_tips_text"
         android:background="@drawable/fix_network_bg"
-        android:layout_marginTop="20dp">
-        <org.libpag.PAGView
-            android:id="@+id/light"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-        <org.libpag.PAGView
+        android:layout_marginTop="20dp">=
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/add_time_1_clock"
             android:layout_width="21dp"
             android:layout_height="21dp"

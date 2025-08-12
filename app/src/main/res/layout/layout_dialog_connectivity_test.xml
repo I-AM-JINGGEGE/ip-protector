@@ -31,7 +31,7 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="58dp"
             android:background="@drawable/white_radius_bottom_4dp">
-            <org.libpag.PAGView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/connectivity_testing_anim"
                 android:layout_width="177dp"
                 android:layout_height="126dp"

@@ -11,13 +11,10 @@ import android.widget.TextView
 import com.vpn.android.MainApplication
 import com.vpn.android.R
 import com.vpn.android.base.utils.ThreadUtils
-import org.libpag.PAGFile
-import org.libpag.PAGView
 import java.net.HttpURLConnection
 import java.net.URL
 
 class ConnectivityTestDialog(context: Context) : Dialog(context, R.style.TranslucentDialog) {
-    private lateinit var connectivityTestingAnim: PAGView
     private lateinit var testingLayout: View
     private lateinit var successLayout: View
     private lateinit var successOk: View
@@ -43,7 +40,6 @@ class ConnectivityTestDialog(context: Context) : Dialog(context, R.style.Translu
     }
 
     private fun initView() {
-        connectivityTestingAnim = findViewById(R.id.connectivity_testing_anim)
         testingLayout = findViewById(R.id.testing_layout)
         successLayout = findViewById(R.id.success_layout)
         successOk = findViewById(R.id.btn_success_got)
@@ -58,15 +54,6 @@ class ConnectivityTestDialog(context: Context) : Dialog(context, R.style.Translu
 
         failClose.setOnClickListener { mDialogListener?.onCloseClick() }
         failRetest.setOnClickListener { mDialogListener?.onRetestClick() }
-
-        connectivityTestingAnim.apply {
-            composition = PAGFile.Load(
-                MainApplication.context.assets,
-                "connectivity_test.pag"
-            )
-            setRepeatCount(-1)
-            play()
-        }
     }
 
     private var mDialogListener: DialogListener? = null

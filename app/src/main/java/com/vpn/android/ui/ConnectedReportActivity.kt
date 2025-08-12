@@ -37,7 +37,6 @@ import com.vpn.android.ui.widget.RatingBar
 import com.vpn.android.utils.TimeUtils
 import com.vpn.tahiti.TahitiCoreServiceStateInfoManager
 import com.jaeger.library.StatusBarUtil
-import org.libpag.PAGFile
 import java.util.Random
 
 class ConnectedReportActivity : CommonAppCompatActivity() {
@@ -170,19 +169,6 @@ class ConnectedReportActivity : CommonAppCompatActivity() {
     }
 
     private fun startAnimations() {
-        binding.light.apply {
-            composition =
-                PAGFile.Load(MainApplication.context.assets, "add_time_light_2s.pag")
-            setRepeatCount(0)
-            play()
-        }
-        binding.clock.apply {
-            composition =
-                PAGFile.Load(MainApplication.context.assets, "clock.pag")
-            setRepeatCount(0)
-            play()
-        }
-
         AnimationUtils.loadAnimation(this, R.anim.connected_anim_inverse).apply {
             interpolator = LinearInterpolator()
             binding.connectedWheel.startAnimation(this)

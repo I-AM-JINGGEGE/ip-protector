@@ -4,10 +4,13 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <org.libpag.PAGView
+    <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/loading"
-        android:layout_width="100dp"
-        android:layout_height="169dp"
+        android:layout_width="match_parent"
+        android:layout_height="274dp"
+        app:lottie_fileName="loading.json"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
         app:layout_constraintVertical_chainStyle="packed"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

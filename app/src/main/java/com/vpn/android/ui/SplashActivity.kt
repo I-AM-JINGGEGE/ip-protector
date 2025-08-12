@@ -3,7 +3,7 @@ package com.vpn.android.ui
 import android.animation.ValueAnimator
 import android.os.Bundle
 import android.view.animation.DecelerateInterpolator
-import androidx.lifecycle.lifecycleScope
+import com.jaeger.library.StatusBarUtil
 import com.vpn.android.MainApplication
 import com.vpn.android.R
 import com.vpn.android.ads.AdPresenterWrapper
@@ -15,12 +15,6 @@ import com.vpn.android.coreservice.CoreSDKResponseManager
 import com.vpn.android.databinding.SplashLayoutBinding
 import com.vpn.android.ui.common.CommonAppCompatActivity
 import com.vpn.tahiti.TahitiCoreServiceStateInfoManager
-import com.jaeger.library.StatusBarUtil
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import org.libpag.PAGFile
-import org.libpag.PAGView
 
 class SplashActivity : CommonAppCompatActivity() {
     companion object {
@@ -40,8 +34,13 @@ class SplashActivity : CommonAppCompatActivity() {
         val view = binding.root
         setContentView(view)
         StatusBarUtil.setTransparent(this)
+
+        binding.progressBar.setCompletedColor(resources.getColor(R.color.progress_completed, null))
+        binding.progressBar.setCompletedBorderColor(resources.getColor(R.color.progress_completed_border, null))
+        binding.progressBar.setUncompletedColor(resources.getColor(R.color.progress_uncompleted, null))
+        binding.progressBar.setProgressImage(R.mipmap.progress_indicator)
+
         initViewModel()
-        startAnimation()
         startCountingDown()
         AdPresenterWrapper.getInstance().apply {
             if (initialized) {
@@ -93,45 +92,13 @@ class SplashActivity : CommonAppCompatActivity() {
             })
     }
 
-    private fun startAnimation() {
-        val delayMills = 2400L
-        binding.loading.apply {
-            composition = PAGFile.Load(MainApplication.context.assets, "loading.pag")
-            lifecycleScope.launch(Dispatchers.IO) {
-                playLoadingOnce(this@apply)
-                delay(delayMills)
-                playLoadingOnce(this@apply)
-                delay(delayMills)
-                playLoadingOnce(this@apply)
-                delay(delayMills)
-                playLoadingOnce(this@apply)
-                delay(delayMills)
-                playLoadingOnce(this@apply)
-                delay(delayMills)
-                playLoadingOnce(this@apply)
-                delay(delayMills)
-                playLoadingOnce(this@apply)
-                delay(delayMills)
-                playLoadingOnce(this@apply)
-            }
-        }
-    }
-
-    private fun playLoadingOnce(pagView: PAGView) {
-        lifecycleScope.launch(Dispatchers.Main) {
-            pagView.stop()
-            pagView.progress = 0.0
-            pagView.play()
-        }
-    }
-
     private fun startCountingDown() {
         mValueAnimator = ValueAnimator.ofInt(0, 100).apply {
             interpolator = DecelerateInterpolator(1.2F)
             duration = mLoadingTime
             addUpdateListener {
                 val progress = it.animatedValue as Int
-                binding.progressBar.progress = progress
+                binding.progressBar.setProgress(progress.toFloat() / 100)
                 binding.progressNumber.text = "$progress%"
                 if (progress == 100) {
                     finish()

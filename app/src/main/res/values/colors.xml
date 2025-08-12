@@ -23,4 +23,9 @@
 
     <color name="line_grey">#21979797</color>
     <color name="green">#25FAA9</color>
+
+    <!-- 自定义进度条颜色 -->
+    <color name="progress_completed">#4CFFFFFF</color>
+    <color name="progress_completed_border">#835CEA</color>
+    <color name="progress_uncompleted">#4CFFFFFF</color>
 </resources>

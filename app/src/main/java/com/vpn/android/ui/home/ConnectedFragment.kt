@@ -31,8 +31,6 @@ import com.vpn.android.ui.regionselector2.ServerListActivity
 import com.vpn.android.utils.TimeUtils.leastTwoDigitsFormat
 import com.vpn.tahiti.TahitiCoreServiceStateInfoManager
 import com.vpn.tahiti.constants.CoreServiceStateConstants
-import org.libpag.PAGFile
-
 
 class ConnectedFragment : CommonFragment {
     constructor() : super()
@@ -133,19 +131,6 @@ class ConnectedFragment : CommonFragment {
         AnimationUtils.loadAnimation(requireContext(), R.anim.connected_anim_clockwise).apply {
             interpolator = LinearInterpolator()
             binding.connectedProgressbar.startAnimation(this)
-        }
-
-        binding.light.apply {
-            composition =
-                PAGFile.Load(MainApplication.context.assets, "add_time_light_3s.pag")
-            setRepeatCount(0)
-            play()
-        }
-        binding.addTime1Clock.apply {
-            composition =
-                PAGFile.Load(MainApplication.context.assets, "clock.pag")
-            setRepeatCount(0)
-            play()
         }
     }
 

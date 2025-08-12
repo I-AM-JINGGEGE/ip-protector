@@ -10,8 +10,6 @@ import android.view.ViewGroup
 import com.vpn.android.MainApplication
 import com.vpn.android.databinding.AddTimeLoadingBinding
 import com.vpn.android.ui.common.CommonDialogFragment
-import org.libpag.PAGFile
-
 
 class AddTimeLoadingFragment : CommonDialogFragment {
 
@@ -49,14 +47,7 @@ class AddTimeLoadingFragment : CommonDialogFragment {
     }
 
     private fun initView() {
-        binding.loading.apply {
-            composition = PAGFile.Load(
-                MainApplication.context.assets,
-                "add_time.pag"
-            )
-            setRepeatCount(0)
-            play()
-        }
+
     }
 
     override fun onDestroyView() {
