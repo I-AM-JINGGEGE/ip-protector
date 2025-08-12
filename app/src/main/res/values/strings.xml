@@ -29,8 +29,8 @@
     <string name="vs_core_service_state_connecting">Connecting&#8230;20%</string>
     <string name="vs_core_service_state_connecting2">Connecting, please try later</string>
     <string name="vs_core_service_state_connected">Connected</string>
-    <string name="vs_core_service_operate_connect">Tap to connect</string>
-    <string name="vs_core_service_operate_disconnect">Tap to disconnect</string>
+    <string name="vs_core_service_operate_connect">Click to connect</string>
+    <string name="vs_core_service_operate_disconnect">Click to disconnect</string>
     <string name="vs_core_service_state_connection_percentage_unit">%</string>
     <string name="vs_core_service_uptime_unit_hour">h</string>
     <string name="vs_core_service_uptime_unit_minute">m</string>

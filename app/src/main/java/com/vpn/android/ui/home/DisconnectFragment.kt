@@ -128,7 +128,7 @@ class DisconnectFragment : CommonFragment {
             }
         }
         AnimationUtils.loadAnimation(requireContext(), R.anim.connecting_anim_blue).apply {
-            binding.blueRing.startAnimation(this)
+//            binding.blueRing.startAnimation(this)
         }
         AnimationUtils.loadAnimation(requireContext(), R.anim.connecting_anim_black).apply {
             binding.blackRing.startAnimation(this)

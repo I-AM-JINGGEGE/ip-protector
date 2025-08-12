@@ -2,9 +2,9 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape android:shape="oval">
-            <gradient android:centerColor="#2554FE"
-                android:endColor="#2DBBFF"
-                android:startColor="#2DBBFF"
+            <gradient android:centerColor="#9653FF"
+                android:endColor="#859DFF"
+                android:startColor="#859DFF"
                 android:angle="45"/>
         </shape>
     </item>

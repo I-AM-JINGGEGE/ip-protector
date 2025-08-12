@@ -3,9 +3,9 @@
     <translate
         android:duration="@integer/connecting_animation_duration"
         android:fromXDelta="0%p"
-        android:toXDelta="-39%p"
+        android:toXDelta="-5%p"
         android:fromYDelta="0%p"
-        android:toYDelta="-39%p"
+        android:toYDelta="-5%p"
         android:repeatCount="-1"
         android:repeatMode="reverse" />
 </set>

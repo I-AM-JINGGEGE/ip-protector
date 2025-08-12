@@ -110,8 +110,8 @@
 
     <style name="vpn_state_text">
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">20dp</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:textStyle">bold</item>
     </style>
     <style name="vpn_state_connected_text" parent="vpn_state_text">
