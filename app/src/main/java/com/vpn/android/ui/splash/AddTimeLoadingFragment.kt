@@ -7,7 +7,6 @@ import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.vpn.android.MainApplication
 import com.vpn.android.databinding.AddTimeLoadingBinding
 import com.vpn.android.ui.common.CommonDialogFragment
 

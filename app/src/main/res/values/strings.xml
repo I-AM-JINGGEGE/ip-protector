@@ -99,7 +99,8 @@
 
     <string name="vs_add_time_get_an_hour">Get 1 hour</string>
     <string name="vs_add_time_get_later">Get later</string>
-    <string name="connectivity_test_duration">Https handshake took %s ms</string>
+    <string name="connectivity_test_duration">Https handshake took</string>
+    <string name="time_unit_ms">ms</string>
 
     <string name="vs_feature_apps_bypass_title">Apps Bypass Settings</string>
     <string name="vs_feature_apps_bypass_title2">Apps Using VPN</string>
@@ -131,7 +132,7 @@
     <string name="vs_feature_region_refresh_tips_success">Successfully refreshed</string>
 
     <string name="summary_title">Summary</string>
-    <string name="summary_body">Honored！We have been served you for</string>
+    <string name="summary_body">We have been served you for</string>
     <string name="region_pre">region:%s</string>
     <string name="region_title">Region:</string>
     <string name="ip_title">IP address:</string>
@@ -140,7 +141,7 @@
 
     <string name="slow_or_not_works">Slow or Not Works?</string>
     <string name="one_click_fix">One-Click Fix</string>
-    <string name="remaining_time">Disconnected after:</string>
+    <string name="remaining_time">Remaining time：</string>
     <string name="add_time">Add time</string>
     <string name="lucky_add">Lucky add</string>
 

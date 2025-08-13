@@ -1,5 +1,6 @@
 package com.vpn.android.ui
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.format.Formatter
 import android.view.View
@@ -86,6 +87,7 @@ class DisconnectReportActivity : CommonAppCompatActivity() {
         })
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setConnectedTime(milliseconds: Long) {
         val connectedSeconds: Long = milliseconds / 1000
         var hour = 0
@@ -98,9 +100,11 @@ class DisconnectReportActivity : CommonAppCompatActivity() {
             minute %= 60
             second = (connectedSeconds - hour * 3600 - minute * 60).toInt()
         }
-        binding.hourNumber.text = TimeUtils.leastTwoDigitsFormat(hour)
-        binding.minuteNumber.text = TimeUtils.leastTwoDigitsFormat(minute)
-        binding.secondNumber.text = TimeUtils.leastTwoDigitsFormat(second)
+        binding.remainingTime.text = "${TimeUtils.leastTwoDigitsFormat(hour)} : ${
+            TimeUtils.leastTwoDigitsFormat(
+                minute
+            )
+        } : ${TimeUtils.leastTwoDigitsFormat(second)}"
     }
 
     private fun initViewModel() {

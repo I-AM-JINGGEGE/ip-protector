@@ -13,6 +13,7 @@ import com.vpn.android.base.utils.BuildConfigUtils;
 import com.vpn.android.base.utils.DeviceUtils;
 import com.vpn.android.ads.bean.UserAdConfig;
 import com.vpn.android.ads.network.IpUtil;
+import com.vpn.android.utils.ChannelUtils;
 import com.vpn.tahiti.TahitiCoreServiceUserUtils;
 
 import java.util.HashMap;
@@ -40,7 +41,7 @@ public class UserProfileRetrofit {
 
     private UserProfileRetrofit() {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BuildConfig.DEBUG ? DEBUG_HOST : HOST_MAIN_1)
+                .baseUrl(ChannelUtils.INSTANCE.isDebugFlavor() ? DEBUG_HOST : HOST_MAIN_1)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(retryNetWorkHttpClient())
                 .build();

@@ -125,10 +125,6 @@ class ConnectedFragment : CommonFragment {
     }
 
     private fun playConnectedAnimation() {
-        AnimationUtils.loadAnimation(requireContext(), R.anim.connected_anim_inverse).apply {
-            interpolator = LinearInterpolator()
-            binding.connectedWheel.startAnimation(this)
-        }
         AnimationUtils.loadAnimation(requireContext(), R.anim.connected_anim_clockwise).apply {
             interpolator = LinearInterpolator()
             binding.connectedProgressbar.startAnimation(this)

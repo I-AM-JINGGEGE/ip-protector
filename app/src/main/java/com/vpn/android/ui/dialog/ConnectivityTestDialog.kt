@@ -8,7 +8,6 @@ import android.os.SystemClock
 import android.view.Gravity
 import android.view.View
 import android.widget.TextView
-import com.vpn.android.MainApplication
 import com.vpn.android.R
 import com.vpn.android.base.utils.ThreadUtils
 import java.net.HttpURLConnection
@@ -20,6 +19,7 @@ class ConnectivityTestDialog(context: Context) : Dialog(context, R.style.Translu
     private lateinit var successOk: View
     private lateinit var successRetest: View
     private lateinit var tvSuccessMessage: TextView
+    private lateinit var tvSuccessMessage_1: TextView
     private lateinit var failLayout: View
     private lateinit var failClose: View
     private lateinit var failRetest: View
@@ -45,6 +45,7 @@ class ConnectivityTestDialog(context: Context) : Dialog(context, R.style.Translu
         successOk = findViewById(R.id.btn_success_got)
         successRetest = findViewById(R.id.tv_success_retest)
         tvSuccessMessage = findViewById(R.id.tv_success_message)
+        tvSuccessMessage_1 = findViewById(R.id.tv_success_message_1)
         failLayout = findViewById(R.id.fail_layout)
         failClose = findViewById(R.id.tv_fail_close)
         failRetest = findViewById(R.id.btn_fail_retest)
@@ -93,7 +94,8 @@ class ConnectivityTestDialog(context: Context) : Dialog(context, R.style.Translu
                         }
                         successLayout.visibility = View.VISIBLE
                         testingLayout.visibility = View.GONE
-                        tvSuccessMessage.text = context.resources.getString(R.string.connectivity_test_duration, "$elapsed")
+                        tvSuccessMessage.text = context.resources.getString(R.string.connectivity_test_duration)
+                        tvSuccessMessage_1.text = "$elapsed"
                     }
                 } else {
                     ThreadUtils.runOnMainThread {

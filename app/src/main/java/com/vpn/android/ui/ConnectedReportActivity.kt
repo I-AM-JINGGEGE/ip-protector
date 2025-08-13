@@ -1,5 +1,6 @@
 package com.vpn.android.ui
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.format.Formatter
 import android.view.View
@@ -55,7 +56,6 @@ class ConnectedReportActivity : CommonAppCompatActivity() {
         setTransparentStatusBar()
         
         initView()
-        startAnimations()
         initViewModel()
         AdPresenterWrapper.getInstance().loadNativeAd(
             AdConstant.AdPlacement.N_CONNECTED_REPORT,
@@ -171,17 +171,7 @@ class ConnectedReportActivity : CommonAppCompatActivity() {
             }, if (adPlacement == AdConstant.AdPlacement.I_ADD_TIME_1_REPORT_PAGE) "add time 1[report]" else "add time 2[report]")
     }
 
-    private fun startAnimations() {
-        AnimationUtils.loadAnimation(this, R.anim.connected_anim_inverse).apply {
-            interpolator = LinearInterpolator()
-            binding.connectedWheel.startAnimation(this)
-        }
-        AnimationUtils.loadAnimation(this, R.anim.connected_anim_clockwise).apply {
-            interpolator = LinearInterpolator()
-            binding.connectedProgressbar.startAnimation(this)
-        }
-    }
-
+    @SuppressLint("SetTextI18n")
     private fun initViewModel() {
         AdPresenterWrapper.getInstance().nativeAdLoadLiveData.observe(this) { result ->
             if (result && AdPresenterWrapper.getInstance().isNativeAdLoaded(AdConstant.AdPlacement.N_CONNECTED_REPORT)) {
@@ -217,12 +207,6 @@ class ConnectedReportActivity : CommonAppCompatActivity() {
             }
             Formatter.formatFileSize(applicationContext, trafficStats.txRate).let {
                 binding.uploadTitle.text = "$it/s"
-            }
-            Formatter.formatFileSize(applicationContext, trafficStats.rxTotal).let {
-                binding.downloadContent.text = "Total: $it"
-            }
-            Formatter.formatFileSize(applicationContext, trafficStats.txTotal).let {
-                binding.uploadContent.text = "Total: $it"
             }
         }
         mConnectedViewModel.usedUpRemainSecondsAsLiveData.observe(this) { connectedSeconds ->
