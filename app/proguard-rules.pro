@@ -28,9 +28,6 @@
 -dontwarn com.android.installreferrer
 -keep public class com.android.installreferrer.**{ *; }
 
--keep class me.jessyan.autosize.** { *; }
--keep interface me.jessyan.autosize.** { *; }
-
 -keep class org.libpag.** {*;}
 -keep class androidx.exifinterface.** {*;}
 

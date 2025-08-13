@@ -44,12 +44,6 @@
         tools:replace="android:theme,android:fullBackupContent,android:dataExtractionRules"
         android:dataExtractionRules="@xml/my_rules"
         android:fullBackupContent="@xml/backup_descriptor">
-        <meta-data
-            android:name="design_width_in_dp"
-            android:value="360"/>
-        <meta-data
-            android:name="design_height_in_dp"
-            android:value="680"/>
         <activity android:name=".ui.support.LanguageSettingActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>

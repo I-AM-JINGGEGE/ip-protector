@@ -21,8 +21,6 @@ import java.util.Locale;
 import static com.vpn.android.MainActivity.EXTRA_UPDATE_LANGUAGE_FROM_RESTART;
 import static com.vpn.android.constants.LanguageSelectedConstant.KEY_LANGUAGE_ZONE_CODE_SELECTED;
 
-import me.jessyan.autosize.AutoSizeCompat;
-
 public class LanguageSettingHelper {
     @SuppressLint("StaticFieldLeak")
     private static LanguageSettingHelper sLanguageSettingHelper = null;
@@ -102,6 +100,5 @@ public class LanguageSettingHelper {
         DisplayMetrics dm = resources.getDisplayMetrics();
         resources.updateConfiguration(configuration, dm);
         activity.getResources().updateConfiguration(configuration, dm);
-        AutoSizeCompat.autoConvertDensityOfGlobal(resources);
     }
 }

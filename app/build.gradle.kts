@@ -226,8 +226,6 @@ dependencies {
     // https://mvnrepository.com/artifact/com.appsflyer/af-android-sdk
     implementation("com.appsflyer:af-android-sdk:6.17.2")
 
-    implementation("com.github.JessYanCoding:AndroidAutoSize:v1.2.1")
-
     implementation("com.geyifeng.immersionbar:immersionbar:3.2.2")
     implementation("com.geyifeng.immersionbar:immersionbar-ktx:3.2.2")
 

@@ -8,9 +8,8 @@ import com.vpn.android.R
 import com.vpn.android.ads.AdPresenterWrapper
 import com.vpn.android.ui.helper.LanguageSettingHelper
 import com.jaeger.library.StatusBarUtil
-import me.jessyan.autosize.internal.CustomAdapt
 
-open class CommonAppCompatActivity : AppCompatActivity(), CustomAdapt {
+open class CommonAppCompatActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         LanguageSettingHelper.getInstance(this).initLanguageLocale(this)
         super.onCreate(savedInstanceState)
@@ -45,14 +44,6 @@ open class CommonAppCompatActivity : AppCompatActivity(), CustomAdapt {
         }
         mProgressDialog!!.cancel()
         mProgressDialog = null
-    }
-
-    override fun isBaseOnWidth(): Boolean {
-        return false
-    }
-
-    override fun getSizeInDp(): Float {
-        return 680F
     }
 
     override fun onResume() {
