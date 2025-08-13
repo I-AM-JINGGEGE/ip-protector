@@ -13,6 +13,8 @@ object VpnReporter {
     const val PARAM_VALUE_FROM_TAP_TEXT = "tap_text"
     const val PARAM_VALUE_FROM_FIX_NETWORK = "fix_network"
     const val PARAM_VALUE_FROM_SERVER_LIST = "server_list"
+    const val PARAM_VALUE_FROM_SPEED_ICON = "speed_icon"
+    const val PARAM_VALUE_FROM_REPORT_ICON = "report_icon"
 
     fun reportToStartConnect(from: String) {
         DTAnalytics.track("vpn_to_start_connect", mutableMapOf<String, Any>().apply {

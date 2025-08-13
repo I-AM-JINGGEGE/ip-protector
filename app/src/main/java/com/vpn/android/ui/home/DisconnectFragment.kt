@@ -59,15 +59,6 @@ class DisconnectFragment : CommonFragment {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         
-        // 设置toolbar的状态栏高度
-        val statusBarHeight = getStatusBarHeight()
-        binding.toolbar.setPadding(
-            binding.toolbar.paddingLeft,
-            binding.toolbar.paddingTop + statusBarHeight,
-            binding.toolbar.paddingRight,
-            binding.toolbar.paddingBottom
-        )
-        
         initView()
         initViewModel()
     }
@@ -89,6 +80,17 @@ class DisconnectFragment : CommonFragment {
             if (activity is MainActivity) {
                 (activity as MainActivity).launchActivityForShowingAds(Intent(requireActivity(), ServerListActivity::class.java))
             }
+        }
+        binding.menu.setOnClickListener {
+            if (activity is OnSlideClickListener) {
+                (activity as OnSlideClickListener).onSlideClick()
+            }
+        }
+        binding.report.setOnClickListener {
+            connect(VpnReporter.PARAM_VALUE_FROM_REPORT_ICON)
+        }
+        binding.speed.setOnClickListener {
+            connect(VpnReporter.PARAM_VALUE_FROM_SPEED_ICON)
         }
         playIdleAnimations()
         arguments?.apply {
@@ -130,22 +132,12 @@ class DisconnectFragment : CommonFragment {
 
     private fun playIdleAnimations() {
         binding.finger.apply {
+            visibility = View.VISIBLE
             AnimationSet(true).apply {
                 addAnimation(AnimationUtils.loadAnimation(requireContext(), R.anim.finger_anim_alpha))
                 addAnimation(AnimationUtils.loadAnimation(requireContext(), R.anim.finger_anim_scale))
                 addAnimation(AnimationUtils.loadAnimation(requireContext(), R.anim.finger_anim_translate))
                 startAnimation(this)
-            }
-        }
-        AnimationUtils.loadAnimation(requireContext(), R.anim.connecting_anim_blue).apply {
-//            binding.blueRing.startAnimation(this)
-        }
-        AnimationUtils.loadAnimation(requireContext(), R.anim.connecting_anim_black).apply {
-            binding.blackRing.startAnimation(this)
-        }
-        binding.menu.setOnClickListener {
-            if (activity is OnSlideClickListener) {
-                (activity as OnSlideClickListener).onSlideClick()
             }
         }
     }
@@ -208,7 +200,6 @@ class DisconnectFragment : CommonFragment {
     }
 
     private fun updateConnectingProgress(progress: Float) {
-        binding.connectingProgress.update(progress)
     }
 
     private fun setUiToConnecting() {
@@ -218,10 +209,16 @@ class DisconnectFragment : CommonFragment {
         binding.clickTipsText.visibility = View.INVISIBLE
         binding.connectingAnimLayout.visibility = View.VISIBLE
         binding.connectStateText.setText(R.string.vs_core_service_state_testing)
-        binding.connectStateText.setTextColor(resources.getColor(R.color.state_connecting))
-        binding.finger.clearAnimation()
+        binding.finger.apply {
+            visibility = View.GONE
+            clearAnimation()
+        }
         binding.blueRing.clearAnimation()
         binding.blackRing.clearAnimation()
+
+        AnimationUtils.loadAnimation(requireContext(), R.anim.connecting_anim_blue).apply {
+            binding.connectingProgress.startAnimation(this)
+        }
     }
 
     private fun setUiToDisconnect() {
@@ -231,25 +228,14 @@ class DisconnectFragment : CommonFragment {
         binding.connectErrorTips.visibility = View.GONE
         binding.clickTipsText.visibility = View.VISIBLE
         binding.connectStateText.setText(R.string.vs_core_service_state_disconnected)
-        binding.connectStateText.setTextColor(resources.getColor(R.color.state_disconnect))
         playIdleAnimations()
+        binding.connectingProgress.clearAnimation()
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         binding.finger.clearAnimation()
+        binding.connectingProgress.clearAnimation()
         _binding = null
-    }
-    
-    /**
-     * 获取状态栏高度
-     */
-    private fun getStatusBarHeight(): Int {
-        val resourceId = resources.getIdentifier("status_bar_height", "dimen", "android")
-        return if (resourceId > 0) {
-            resources.getDimensionPixelSize(resourceId)
-        } else {
-            0
-        }
     }
 }

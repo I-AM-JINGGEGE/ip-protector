@@ -3,39 +3,42 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:background="@drawable/bg_connected">
+    android:layout_height="match_parent">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolbar"
+        android:layout_marginTop="@dimen/status_bar_height"
         android:layout_width="match_parent"
         android:layout_height="@dimen/activity_toolbar_height"
         app:layout_constraintTop_toTopOf="parent">
-        <androidx.appcompat.widget.AppCompatImageView
+        <ImageView
             android:id="@+id/menu"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:padding="18dp"
-            app:srcCompat="@mipmap/ic_menu"
+            android:layout_width="@dimen/function_icon_size"
+            android:layout_height="@dimen/function_icon_size"
+            android:padding="@dimen/function_icon_padding"
+            android:src="@mipmap/ic_menu"
+            android:layout_marginStart="12dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
-        <androidx.appcompat.widget.AppCompatImageView
+        <ImageView
             android:id="@+id/report"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:padding="11dp"
-            app:srcCompat="@mipmap/ic_report"
-            android:layout_marginEnd="5dp"
+            android:layout_width="@dimen/function_icon_size"
+            android:layout_height="@dimen/function_icon_size"
+            android:padding="@dimen/function_icon_padding"
+            android:src="@mipmap/ic_report"
             app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="12dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
-        <androidx.appcompat.widget.AppCompatImageView
+        <ImageView
             android:id="@+id/speed"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:padding="11dp"
-            app:srcCompat="@mipmap/icon_speed_test"
+            android:layout_width="@dimen/function_icon_size"
+            android:layout_height="@dimen/function_icon_size"
+            android:padding="@dimen/function_icon_padding"
+            android:src="@mipmap/icon_speed_test"
+            android:layout_marginStart="12dp"
             app:layout_constraintEnd_toStartOf="@id/report"
+            android:layout_marginEnd="8dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -50,15 +53,6 @@
         android:drawablePadding="5dp"
         android:layout_marginTop="10dp"
         style="@style/vpn_state_connected_text"/>
-    <androidx.appcompat.widget.AppCompatImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/connect_bg_image"
-        app:layout_constraintTop_toBottomOf="@id/connect_state_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="18dp"
-        android:layout_marginEnd="18dp"/>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/timer_layout"
         android:layout_width="wrap_content"
