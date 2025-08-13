@@ -24,6 +24,9 @@ public class AppsBypassSettingsActivity extends CommonAppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_apps_bypass_settings);
+        
+        // 设置状态栏颜色
+        setStatusBarColorRes(R.color.white, true);
 
         RecyclerView appsInfoRV = findViewById(R.id.recycler_view);
 

@@ -4,7 +4,7 @@ import android.animation.ValueAnimator
 import android.os.Bundle
 import android.view.animation.DecelerateInterpolator
 import android.view.animation.LinearInterpolator
-import com.jaeger.library.StatusBarUtil
+
 import com.vpn.android.MainApplication
 import com.vpn.android.R
 import com.vpn.android.ads.AdPresenterWrapper
@@ -34,7 +34,9 @@ class SplashActivity : CommonAppCompatActivity() {
         binding = SplashLayoutBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        StatusBarUtil.setTransparent(this)
+        
+        // 设置全屏沉浸式状态栏
+        setFullScreenImmersive()
 
         binding.progressBar.setCompletedColor(resources.getColor(R.color.progress_completed, null))
         binding.progressBar.setUncompletedColor(resources.getColor(R.color.progress_uncompleted, null))

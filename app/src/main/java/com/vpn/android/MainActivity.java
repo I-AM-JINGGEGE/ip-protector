@@ -141,6 +141,10 @@ public class MainActivity extends CommonAppCompatActivity implements OnClickDisc
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+        // 设置沉浸式状态栏
+        setTransparentStatusBar();
+        
         registerActivityForResult();
         initNavSlidePage();
         initView();
@@ -530,9 +534,12 @@ public class MainActivity extends CommonAppCompatActivity implements OnClickDisc
         drawerLayout = findViewById(R.id.drawerLayout);
         drawerLayout.setStatusBarBackground(R.color.status_bar_bg);
         navigationView = findViewById(R.id.nav_view);
+        
+        // 设置导航栏的状态栏高度
         DrawerLayout.LayoutParams layoutParams = (DrawerLayout.LayoutParams) navigationView.getLayoutParams();
-        layoutParams.setMargins(0, getStatusBarHeight(this), 0, 0);
+        layoutParams.setMargins(0, getStatusBarHeight(), 0, 0);
         navigationView.setLayoutParams(layoutParams);
+        
         ViewTreeObserver.OnGlobalLayoutListener listener = new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
@@ -549,11 +556,13 @@ public class MainActivity extends CommonAppCompatActivity implements OnClickDisc
         });
     }
 
-    private int getStatusBarHeight(Context context) {
+
+    @Override
+    protected int getStatusBarHeight() {
         int result = 0;
-        int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
         if (resourceId > 0) {
-            result = context.getResources().getDimensionPixelSize(resourceId);
+            result = getResources().getDimensionPixelSize(resourceId);
         }
         return result;
     }

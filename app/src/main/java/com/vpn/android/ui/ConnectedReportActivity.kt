@@ -36,7 +36,7 @@ import com.vpn.android.ui.support.SupportUtils
 import com.vpn.android.ui.widget.RatingBar
 import com.vpn.android.utils.TimeUtils
 import com.vpn.tahiti.TahitiCoreServiceStateInfoManager
-import com.jaeger.library.StatusBarUtil
+
 import java.util.Random
 
 class ConnectedReportActivity : CommonAppCompatActivity() {
@@ -50,10 +50,13 @@ class ConnectedReportActivity : CommonAppCompatActivity() {
         binding = ConnectedReportLayoutBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+        
+        // 设置透明状态栏
+        setTransparentStatusBar()
+        
         initView()
         startAnimations()
         initViewModel()
-        StatusBarUtil.setTransparent(this)
         AdPresenterWrapper.getInstance().loadNativeAd(
             AdConstant.AdPlacement.N_CONNECTED_REPORT,
             null, "connected report")

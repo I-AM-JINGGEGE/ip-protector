@@ -58,6 +58,16 @@ class DisconnectFragment : CommonFragment {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        
+        // 设置toolbar的状态栏高度
+        val statusBarHeight = getStatusBarHeight()
+        binding.toolbar.setPadding(
+            binding.toolbar.paddingLeft,
+            binding.toolbar.paddingTop + statusBarHeight,
+            binding.toolbar.paddingRight,
+            binding.toolbar.paddingBottom
+        )
+        
         initView()
         initViewModel()
     }
@@ -229,5 +239,17 @@ class DisconnectFragment : CommonFragment {
         super.onDestroyView()
         binding.finger.clearAnimation()
         _binding = null
+    }
+    
+    /**
+     * 获取状态栏高度
+     */
+    private fun getStatusBarHeight(): Int {
+        val resourceId = resources.getIdentifier("status_bar_height", "dimen", "android")
+        return if (resourceId > 0) {
+            resources.getDimensionPixelSize(resourceId)
+        } else {
+            0
+        }
     }
 }

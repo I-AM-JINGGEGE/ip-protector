@@ -17,6 +17,9 @@ public class LanguageSettingActivity extends CommonAppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_language_setting);
+        
+        // 设置状态栏颜色
+        setStatusBarColorRes(R.color.white, true);
 
         initView();
     }
@@ -29,6 +32,14 @@ public class LanguageSettingActivity extends CommonAppCompatActivity {
     private void initView() {
         // toolbar
         ((Toolbar) findViewById(R.id.toolbar)).setNavigationOnClickListener(v -> onBackPressed());
+        
+        // 设置toolbar的状态栏高度
+        findViewById(R.id.container_toolbar).setPadding(
+            findViewById(R.id.container_toolbar).getPaddingLeft(),
+            findViewById(R.id.container_toolbar).getPaddingTop() + getStatusBarHeight(),
+            findViewById(R.id.container_toolbar).getPaddingRight(),
+            findViewById(R.id.container_toolbar).getPaddingBottom()
+        );
 
         mRecycleViewLanguageSetting = findViewById(R.id.recycler_view_language_setting);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);

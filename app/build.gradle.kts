@@ -229,7 +229,6 @@ dependencies {
     implementation("com.geyifeng.immersionbar:immersionbar:3.2.2")
     implementation("com.geyifeng.immersionbar:immersionbar-ktx:3.2.2")
 
-    implementation("com.jaeger.statusbarutil:library:1.5.1")
     implementation("com.google.android.ump:user-messaging-platform:3.2.0")
 
     implementation("com.google.android.play:review:2.0.2")

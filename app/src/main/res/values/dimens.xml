@@ -10,4 +10,6 @@
     <dimen name="native_ad_small_height">105dp</dimen>
     <dimen name="native_ad_media_height_small">226dp</dimen>
     <dimen name="native_ad_media_height_big">281dp</dimen>
+    <dimen name="status_bar_height">38dp</dimen>
+    <dimen name="function_icon_size">35dp</dimen>
 </resources>

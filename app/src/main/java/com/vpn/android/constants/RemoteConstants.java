@@ -18,8 +18,8 @@ public class RemoteConstants {
     public static final int DEFAULT_APP_OPEN_COUNT_VALUE_DEFAULT = 2;
 
     public static final String OPEN_AD_LOAD_MAX_DURATION = "open_ad_load_max_duration";
-    public static final long OPEN_AD_LOAD_MAX_DURATION_VALUE_DEFAULT = 15000;
-    public static final long COLD_START_MAX_DURATION_VALUE_DEFAULT = 12000;
+    public static final long OPEN_AD_LOAD_MAX_DURATION_VALUE_DEFAULT = 3000;
+    public static final long COLD_START_MAX_DURATION_VALUE_DEFAULT = 3000;
     public static final long ADD_TIME_MAX_DURATION_VALUE_DEFAULT = 15000;
 
     public static final String REPORT_BEAT_DURATION = "report_beat_duration";

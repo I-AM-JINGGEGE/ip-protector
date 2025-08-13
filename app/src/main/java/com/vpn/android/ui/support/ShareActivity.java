@@ -20,6 +20,9 @@ public class ShareActivity extends CommonAppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_share);
+        
+        // 设置状态栏颜色
+        setStatusBarColorRes(R.color.white, true);
 
         initView();
     }
@@ -40,6 +43,15 @@ public class ShareActivity extends CommonAppCompatActivity {
             navBtn.setImageResource(R.mipmap.ic_back_0);
         }
         navBtn.setOnClickListener(v -> onBackPressed());
+        
+        // 设置toolbar的状态栏高度
+        findViewById(R.id.container_toolbar).setPadding(
+            findViewById(R.id.container_toolbar).getPaddingLeft(),
+            findViewById(R.id.container_toolbar).getPaddingTop() + getStatusBarHeight(),
+            findViewById(R.id.container_toolbar).getPaddingRight(),
+            findViewById(R.id.container_toolbar).getPaddingBottom()
+        );
+        
         TextView tvTitle = findViewById(R.id.tv_title);
         tvTitle.setText(R.string.vs_feature_share_title);
 

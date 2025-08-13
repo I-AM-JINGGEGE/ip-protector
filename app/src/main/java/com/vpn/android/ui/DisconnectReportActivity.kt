@@ -20,7 +20,7 @@ import com.vpn.android.ui.regionselector.card.ConnectedViewModel
 import com.vpn.android.ui.support.SupportUtils
 import com.vpn.android.ui.widget.RatingBar
 import com.vpn.android.utils.TimeUtils
-import com.jaeger.library.StatusBarUtil
+
 import com.sdk.ssmod.beans.TrafficStats
 
 class DisconnectReportActivity : CommonAppCompatActivity() {
@@ -33,9 +33,12 @@ class DisconnectReportActivity : CommonAppCompatActivity() {
         binding = DisconnectReportLayoutBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+        
+        // 设置透明状态栏
+        setTransparentStatusBar()
+        
         initView()
         initViewModel()
-        StatusBarUtil.setTransparent(this)
         AdPresenterWrapper.getInstance().loadNativeAd(
             AdConstant.AdPlacement.N_DISCONNECT_REPORT,
             null, "disconnect report")
