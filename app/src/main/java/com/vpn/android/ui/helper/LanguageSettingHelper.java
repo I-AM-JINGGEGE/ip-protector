@@ -41,7 +41,7 @@ public class LanguageSettingHelper {
         return sLanguageSettingHelper;
     }
 
-    private static final String[] LANGUAGES = new String[]{"en", "ar", "bn", "de", "es", "fr", "hi", "id", "ja", "ko", "ms", "my", "pt", "ru", "th"};
+    private static final String[] LANGUAGES = new String[]{"en", "ar", "bn", "de", "es", "fr", "in", "id", "ja", "ko", "ms", "my", "pt", "ru", "th"};
 
     public List<LanguageItem> generate() {
         List<LanguageItem> languageItemList = new ArrayList<>();

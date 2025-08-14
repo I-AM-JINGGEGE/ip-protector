@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.vpn.android.R;
+import com.vpn.android.region.RegionUtils;
 import com.vpn.android.ui.bean.LanguageItem;
 import com.vpn.android.ui.helper.LanguageSettingHelper;
 
@@ -64,17 +65,19 @@ public class LanguageSettingRecyclerViewAdapter extends RecyclerView.Adapter<Lan
     static class LanguageSettingViewHolder extends RecyclerView.ViewHolder {
         private final TextView tvLanguageName;
         private final ImageView ivSelected;
+        private final ImageView ivIcon;
 
         public LanguageSettingViewHolder(@NonNull View itemView) {
             super(itemView);
 
             tvLanguageName = itemView.findViewById(R.id.tv_name_language);
             ivSelected = itemView.findViewById(R.id.iv_selected);
+            ivIcon = itemView.findViewById(R.id.icon);
         }
 
         public void bind(LanguageItem languageItem) {
             tvLanguageName.setText(languageItem.getLanguageName());
-
+            ivIcon.setImageResource(RegionUtils.getRegionFlagImageResource(itemView.getContext(), languageItem.getZoneCode()));
             if (languageItem.getSelected()) {
                 ivSelected.setImageResource(R.mipmap.ic_selected);
             } else {

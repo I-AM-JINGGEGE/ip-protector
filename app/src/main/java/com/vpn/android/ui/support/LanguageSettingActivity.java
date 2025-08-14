@@ -31,7 +31,7 @@ public class LanguageSettingActivity extends CommonAppCompatActivity {
 
     private void initView() {
         // toolbar
-        ((Toolbar) findViewById(R.id.toolbar)).setNavigationOnClickListener(v -> onBackPressed());
+        findViewById(R.id.btn_back).setOnClickListener(v -> onBackPressed());
 
         mRecycleViewLanguageSetting = findViewById(R.id.recycler_view_language_setting);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
