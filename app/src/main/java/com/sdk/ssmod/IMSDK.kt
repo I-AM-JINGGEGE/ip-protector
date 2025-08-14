@@ -18,20 +18,25 @@ import com.github.shadowsocks.bg.BaseService
 import com.github.shadowsocks.imsvc.ImsvcService
 import com.github.shadowsocks.utils.Action
 import com.google.firebase.crashlytics.FirebaseCrashlytics
-import com.vpn.base.vstore.VstoreManager
-import com.vpn.android.BuildConfig
-import com.vpn.android.MainApplication.Companion.instance
-import com.vpn.android.region.RegionConstants.KEY_PROFILE_VPN_IP
 import com.sdk.ssmod.IMSDK.VpnState
-import com.sdk.ssmod.IMSDK.WithResponseBuilder.*
-import com.sdk.ssmod.api.http.beans.*
+import com.sdk.ssmod.IMSDK.WithResponseBuilder.ConnectedTo
+import com.sdk.ssmod.api.http.beans.FetchResponse
+import com.sdk.ssmod.api.http.beans.pingAllOrderByRankingFirstReachableAsync
 import com.sdk.ssmod.api.http.ping.ServerPing
 import com.sdk.ssmod.beans.TrafficStats
 import com.sdk.ssmod.imsvcipc.ConnectedServerServiceConnection
 import com.sdk.ssmod.imsvcipc.UptimeLimit
 import com.sdk.ssmod.util.pingOrNull
 import com.sdk.ssmod.util.tryIgnoreException
-import kotlinx.coroutines.*
+import com.vpn.android.BuildConfig
+import com.vpn.android.MainApplication.Companion.instance
+import com.vpn.android.region.RegionConstants.KEY_PROFILE_VPN_IP
+import com.vpn.base.vstore.VstoreManager
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import java.util.concurrent.atomic.AtomicBoolean
 import com.github.shadowsocks.aidl.TrafficStats as TrafficStatsSs
 import com.github.shadowsocks.imsvc.connection.ConnectedTo as ImsvcConnectedTo
@@ -100,6 +105,8 @@ object IMSDK {
         }
         connectedServerServiceConnection.bindService(app.app)
         ssServiceConnection.connect(app.app, callbackImpl)
+        // 设置带宽监听超时，使 trafficUpdated 回调生效
+        ssServiceConnection.bandwidthTimeout = 1000L // 1秒更新一次
         if (trafficStatsReceiverRegistered.compareAndSet(false, true)) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 app.app.registerReceiver(trafficStatsReceiver, TrafficStatsReceiver.filter, Context.RECEIVER_EXPORTED)
@@ -308,11 +315,11 @@ private class ShadowsocksConnectionCallbackImpl2 : ShadowsocksConnection.Callbac
         IMSDK.vpnStateLiveDataPrivate.postValue(state2)
     }
 
-    /**
-     * This function will never get called, see
-     * https://gitlab.com/nodetower/ss-android-mirror/shadowsocks-android/-/blob/4f8a01cc9a/core/src/main/java/com/github/shadowsocks/bg/BaseService.kt#L110
-     */
-    override fun trafficUpdated(profileId: Long, stats: TrafficStatsSs) = Unit
+    override fun trafficUpdated(profileId: Long, stats: TrafficStatsSs) {
+        // 将 TrafficStatsSs 转换为 TrafficStats 并更新 LiveData
+        val trafficStats = TrafficStats.fromTheSsOne(stats)
+        IMSDK.trafficStatsLiveDataPrivate.postValue(trafficStats)
+    }
 
     override fun onServiceConnected(service: IShadowsocksService) {
         val state = try {

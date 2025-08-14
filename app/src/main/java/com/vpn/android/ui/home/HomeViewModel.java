@@ -7,6 +7,8 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;
 import androidx.lifecycle.MutableLiveData;
+
+import com.sdk.ssmod.IMSDK;
 import com.vpn.tahiti.TahitiCoreServiceStateInfoManager;
 import com.sdk.ssmod.beans.TrafficStats;
 
@@ -15,7 +17,7 @@ public class HomeViewModel extends AndroidViewModel {
 
     public HomeViewModel(@NonNull Application application) {
         super(application);
-        mTrafficStats = TahitiCoreServiceStateInfoManager.getInstance(getApplication()).getTrafficStatsAsLiveData();
+        mTrafficStats = IMSDK.INSTANCE.getTrafficStats();
         initAddTime();
     }
 

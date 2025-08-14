@@ -18,7 +18,6 @@ class TahitiCoreServiceStateInfoManager private constructor() {
     val coreServiceConnectedServerAsLiveData: LiveData<IMSDK.WithResponseBuilder.ConnectedTo?> = connectedServer
     var coreServiceConnected = false
     private val mCoreServiceConnectedAsLiveData = MutableLiveData<Boolean>()
-    val coreServiceState = VpnState.Idle
 
     fun getCoreServiceStateAsLiveData(): LiveData<VpnState> {
         return vpnState

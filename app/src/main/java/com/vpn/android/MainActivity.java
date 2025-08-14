@@ -15,6 +15,7 @@ import android.provider.Settings;
 import android.text.TextUtils;
 import android.view.ViewTreeObserver;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
@@ -173,6 +174,34 @@ public class MainActivity extends CommonAppCompatActivity implements OnClickDisc
             }
         });
         GDPR_CMP();
+        // 注册返回事件拦截
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                Context context = MainActivity.this;
+                IMSDK.VpnState coreServiceState = TahitiCoreServiceStateInfoManager.getInstance(context).getCoreServiceStateAsLiveData().getValue();
+                if (CoreServiceStateConstants.isConnecting(coreServiceState) ||
+                        CoreServiceStateConstants.isStarted(coreServiceState) ||
+                        CoreServiceStateConstants.isTesting(coreServiceState) ||
+                        FakeConnectingProgressManager.Companion.getInstance().isWaitingForConnecting() ||
+                        FakeConnectingProgressManager.Companion.getInstance().isProgressingAfterConnected()) {
+                    ToastUtils.showToast(context, context.getResources().getString(R.string.vs_core_service_state_connecting2));
+                    return;
+                }
+                if (CoreServiceStateConstants.isDisconnected(coreServiceState) || CoreServiceStateConstants.isDisconnecting(coreServiceState)) {
+                    this.setEnabled(false);
+                    getOnBackPressedDispatcher().onBackPressed();
+                    return;
+                }
+                ExitAppDialog dialog = new ExitAppDialog(MainActivity.this);
+                dialog.setCancelable(true);
+                dialog.setDialogOnClickListener(() -> {
+                    this.setEnabled(false);
+                    getOnBackPressedDispatcher().onBackPressed();
+                });
+                dialog.show();
+            }
+        });
     }
 
     private void GDPR_CMP() {
@@ -474,26 +503,6 @@ public class MainActivity extends CommonAppCompatActivity implements OnClickDisc
     }
 
     /** view model end **/
-
-    @Override
-    public void onBackPressed() {
-        Context context = this;
-        IMSDK.VpnState coreServiceState = TahitiCoreServiceStateInfoManager.getInstance(context).getCoreServiceState();
-        if (CoreServiceStateConstants.isConnecting(coreServiceState) ||
-                CoreServiceStateConstants.isStarted(coreServiceState) ||
-                CoreServiceStateConstants.isTesting(coreServiceState) ||
-                FakeConnectingProgressManager.Companion.getInstance().isWaitingForConnecting() ||
-                FakeConnectingProgressManager.Companion.getInstance().isProgressingAfterConnected()) {
-            ToastUtils.showToast(context, context.getResources().getString(R.string.vs_core_service_state_connecting2));
-            return;
-        }
-        ExitAppDialog dialog = new ExitAppDialog(this);
-        dialog.setCancelable(true);
-        dialog.setDialogOnClickListener(() -> {
-            super.onBackPressed();
-        });
-        dialog.show();
-    }
 
     private CommonDialog mLegalNoticeDialog;
 
