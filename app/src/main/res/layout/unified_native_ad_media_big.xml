@@ -2,13 +2,13 @@
 <com.google.android.gms.ads.nativead.NativeAdView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/native_ad_media_height_big"
+    android:background="@drawable/ad_native_background"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/white_radius_4dp">
+        android:layout_height="match_parent">
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="18dp"
             android:layout_height="16dp"
@@ -35,7 +35,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="start"
-            android:textColor="#808080"
+            android:textColor="#D3D3D3"
             android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@id/icon_card"
             android:layout_marginStart="8dp"
@@ -49,7 +49,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="start"
-            android:textColor="#808080"
+            android:textColor="#D3D3D3"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="@id/title"
             app:layout_constraintTop_toBottomOf="@id/title"
@@ -64,7 +64,7 @@
             app:layout_constraintTop_toBottomOf="@id/content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="7dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"/>
         <androidx.appcompat.widget.AppCompatButton
@@ -78,7 +78,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/media"
-            android:background="@drawable/ad_btn_radius_4dp"
+            android:background="@drawable/bg_btn_common"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginTop="12dp"
