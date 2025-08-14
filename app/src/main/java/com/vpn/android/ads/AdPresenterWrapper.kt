@@ -72,8 +72,8 @@ class AdPresenterWrapper private constructor() : IAdPresenterProxy {
         VpnReporter.reportAdConfigRequestStart()
         UserProfileRetrofit.getInstance().getUserProfile(context, object : Callback<UserAdConfig> {
             override fun onResponse(call: Call<UserAdConfig>, response: Response<UserAdConfig>) {
-                VpnReporter.reportAdConfigRequestEnd(0, "", true, userProfile, System.currentTimeMillis() - start)
                 userProfile = response.body()
+                VpnReporter.reportAdConfigRequestEnd(0, "", true, userProfile, System.currentTimeMillis() - start)
                 adUserProfileRequesting = false
                 countDownLatch.countDown()
             }

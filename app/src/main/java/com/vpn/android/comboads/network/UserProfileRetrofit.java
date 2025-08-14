@@ -92,11 +92,7 @@ public class UserProfileRetrofit {
         map.put("rgn", rgn);
         map.put("_random", random);
         Call<UserAdConfig> rqCol = userRangeService.adUserProfile(map);
-        try {
-            rqCol.enqueue(callback);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        rqCol.enqueue(callback);
     }
 
     public void reportBeat(Context context, Callback callback) {
@@ -125,10 +121,6 @@ public class UserProfileRetrofit {
         }
         map.put("_random", random);
         Call<ResponseBody> rqCol = userRangeService.reportBeat(map);
-        try {
-            rqCol.enqueue(callback);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        rqCol.enqueue(callback);
     }
 }

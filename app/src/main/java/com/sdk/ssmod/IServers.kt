@@ -16,7 +16,7 @@ import kotlin.jvm.Throws
 
 interface IServers {
     @Throws(GeoRestrictedException::class)
-    suspend fun refresh(deviceId: String, path: String? = null): FetchResponse?
+    suspend fun refresh(deviceId: String): FetchResponse?
     fun generateDeviceId(): String
 
     class NullResponseException(val isSuccessful: Boolean, val errorCode: Int, val errorMessage: String) : RuntimeException()
@@ -30,7 +30,7 @@ internal class IServersImpl : IServers {
     private val apiService = newRetrofit().create(HttpApiService::class.java)
 
     @Throws(GeoRestrictedException::class, IllegalStateException::class, IServers.NullResponseException::class)
-    override suspend fun refresh(deviceId: String, path: String?): FetchResponse? {
+    override suspend fun refresh(deviceId: String): FetchResponse? {
         if (!IMSDK.isVpnAvailable) {
             val simMcc = IMSDK.device.simMcc
             val netMcc = IMSDK.device.netMcc
@@ -41,7 +41,7 @@ internal class IServersImpl : IServers {
         val device = IMSDK.device
 
         val response = apiService.fetchServers(
-            url = path ?: HttpApiService.DEFAULT_FETCH_SERVERS_PATH,
+            url = HttpApiService.DEFAULT_FETCH_SERVERS_PATH,
             deviceId = deviceId,
             mcc = device.simMcc.toString(),
             mnc = device.simMnc.toString(),

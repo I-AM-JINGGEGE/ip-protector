@@ -1,6 +1,5 @@
 package com.sdk.ssmod.api.http.typed
 
-import com.google.gson.JsonObject
 import com.sdk.ssmod.IMSDK
 import com.sdk.ssmod.api.http.beans.FetchResponse
 import retrofit2.Call
@@ -12,7 +11,7 @@ import kotlin.random.Random
 interface HttpApiService {
     @GET
     fun fetchServers(
-        @Url url: String = DEFAULT_FETCH_SERVERS_PATH,
+        @Url url: String,
         @Query("cv") appVersionName: String = IMSDK.app.versionName,
         @Query("ver_code") appVersionCode: Int = IMSDK.app.versionCode,
         @Query("cnl") channel: String = CHANNEL_GOOGLE_PLAY,
@@ -24,17 +23,6 @@ interface HttpApiService {
         @Query("rgn") region: String,
         @Query("_random") random: Int = Random.nextInt()
     ): Call<FetchResponse>
-
-    @GET("cloudconfig")
-    fun fetchCloudConfig(
-        @Query("cv") appVersionName: String = IMSDK.app.versionName,
-        @Query("cnl") channel: String = CHANNEL_GOOGLE_PLAY,
-        @Query("pkg") packageName: String = IMSDK.app.applicationId,
-        @Query("mcc") mcc: String,
-        @Query("mnc") mnc: String,
-        @Query("lang") language: String,
-        @Query("rgn") region: String
-    ): Call<JsonObject>
 
     companion object {
         private const val CHANNEL_GOOGLE_PLAY = "gp"

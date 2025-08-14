@@ -12,6 +12,7 @@ import com.vpn.tahiti.TahitiCoreServiceUserUtils
 import com.sdk.ssmod.IMSDK
 import com.sdk.ssmod.IServers
 import com.sdk.ssmod.api.http.beans.FetchResponse
+import com.vpn.android.utils.ChannelUtils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -44,9 +45,9 @@ object CoreSDKResponseManager {
         var start = System.currentTimeMillis()
         VpnReporter.reportServerRequestStart(from)
         fetchResponseRefreshingAsLiveData.postValue(true)
-        val deviceId = if (BuildConfig.DEBUG) "ffa198c7f63f7bd2" else TahitiCoreServiceUserUtils.getAndroidID(MainApplication.context)
+        val deviceId = if (ChannelUtils.isDebugFlavor()) "0000adf33b485ef8" else TahitiCoreServiceUserUtils.getAndroidID(MainApplication.context)
         try {
-            fetchResponse = IMSDK.servers.refresh(deviceId, null)
+            fetchResponse = IMSDK.servers.refresh(deviceId)
                 ?.also {
                 it.serverZones?.apply {
                     Collections.shuffle(this)

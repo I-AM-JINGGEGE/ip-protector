@@ -232,6 +232,7 @@
             app:layout_constraintStart_toStartOf="parent"
             android:text="@string/vs_common_repair_network"
             android:gravity="center"
+            android:textStyle="bold"
             android:textColor="@color/white"
             android:textSize="12sp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>

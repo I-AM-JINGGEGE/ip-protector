@@ -391,10 +391,14 @@ public class MainActivity extends CommonAppCompatActivity implements OnClickDisc
                 case Connected: {
                     UserProfileRetrofit.getInstance().reportBeat(MainApplication.Companion.getContext(), new Callback() {
                         @Override
-                        public void onResponse(Call call, Response response) {}
+                        public void onResponse(Call call, Response response) {
+                            LogUtils.i("VpnReporter", "Beat onResponse");
+                        }
 
                         @Override
-                        public void onFailure(Call call, Throwable t) {}
+                        public void onFailure(Call call, Throwable t) {
+                            LogUtils.e("VpnReporter", "Beat onFailure: " + t.getMessage());
+                        }
                     });
                     if (FakeConnectingProgressManager.Companion.getInstance().isWaitingForConnecting()) {
                         FakeConnectingProgressManager.Companion.getInstance().notifyVPNConnected();
