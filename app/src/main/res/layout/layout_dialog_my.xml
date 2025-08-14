@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="297dp"
     android:layout_height="wrap_content"
-    android:background="@drawable/white_radius_4dp">
+    android:background="@drawable/bg_btn_cancel">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,7 +29,7 @@
             android:drawableStart="@mipmap/rating_icon"
             android:text="@string/rate_title"
             android:textAllCaps="false"
-            android:textColor="#222222"
+            android:textColor="#D3D3D3"
             android:textSize="18sp" />
         <TextView
             android:layout_width="match_parent"
@@ -38,7 +38,7 @@
             android:gravity="start"
             android:text="@string/rate_content"
             android:textAllCaps="false"
-            android:textColor="#333333"
+            android:textColor="#D3D3D3"
             android:textSize="12sp" />
         <com.vpn.android.ui.widget.RatingBar
             android:id="@+id/smile_rating"
@@ -54,7 +54,7 @@
             android:layout_marginTop="23dp"
             android:layout_marginStart="23dp"
             android:layout_marginEnd="23dp"
-            android:background="@drawable/blue_radius_4dp"
+            android:background="@drawable/bg_btn_common"
             android:text="OK"
             android:textAllCaps="false"
             android:textColor="#FFFFFF"

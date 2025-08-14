@@ -16,7 +16,7 @@ object FragmentUtils {
         animOut: Int
     ) {
         if (manager.isDestroyed || manager.isStateSaved) {
-            LogUtils.logException(IllegalStateException("Fragment commit after fragment manager [Destroyed=${manager.isDestroyed}, StateSaved=${manager.isStateSaved}"))
+            LogUtils.logException(IllegalStateException("Fragment commit after fragment manager [Destroyed=${manager.isDestroyed}, StateSaved=${manager.isStateSaved}]"))
             return
         }
         try {
