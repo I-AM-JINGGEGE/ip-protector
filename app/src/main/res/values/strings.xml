@@ -37,7 +37,7 @@
     <string name="vs_core_service_uptime_unit_second">s</string>
     <string name="vs_core_service_notification_traffic">%1$s↑\t%2$s↓</string>
     <string name="vs_core_service_notification_speed">%s/s</string>
-    <string name="vs_core_service_notification_title_ready">IP Hider is Ready</string>
+    <string name="vs_core_service_notification_title_ready">IP Protector is Ready</string>
     <string name="notification_app_description">Security &amp; fast VPN</string>
     <string name="notification_network_title_1">Click to protect privacy</string>
     <string name="notification_network_title_2">Click to hide ip</string>
@@ -113,10 +113,8 @@
     <string name="vs_feature_share_item_name_copy_link">Copy Link</string>
     <string name="vs_feature_share_item_name_more">More</string>
     <string name="vs_feature_share_title_for_chooser">Complete action using</string>
-    <string name="vs_feature_share_content_text">IP Hider is a fast, unlimited, stable and private VPN, install and use it now</string>
-    <string name="vs_feature_share_content_link">https://play.google.com/store/apps/details?id=com.ironmeta.ip.hider</string>
-    <string name="vs_feature_share_content_email_subject">A very safe and easy to use VPN - IP Hider</string>
-    <string name="vs_feature_share_content_email_body">https://play.google.com/store/apps/details?id=com.ironmeta.ip.hider</string>
+    <string name="vs_feature_share_content_text">IP Protector is a fast, unlimited, stable and private VPN, install and use it now 🔽</string>
+    <string name="vs_feature_share_content_email_subject">A very safe and easy to use VPN - IP Protector</string>
 
     <string name="vs_feature_share_item_tip_whats_app">Share it by WhatsApp unsuccessfully.</string>
     <string name="vs_feature_share_item_tip_sms">Share it by sms unsuccessfully.</string>
@@ -151,4 +149,5 @@
     <string name="rate_title">Please rate us</string>
     <string name="rate_dont_show_again">Don\'t show again</string>
     <string name="rate_content">We\'ve worked hard to make this app free for you. Would you like to leave us a good review?</string>
+    <string name="share_to">Share to:</string>
 </resources>

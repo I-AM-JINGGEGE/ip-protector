@@ -1,2 +1,2 @@
-rootProject.name = "Ip Hider"
+rootProject.name = "IP Protector"
 include(":app", ":plugin", ":core")

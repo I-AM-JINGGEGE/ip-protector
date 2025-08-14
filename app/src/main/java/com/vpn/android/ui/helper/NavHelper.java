@@ -15,7 +15,6 @@ import com.vpn.android.ui.regionselector2.ServerListActivity;
 import com.vpn.android.ui.settings.appsbypass.AppsBypassSettingsActivity;
 import com.vpn.android.ui.support.LanguageSettingActivity;
 import com.vpn.android.ui.support.PrivacyPolicyActivity;
-import com.vpn.android.ui.support.ShareActivity;
 import com.vpn.android.ui.support.SupportUtils;
 
 public class NavHelper {
@@ -46,7 +45,10 @@ public class NavHelper {
         } else if (itemId == R.id.item_language) {
             activity.launchActivityForShowingAds(new Intent(activity, LanguageSettingActivity.class));
         } else if (itemId == R.id.item_share) {
-            activity.launchActivityForShowingAds(new Intent(activity, ShareActivity.class));
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.setType("text/plain");
+            intent.putExtra(Intent.EXTRA_TEXT, context.getString(R.string.vs_feature_share_content_text) + "\r\n" + SupportUtils.getGPLink(context));
+            activity.launchActivityForShowingAds(Intent.createChooser(intent, context.getString(R.string.share_to)));
         } else if (itemId == R.id.item_privacy_policy) {
             activity.launchActivityForShowingAds(new Intent(activity, PrivacyPolicyActivity.class));
         }
