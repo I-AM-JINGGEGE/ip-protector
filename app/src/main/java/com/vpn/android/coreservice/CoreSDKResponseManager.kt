@@ -53,6 +53,10 @@ object CoreSDKResponseManager {
                     Collections.shuffle(this)
                 }
             }
+            fetchResponse?.let {
+                VpnReporter.reportServersRefreshFinish(from, true, 0, "", cost = (System.currentTimeMillis() - start), areaCount = (it.serverZones?.size ?: 0))
+                fetchResponseAsLiveData.postValue(it)
+            }
         } catch (e: UnsatisfiedLinkError) {
             throw e
         }
@@ -63,9 +67,5 @@ object CoreSDKResponseManager {
             VpnReporter.reportServersRefreshFinish(from, false, -2, ignore.toString(), System.currentTimeMillis() - start, 0)
         }
         fetchResponseRefreshingAsLiveData.postValue(false)
-        fetchResponse?.let {
-            VpnReporter.reportServersRefreshFinish(from, true, 0, "", cost = (System.currentTimeMillis() - start), areaCount = (it.serverZones?.size ?: 0))
-            fetchResponseAsLiveData.postValue(it)
-        }
     }
 }

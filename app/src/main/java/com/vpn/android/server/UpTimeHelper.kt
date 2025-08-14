@@ -45,7 +45,6 @@ object UpTimeHelper {
 
     @SuppressLint("NewApi")
     private suspend fun triggerUpTimeLimit() {
-        RuntimeException("isRunning=${IMSDK.uptimeLimit.ongoing.isRunning}").printStackTrace()
         if (!IMSDK.uptimeLimit.ongoing.isRunning) {
             try {
                 upTimeRemainingTimeAsLiveData.postValue(UP_TIME_INITIAL_MILLISECONDS / 1000)
