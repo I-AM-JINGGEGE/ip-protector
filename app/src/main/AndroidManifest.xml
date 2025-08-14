@@ -82,9 +82,6 @@
         <activity
             android:name=".ui.support.PrivacyPolicyActivity"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.support.TermsOfServiceActivity"
-            android:screenOrientation="portrait" /> <!-- work manager begin -->
 
         <!-- Sample AdMob App ID: ca-app-pub-3940256099942544~3347511713 -->
         <meta-data

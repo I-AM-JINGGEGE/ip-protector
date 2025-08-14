@@ -2,7 +2,6 @@ package com.vpn.android.ui.settings.appsbypass;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import androidx.annotation.Nullable;

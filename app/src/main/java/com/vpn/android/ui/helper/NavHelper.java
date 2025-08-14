@@ -51,6 +51,8 @@ public class NavHelper {
             activity.launchActivityForShowingAds(Intent.createChooser(intent, context.getString(R.string.share_to)));
         } else if (itemId == R.id.item_privacy_policy) {
             activity.launchActivityForShowingAds(new Intent(activity, PrivacyPolicyActivity.class));
+        } else if (itemId == R.id.item_feedback) {
+            SupportUtils.sendFeedback(activity);
         }
     }
 

@@ -2,7 +2,7 @@ package com.vpn.android.ui.support;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 
@@ -19,12 +19,7 @@ public class PrivacyPolicyActivity extends CommonAppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_privacy_policy);
 
-        ImageButton navBtn=findViewById(R.id.btn_back);
-        if (LanguageSettingHelper.getInstance(this).isNeedToChangeDirection()) {
-            navBtn.setImageResource(R.mipmap.ic_back_1);
-        } else {
-            navBtn.setImageResource(R.mipmap.ic_back_0);
-        }
+        ImageView navBtn = findViewById(R.id.btn_back);
         navBtn.setOnClickListener(v -> onBackPressed());
 
         showLoading(getResources().getString(R.string.vs_common_tips_loading), true);
