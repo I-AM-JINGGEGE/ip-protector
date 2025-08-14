@@ -3,6 +3,7 @@ package com.vpn.android.ui.settings.appsbypass;
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
@@ -32,12 +33,8 @@ public class AppsBypassSettingsActivity extends CommonAppCompatActivity {
 
         mAppsBypassSettingsViewModel = new ViewModelProvider(this).get(AppsBypassSettingsViewModel.class);
 
-        ImageButton navBtn = findViewById(R.id.btn_back);
-        if (LanguageSettingHelper.getInstance(this).isNeedToChangeDirection()) {
-            navBtn.setImageResource(R.mipmap.ic_back_1);
-        } else {
-            navBtn.setImageResource(R.mipmap.arrow_black_left);
-        }
+        ImageView navBtn = findViewById(R.id.btn_back);
+
         navBtn.setOnClickListener(v -> onBackPressed());
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -45,7 +42,6 @@ public class AppsBypassSettingsActivity extends CommonAppCompatActivity {
         AppsInfoRecyclerViewAdapter appsInfoRecyclerViewAdapter = new AppsInfoRecyclerViewAdapter(mAppsBypassSettingsViewModel);
         appsInfoRV.setLayoutManager(linearLayoutManager);
         appsInfoRV.setAdapter(appsInfoRecyclerViewAdapter);
-        appsInfoRV.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         appsInfoRV.setItemAnimator(new DefaultItemAnimator());
 
         String loadingTip = this.getResources().getString(R.string.vs_common_tips_loading);

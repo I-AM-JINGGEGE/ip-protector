@@ -2,9 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="60dp"
+    android:layout_height="68dp"
     android:gravity="center_vertical"
-    android:orientation="horizontal">
+    android:background="@drawable/bg_btn_cancel"
+    android:orientation="horizontal"
+    android:layout_marginBottom="12dp">
 
     <ImageView
         android:id="@+id/icon_app"
@@ -24,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxLines="1"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textAllCaps="false"
             android:textDirection="locale"
             android:textSize="14sp"
@@ -33,8 +35,8 @@
 
     <ToggleButton
         android:id="@+id/switch_func"
-        android:layout_width="37dp"
-        android:layout_height="23dp"
+        android:layout_width="40dp"
+        android:layout_height="24dp"
         android:layout_marginEnd="18dp"
         android:background="@drawable/item_toggle"
         android:textOff=""

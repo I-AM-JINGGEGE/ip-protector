@@ -44,14 +44,6 @@ public class ShareActivity extends CommonAppCompatActivity {
         }
         navBtn.setOnClickListener(v -> onBackPressed());
         
-        // 设置toolbar的状态栏高度
-        findViewById(R.id.container_toolbar).setPadding(
-            findViewById(R.id.container_toolbar).getPaddingLeft(),
-            findViewById(R.id.container_toolbar).getPaddingTop() + getStatusBarHeight(),
-            findViewById(R.id.container_toolbar).getPaddingRight(),
-            findViewById(R.id.container_toolbar).getPaddingBottom()
-        );
-        
         TextView tvTitle = findViewById(R.id.tv_title);
         tvTitle.setText(R.string.vs_feature_share_title);
 

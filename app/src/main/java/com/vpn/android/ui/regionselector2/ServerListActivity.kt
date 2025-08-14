@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.vpn.android.R
 import com.vpn.android.coreservice.CoreServiceManager.Companion.getInstance
+import com.vpn.android.databinding.ActivityServerListBinding
 import com.vpn.android.report.RequestVpnPermissionContract
 import com.vpn.android.report.VpnReporter
 import com.vpn.android.ui.common.CommonAppCompatActivity
@@ -27,13 +28,16 @@ import kotlin.jvm.internal.Ref
 class ServerListActivity : CommonAppCompatActivity() {
     private var mServerListViewModel: ServerListViewModel? = null
     private val mLegalNoticeDialog = AtomicReference<CommonDialog?>()
+    private lateinit var binding: ActivityServerListBinding
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_server_list)
-        val serverListRV = findViewById<RecyclerView>(R.id.recycler_view)
+        binding = ActivityServerListBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        
         mServerListViewModel = ViewModelProvider(this).get(ServerListViewModel::class.java)
-        (findViewById<View>(R.id.toolbar) as Toolbar).setNavigationOnClickListener { v: View? -> onBackPressed() }
-        window.setBackgroundDrawableResource(R.color.white)
+        binding.btnBack.setOnClickListener { onBackPressed() }
+
         val linearLayoutManager = LinearLayoutManager(this)
         linearLayoutManager.orientation = RecyclerView.VERTICAL
         val serverListRecyclerViewAdapter =
@@ -48,10 +52,11 @@ class ServerListActivity : CommonAppCompatActivity() {
                     launch(Dispatchers.Main) { finish() }
                 }
             }
-        serverListRV.layoutManager = linearLayoutManager
-        serverListRV.adapter = serverListRecyclerViewAdapter
-        serverListRV.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
-        serverListRV.itemAnimator = DefaultItemAnimator()
+        binding.recyclerView.layoutManager = linearLayoutManager
+        binding.recyclerView.adapter = serverListRecyclerViewAdapter
+        binding.recyclerView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
+        binding.recyclerView.itemAnimator = DefaultItemAnimator()
+        
         mServerListViewModel!!.vPNServerRegionList.observe(this) { vpnServerRegions: FetchResponse? ->
             serverListRecyclerViewAdapter.setVPNServerRegions(
                 vpnServerRegions
@@ -85,7 +90,7 @@ class ServerListActivity : CommonAppCompatActivity() {
                 }
                 cancelLoading()
             }
-        findViewById<View>(R.id.servers_refresh_btn).setOnClickListener { v: View? -> mServerListViewModel!!.refreshServers() }
+        binding.serversRefreshBtn.setOnClickListener { mServerListViewModel!!.refreshServers() }
     }
 
     private fun legalRegionObserverHandler(isLegal: Boolean) {
