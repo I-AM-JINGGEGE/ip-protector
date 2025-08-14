@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="63dp"
     android:orientation="horizontal"
-    android:layout_marginTop="25dp"
     android:layout_marginStart="10dp"
     android:layout_marginEnd="15dp"
+    android:gravity="center_vertical"
     xmlns:tools="http://schemas.android.com/tools">
     <ImageView
         android:id="@+id/ic_item"
-        android:layout_width="21dp"
-        android:layout_height="21dp"/>
-
+        android:layout_width="26dp"
+        android:layout_height="26dp"/>
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -23,13 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
-            android:textColor="#FF3F3F3F"
+            android:textColor="@color/white"
             tools:text="@string/vs_feature_apps_bypass_title"/>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="16dp"
-            android:background="#19979797"/>
     </LinearLayout>
 </LinearLayout>

@@ -49,8 +49,6 @@ public class NavHelper {
             activity.launchActivityForShowingAds(new Intent(activity, ShareActivity.class));
         } else if (itemId == R.id.item_privacy_policy) {
             activity.launchActivityForShowingAds(new Intent(activity, PrivacyPolicyActivity.class));
-        } else if (itemId == R.id.item_feedback) {
-            SupportUtils.sendFeedback(activity);
         }
     }
 

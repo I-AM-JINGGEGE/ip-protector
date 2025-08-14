@@ -535,9 +535,9 @@ public class MainActivity extends CommonAppCompatActivity implements OnClickDisc
         drawerLayout.setStatusBarBackground(R.color.status_bar_bg);
         navigationView = findViewById(R.id.nav_view);
         
-        // 设置导航栏的状态栏高度
+        // 移除状态栏高度的边距，实现沉浸式效果
         DrawerLayout.LayoutParams layoutParams = (DrawerLayout.LayoutParams) navigationView.getLayoutParams();
-        layoutParams.setMargins(0, getStatusBarHeight(), 0, 0);
+        layoutParams.setMargins(0, 0, 0, 0);
         navigationView.setLayoutParams(layoutParams);
         
         ViewTreeObserver.OnGlobalLayoutListener listener = new ViewTreeObserver.OnGlobalLayoutListener() {
