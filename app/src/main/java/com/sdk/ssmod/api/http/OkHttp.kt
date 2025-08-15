@@ -2,7 +2,6 @@ package com.sdk.ssmod.api.http
 
 import com.sdk.ssmod.util.IMAesUtil
 import com.vpn.android.server.ServerPathConstants
-import com.vpn.android.utils.ChannelUtils
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
@@ -11,12 +10,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.ByteArrayOutputStream
 import java.util.concurrent.TimeUnit
-
-private val BASE_URL_PROD = if (ChannelUtils.isDebugFlavor()) {
-    ServerPathConstants.DEBUG_HOST
-} else {
-    ServerPathConstants.HOST_MAIN_1
-}
 
 fun newOkHttpClient(): OkHttpClient =
     OkHttpClient.Builder()
@@ -27,7 +20,7 @@ fun newOkHttpClient(): OkHttpClient =
 
 fun newRetrofit(client: OkHttpClient = newOkHttpClient()): Retrofit =
     Retrofit.Builder()
-        .baseUrl(BASE_URL_PROD)
+        .baseUrl(ServerPathConstants.BASE_URL_PROD)
         .addConverterFactory(GsonConverterFactory.create())
         .client(client)
         .build()

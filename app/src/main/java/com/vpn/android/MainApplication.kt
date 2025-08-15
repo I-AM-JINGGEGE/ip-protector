@@ -44,6 +44,7 @@ import com.sdk.ssmod.IIMSDKApplication
 import com.sdk.ssmod.IMSDK
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -191,10 +192,10 @@ class MainApplication : Application(), IIMSDKApplication {
         timer.schedule(object : TimerTask() {
             override fun run() {
                 ThreadUtils.runOnMainThread {
-                    UserProfileRetrofit.getInstance().reportBeat(
-                        context, object : Callback<Any?> {
-                            override fun onResponse(call: Call<Any?>, response: Response<Any?>) {}
-                            override fun onFailure(call: Call<Any?>, t: Throwable) {}
+                    UserProfileRetrofit.instance.reportBeat(
+                        context, object : Callback<ResponseBody> {
+                            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {}
+                            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {}
                         })
                 }
             }

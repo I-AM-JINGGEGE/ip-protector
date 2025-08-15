@@ -70,7 +70,7 @@ class AdPresenterWrapper private constructor() : IAdPresenterProxy {
         val start = System.currentTimeMillis()
         adUserProfileRequesting = true
         VpnReporter.reportAdConfigRequestStart()
-        UserProfileRetrofit.getInstance().getUserProfile(context, object : Callback<UserAdConfig> {
+        UserProfileRetrofit.instance.getUserProfile(context, object : Callback<UserAdConfig> {
             override fun onResponse(call: Call<UserAdConfig>, response: Response<UserAdConfig>) {
                 userProfile = response.body()
                 VpnReporter.reportAdConfigRequestEnd(0, "", true, userProfile, System.currentTimeMillis() - start)
