@@ -147,7 +147,7 @@ android {
             manifestPlaceholders["ADMOB_APP_ID_VALUE"] = "ca-app-pub-3940256099942544~3347511713"
         }
         create("releaseFlavor") {
-            applicationId = "com.free.ip.proctor"
+            applicationId = "com.free.ip.protector"
             dimension = "develop_env"
             manifestPlaceholders["ADMOB_APP_ID_VALUE"] = "ca-app-pub-3078276416195903~8454232095"
         }
