@@ -79,7 +79,7 @@ class AdPresenterWrapper private constructor() : IAdPresenterProxy {
             }
 
             override fun onFailure(call: Call<UserAdConfig>, t: Throwable) {
-                VpnReporter.reportAdConfigRequestEnd(-1, "${t.message ?: t.toString()}", false, null, System.currentTimeMillis() - start)
+                VpnReporter.reportAdConfigRequestEnd(-1, t.toString(), false, null, System.currentTimeMillis() - start)
                 adUserProfileRequesting = false
                 countDownLatch.countDown()
             }
