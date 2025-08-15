@@ -2,7 +2,7 @@
 <resources>
     <string name="vs_common_default">Default</string>
     <string name="vs_common_auto_choose">Auto Choose</string>
-    <string name="vs_region_default_desc">Choose the best region</string>
+    <string name="vs_region_default_desc">Find best server</string>
     <string name="vs_common_unknown">Unknown</string>
     <string name="vs_common_dialog_ok_button">Got it</string>
     <string name="vs_common_dialog_ok">OK</string>

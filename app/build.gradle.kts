@@ -31,6 +31,7 @@ android {
 
     this.compileSdk = compileSdkVersion
     this.buildToolsVersion = buildToolsVersion
+    ndkVersion = "27.2.12479018"
 
     signingConfigs {
         register("release") {

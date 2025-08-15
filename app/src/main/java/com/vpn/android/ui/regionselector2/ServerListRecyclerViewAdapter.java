@@ -19,9 +19,11 @@ import com.vpn.android.region.RegionUtils;
 import com.vpn.android.ui.helper.LanguageSettingHelper;
 import com.sdk.ssmod.api.http.beans.FetchResponse;
 
+import java.util.List;
+
 public class ServerListRecyclerViewAdapter extends RecyclerView.Adapter<ServerListRecyclerViewAdapter.MyViewHolder> {
     private Context mAppContext;
-    private FetchResponse mVPNServerRegions;
+    private List<FetchResponse.ServerZone> mVPNServerRegions;
     private IItemCallback mItemCallback;
     private String regionUUIDSelected;
 
@@ -32,7 +34,7 @@ public class ServerListRecyclerViewAdapter extends RecyclerView.Adapter<ServerLi
                 .decode(true, KvStoreConstants.KEY_CORE_SERVICE_REGION_UUID_SELECTED, "");
     }
 
-    public void setVPNServerRegions(@Nullable FetchResponse vpnServerRegions) {
+    public void setVPNServerRegions(@Nullable List<FetchResponse.ServerZone> vpnServerRegions) {
         mVPNServerRegions = vpnServerRegions;
         notifyDataSetChanged();
     }
@@ -47,7 +49,7 @@ public class ServerListRecyclerViewAdapter extends RecyclerView.Adapter<ServerLi
     @SuppressLint("ClickableViewAccessibility")
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        FetchResponse.ServerZone vpnServerRegion = mVPNServerRegions.getServerZones().get(position);
+        FetchResponse.ServerZone vpnServerRegion = mVPNServerRegions.get(position);
         holder.setListener(mItemCallback, vpnServerRegion);
         holder.bind(mAppContext, regionUUIDSelected, vpnServerRegion);
 
@@ -58,7 +60,7 @@ public class ServerListRecyclerViewAdapter extends RecyclerView.Adapter<ServerLi
         if (mVPNServerRegions == null) {
             return 0;
         }
-        return mVPNServerRegions.getServerZones().size();
+        return mVPNServerRegions.size();
     }
 
     static class MyViewHolder extends RecyclerView.ViewHolder {
@@ -105,7 +107,6 @@ public class ServerListRecyclerViewAdapter extends RecyclerView.Adapter<ServerLi
                     } else {
                         signalIvId = R.mipmap.ic_signal_a_2;
                     }
-                    signalIvId = R.mipmap.ic_signal_a_2;
                     break;
 
                 case Poor:

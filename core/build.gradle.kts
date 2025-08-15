@@ -12,6 +12,7 @@ setupCore()
 
 android {
     namespace = "com.github.shadowsocks.core"
+    ndkVersion = "27.2.12479018"
 
     defaultConfig {
         consumerProguardFiles("proguard-rules.pro")

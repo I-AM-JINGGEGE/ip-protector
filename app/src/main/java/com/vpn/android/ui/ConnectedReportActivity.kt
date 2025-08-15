@@ -20,6 +20,7 @@ import com.vpn.android.base.utils.AppStoreUtils
 import com.vpn.android.base.utils.ThreadUtils
 import com.vpn.android.base.utils.ToastUtils
 import com.vpn.android.constants.RemoteConstants.ADD_TIME_MAX_DURATION_VALUE_DEFAULT
+import com.vpn.android.coreservice.CoreSDKResponseManager
 import com.vpn.android.databinding.ConnectedReportLayoutBinding
 import com.vpn.android.region.RegionUtils
 import com.vpn.android.report.AppReport
@@ -117,11 +118,15 @@ class ConnectedReportActivity : CommonAppCompatActivity() {
             }
         })
         TahitiCoreServiceStateInfoManager.getInstance(applicationContext).coreServiceConnectedServerAsLiveData.value?.let {
+            val ip = it.host?.host
+            val result = CoreSDKResponseManager.fetchResponseAsLiveData.value?.serverZones?.find { outerItem ->
+                outerItem.hosts?.any { item -> item.host == ip } == true
+            }
             Glide.with(this)
-                .load(RegionUtils.getRegionFlagImageResource(applicationContext, it.country))
+                .load(RegionUtils.getRegionFlagImageResource(applicationContext, result?.country?: it.country))
                 .into(binding.regionImage)
-            binding.regionContent.text = it.zoneId
-            binding.ipContent.text = it.host?.host
+            binding.regionContent.text = result?.city?: it.zoneId
+            binding.ipContent.text = ip
         }
     }
 

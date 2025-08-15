@@ -27,9 +27,12 @@ public class RegionUtils {
         }
     }
 
-    public static String getRegionDesc(@NonNull Context context, @NonNull String regionCode, @Nullable String regionName) {
-        if (TextUtils.isEmpty(regionName)) {
+    public static String getRegionDesc(@NonNull Context context, String regionCode, @Nullable String regionName) {
+        if (TextUtils.isEmpty(regionCode)) {
             return context.getString(R.string.vs_common_default);
+        }
+        if (TextUtils.equals(regionCode, RegionConstants.REGION_CODE_DEFAULT)) {
+            return context.getString(R.string.vs_region_default_desc);
         }
         return regionName;
     }

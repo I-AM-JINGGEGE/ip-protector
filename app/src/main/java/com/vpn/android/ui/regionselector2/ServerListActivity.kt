@@ -16,6 +16,10 @@ import com.vpn.android.ui.common.CommonAppCompatActivity
 import com.vpn.android.ui.common.CommonDialog
 import com.vpn.android.ui.support.LegalManager
 import com.sdk.ssmod.api.http.beans.FetchResponse
+import com.vpn.android.coreservice.FakeConnectingProgressManager
+import com.vpn.android.coreservice.FakeConnectionState
+import com.vpn.android.region.RegionConstants.REGION_CODE_DEFAULT
+import com.vpn.android.region.RegionConstants.REGION_UUID_DEFAULT
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.util.concurrent.atomic.AtomicReference
@@ -47,6 +51,7 @@ class ServerListActivity : CommonAppCompatActivity() {
                     }
                     VpnReporter.reportStartConnect(VpnReporter.PARAM_VALUE_FROM_SERVER_LIST)
                     getInstance(applicationContext).connect(vpnServerRegion)
+                    FakeConnectingProgressManager.Companion.getInstance().stateLiveData.postValue(FakeConnectionState(FakeConnectionState.STATE_START, 0F))
                     launch(Dispatchers.Main) { finish() }
                 }
             }
@@ -56,9 +61,11 @@ class ServerListActivity : CommonAppCompatActivity() {
         binding.recyclerView.itemAnimator = DefaultItemAnimator()
         
         mServerListViewModel!!.vPNServerRegionList.observe(this) { vpnServerRegions: FetchResponse? ->
-            serverListRecyclerViewAdapter.setVPNServerRegions(
-                vpnServerRegions
-            )
+            val list = arrayListOf<FetchResponse.ServerZone>().apply {
+                add(FetchResponse.ServerZone(REGION_UUID_DEFAULT, 0, null, REGION_CODE_DEFAULT, null, null, 5))
+                addAll(vpnServerRegions?.serverZones ?: ArrayList())
+            }
+            serverListRecyclerViewAdapter.setVPNServerRegions(list)
         }
         LegalManager.getInstance(applicationContext).inLegalRegionAsLiveData.observe(this) { isLegal: Boolean ->
             legalRegionObserverHandler(

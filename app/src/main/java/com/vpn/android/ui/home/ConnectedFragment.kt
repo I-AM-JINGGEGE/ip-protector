@@ -19,6 +19,7 @@ import com.vpn.android.ads.constant.AdConstant
 import com.vpn.android.ads.constant.AdFormat
 import com.vpn.android.ads.format.ViewStyle
 import com.vpn.android.config.RemoteConfigManager
+import com.vpn.android.coreservice.CoreSDKResponseManager
 import com.vpn.android.databinding.ConnectedFragmentLayoutBinding
 import com.vpn.android.region.RegionUtils
 import com.vpn.android.report.ReportConstants
@@ -135,15 +136,18 @@ class ConnectedFragment : CommonFragment {
         mMainActivityViewModel = ViewModelProvider(this).get(
             MainActivityViewModel::class.java
         )
-        mMainActivityViewModel.toolbarRegionIdAsLiveData.observe(viewLifecycleOwner) { codeResult: String? ->
-            codeResult?.apply {
-                Glide.with(requireActivity()).load(
-                    RegionUtils.getRegionFlagImageResource(
-                        requireContext(),this)
-                ).into(binding.regionImage)
-                binding.regionText.text = RegionUtils.getRegionName(requireContext(), this)
+
+        TahitiCoreServiceStateInfoManager.getInstance(MainApplication.context).coreServiceConnectedServerAsLiveData.value?.let {
+            val ip = it.host?.host
+            val result = CoreSDKResponseManager.fetchResponseAsLiveData.value?.serverZones?.find { outerItem ->
+                outerItem.hosts?.any { item -> item.host == ip } == true
             }
+            Glide.with(this)
+                .load(RegionUtils.getRegionFlagImageResource(MainApplication.context, result?.country?: it.country))
+                .into(binding.regionImage)
+            binding.regionText.text = RegionUtils.getRegionName(requireContext(), result?.country)
         }
+
         mConnectedViewModel =
             ViewModelProvider(requireActivity()).get(ConnectedViewModel::class.java)
         mConnectedViewModel.usedUpRemainSecondsAsLiveData.observe(viewLifecycleOwner) { connectedSeconds ->
