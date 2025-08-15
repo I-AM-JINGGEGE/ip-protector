@@ -1,0 +1,65 @@
+name: Android CI
+
+on:
+  push:
+    tags:
+      - 'release_gp_*'
+      - 'release_xiaomi_*'
+      - 'release_samsung_*'
+      - 'release_transsion_*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: gradle
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Write Keystore File
+        run: |
+          echo "${{ secrets.KEYSTORE_FILE }}" | base64 -d > app/keystore.jks
+          ls -la app/keystore.jks
+
+      - name: Create keystore.properties
+        run: |
+          cat > keystore.properties << EOF
+          keyPassword=${{ secrets.KEYSTORE_PASSWORD }}
+          keyAlias=${{ secrets.KEY_ALIAS }}
+          storeFile=app/keystore.jks
+          storePassword=${{ secrets.KEYSTORE_PASSWORD }}
+          EOF
+
+      - name: Determine build variant
+        id: build-variant
+        run: |
+          if [[ $GITHUB_REF == refs/tags/release_gp_* ]]; then
+            echo "variant=releaseFlavorGpRelease" >> $GITHUB_OUTPUT
+          elif [[ $GITHUB_REF == refs/tags/release_xiaomi_* ]]; then
+            echo "variant=releaseFlavorXiaomiRelease" >> $GITHUB_OUTPUT
+          elif [[ $GITHUB_REF == refs/tags/release_samsung_* ]]; then
+            echo "variant=releaseFlavorSamsungRelease" >> $GITHUB_OUTPUT
+          elif [[ $GITHUB_REF == refs/tags/release_transsion_* ]]; then
+            echo "variant=releaseFlavorTranssionRelease" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Build AAB
+        run: ./gradlew bundle${{ steps.build-variant.outputs.variant }}
+        env:
+          GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx6g"
+
+      - name: Upload AAB artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-bundle-${{ steps.build-variant.outputs.variant }}
+          path: app/build/outputs/bundle/**/*.aab
+          if-no-files-found: error
