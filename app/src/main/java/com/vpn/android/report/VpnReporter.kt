@@ -63,7 +63,7 @@ object VpnReporter {
     fun reportAdConfigRequestEnd(
         errorCode: Int,
         errorMsg: String?,
-        success: Boolean,
+        result: Boolean,
         adConfigBean: UserAdConfig?,
         duration: Long
     ) {
@@ -80,7 +80,7 @@ object VpnReporter {
             }
             put("error_code", errorCode)
 
-            put("success", success)
+            put("result", result)
             put("duration", duration)
 
             LogUtils.i("VpnReporter", "ad_config_request_end [${this}]")
