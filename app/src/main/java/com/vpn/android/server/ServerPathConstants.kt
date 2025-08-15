@@ -6,7 +6,7 @@ interface ServerPathConstants {
     companion object {
         const val DEBUG_HOST = "https://test.ip-protector.net"
 
-        const val HOST_MAIN_1 = "https://ip-protector.net "
+        const val HOST_MAIN_1 = "https://api.ip-protector.net "
 
         val BASE_URL_PROD = if (ChannelUtils.isDebugFlavor()) {
             DEBUG_HOST

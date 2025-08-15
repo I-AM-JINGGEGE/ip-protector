@@ -12,7 +12,7 @@ import com.vpn.android.ui.common.CommonWebViewFragment;
 import com.vpn.android.ui.helper.LanguageSettingHelper;
 
 public class PrivacyPolicyActivity extends CommonAppCompatActivity {
-    private static final String URL = "https://one.ironmeta.com/privacy-policy";
+    private static final String URL = "https://www.ip-protector.net/privacy-policy.html";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

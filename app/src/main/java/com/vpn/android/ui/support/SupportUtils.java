@@ -121,7 +121,7 @@ public class SupportUtils {
      **/
     public static void sendFeedback(@NonNull Context context) {
         Context appContext = context.getApplicationContext();
-        OSUtils.sendEmail(appContext, "one.support@ironmeta.com", context.getResources().getString(R.string.vs_rating_feedback_send));
+        OSUtils.sendEmail(appContext, "support@ip-protector.net", context.getResources().getString(R.string.vs_rating_feedback_send));
     }
     /** feedback end **/
 }
