@@ -147,13 +147,13 @@ android {
             manifestPlaceholders["ADMOB_APP_ID_VALUE"] = "ca-app-pub-3940256099942544~3347511713"
         }
         create("releaseFlavor") {
+            applicationId = "com.free.ip.proctor"
             dimension = "develop_env"
-            manifestPlaceholders["ADMOB_APP_ID_VALUE"] = "ca-app-pub-3524349910671665~9934853233"
+            manifestPlaceholders["ADMOB_APP_ID_VALUE"] = "ca-app-pub-3078276416195903~8454232095"
         }
         
         // channel dimension flavors
         create("gp") {
-            applicationId = "com.vpn.android.release"
             dimension = "channel"
             buildConfigField("String", "CNL", "\"gp\"")
             versionName = buildProperties["versionName"] as String

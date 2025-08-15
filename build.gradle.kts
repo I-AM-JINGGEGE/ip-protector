@@ -8,7 +8,6 @@ plugins {
 buildscript {
     apply(from = "repositories.gradle.kts")
     rootProject.extra.apply {
-        set("applicationId", "com.vpn.android")
         set("compileSdkVersion", 35)
         set("buildToolsVersion", "34.0.0")
         set("minSdkVersion", 26)

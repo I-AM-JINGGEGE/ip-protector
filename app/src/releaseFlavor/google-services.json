@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "637448465396",
-    "project_id": "qr-barcode-quick-scan",
-    "storage_bucket": "qr-barcode-quick-scan.firebasestorage.app"
+    "project_number": "405247434876",
+    "project_id": "ip-protector----proxy",
+    "storage_bucket": "ip-protector----proxy.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:637448465396:android:d1f90e3e44d62d9702a7a1",
+        "mobilesdk_app_id": "1:405247434876:android:180c8a1c4f83a661e2a9f9",
         "android_client_info": {
-          "package_name": "com.vpn.android.release"
+          "package_name": "com.free.ip.protector"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDZJx24XzoMIpCNI6W7sGRnbihR4NVeEwY"
+          "current_key": "AIzaSyBt9Zh-g3aJW6ydEv-6grzJ3KMXBfP4Hbw"
         }
       ],
       "services": {

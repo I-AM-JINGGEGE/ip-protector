@@ -132,7 +132,7 @@ class MainApplication : Application(), IIMSDKApplication {
         DTAnalytics.getDataTowerId(object : OnDataTowerIdListener {
             override fun onDataTowerIdCompleted(dataTowerId: String) {
                 AppsFlyerLib.getInstance().setLogLevel(if (BuildConfig.DEBUG) AFLogger.LogLevel.INFO else AFLogger.LogLevel.WARNING)
-                AppsFlyerLib.getInstance().init("EE7PYVutxibbyKm2b5bA93", null, this@MainApplication)
+                AppsFlyerLib.getInstance().init("QEMmCYxhFSbGVipALHZWLH", null, this@MainApplication)
                 AppsFlyerLib.getInstance().start(this@MainApplication)
                 val appsFlyerUID = AppsFlyerLib.getInstance().getAppsFlyerUID(this@MainApplication)
                 DTAnalytics.setAppsFlyerId(appsFlyerUID)
@@ -235,7 +235,7 @@ class MainApplication : Application(), IIMSDKApplication {
     private fun initROIQuery() {
         DT.initSDK(
             this,
-            "dt_d9d8cbb0dc11ad36",
+            "dt_526bf4b6e996cac1",
             "https://report.roiquery.com",
             BuildConfigUtils.getCnl(this),
             debug
