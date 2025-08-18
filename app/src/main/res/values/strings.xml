@@ -124,7 +124,7 @@
     <string name="vs_feature_privacy_policy_title">Privacy Policy</string>
     <string name="vs_feature_terms_of_service_title">Terms of Service</string>
     <string name="vs_feature_feedback_title">Feedback</string>
-    <string name="vs_feature_region_selector_title">Region Selector</string>
+    <string name="vs_feature_region_selector_title">Server List</string>
     <string name="vs_feature_region_refresh_tips_loading">Refreshing the server list&#8230;</string>
     <string name="vs_feature_region_refresh_tips_success">Successfully refreshed</string>
 
