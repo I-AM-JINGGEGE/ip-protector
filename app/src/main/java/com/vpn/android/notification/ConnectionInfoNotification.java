@@ -184,7 +184,7 @@ public class ConnectionInfoNotification implements IIMSDKApplication.CustomNotif
     private ConnectionInfoNotification(Context vpnService) {
         context = vpnService;
         mBuilder = new NotificationCompat.Builder(context, NotificationConstants.NOTIFICATION_CHANNEL_INFO_ID)
-                .setSmallIcon(R.mipmap.ic_notification)
+                .setSmallIcon(R.drawable.ic_service_active)
                 .setCategory(NotificationCompat.CATEGORY_SERVICE)
                 .setStyle(new NotificationCompat.DecoratedCustomViewStyle())
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
@@ -276,7 +276,7 @@ public class ConnectionInfoNotification implements IIMSDKApplication.CustomNotif
                 break;
         }
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, NotificationConstants.NOTIFICATION_CHANNEL_INFO_ID)
-                .setSmallIcon(R.mipmap.ic_notification)
+                .setSmallIcon(R.drawable.ic_service_active)
                 .setContentTitle(title)
                 .setContentText(content)
                 .setAutoCancel(true)
@@ -316,7 +316,7 @@ public class ConnectionInfoNotification implements IIMSDKApplication.CustomNotif
     @Nullable
     @Override
     public Integer getIconId() {
-        return R.mipmap.ic_notification;
+        return R.drawable.ic_service_active;
     }
 
     @Override

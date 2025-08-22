@@ -70,6 +70,7 @@ import com.vpn.android.ui.regionselector2.ServerListViewModel;
 import com.vpn.android.ui.splash.AddTimeLoadingFragment;
 import com.vpn.android.ui.support.SupportUtils;
 import com.vpn.android.utils.FragmentUtils;
+import com.vpn.android.utils.NotificationPermissionHelper;
 import com.vpn.tahiti.TahitiCoreServiceStateInfoManager;
 import com.vpn.tahiti.constants.ActionActivityConstants;
 import com.vpn.tahiti.constants.CoreServiceStateConstants;
@@ -97,7 +98,7 @@ public class MainActivity extends CommonAppCompatActivity implements OnClickDisc
 
     private Class<? extends Fragment> currentFragmentClass;
     private HomeViewModel mHomeViewModel;
-
+    private NotificationPermissionHelper permissionHelper;
     private ConnectedViewModel mConnectedViewModel;
     private boolean isCreate = true;
     private ActivityResultLauncher<Intent> splashActivityResultLauncher;
@@ -202,6 +203,10 @@ public class MainActivity extends CommonAppCompatActivity implements OnClickDisc
                 dialog.show();
             }
         });
+        permissionHelper = new NotificationPermissionHelper(this);
+        if (!permissionHelper.isNotificationPermissionGranted()) {
+            permissionHelper.requestNotificationPermission(isGranted -> null);
+        }
     }
 
     private void GDPR_CMP() {

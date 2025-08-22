@@ -77,11 +77,6 @@
             tools:ignore="ForegroundServicePermission"
             android:process=":bg" />
 
-        <service
-            android:name="com.github.shadowsocks.subscription.SubscriptionService"
-            android:exported="false">
-        </service>
-
         <activity
             android:name="com.github.shadowsocks.UrlImportActivity"
             android:theme="@style/Theme.Shadowsocks.Translucent"
