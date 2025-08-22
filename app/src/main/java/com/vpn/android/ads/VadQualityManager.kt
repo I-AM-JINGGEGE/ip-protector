@@ -64,11 +64,6 @@ class VadQualityManager private constructor(appContext: Context) {
     fun appForegrounded() {
         mAppForegroundedTS = SystemClock.elapsedRealtime()
         reportBackApp()
-
-        if (mClickTs == 0L || mLeaveApplicationTS == 0L || mAppForegroundedTS <= mLeaveApplicationTS) {
-            reset()
-            return
-        }
     }
 
     fun reset() {
@@ -110,9 +105,9 @@ class VadQualityManager private constructor(appContext: Context) {
 
     fun reportLoaded() {
         DTAnalytics.track(EVENT_LOADED, JSONObject().apply {
-            put("ad_type", "$mAdTypeName")
+            put("ad_type", mAdTypeName ?: "")
             put("ad_platform", mAdPlatform?.name ?: "")
-            put("ad_id", "$mAdId")
+            put("ad_id", mAdId ?: "")
             put("seq", "$mAdObjectHashCode")
             put("loaded_ts", mLoadedTs)
             LogUtils.e("AdQualityReporter", "$EVENT_LOADED [${this}]")
@@ -121,10 +116,10 @@ class VadQualityManager private constructor(appContext: Context) {
 
     fun reportShow(adObjectHashCode: Int) {
         DTAnalytics.track(EVENT_SHOW, JSONObject().apply {
-            put("placement", "$placement")
-            put("ad_type", "$mAdTypeName")
+            put("placement", placement ?: "")
+            put("ad_type", mAdTypeName ?: "")
             put("ad_platform", mAdPlatform?.name ?: "")
-            put("ad_id", "$mAdId")
+            put("ad_id", mAdId ?: "")
             put("seq", "$mAdObjectHashCode")
             put("loaded_ts", mLoadedTs)
             put("show_ts", mShowTs)
@@ -139,12 +134,12 @@ class VadQualityManager private constructor(appContext: Context) {
 
     fun reportShowFail(adObjectHashCode: Int, errorCode: Int, errorMsg: String) {
         DTAnalytics.track(EVENT_SHOW_FAIL, JSONObject().apply {
-            put("placement", "$placement")
+            put("placement", placement ?: "")
             put("error_code", errorCode)
             put("error_message", errorMsg)
-            put("ad_type", "$mAdTypeName")
+            put("ad_type", mAdTypeName ?: "")
             put("ad_platform", mAdPlatform?.name ?: "")
-            put("ad_id", "$mAdId")
+            put("ad_id", mAdId ?: "")
             put("seq", "$mAdObjectHashCode")
             put("loaded_ts", mLoadedTs)
             put("show_ts", mShowTs)
@@ -159,10 +154,10 @@ class VadQualityManager private constructor(appContext: Context) {
 
     fun reportClose(adObjectHashCode: Int) {
         DTAnalytics.track(EVENT_CLOSE, JSONObject().apply {
-            put("placement", "$placement")
-            put("ad_type", "$mAdTypeName")
+            put("placement", placement ?: "")
+            put("ad_type", mAdTypeName ?: "")
             put("ad_platform", mAdPlatform?.name ?: "")
-            put("ad_id", "$mAdId")
+            put("ad_id", mAdId ?: "")
             put("seq", "$mAdObjectHashCode")
             put("loaded_ts", mLoadedTs)
             put("show_ts", mShowTs)
@@ -181,10 +176,10 @@ class VadQualityManager private constructor(appContext: Context) {
     fun reportClick(adObjectHashCode: Int) {
         mClickTs = SystemClock.elapsedRealtime()
         DTAnalytics.track(EVENT_CLICK, JSONObject().apply {
-            put("placement", "$placement")
-            put("ad_type", "$mAdTypeName")
+            put("placement", placement ?: "")
+            put("ad_type", mAdTypeName ?: "")
             put("ad_platform", mAdPlatform?.name ?: "")
-            put("ad_id", "$mAdId")
+            put("ad_id", mAdId ?: "")
             put("seq", "$mAdObjectHashCode")
             put("loaded_ts", mLoadedTs)
             put("show_ts", mShowTs)
@@ -200,36 +195,12 @@ class VadQualityManager private constructor(appContext: Context) {
         })
     }
 
-    fun reportBackApp() {
-        if (mLoadedTs == null || mShowTs == null || mClickTs == null) {
-            return
-        }
-        DTAnalytics.track(EVENT_BACK_APP, JSONObject().apply {
-            put("placement", "$placement")
-            put("ad_type", "$mAdTypeName")
-            put("ad_platform", mAdPlatform?.name ?: "")
-            put("ad_id", "$mAdId")
-            put("seq", "$mAdObjectHashCode")
-            put("loaded_ts", mLoadedTs)
-            put("show_ts", mShowTs)
-            put("show_gap", (mShowTs - mLoadedTs))
-            put("click_ts", mClickTs)
-            put("click_gap", (mClickTs - mShowTs))
-            put("back_ts", mAppForegroundedTS)
-            put("back_gap", (mAppForegroundedTS - mClickTs))
-            LogUtils.e("AdQualityReporter", "$EVENT_BACK_APP [${this}]")
-        })
-    }
-
     fun reportLeaveApp() {
-        if (mLoadedTs == null || mShowTs == null || mClickTs == null) {
-            return
-        }
         DTAnalytics.track(EVENT_LEAVE_APP, JSONObject().apply {
-            put("placement", "$placement")
-            put("ad_type", "$mAdTypeName")
+            put("placement", placement ?: "")
+            put("ad_type", mAdTypeName ?: "")
             put("ad_platform", mAdPlatform?.name ?: "")
-            put("ad_id", "$mAdId")
+            put("ad_id", mAdId ?: "")
             put("seq", "$mAdObjectHashCode")
             put("loaded_ts", mLoadedTs)
             put("show_ts", mShowTs)
@@ -238,7 +209,33 @@ class VadQualityManager private constructor(appContext: Context) {
             put("click_gap", (mClickTs - mShowTs))
             put("leave_ts", mLeaveApplicationTS)
             put("leave_gap", (mLeaveApplicationTS - mClickTs))
+            put("active_duration", mLeaveApplicationTS - mAppForegroundedTS)
+            put("by_click_ad", mClickTs != 0L)
+            put("back_ts", mAppForegroundedTS)
             LogUtils.e("AdQualityReporter", "$EVENT_LEAVE_APP [${this}]")
+        })
+    }
+
+    fun reportBackApp() {
+        DTAnalytics.track(EVENT_BACK_APP, JSONObject().apply {
+            put("placement", placement ?: "")
+            put("ad_type", mAdTypeName ?: "")
+            put("ad_platform", mAdPlatform?.name ?: "")
+            put("ad_id", mAdId ?: "")
+            put("seq", "$mAdObjectHashCode")
+            put("loaded_ts", mLoadedTs)
+            put("show_ts", mShowTs)
+            put("show_gap", (mShowTs - mLoadedTs))
+            put("click_ts", mClickTs)
+            put("click_gap", (mClickTs - mShowTs))
+            put("leave_ts", mLeaveApplicationTS)
+            put("leave_gap", (mLeaveApplicationTS - mClickTs))
+            put("back_ts", mAppForegroundedTS)
+            put("back_gap", (mAppForegroundedTS - mLeaveApplicationTS))
+            put("inactive_duration", mAppForegroundedTS - mLeaveApplicationTS)
+            put("by_click_ad", mClickTs != 0L)
+
+            LogUtils.e("AdQualityReporter", "$EVENT_BACK_APP [${this}]")
         })
     }
 }
