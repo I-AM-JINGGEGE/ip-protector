@@ -372,8 +372,8 @@ public class MainActivity extends CommonAppCompatActivity implements OnClickDisc
     }
 
     private void cancelAddTimeLoading() {
-        if (mAddTimeLoadingFragment != null && mAddTimeLoadingFragment.isAdded()) {
-            mAddTimeLoadingFragment.dismiss();
+        if (mAddTimeLoadingFragment != null) {
+            mAddTimeLoadingFragment.dismissAllowingStateLoss();
             mAddTimeLoadingFragment = null;
         }
     }

@@ -248,8 +248,8 @@ class ConnectedReportActivity : CommonAppCompatActivity() {
     }
 
     private fun cancelAddTimeLoading() {
-        if (mAddTimeLoadingFragment?.isAdded == true) {
-            mAddTimeLoadingFragment!!.dismiss()
+        if (mAddTimeLoadingFragment != null) {
+            mAddTimeLoadingFragment!!.dismissAllowingStateLoss()
             mAddTimeLoadingFragment = null
         }
     }
