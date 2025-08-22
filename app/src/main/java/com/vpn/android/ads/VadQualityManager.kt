@@ -49,6 +49,7 @@ class VadQualityManager private constructor(appContext: Context) {
     fun click(hashCode: Int) {
         mClickTs = SystemClock.elapsedRealtime()
         reportClick(hashCode)
+        AdClickManager.onAdClick(hashCode)
     }
 
     fun close(hashCode: Int) {

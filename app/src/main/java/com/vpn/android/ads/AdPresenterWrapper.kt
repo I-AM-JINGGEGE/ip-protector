@@ -16,8 +16,11 @@ import com.vpn.android.ads.proxy.AdShowListener
 import com.vpn.android.ads.proxy.IAdPresenterProxy
 import com.vpn.android.ads.proxy.RewardedAdShowListener
 import com.vpn.android.comboads.network.UserProfileRetrofit
+import com.vpn.android.region.RegionConstants.KEY_AD_SWITCH
+import com.vpn.android.region.RegionConstants.KEY_PROFILE_VPN_IP
 import com.vpn.android.report.AppReport
 import com.vpn.android.report.VpnReporter
+import com.vpn.base.vstore.VstoreManager
 import com.vpn.tahiti.TahitiCoreServiceStateInfoManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -39,6 +42,14 @@ class AdPresenterWrapper private constructor() : IAdPresenterProxy {
     var appStartAdNoFillLoadLiveData = MutableLiveData<Boolean>()
     var nativeAdLoadLiveData: MutableLiveData<Boolean> = MutableLiveData()
     var initialized: Boolean = false
+
+    fun turnOffAd() {
+        VstoreManager.getInstance(MainApplication.instance).encode(true, KEY_AD_SWITCH, false)
+    }
+
+    fun isAdTurnOn(): Boolean {
+        return VstoreManager.getInstance(MainApplication.instance).decode(true, KEY_AD_SWITCH, true)
+    }
 
     fun init(initListener: InitListener?) {
         AppReport.reportAdInitBegin(TahitiCoreServiceStateInfoManager.getInstance(context).coreServiceConnected)
@@ -105,6 +116,10 @@ class AdPresenterWrapper private constructor() : IAdPresenterProxy {
             loadListener?.onFailure(-4, "vpn not connected")
             return
         }
+        if (!isAdTurnOn()) {
+            loadListener?.onFailure(-5, "ad turn off")
+            return
+        }
         val listener = object : AdLoadListener {
             override fun onAdLoaded() {
                 loadListener?.onAdLoaded()
@@ -138,6 +153,10 @@ class AdPresenterWrapper private constructor() : IAdPresenterProxy {
     override fun loadNativeAd(loadListener: AdLoadListener?, from: String) {
         if (!TahitiCoreServiceStateInfoManager.getInstance(context).coreServiceConnected) {
             loadListener?.onFailure(-4, "vpn not connected")
+            return
+        }
+        if (!isAdTurnOn()) {
+            loadListener?.onFailure(-5, "ad turn off")
             return
         }
         val listener = object : AdLoadListener {
@@ -203,6 +222,9 @@ class AdPresenterWrapper private constructor() : IAdPresenterProxy {
         adPlacement: String,
         listener: AdShowListener?
     ) {
+        if (!isAdTurnOn()) {
+            return
+        }
         if (fullScreenAdShown || !isAppForeground) {
             return
         }
@@ -224,7 +246,7 @@ class AdPresenterWrapper private constructor() : IAdPresenterProxy {
 
                         override fun onAdFailToShow(errorCode: Int, errorMessage: String) {
                             listener?.onAdFailToShow(errorCode, errorMessage)
-                            if (type == AdFormat.INTERSTITIAL) {
+                            if (type == AdFormat.INTERSTITIAL && isAdTurnOn()) {
                                 loadAdInternal(type, adPlacement, null, "ad fail to show")
                             }
                         }
@@ -258,7 +280,7 @@ class AdPresenterWrapper private constructor() : IAdPresenterProxy {
 
                         override fun onAdFailToShow(errorCode: Int, errorMessage: String) {
                             listener?.onAdFailToShow(errorCode, errorMessage)
-                            if (type == AdFormat.INTERSTITIAL) {
+                            if (type == AdFormat.INTERSTITIAL && isAdTurnOn()) {
                                 loadAdInternal(type, adPlacement, null, "ad fail to show")
                             }
                         }
@@ -287,6 +309,9 @@ class AdPresenterWrapper private constructor() : IAdPresenterProxy {
         parent: ViewGroup,
         listener: AdShowListener?
     ): View? {
+        if (!isAdTurnOn()) {
+            return null
+        }
         val templateListener = object : AdShowListener {
             override fun onAdShown() {
                 listener?.onAdShown()
@@ -320,6 +345,9 @@ class AdPresenterWrapper private constructor() : IAdPresenterProxy {
         parent: ViewGroup,
         listener: AdShowListener?
     ): View? {
+        if (!isAdTurnOn()) {
+            return null
+        }
         val templateListener = object : AdShowListener {
             override fun onAdShown() {
                 listener?.onAdShown()
@@ -361,6 +389,9 @@ class AdPresenterWrapper private constructor() : IAdPresenterProxy {
         parent: ViewGroup,
         listener: AdShowListener?
     ): View? {
+        if (!isAdTurnOn()) {
+            return null
+        }
         val templateListener = object : AdShowListener {
             override fun onAdShown() {
                 listener?.onAdShown()

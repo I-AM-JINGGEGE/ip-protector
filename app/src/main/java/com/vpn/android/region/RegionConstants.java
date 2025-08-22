@@ -6,4 +6,5 @@ public interface RegionConstants {
     String KEY_CONNECTED_VPN_IP = "KEY_CONNECTED_VPN_IP";
     String KEY_PROFILE_VPN_IP = "KEY_PROFILE_VPN_IP";
     String Key_Selected_Region_Country_Code = "key_selected_region_id";
+    String KEY_AD_SWITCH = "key_ad_switch";
 }
