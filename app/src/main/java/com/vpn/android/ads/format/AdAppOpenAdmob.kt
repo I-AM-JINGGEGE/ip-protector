@@ -18,8 +18,12 @@ import ai.datatower.ad.DTAdReport
 import com.appsflyer.AFInAppEventParameterName
 import com.appsflyer.AFInAppEventType
 import com.appsflyer.AppsFlyerLib
+import com.vpn.android.MainApplication
+import com.vpn.android.ads.AdQualityReporter
+import com.vpn.android.ads.VadQualityManager
 import com.vpn.android.base.utils.LogUtils
 import com.vpn.android.report.ReportConstants.Param.IP_ADDRESS
+import kotlin.hashCode
 
 class AdAppOpenAdmob(var adId: String, val context: Context) {
     private var mAppOpenAd: AppOpenAd? = null
@@ -28,6 +32,7 @@ class AdAppOpenAdmob(var adId: String, val context: Context) {
     private var mAdShowListener: AdShowListener? = null
     private var seq = DTAdReport.generateUUID()
     private var placementId: String? = null
+    private val mAdQualityReporter = AdQualityReporter()
 
     fun loadAd(listener: AdLoadListener?, from: String) {
         if (isLoadingAd) {
@@ -65,6 +70,7 @@ class AdAppOpenAdmob(var adId: String, val context: Context) {
                     put("from", from)
                     put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
                 })
+                mAdQualityReporter.reportLoaded(appOpenAd.hashCode(), AdFormat.APP_OPEN, AdPlatform.ADMOB.value, adId)
             }
         })
     }
@@ -81,10 +87,17 @@ class AdAppOpenAdmob(var adId: String, val context: Context) {
                     put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
                     LogUtils.i("VpnReporter", "app open - conversion [${this}]")
                 })
+                mAppOpenAd?.apply {
+                    mAdQualityReporter.reportClick(this.hashCode())
+                }
             }
 
             override fun onAdDismissedFullScreenContent() {
+                mAppOpenAd?.apply {
+                    mAdQualityReporter.reportClose(this.hashCode())
+                }
                 mAppOpenAd = null
+                mAdQualityReporter.reset()
                 mAdShowListener?.onAdClosed()
                 DTAdReport.reportClose(adId, AdType.INTERSTITIAL, AdPlatform.ADMOB, placementId ?: "", seq, mutableMapOf<String, Any>().apply {
                     put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
@@ -94,6 +107,7 @@ class AdAppOpenAdmob(var adId: String, val context: Context) {
 
             override fun onAdFailedToShowFullScreenContent(adError: AdError) {
                 mAppOpenAd = null
+                mAdQualityReporter.reset()
                 mAdShowListener?.onAdFailToShow(adError.code, adError.message)
                 DTAdReport.reportShowFailed(adId, AdType.INTERSTITIAL, AdPlatform.ADMOB, placementId ?: "", seq, adError.code, adError.message, mutableMapOf<String, Any>().apply {
                     put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
@@ -109,7 +123,9 @@ class AdAppOpenAdmob(var adId: String, val context: Context) {
                     put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
                     LogUtils.i("VpnReporter", "app open - show [${this}]")
                 })
-//                AdEventLogger.logInterstitialAdShow(MainApplication.getContext())
+                mAppOpenAd?.apply {
+                    mAdQualityReporter.reportShow(this.hashCode(), this@AdAppOpenAdmob.placementId ?: "")
+                }
             }
         }
 

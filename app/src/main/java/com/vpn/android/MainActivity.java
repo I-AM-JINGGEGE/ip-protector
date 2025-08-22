@@ -161,7 +161,7 @@ public class MainActivity extends CommonAppCompatActivity implements OnClickDisc
             // disable disconnected interstitial ads
             if (TahitiCoreServiceStateInfoManager.getInstance(getApplicationContext()).getCoreServiceConnected()) {
                 AdPresenterWrapper.Companion.getInstance().loadAdExceptNative(AdFormat.INTERSTITIAL, adPlacementI, null, "after presenter init");
-                AdPresenterWrapper.Companion.getInstance().loadNativeAd(adPlacementN, null, "after presenter init");
+                AdPresenterWrapper.Companion.getInstance().loadNativeAd(null, "after presenter init");
             }
         });
         mConnectedViewModel =
@@ -450,7 +450,7 @@ public class MainActivity extends CommonAppCompatActivity implements OnClickDisc
 
                         }
                     }, "vpn connected");
-                    AdPresenterWrapper.Companion.getInstance().loadNativeAd(AdConstant.AdPlacement.N_CONNECTED, null, "vpn connected");
+                    AdPresenterWrapper.Companion.getInstance().loadNativeAd(null, "vpn connected");
                     break;
                 }
                 case Stopped: {

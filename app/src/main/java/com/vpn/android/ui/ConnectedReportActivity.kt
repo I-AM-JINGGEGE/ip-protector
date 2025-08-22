@@ -4,11 +4,8 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.format.Formatter
 import android.view.View
-import android.view.animation.AnimationUtils
-import android.view.animation.LinearInterpolator
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
-import com.vpn.android.MainApplication
 import com.vpn.android.R
 import com.vpn.android.ads.AdPresenterWrapper
 import com.vpn.android.ads.constant.AdConstant
@@ -59,8 +56,9 @@ class ConnectedReportActivity : CommonAppCompatActivity() {
         initView()
         initViewModel()
         AdPresenterWrapper.getInstance().loadNativeAd(
-            AdConstant.AdPlacement.N_CONNECTED_REPORT,
-            null, "connected report")
+            null,
+            "connected report"
+        )
     }
     private fun initView() {
         binding.testButton.setOnClickListener {

@@ -5,7 +5,6 @@ import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.gms.ads.AdRequest
-import com.vpn.android.BuildConfig
 import com.vpn.android.ads.constant.AdConstant
 import com.vpn.android.ads.constant.AdFormat
 import com.vpn.android.ads.constant.AdPlatform
@@ -101,7 +100,7 @@ class AdPresenter(adUnitSet: UserAdConfig.AdUnitSet, val context: Context) : IAd
         }
     }
 
-    override fun loadNativeAd(adPlacement: String, loadListener: AdLoadListener?, from: String) {
+    override fun loadNativeAd(loadListener: AdLoadListener?, from: String) {
         adNative?.loadAd(object : NativeAdLoadListener {
             override fun onAdLoaded() {
                 loadListener?.onAdLoaded()
@@ -232,6 +231,8 @@ class AdPresenter(adUnitSet: UserAdConfig.AdUnitSet, val context: Context) : IAd
                     else -> {}
                 }
             }
+
+            else -> {}
         }
         return ""
     }
@@ -246,7 +247,7 @@ class AdPresenter(adUnitSet: UserAdConfig.AdUnitSet, val context: Context) : IAd
         }
     }
 
-    override fun markNativeAdShown(adPlacement: String) {
+    override fun markNativeAdShown() {
         adNative?.markNativeAdShown()
     }
 }

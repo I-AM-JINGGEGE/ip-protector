@@ -42,6 +42,7 @@ import com.appsflyer.AppsFlyerLib
 import com.vpn.android.region.RegionConstants.KEY_PROFILE_VPN_IP
 import com.sdk.ssmod.IIMSDKApplication
 import com.sdk.ssmod.IMSDK
+import com.vpn.android.ads.VadQualityManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import okhttp3.ResponseBody
@@ -160,6 +161,13 @@ class MainApplication : Application(), IIMSDKApplication {
         initAttribution()
         ProcessLifecycleOwner.get().lifecycle.addObserver(mLifecycleObserver)
         CoreSDKResponseManager.initNetworkObserver()
+        ProcessLifecycleOwner.get().lifecycle.addObserver(LifecycleEventObserver { source: LifecycleOwner?, event: Lifecycle.Event ->
+            if (event == Lifecycle.Event.ON_START) {
+                VadQualityManager.getInstance(this).appForegrounded()
+            } else if (event == Lifecycle.Event.ON_STOP) {
+                VadQualityManager.getInstance(this).leftApplication()
+            }
+        })
     }
 
     private val mLifecycleObserver: LifecycleObserver =

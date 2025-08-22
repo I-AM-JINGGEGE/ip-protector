@@ -135,7 +135,7 @@ class AdPresenterWrapper private constructor() : IAdPresenterProxy {
         loadAdInternal(type, adPlacement, listener, from)
     }
 
-    override fun loadNativeAd(adPlacement: String, loadListener: AdLoadListener?, from: String) {
+    override fun loadNativeAd(loadListener: AdLoadListener?, from: String) {
         if (!TahitiCoreServiceStateInfoManager.getInstance(context).coreServiceConnected) {
             loadListener?.onFailure(-4, "vpn not connected")
             return
@@ -152,10 +152,10 @@ class AdPresenterWrapper private constructor() : IAdPresenterProxy {
         }
         when (TahitiCoreServiceStateInfoManager.getInstance(context).coreServiceConnected) {
             true -> {
-                mAdPresenterConnected?.loadNativeAd(adPlacement, listener, from)
+                mAdPresenterConnected?.loadNativeAd(listener, from)
             }
             false -> {
-                mAdPresenterDisconnected?.loadNativeAd(adPlacement, listener, from)
+                mAdPresenterDisconnected?.loadNativeAd(listener, from)
             }
         }
     }
@@ -301,10 +301,7 @@ class AdPresenterWrapper private constructor() : IAdPresenterProxy {
             }
 
             override fun onAdClicked() {
-                markNativeAdShown(placementId)
-                loadNativeAd(placementId, null, "ad clicked")
                 listener?.onAdClicked()
-
             }
         }
         return when (TahitiCoreServiceStateInfoManager.getInstance(context).coreServiceConnected) {
@@ -337,10 +334,7 @@ class AdPresenterWrapper private constructor() : IAdPresenterProxy {
             }
 
             override fun onAdClicked() {
-                markNativeAdShown(placementId)
-                loadNativeAd(placementId, null, "ad clicked")
                 listener?.onAdClicked()
-
             }
         }
         return when (TahitiCoreServiceStateInfoManager.getInstance(context).coreServiceConnected) {
@@ -382,8 +376,6 @@ class AdPresenterWrapper private constructor() : IAdPresenterProxy {
 
             override fun onAdClicked() {
                 listener?.onAdClicked()
-                markNativeAdShown(placementId)
-                loadNativeAd(placementId, null, "ad clicked")
             }
         }
         return when (TahitiCoreServiceStateInfoManager.getInstance(context).coreServiceConnected) {
@@ -400,13 +392,13 @@ class AdPresenterWrapper private constructor() : IAdPresenterProxy {
         }
     }
 
-    override fun markNativeAdShown(placementId: String) {
+    override fun markNativeAdShown() {
         when (TahitiCoreServiceStateInfoManager.getInstance(context).coreServiceConnected) {
             true -> {
-                mAdPresenterConnected?.markNativeAdShown(placementId)
+                mAdPresenterConnected?.markNativeAdShown()
             }
             false -> {
-                mAdPresenterDisconnected?.markNativeAdShown(placementId)
+                mAdPresenterDisconnected?.markNativeAdShown()
             }
         }
     }

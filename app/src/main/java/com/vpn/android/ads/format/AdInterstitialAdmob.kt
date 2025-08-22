@@ -1,26 +1,27 @@
 package com.vpn.android.ads.format
 
+import ai.datatower.ad.AdPlatform
+import ai.datatower.ad.AdType
+import ai.datatower.ad.DTAdReport
 import android.app.Activity
 import android.content.Context
+import com.appsflyer.AFInAppEventParameterName
+import com.appsflyer.AFInAppEventType
+import com.appsflyer.AppsFlyerLib
+import com.appsflyer.attribution.AppsFlyerRequestListener
 import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
+import com.vpn.android.ads.AdQualityReporter
 import com.vpn.android.ads.constant.AdFormat
 import com.vpn.android.ads.network.IpUtil
 import com.vpn.android.ads.proxy.AdLoadListener
 import com.vpn.android.ads.proxy.AdShowListener
-import com.vpn.android.report.AdReport
-import ai.datatower.ad.AdPlatform
-import ai.datatower.ad.AdType
-import ai.datatower.ad.DTAdReport
-import com.appsflyer.AFInAppEventParameterName
-import com.appsflyer.AFInAppEventType
-import com.appsflyer.AppsFlyerLib
-import com.appsflyer.attribution.AppsFlyerRequestListener
 import com.vpn.android.base.utils.LogUtils
+import com.vpn.android.report.AdReport
 import com.vpn.android.report.ReportConstants.Param.IP_ADDRESS
 
 class AdInterstitialAdmob(var adId: String, val context: Context) {
@@ -31,6 +32,7 @@ class AdInterstitialAdmob(var adId: String, val context: Context) {
     internal var seq = DTAdReport.generateUUID()
         get() = field
     private var placementId: String? = null
+    private val mAdQualityReporter = AdQualityReporter()
 
     fun loadAd(listener: AdLoadListener?, from: String) {
         if (isLoadingAd) {
@@ -68,6 +70,7 @@ class AdInterstitialAdmob(var adId: String, val context: Context) {
                     put("from", from)
                     put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
                 })
+                mAdQualityReporter.reportLoaded(interstitialAd.hashCode(), AdFormat.INTERSTITIAL, AdPlatform.ADMOB.value, adId)
             }
         })
     }
@@ -90,10 +93,17 @@ class AdInterstitialAdmob(var adId: String, val context: Context) {
 //                    AdEventLogger.logInterstitialAdClick(MainApplication.getContext())
                 }
                 lastClickedAdSeq = seq
+                mInterstitialAd?.apply {
+                    mAdQualityReporter.reportClick(this.hashCode())
+                }
             }
 
             override fun onAdDismissedFullScreenContent() {
+                mInterstitialAd?.apply {
+                    mAdQualityReporter.reportClose(this.hashCode())
+                }
                 mInterstitialAd = null
+                mAdQualityReporter.reset()
                 mAdShowListener?.onAdClosed()
                 DTAdReport.reportClose(adId, AdType.INTERSTITIAL, AdPlatform.ADMOB, placementId ?: "", seq, mutableMapOf<String, Any>().apply {
                     put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
@@ -103,6 +113,7 @@ class AdInterstitialAdmob(var adId: String, val context: Context) {
 
             override fun onAdFailedToShowFullScreenContent(adError: AdError) {
                 mInterstitialAd = null
+                mAdQualityReporter.reset()
                 mAdShowListener?.onAdFailToShow(adError.code, adError.message)
                 DTAdReport.reportShowFailed(adId, AdType.INTERSTITIAL, AdPlatform.ADMOB, placementId ?: "", seq, adError.code, adError.message, mutableMapOf<String, Any>().apply {
                     put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
@@ -118,7 +129,9 @@ class AdInterstitialAdmob(var adId: String, val context: Context) {
                     put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
                     LogUtils.i("VpnReporter", "interstitial - show [${this}]")
                 })
-//                AdEventLogger.logInterstitialAdShow(MainApplication.getContext())
+                mInterstitialAd?.apply {
+                    mAdQualityReporter.reportShow(this.hashCode(), this@AdInterstitialAdmob.placementId ?: "")
+                }
             }
         }
 

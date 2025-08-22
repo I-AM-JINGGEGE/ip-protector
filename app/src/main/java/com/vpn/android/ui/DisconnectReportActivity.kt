@@ -41,8 +41,9 @@ class DisconnectReportActivity : CommonAppCompatActivity() {
         initView()
         initViewModel()
         AdPresenterWrapper.getInstance().loadNativeAd(
-            AdConstant.AdPlacement.N_DISCONNECT_REPORT,
-            null, "disconnect report")
+            null,
+            "disconnect report"
+        )
     }
 
     private fun initView() {
