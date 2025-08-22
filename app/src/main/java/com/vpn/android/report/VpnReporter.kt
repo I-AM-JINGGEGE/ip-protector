@@ -104,4 +104,18 @@ object VpnReporter {
             LogUtils.i("VpnReporter", "ad_combo_behavior [${this}]")
         })
     }
+
+    fun reportAdClickExceededLimit(id: String,
+                              type: AdType,
+                              platform: AdPlatform,
+                              location: String,) {
+        DTAnalytics.track("ad_click_exceeded_limit", JSONObject().apply {
+            put("ad_id", id)
+            put("ad_type", type.name)
+            put("ad_platform", platform)
+            put("ad_location", location)
+            put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
+            LogUtils.i("VpnReporter", "ad_click_exceeded_limit [${this}]")
+        })
+    }
 }

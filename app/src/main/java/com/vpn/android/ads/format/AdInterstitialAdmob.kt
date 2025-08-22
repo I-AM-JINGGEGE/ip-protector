@@ -90,9 +90,11 @@ class AdInterstitialAdmob(var adId: String, val context: Context) {
                 })
                 val hashCode = mInterstitialAd?.hashCode() ?: 0
                 VadQualityManager.getInstance(context).click(hashCode)
-                AdClickManager.onAdClick(hashCode) {
+                AdClickManager.onAdClick(hashCode, {
                     VpnReporter.reportAdComboBehavior(adId, AdType.INTERSTITIAL, AdPlatform.ADMOB, placementId ?: "")
-                }
+                }, {
+                    VpnReporter.reportAdClickExceededLimit(adId, AdType.INTERSTITIAL, AdPlatform.ADMOB, placementId ?: "")
+                })
             }
 
             override fun onAdDismissedFullScreenContent() {
