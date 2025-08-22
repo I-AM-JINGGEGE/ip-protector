@@ -49,14 +49,11 @@ Empfangen: \t%4$s\t↓\t%2$s"</string>
     <string name="bypass_apps_summary">"Aktiviere um ausgewählte Apps zu umgehen"</string>
     <string name="auto_connect">"Automatisch verbinden"</string>
     <string name="auto_connect_summary">"Starte Shadowsocks bei Systemstart/nach App-Update automatisch, falls es zuvor aktiv war"</string>
-    <string name="tcp_fastopen_summary">"Umschalten benötigt eventuell ROOT-Zugriff"</string>
-    <string name="tcp_fastopen_summary_unsupported">"Nicht unterstützte Kernel-Version: %s &lt; 3.7.1"</string>
     <string name="udp_dns">"Sende DNS über UDP"</string>
     <string name="udp_dns_summary">"Benötigt serverseitiges UDP-Forwarding"</string>
 
     <!-- notification category -->
     <string name="forward_success">"Shadowsocks wurde gestartet."</string>
-    <string name="invalid_server">"Ungültiger Servername"</string>
     <string name="service_failed">"Verbindung zum Remote-Server fehlgeschlagen"</string>
     <string name="stop">"Stopp"</string>
     <string name="stopping">"Fahre herunter…"</string>
@@ -104,8 +101,6 @@ Empfangen: \t%4$s\t↓\t%2$s"</string>
     <string name="profile_default">"Aktuelles Profil verwenden"</string>
 
     <!-- status -->
-    <string name="sent">"Gesendet:"</string>
-    <string name="received">"Empfangen:"</string>
 
     <!-- status -->
     <string name="connecting">"Verbinde…"</string>
@@ -134,7 +129,6 @@ Empfangen: \t%4$s\t↓\t%2$s"</string>
     <string name="add_profile_methods_manual_settings">"Manuelle Einstellungen"</string>
 
     <!-- misc -->
-    <string name="advanced">"Fortgeschritten"</string>
 
     <!-- misc -->
     <string name="service_mode">"Service-Modus"</string>
@@ -145,24 +139,16 @@ Empfangen: \t%4$s\t↓\t%2$s"</string>
     <string name="service_proxy">"Proxy-Dienst"</string>
     <string name="service_transproxy">"Transproxy-Dienst"</string>
     <string name="vpn_permission_denied">"Keine Berechtigung zum Einrichten eines VPN-Dienstes"</string>
-    <string name="auto_connect_summary_v24">"Shadowsocks bei Systemstart aktivieren. Stattdessen wird always-on VPN empfohlen."</string>
     <string name="direct_boot_aware">"Erlaube Umschalten während Gerät gesperrt ist"</string>
     <string name="direct_boot_aware_summary">"Das ausgewählte Profil wird so schlechter geschützt"</string>
     <string name="acl_rule_online_config">"URL zur Online-Konfiguration"</string>
     <string name="action_import_file">"Aus Datei importieren…"</string>
-    <string name="night_mode">"Dark-Modus"</string>
-    <string name="night_mode_system">"Nach Betriebssystem richten"</string>
-    <string name="night_mode_auto">"Automatisch umschalten"</string>
-    <string name="night_mode_on">"Ein"</string>
-    <string name="night_mode_off">"Aus"</string>
     <string name="send_email">"E-Mail senden"</string>
     <string name="action_export_more">"Exportieren…"</string>
     <string name="action_export_file">"Als Datei exportieren…"</string>
     <string name="cleartext_http_warning">"Klartext HTTP-Traffic ist unsicher"</string>
     <string name="share_over_lan">"Über LAN teilen"</string>
     <string name="connection_test_pending">"Verbindung prüfen"</string>
-    <string name="file_manager_missing">"Bitte installiere einen Dateimanager, z.B. MiXplorer"</string>
-    <string name="tcp_fastopen_failure">"Umschalten fehlgeschlagen"</string>
     <string name="udp_fallback">"UDP-Fallback"</string>
     <string name="action_replace_file">"Aus Datei ersetzen…"</string>
     <string name="off">"Aus"</string>

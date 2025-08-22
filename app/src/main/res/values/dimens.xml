@@ -1,9 +1,5 @@
 <resources>
     <dimen name="app_icon_size">50dp</dimen>
-    <dimen name="card_top_width">209dp</dimen>
-    <dimen name="card_bottom_width">260dp</dimen>
-    <dimen name="common_btn_height">50dp</dimen>
-    <dimen name="viewpager_height">330dp</dimen>
     <dimen name="activity_content_margin_start_end">16dp</dimen>
     <dimen name="activity_toolbar_height">50dp</dimen>
     <dimen name="listview_item_height">60dp</dimen>

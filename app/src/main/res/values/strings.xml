@@ -7,34 +7,21 @@
     <string name="vs_common_dialog_ok_button">Got it</string>
     <string name="vs_common_dialog_ok">OK</string>
     <string name="vs_common_tips_loading">Loading&#8230;</string>
-    <string name="vs_common_tips_loading2">LOADING&#8230;</string>
     <string name="vs_common_tips_network_unavailable">Something went wrong, please check the network</string>
     <string name="vs_common_tips_no_email_app">You have no email app to send emails. Please set up an email app firstly</string>
     <string name="vs_common_button_got_it">Got it</string>
     <string name="vs_common_button_connect">CONNECT</string>
     <string name="vs_common_button_connected">CONNECTED</string>
-    <string name="vs_common_button_disconnected">DISCONNECTED</string>
     <string name="vs_common_network_disconnected">Network unavailable</string>
     <string name="vs_common_check_network_settings">Open and check the network settings</string>
     <string name="vs_common_repair_network">Repair Network</string>
-    <string name="region_code_unknown">Auto Choose</string>
 
     <string name="vs_core_service_state_testing">Connecting&#8230;</string>
     <string name="vs_core_service_state_disconnecting">Disconnecting&#8230;</string>
-    <string name="vs_core_service_state_disconnecting2">Disconnecting, please try later</string>
     <string name="vs_core_service_state_disconnected">Disconnected</string>
-    <string name="vs_core_service_state_disconnected_timeout">Connection timed out, please check the network and reconnect again(better change some other regions)</string>
-    <string name="vs_core_service_state_disconnected_used_up3">Trial time has expired, please reconnect</string>
-    <string name="vs_core_service_state_disconnected_error">Error[code=%s], please reconnect again(better reboot device to fix)</string>
-    <string name="vs_core_service_state_connecting">Connecting&#8230;20%</string>
     <string name="vs_core_service_state_connecting2">Connecting, please try later</string>
     <string name="vs_core_service_state_connected">Connected</string>
     <string name="vs_core_service_operate_connect">Click to connect</string>
-    <string name="vs_core_service_operate_disconnect">Click to disconnect</string>
-    <string name="vs_core_service_state_connection_percentage_unit">%</string>
-    <string name="vs_core_service_uptime_unit_hour">h</string>
-    <string name="vs_core_service_uptime_unit_minute">m</string>
-    <string name="vs_core_service_uptime_unit_second">s</string>
     <string name="vs_core_service_notification_traffic">%1$s↑\t%2$s↓</string>
     <string name="vs_core_service_notification_speed">%s/s</string>
     <string name="vs_core_service_notification_title_ready">IP Protector is Ready</string>
@@ -46,12 +33,6 @@
     <string name="notification_network_content_2">Enable you to anonymously and safely browse the internet</string>
     <string name="notification_network_content_3">Enable to bypass geo-restrictions to access any content anywhere</string>
 
-    <string name="vs_core_service_always_vpn_tips">Please tap \'OK\'  (tick \'I trust this application\') or turn off \'Always-on VPN\' on VPN settings</string>
-
-    <string name="vs_statement_privacy">Privacy will be\nprotected</string>
-    <string name="vs_statement_ip">IP will\nbe changed</string>
-    <string name="vs_statement_banned">Banned will be unlocked"</string>
-
     <string name="vs_will_disconnect_dialog_title">Will Disconnect?</string>
     <string name="vs_will_disconnect_dialog_cancel">Later</string>
     <string name="vs_will_disconnect_dialog_ok">Disconnect</string>
@@ -60,18 +41,9 @@
     <string name="vs_legal_notices_dialog_title">Legal Notices</string>
     <string name="vs_legal_notices_dialog_content">In accordance with the laws, policies and regulations of each country and region, the VPN service is not be provided in your region.</string>
 
-    <string name="vs_privacy_confirm_button">I Agree</string>
-
-    <string name="vs_dialog_add_an_hour">Get 1 hour</string>
-    <string name="vs_dialog_get_later">Get later</string>
-
-    <string name="vs_rating_select_none_tips">Please tap a smiley face</string>
     <string name="vs_rating_feedback_send">I have some feedback</string>
     <string name="vs_rating_feedback_tip">Slide up to rate us and feedback</string>
-    <string name="vs_rating_thanks_tips">Thanks for your rating</string>
 
-    <string name="vs_add_time_an_hour_1">+1 Hour</string>
-    <string name="vs_add_time_an_hour_wait_1">wait&#8230;(%s s)</string>
     <string name="congratulations">Congratulations!</string>
     <string name="exit_app">Exit The App?</string>
     <string name="connectivity_testing">Connectivity Testing...</string>
@@ -81,8 +53,6 @@
     <string name="increased_1_hour">Connection time has been increased by 1 hour</string>
     <string name="increased_x_minutes">Connection time has been increased by %d minutes</string>
     <string name="connectivity_test_desc">Test your network for latency</string>
-    <string name="increased_2_hours">Connection time has been increased by 2 hours</string>
-    <string name="hours">Hours</string>
     <string name="retest">RE-Test</string>
     <string name="test_now">TEST IT NOW</string>
     <string name="open_settings">Open Settings</string>
@@ -91,13 +61,6 @@
     <string name="no">No</string>
     <string name="add_time_fail">Network error, please try again</string>
 
-    <string name="vs_add_time_two_hours_1">+2 Hours</string>
-    <string name="vs_add_time_two_hours_preparing">PREPARING&#8230;</string>
-    <string name="vs_add_time_two_hour_succeed">Congratulations! Connection time has been increased by 2 hours</string>
-    <string name="vs_add_time_two_hour_fail">You have to finish watching the video to get the reward</string>
-
-    <string name="vs_add_time_get_an_hour">Get 1 hour</string>
-    <string name="vs_add_time_get_later">Get later</string>
     <string name="connectivity_test_duration">Https handshake took</string>
     <string name="time_unit_ms">ms</string>
 
@@ -105,24 +68,10 @@
     <string name="vs_feature_apps_bypass_title2">Apps Using VPN</string>
     <string name="vs_feature_app_bypass_tip">Note that it will take effect in the next connection</string>
     <string name="vs_feature_share_title">Share</string>
-    <string name="vs_feature_share_statement">Share QR Code</string>
-    <string name="vs_feature_share_item_name_whats_app">WhatsApp</string>
-    <string name="vs_feature_share_item_name_sms">SMS</string>
-    <string name="vs_feature_share_item_name_email">E-mail</string>
-    <string name="vs_feature_share_item_name_copy_link">Copy Link</string>
-    <string name="vs_feature_share_item_name_more">More</string>
-    <string name="vs_feature_share_title_for_chooser">Complete action using</string>
     <string name="vs_feature_share_content_text">IP Protector is a fast, unlimited, stable and private VPN, install and use it now 🔽</string>
-    <string name="vs_feature_share_content_email_subject">A very safe and easy to use VPN - IP Protector</string>
 
-    <string name="vs_feature_share_item_tip_whats_app">Share it by WhatsApp unsuccessfully.</string>
-    <string name="vs_feature_share_item_tip_sms">Share it by sms unsuccessfully.</string>
-    <string name="vs_feature_share_item_tip_email">Share it by email unsuccessfully.</string>
-    <string name="vs_feature_share_item_tip_copy_link">Copied</string>
-    <string name="vs_feature_share_item_tip_more">Share by more unsuccessfully.</string>
     <string name="vs_feature_language_title">Language</string>
     <string name="vs_feature_privacy_policy_title">Privacy Policy</string>
-    <string name="vs_feature_terms_of_service_title">Terms of Service</string>
     <string name="vs_feature_feedback_title">Feedback</string>
     <string name="vs_feature_region_selector_title">Server List</string>
     <string name="vs_feature_region_refresh_tips_loading">Refreshing the server list&#8230;</string>
@@ -130,19 +79,13 @@
 
     <string name="summary_title">Summary</string>
     <string name="summary_body">We have been served you for</string>
-    <string name="region_pre">region:%s</string>
     <string name="region_title">Region:</string>
     <string name="ip_title">IP address:</string>
-    <string name="total_pre">Total: %1$s</string>
     <string name="traffic_usage">Traffic usage:</string>
 
-    <string name="slow_or_not_works">Slow or Not Works?</string>
-    <string name="one_click_fix">One-Click Fix</string>
     <string name="remaining_time">Remaining time：</string>
     <string name="add_time">Add time</string>
     <string name="lucky_add">Lucky add</string>
-
-    <string name="ad_attribution">Ad</string>
 
     <string name="rate_us">Rate Us</string>
     <string name="rate_title">Please rate us</string>
