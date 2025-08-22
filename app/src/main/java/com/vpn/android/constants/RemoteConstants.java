@@ -26,4 +26,6 @@ public class RemoteConstants {
     public static final long REPORT_BEAT_DURATION_VALUE_DEFAULT = 1000 * 60 * 5;
     public static final String CONNECTED_NATIVE_AD_SWITCH = "connected_native_ad_switch";
     public static final boolean CONNECTED_NATIVE_AD_SWITCH_DEFAULT = false;
+    public static final String MAXIMUM_INTERSTITIAL_AD_CLICK_LIMIT = "maximum_interstitial_ad_click_limit";
+    public static final long MAXIMUM_INTERSTITIAL_AD_CLICK_LIMIT_DEFAULT = 4;
 }

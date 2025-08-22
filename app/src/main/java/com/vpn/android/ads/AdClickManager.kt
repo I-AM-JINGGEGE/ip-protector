@@ -2,6 +2,7 @@ package com.vpn.android.ads
 
 import com.vpn.android.MainApplication
 import com.vpn.android.base.utils.LogUtils
+import com.vpn.android.config.RemoteConfigManager
 import com.vpn.android.region.RegionConstants.KEY_DAILY_AD_CLICKS
 import com.vpn.android.region.RegionConstants.KEY_LAST_RESET_DATE
 import com.vpn.base.vstore.VstoreManager
@@ -43,7 +44,7 @@ object AdClickManager {
             saveDailyAdClicks()
             
             // 检查每日不同广告点击次数
-            if (dailyAdClicks.size > 4) {
+            if (dailyAdClicks.size > RemoteConfigManager.getInstance().maximumInterstitialAdClickLimit) {
                 AdPresenterWrapper.getInstance().turnOffAd()
                 onMultipleAdsDetected.invoke()
                 LogUtils.e("AdQualityReporter", "onMultipleAdsDetected")

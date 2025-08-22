@@ -50,6 +50,7 @@ public class RemoteConfigManager {
         defaultValues.put(RemoteConstants.OPEN_AD_LOAD_MAX_DURATION,RemoteConstants.OPEN_AD_LOAD_MAX_DURATION_VALUE_DEFAULT);
         defaultValues.put(RemoteConstants.REPORT_BEAT_DURATION,RemoteConstants.REPORT_BEAT_DURATION_VALUE_DEFAULT);
         defaultValues.put(RemoteConstants.CONNECTED_NATIVE_AD_SWITCH,RemoteConstants.CONNECTED_NATIVE_AD_SWITCH_DEFAULT);
+        defaultValues.put(RemoteConstants.MAXIMUM_INTERSTITIAL_AD_CLICK_LIMIT, RemoteConstants.MAXIMUM_INTERSTITIAL_AD_CLICK_LIMIT_DEFAULT);
         return defaultValues;
     }
 
@@ -57,8 +58,8 @@ public class RemoteConfigManager {
         return FirebaseRemoteConfig.getInstance().getLong(RemoteConstants.KEY_FAKE_CONNECTION_DURATION);
     }
 
-    public long getReportBeatDuration() {
-        return FirebaseRemoteConfig.getInstance().getLong(RemoteConstants.REPORT_BEAT_DURATION);
+    public long getMaximumInterstitialAdClickLimit() {
+        return FirebaseRemoteConfig.getInstance().getLong(RemoteConstants.MAXIMUM_INTERSTITIAL_AD_CLICK_LIMIT);
     }
 
     public long getDefaultAppOpenCount() {
