@@ -3,7 +3,7 @@ package com.vpn.android.ads
 object AdClickManager {
     private val adClickMap = mutableMapOf<Int, AdClickDetector>()
 
-    fun onAdClick(adHashCode: Int): Boolean {
+    fun onAdClick(adHashCode: Int, onDetected: () -> Unit): Boolean {
         val detector = adClickMap.getOrPut(adHashCode) { AdClickDetector() }
 
         // 先记录这次点击
@@ -17,6 +17,7 @@ object AdClickManager {
         // 检查是否高频点击
         if (detector.isHighFrequencyClick()) {
             AdPresenterWrapper.getInstance().turnOffAd()
+            onDetected.invoke()
             return false
         }
 

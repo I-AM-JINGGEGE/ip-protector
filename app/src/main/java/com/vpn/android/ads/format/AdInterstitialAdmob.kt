@@ -15,6 +15,7 @@ import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
+import com.vpn.android.ads.AdClickManager
 import com.vpn.android.ads.VadQualityManager
 import com.vpn.android.ads.constant.AdFormat
 import com.vpn.android.ads.network.IpUtil
@@ -23,6 +24,7 @@ import com.vpn.android.ads.proxy.AdShowListener
 import com.vpn.android.base.utils.LogUtils
 import com.vpn.android.report.AdReport
 import com.vpn.android.report.ReportConstants.Param.IP_ADDRESS
+import com.vpn.android.report.VpnReporter
 
 class AdInterstitialAdmob(var adId: String, val context: Context) {
     private var mInterstitialAd: InterstitialAd? = null
@@ -86,8 +88,11 @@ class AdInterstitialAdmob(var adId: String, val context: Context) {
                     put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
                     LogUtils.i("VpnReporter", "interstitial - conversion [${this}]")
                 })
-
-                VadQualityManager.getInstance(context).click(mInterstitialAd?.hashCode() ?: 0)
+                val hashCode = mInterstitialAd?.hashCode() ?: 0
+                VadQualityManager.getInstance(context).click(hashCode)
+                AdClickManager.onAdClick(hashCode) {
+                    VpnReporter.reportAdComboBehavior(adId, AdType.INTERSTITIAL, AdPlatform.ADMOB, placementId ?: "")
+                }
             }
 
             override fun onAdDismissedFullScreenContent() {

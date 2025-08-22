@@ -1,8 +1,12 @@
 package com.vpn.android.report
 
+import ai.datatower.ad.AdPlatform
+import ai.datatower.ad.AdType
 import ai.datatower.analytics.DTAnalytics
 import com.vpn.android.ads.bean.UserAdConfig
+import com.vpn.android.ads.network.IpUtil
 import com.vpn.android.base.utils.LogUtils
+import com.vpn.android.report.ReportConstants.Param.IP_ADDRESS
 import org.json.JSONObject
 
 object VpnReporter {
@@ -84,6 +88,20 @@ object VpnReporter {
             put("duration", duration)
 
             LogUtils.i("VpnReporter", "ad_config_request_end [${this}]")
+        })
+    }
+
+    fun reportAdComboBehavior(id: String,
+                              type: AdType,
+                              platform: AdPlatform,
+                              location: String,) {
+        DTAnalytics.track("ad_combo_behavior", JSONObject().apply {
+            put("ad_id", id)
+            put("ad_type", type.name)
+            put("ad_platform", platform)
+            put("ad_location", location)
+            put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
+            LogUtils.i("VpnReporter", "ad_combo_behavior [${this}]")
         })
     }
 }
