@@ -165,7 +165,7 @@ class MainApplication : Application(), IIMSDKApplication {
             if (event == Lifecycle.Event.ON_START) {
                 VadQualityManager.getInstance(this).appForegrounded()
             } else if (event == Lifecycle.Event.ON_STOP) {
-                VadQualityManager.getInstance(this).leftApplication()
+                VadQualityManager.getInstance(this).leaveApplication()
             }
         })
     }

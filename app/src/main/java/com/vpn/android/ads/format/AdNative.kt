@@ -1,9 +1,16 @@
 package com.vpn.android.ads.format
 
+import ai.datatower.ad.AdPlatform
+import ai.datatower.ad.AdType
+import ai.datatower.ad.DTAdReport
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.appsflyer.AFInAppEventParameterName
+import com.appsflyer.AFInAppEventType
+import com.appsflyer.AppsFlyerLib
+import com.appsflyer.attribution.AppsFlyerRequestListener
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdLoader
 import com.google.android.gms.ads.AdRequest
@@ -12,31 +19,19 @@ import com.google.android.gms.ads.nativead.NativeAd
 import com.google.android.gms.ads.nativead.NativeAdOptions
 import com.vpn.android.ads.constant.AdFormat
 import com.vpn.android.ads.network.IpUtil
+import com.vpn.android.base.utils.LogUtils
 import com.vpn.android.databinding.UnifiedNativeAdExitAppBinding
 import com.vpn.android.databinding.UnifiedNativeAdMediaBigBinding
 import com.vpn.android.databinding.UnifiedNativeAdMediaSmallBinding
 import com.vpn.android.databinding.UnifiedNativeAdSmallBlackBinding
 import com.vpn.android.databinding.UnifiedNativeAdSmallWhiteBinding
 import com.vpn.android.report.AdReport
-import ai.datatower.ad.AdPlatform
-import ai.datatower.ad.AdType
-import ai.datatower.ad.DTAdReport
-import com.appsflyer.AFInAppEventParameterName
-import com.appsflyer.AFInAppEventType
-import com.appsflyer.AppsFlyerLib
-import com.appsflyer.attribution.AppsFlyerRequestListener
-import com.vpn.android.MainApplication
-import com.vpn.android.ads.AdQualityReporter
-import com.vpn.android.ads.VadQualityManager
-import com.vpn.android.base.utils.LogUtils
 import com.vpn.android.report.ReportConstants.Param.IP_ADDRESS
-import com.vpn.android.report.VpnReporter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class AdNative(val context: Context, var adId: String) {
-    private val mAdQualityReporter = AdQualityReporter()
     private var start = 0L
     private var from = ""
     private var mNativeAd: NativeAd? = null
@@ -87,7 +82,6 @@ class AdNative(val context: Context, var adId: String) {
                 put("from", from)
                 put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
             })
-            mAdQualityReporter.reportLoaded(mNativeAd.hashCode(), AdFormat.NATIVE, AdPlatform.ADMOB.value, adId)
         }
         .withAdListener(object : AdListener() {
             override fun onAdFailedToLoad(adError: LoadAdError) {
@@ -99,9 +93,6 @@ class AdNative(val context: Context, var adId: String) {
             }
 
             override fun onAdClicked() {
-                mNativeAd?.apply {
-                    mAdQualityReporter.reportClick(this.hashCode())
-                }
                 DTAdReport.reportClick(adId, AdType.NATIVE, AdPlatform.ADMOB, placementId ?: "", seq, mutableMapOf<String, Any>().apply {
                     put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
                     LogUtils.i("VpnReporter", "native click [${this}]")
@@ -119,9 +110,6 @@ class AdNative(val context: Context, var adId: String) {
                     LogUtils.i("VpnReporter", "native show [${this}]")
                 })
                 mNativeAdShowListener?.onAdImpression()
-                mNativeAd?.apply {
-                    mAdQualityReporter.reportShow(this.hashCode(), this@AdNative.placementId ?: "")
-                }
             }
         })
         .withNativeAdOptions(
@@ -252,7 +240,6 @@ class AdNative(val context: Context, var adId: String) {
     fun markNativeAdShown() {
         mNativeAd?.let { mGarbageList.add(it) }
         mNativeAd = null
-        mAdQualityReporter.reset()
     }
 
     fun isLoaded(): Boolean {
