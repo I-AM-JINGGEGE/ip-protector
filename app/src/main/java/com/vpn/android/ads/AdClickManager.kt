@@ -44,7 +44,7 @@ object AdClickManager {
             saveDailyAdClicks()
             
             // 检查每日不同广告点击次数
-            if (dailyAdClicks.size > RemoteConfigManager.getInstance().maximumInterstitialAdClickLimit) {
+            if (dailyAdClicks.size >= RemoteConfigManager.getInstance().maximumInterstitialAdClickLimit) {
                 AdPresenterWrapper.getInstance().turnOffAd()
                 onMultipleAdsDetected.invoke()
                 LogUtils.e("AdQualityReporter", "onMultipleAdsDetected")
