@@ -4,6 +4,7 @@ import android.animation.ValueAnimator
 import android.os.Bundle
 import android.view.animation.DecelerateInterpolator
 import android.view.animation.LinearInterpolator
+import androidx.lifecycle.lifecycleScope
 
 import com.vpn.android.MainApplication
 import com.vpn.android.R
@@ -16,6 +17,9 @@ import com.vpn.android.coreservice.CoreSDKResponseManager
 import com.vpn.android.databinding.SplashLayoutBinding
 import com.vpn.android.ui.common.CommonAppCompatActivity
 import com.vpn.tahiti.TahitiCoreServiceStateInfoManager
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class SplashActivity : CommonAppCompatActivity() {
     companion object {
@@ -56,16 +60,19 @@ class SplashActivity : CommonAppCompatActivity() {
         mAdPlacement = intent.getStringExtra(AD_PLACEMENT) ?: AdConstant.AdPlacement.I_APP_START_DISCONNECT
         mLoadingTime = intent.getLongExtra(LOADING_TIME_MAX, RemoteConstants.OPEN_AD_LOAD_MAX_DURATION_VALUE_DEFAULT)
         mIsColdStart = intent.getBooleanExtra(IS_COLD_START, true)
-        AdPresenterWrapper.getInstance().interstitialAdLoadLiveData.observe(this) {
-            it?.apply {
-                if (it && AdPresenterWrapper.getInstance().isLoadedExceptNative(AdFormat.INTERSTITIAL, mAdPlacement)) {
-                    showInterstitialAd()
-                }
-            }
-        }
         if (!TahitiCoreServiceStateInfoManager.getInstance(MainApplication.context).coreServiceConnected && mIsColdStart) {
             CoreSDKResponseManager.fetchResponseAsLiveData.observe(this@SplashActivity) {
                 if (it != null) { finish() }
+            }
+        }
+        lifecycleScope.launch(Dispatchers.Main) {
+            delay(500)
+            AdPresenterWrapper.getInstance().interstitialAdLoadLiveData.observe(this@SplashActivity) {
+                it?.apply {
+                    if (it && AdPresenterWrapper.getInstance().isLoadedExceptNative(AdFormat.INTERSTITIAL, mAdPlacement)) {
+                        showInterstitialAd()
+                    }
+                }
             }
         }
     }

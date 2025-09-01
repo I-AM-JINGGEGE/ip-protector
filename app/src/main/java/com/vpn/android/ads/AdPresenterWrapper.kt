@@ -39,7 +39,6 @@ class AdPresenterWrapper private constructor() : IAdPresenterProxy {
     private lateinit var countDownLatch: CountDownLatch
     var interstitialAdLoadLiveData = MutableLiveData<Boolean>()
     var appOpenAdLoadLiveData = MutableLiveData<Boolean>()
-    var appStartAdNoFillLoadLiveData = MutableLiveData<Boolean>()
     var nativeAdLoadLiveData: MutableLiveData<Boolean> = MutableLiveData()
     var initialized: Boolean = false
 
@@ -137,14 +136,6 @@ class AdPresenterWrapper private constructor() : IAdPresenterProxy {
 
             override fun onFailure(errorCode: Int, errorMessage: String) {
                 loadListener?.onFailure(errorCode, errorMessage)
-                if (type == AdFormat.INTERSTITIAL &&
-                    (adPlacement == AdConstant.AdPlacement.I_APP_START_DISCONNECT ||
-                            adPlacement == AdConstant.AdPlacement.I_APP_START_CONNECT ||
-                            adPlacement == AdConstant.AdPlacement.I_HOME_RESTART_CONNECT ||
-                            adPlacement == AdConstant.AdPlacement.I_HOME_RESTART_DISCONNECT)
-                ) {
-                    appStartAdNoFillLoadLiveData.value = true
-                }
             }
         }
         loadAdInternal(type, adPlacement, listener, from)
@@ -245,10 +236,8 @@ class AdPresenterWrapper private constructor() : IAdPresenterProxy {
                         }
 
                         override fun onAdFailToShow(errorCode: Int, errorMessage: String) {
+                            fullScreenAdClosed()
                             listener?.onAdFailToShow(errorCode, errorMessage)
-                            if (type == AdFormat.INTERSTITIAL && isAdTurnOn()) {
-                                loadAdInternal(type, adPlacement, null, "ad fail to show")
-                            }
                         }
 
                         override fun onAdClosed() {
@@ -279,10 +268,8 @@ class AdPresenterWrapper private constructor() : IAdPresenterProxy {
                         }
 
                         override fun onAdFailToShow(errorCode: Int, errorMessage: String) {
+                            fullScreenAdClosed()
                             listener?.onAdFailToShow(errorCode, errorMessage)
-                            if (type == AdFormat.INTERSTITIAL && isAdTurnOn()) {
-                                loadAdInternal(type, adPlacement, null, "ad fail to show")
-                            }
                         }
 
                         override fun onAdClosed() {
