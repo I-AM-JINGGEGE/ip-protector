@@ -3,9 +3,11 @@ package com.vpn.android.report
 import ai.datatower.ad.AdPlatform
 import ai.datatower.ad.AdType
 import ai.datatower.analytics.DTAnalytics
+import com.sdk.ssmod.api.http.beans.FetchResponse
 import com.vpn.android.ads.bean.UserAdConfig
 import com.vpn.android.ads.network.IpUtil
 import com.vpn.android.base.utils.LogUtils
+import com.vpn.android.coreservice.CoreSDKResponseManager
 import com.vpn.android.report.ReportConstants.Param.IP_ADDRESS
 import org.json.JSONObject
 
@@ -19,11 +21,20 @@ object VpnReporter {
     const val PARAM_VALUE_FROM_SERVER_LIST = "server_list"
     const val PARAM_VALUE_FROM_SPEED_ICON = "speed_icon"
     const val PARAM_VALUE_FROM_REPORT_ICON = "report_icon"
+    const val PARAM_VALUE_PORT = "port"
+    const val PARAM_VALUE_RANK = "rank"
+    const val PARAM_VALUE_RESULT = "result"
+    const val PARAM_VALUE_COST = "cost"
+    const val PARAM_VALUE_ERROR_MESSAGE = "error_msg"
 
     fun reportToStartConnect(from: String) {
         DTAnalytics.track("vpn_to_start_connect", mutableMapOf<String, Any>().apply {
             put(PARAM_KEY_FROM, from)
-
+            CoreSDKResponseManager.getTopRankServer()?.let {
+                put(IP_ADDRESS, "${it.host}")
+                put(PARAM_VALUE_PORT, it.port ?: -1)
+                put(PARAM_VALUE_RANK, it.rankingFactor ?: -1)
+            }
             LogUtils.i("VpnReporter", "vpn_to_start_connect [${this}]")
         })
     }
@@ -31,8 +42,24 @@ object VpnReporter {
     fun reportStartConnect(from: String) {
         DTAnalytics.track("vpn_start_connect", mutableMapOf<String, Any>().apply {
             put(PARAM_KEY_FROM, from)
-
+            CoreSDKResponseManager.getTopRankServer()?.let {
+                put(IP_ADDRESS, "${it.host}")
+                put(PARAM_VALUE_PORT, it.port ?: -1)
+                put(PARAM_VALUE_RANK, it.rankingFactor ?: -1)
+            }
             LogUtils.i("VpnReporter", "vpn_start_connect [${this}]")
+        })
+    }
+
+    fun reportPingResult(result: Boolean, errorMessage: String?, cost: Long, host: FetchResponse.Host) {
+        DTAnalytics.track("vpn_ping_result", mutableMapOf<String, Any>().apply {
+            put(PARAM_VALUE_RESULT, result)
+            put(PARAM_VALUE_COST, cost)
+            put(PARAM_VALUE_ERROR_MESSAGE, "$errorMessage")
+            put(IP_ADDRESS, "${host.host}")
+            put(PARAM_VALUE_PORT, host.port ?: -1)
+            put(PARAM_VALUE_RANK, host.rankingFactor ?: -1)
+            LogUtils.i("VpnReporter", "vpn_ping_result [${this}]")
         })
     }
 

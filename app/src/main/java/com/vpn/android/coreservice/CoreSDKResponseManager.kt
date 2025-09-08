@@ -1,26 +1,50 @@
 package com.vpn.android.coreservice
 
 import androidx.lifecycle.MutableLiveData
-import com.vpn.android.BuildConfig
+import com.sdk.ssmod.IMSDK
+import com.sdk.ssmod.IServers
+import com.sdk.ssmod.api.http.beans.FetchResponse
 import com.vpn.android.MainApplication
 import com.vpn.android.base.net.NetworkManager
 import com.vpn.android.base.utils.LogUtils
 import com.vpn.android.region.RegionConstants
 import com.vpn.android.report.VpnReporter
 import com.vpn.android.ui.support.LegalManager
-import com.vpn.tahiti.TahitiCoreServiceUserUtils
-import com.sdk.ssmod.IMSDK
-import com.sdk.ssmod.IServers
-import com.sdk.ssmod.api.http.beans.FetchResponse
 import com.vpn.android.utils.ChannelUtils
+import com.vpn.tahiti.TahitiCoreServiceUserUtils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.util.Collections
+import java.util.TreeMap
 
 object CoreSDKResponseManager {
     private val TAG = CoreSDKResponseManager.javaClass.name
     private var fetchResponse: FetchResponse? = null
+
+    fun getTopRankServer(): FetchResponse.Host? {
+        fetchResponse?.apply {
+            val serverList = mutableListOf<FetchResponse.Host>()
+            this.serverZones?.forEach { serverZone ->
+                serverZone.hosts?.let { serverList.addAll(it) }
+            }
+            val result = TreeMap<Int, MutableList<FetchResponse.Host?>>()
+
+            for (i in serverList.indices) {
+                val item: FetchResponse.Host = serverList[i]
+                val key: Int = item.rankingFactor!!
+                var value = result.get(key)
+                if (value == null) {
+                    value = ArrayList()
+                    result.put(key, value)
+                }
+                value.add(item)
+            }
+            return result.firstNotNullOfOrNull { (_, list) -> list.firstOrNull() }
+        }
+        return null
+    }
+
     val fetchResponseAsLiveData = MutableLiveData<FetchResponse>()
     val fetchResponseRefreshingAsLiveData = MutableLiveData<Boolean>()
 

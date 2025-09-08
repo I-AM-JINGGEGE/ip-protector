@@ -168,7 +168,7 @@ public class ServerPing {
 
         @Override
         public PingResult call() {
-            return PingUtils.getConnectionResult(mVPNServer, 10000, 10000);
+            return PingUtils.getConnectionResult(mVPNServer, 3000, 10000);
         }
     }
 

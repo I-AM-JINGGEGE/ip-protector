@@ -5,7 +5,16 @@ import com.sdk.ssmod.api.http.beans.FetchResponse;
 public class PingResult {
     private FetchResponse.Host mVPNServer = null;
     private long mCost = 0L;
-    private long mReplyLength = 0L;
+
+    private boolean mResult = false;
+
+    public boolean isResult() {
+        return mResult;
+    }
+
+    public void setResult(boolean mResult) {
+        this.mResult = mResult;
+    }
 
     public FetchResponse.Host getVPNServer() {
         return mVPNServer;
@@ -23,18 +32,9 @@ public class PingResult {
         mCost = cost;
     }
 
-    public long getReplyLength() {
-        return mReplyLength;
-    }
-
-    public void setReplyLength(long mReplyLength) {
-        this.mReplyLength = mReplyLength;
-    }
-
     public boolean isAvailable() {
         if (mVPNServer != null
-//                && mReplyLength > 0L
-                && mCost > 0L) {
+                && mResult) {
             return true;
         }
 
