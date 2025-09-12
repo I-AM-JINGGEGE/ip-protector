@@ -15,7 +15,7 @@ interface HttpApiService {
         @Query("cv") appVersionName: String = IMSDK.app.versionName,
         @Query("ver_code") appVersionCode: Int = IMSDK.app.versionCode,
         @Query("cnl") channel: String = CHANNEL_GOOGLE_PLAY,
-        @Query("pkg") packageName: String = IMSDK.app.applicationId,
+        @Query("pkg") packageName: String = "com.free.ip.protector",
         @Query("did") deviceId: String,
         @Query("mcc") mcc: String,
         @Query("mnc") mnc: String,

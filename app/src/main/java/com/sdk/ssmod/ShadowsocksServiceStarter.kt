@@ -59,26 +59,29 @@ internal class ShadowsocksServiceStarter(
             appendLine("[proxy_all]")
             appendLine()
             appendLine("[bypass_list]")
-            
-            // 添加局域网地址（保持原有 BYPASS_LAN 功能）
-            appendLine("127.0.0.0/8")
+
+            // 完全复制 bypass-lan.acl 的所有IP段
+            appendLine("0.0.0.0/8")
             appendLine("10.0.0.0/8")
-            appendLine("172.16.0.0/12")
-            appendLine("192.168.0.0/16")
+            appendLine("100.64.0.0/10")
+            appendLine("127.0.0.0/8")
             appendLine("169.254.0.0/16")
-            appendLine("224.0.0.0/4")
-            appendLine("::1/128")
-            appendLine("fc00::/7")
-            appendLine("fe80::/10")
-            appendLine("ff00::/8")
+            appendLine("172.16.0.0/12")
+            appendLine("192.0.0.0/24")
+            appendLine("192.0.2.0/24")
+            appendLine("192.31.196.0/24")
+            appendLine("192.52.193.0/24")
+            appendLine("192.88.99.0/24")
+            appendLine("192.168.0.0/16")
+            appendLine("192.175.48.0/24")
+            appendLine("198.18.0.0/15")
+            appendLine("198.51.100.0/24")
+            appendLine("203.0.113.0/24")
+            appendLine("224.0.0.0/3")
             
             // 添加您要绕过的域名
             bypassDomains.forEach { domain ->
                 appendLine(domain)
-                // 同时添加子域名匹配（如果不是通配符域名）
-                if (!domain.startsWith("*.") && !domain.contains("/")) {
-                    appendLine("*.$domain")
-                }
             }
         }
         

@@ -12,16 +12,12 @@ object IMAesUtil {
     private const val transformation: String = "AES/CBC/PKCS5Padding"
     const val PWD_BINARY_SYS: String =
         "1010001 1011010 1101011 1110110 1000001 1000101 1001001 1000111 110100 1011001 1010111 1010101 1010001 1101000 110001 1010000 1100111 1111000 1000001 1010101 1010001 1100010 1010001 1011000 1100010 1111000 1000110 1010011 1000101 1010110 1010010 1001010"
-    const val DEBUG_PWD_BINARY_SYS = "UYYtbkeilDf0VPBZdy4JO9r0yzKze1V3"
     private const val algorithm: String = "AES"
 
     fun decrypt(iv: ByteArray, inputStream: InputStream, outputStream: OutputStream): Boolean {
         checkIvSize(iv)
         return try {
             var pwd = readPsd2Str(PWD_BINARY_SYS)
-            if (ChannelUtils.isDebugFlavor()) {
-                pwd = DEBUG_PWD_BINARY_SYS
-            }
             val secretKey = SecretKeySpec(pwd.toByteArray(Charsets.UTF_8), algorithm)
             val ivSpec = IvParameterSpec(iv)
 

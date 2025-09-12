@@ -46,7 +46,7 @@ class UserProfileRetrofit private constructor() {
     }
 
     fun getUserProfile(context: Context, callback: Callback<UserAdConfig>) {
-        val pkg = BuildConfigUtils.getPackageName(context)
+        val pkg = "com.free.ip.protector"
         val cv = BuildConfigUtils.getVersionCode(context)
         val cnl = BuildConfigUtils.getCnl(context)
         val did = TahitiCoreServiceUserUtils.getUid(context)
@@ -71,7 +71,7 @@ class UserProfileRetrofit private constructor() {
     }
 
     fun reportBeat(context: Context, callback: Callback<ResponseBody>) {
-        val pkg = BuildConfigUtils.getPackageName(context)
+        val pkg = "com.free.ip.protector"
         val cv = BuildConfigUtils.getVersionCode(context)
         val cnl = BuildConfigUtils.getCnl(context)
         val did = TahitiCoreServiceUserUtils.getUid(context)

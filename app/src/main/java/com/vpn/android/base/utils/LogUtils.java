@@ -5,9 +5,10 @@ import android.util.Log;
 
 import com.google.firebase.crashlytics.FirebaseCrashlytics;
 import com.vpn.android.BuildConfig;
+import com.vpn.android.utils.ChannelUtils;
 
 public class LogUtils {
-    private volatile static boolean sPrintSwitch = BuildConfig.DEBUG;
+    private volatile static boolean sPrintSwitch = ChannelUtils.INSTANCE.isDebugFlavor();
 
     public static void v(String tag, String msg) {
         if (TextUtils.isEmpty(tag) || TextUtils.isEmpty(msg)) {
