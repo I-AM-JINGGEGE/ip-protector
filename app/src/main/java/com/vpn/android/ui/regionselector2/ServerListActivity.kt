@@ -44,12 +44,12 @@ class ServerListActivity : CommonAppCompatActivity() {
         linearLayoutManager.orientation = RecyclerView.VERTICAL
         val serverListRecyclerViewAdapter =
             ServerListRecyclerViewAdapter(this@ServerListActivity) { vpnServerRegion: FetchResponse.ServerZone? ->
-                VpnReporter.reportToStartConnect(VpnReporter.PARAM_VALUE_FROM_SERVER_LIST)
+                VpnReporter.reportToStartConnect(VpnReporter.PARAM_VALUE_FROM_SERVER_LIST, vpnServerRegion?.id)
                 lifecycleScope.launch {
                     if (!requestVpnPermission(this@ServerListActivity)) {
                         return@launch
                     }
-                    VpnReporter.reportStartConnect(VpnReporter.PARAM_VALUE_FROM_SERVER_LIST)
+                    VpnReporter.reportStartConnect(VpnReporter.PARAM_VALUE_FROM_SERVER_LIST, vpnServerRegion?.id)
                     getInstance(applicationContext).connect(vpnServerRegion)
                     FakeConnectingProgressManager.Companion.getInstance().stateLiveData.postValue(FakeConnectionState(FakeConnectionState.STATE_START, 0F))
                     launch(Dispatchers.Main) { finish() }

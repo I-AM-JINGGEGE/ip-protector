@@ -22,12 +22,18 @@ object CoreSDKResponseManager {
     private val TAG = CoreSDKResponseManager.javaClass.name
     private var fetchResponse: FetchResponse? = null
 
-    fun getTopRankServer(): FetchResponse.Host? {
+    fun getTopRankServer(regionId: String?): FetchResponse.Host? {
         fetchResponse?.apply {
             val serverList = mutableListOf<FetchResponse.Host>()
-            this.serverZones?.forEach { serverZone ->
-                serverZone.hosts?.let { serverList.addAll(it) }
+            val zone = serverZones?.firstOrNull { it.id == regionId }
+            if (zone == null || zone.hosts == null) {
+                this.serverZones?.forEach { serverZone ->
+                    serverZone.hosts?.let { serverList.addAll(it) }
+                }
+            } else {
+                 serverList.addAll(zone.hosts!!)
             }
+
             val result = TreeMap<Int, MutableList<FetchResponse.Host?>>()
 
             for (i in serverList.indices) {

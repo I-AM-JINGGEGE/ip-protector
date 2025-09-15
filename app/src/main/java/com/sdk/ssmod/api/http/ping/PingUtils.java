@@ -109,7 +109,7 @@ public class PingUtils {
             }
         }
         connectionResult.setCost(System.currentTimeMillis() - start);
-        VpnReporter.INSTANCE.reportPingResult(false, "timeout", connectionResult.getCost(), vpnServer);
+        VpnReporter.INSTANCE.reportPingResult(false, "no response", connectionResult.getCost(), vpnServer);
         return connectionResult;
     }
 

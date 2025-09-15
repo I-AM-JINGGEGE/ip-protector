@@ -20,7 +20,6 @@ import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.sdk.ssmod.IMSDK.VpnState
 import com.sdk.ssmod.IMSDK.WithResponseBuilder.ConnectedTo
 import com.sdk.ssmod.api.http.beans.FetchResponse
-import com.sdk.ssmod.api.http.beans.pingAllOrderByRankingFirstReachableAsync
 import com.sdk.ssmod.api.http.ping.ServerPing
 import com.sdk.ssmod.beans.TrafficStats
 import com.sdk.ssmod.imsvcipc.ConnectedServerServiceConnection
@@ -182,43 +181,8 @@ object IMSDK {
     ): ConnectedTo = coroutineScope {
         val serverZone = response.serverZones?.firstOrNull { it.id == id }
             ?: throw ServerZoneNotFoundException(id)
-        connectToServerZoneWithLowestLatency(this, serverZone, packageNames, bypassDomain, enableIPv6Support)
-    }
-
-    @Throws(IMSDKRuntimeException::class)
-    internal suspend fun connectToCountry(
-        response: FetchResponse,
-        country: String,
-        packageNames: List<String>,
-        bypassDomain: String?,
-        enableIPv6Support: Boolean = false
-    ): ConnectedTo = coroutineScope {
-        val serverZone = response.serverZones
-            ?.filter { country.equals(it.country, true) }?.random()
-            ?: throw CountryOfServerNotFoundException(country)
-        connectToServerZoneWithLowestLatency(this, serverZone, packageNames, bypassDomain, enableIPv6Support)
-    }
-
-    @Throws(IMSDKRuntimeException::class)
-    private suspend fun connectToServerZoneWithLowestLatency(
-        scope: CoroutineScope,
-        serverZone: FetchResponse.ServerZone,
-        packageNames: List<String>,
-        bypassDomain: String?,
-        enableIPv6Support: Boolean = false
-    ): ConnectedTo = with(scope) {
-        val host = serverZone.pingAllOrderByRankingFirstReachableAsync()
-            .await() ?: throw ServerUnreachableException()
-        val city = serverZone.city.let { if (it.isNullOrEmpty()) "Default" else it }
-        val name = "$city, ${serverZone.country}"
-        connect(name, host.host!!, host.port!!, host.password!!, packageNames, bypassDomain, enableIPv6Support)
-
-        ImsvcService.startService(app.app, true)
-        val connectedTo = ConnectedTo(serverZone.id, serverZone.country, host)
-        tryIgnoreException { connectedServerServiceConnection.setConnectedTo(connectedTo) }
-        tryIgnoreException { connectedServerLiveDataPrivate.postValue(connectedTo) }
-
-        connectedTo
+        val bestHost = ServerPing(serverZone.hosts, DEFAULT_ID).startTest(null) ?: throw ServerUnreachableException()
+        connectToHost(this, bestHost, DEFAULT_ID, DEFAULT_ID, DEFAULT_ID, packageNames, bypassDomain, enableIPv6Support)
     }
 
     @Throws(IMSDKRuntimeException::class)
@@ -258,7 +222,6 @@ object IMSDK {
         fun bypassDomain(domain: String): WithResponseBuilder
         fun toBest(): WithResponseBuilder
         fun toServerZone(id: String): WithResponseBuilder
-        fun toCountry(country: String): WithResponseBuilder
         fun enableIPv6Support(enable: Boolean = true): WithResponseBuilder
 
         /**
@@ -373,7 +336,6 @@ internal class WithResponseBuilderImpl(
     private var bypassDomain: String? = null
     private var whereToConnect = PreferredGeolocation.BestOfOverall
     private var preferredZoneId: String? = null
-    private var preferredCountry: String? = null
     private var isEnableIPv6Support: Boolean = false
 
     override fun bypassPackageNames(packages: List<String>): IMSDK.WithResponseBuilder {
@@ -397,12 +359,6 @@ internal class WithResponseBuilderImpl(
         return this
     }
 
-    override fun toCountry(country: String): IMSDK.WithResponseBuilder {
-        whereToConnect = PreferredGeolocation.BestInCountry
-        preferredCountry = country
-        return this
-    }
-
     override fun enableIPv6Support(enable: Boolean): IMSDK.WithResponseBuilder {
         isEnableIPv6Support = enable
         return this
@@ -416,15 +372,11 @@ internal class WithResponseBuilderImpl(
         PreferredGeolocation.BestInServerZone -> {
             IMSDK.connectToServerZone(response, preferredZoneId!!, packages, bypassDomain, isEnableIPv6Support)
         }
-
-        PreferredGeolocation.BestInCountry -> {
-            IMSDK.connectToCountry(response, preferredCountry!!, packages, bypassDomain, isEnableIPv6Support)
-        }
     }
 
     companion object {
         private enum class PreferredGeolocation {
-            BestOfOverall, BestInServerZone, BestInCountry
+            BestOfOverall, BestInServerZone
         }
     }
 }

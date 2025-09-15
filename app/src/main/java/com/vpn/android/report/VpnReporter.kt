@@ -27,10 +27,10 @@ object VpnReporter {
     const val PARAM_VALUE_COST = "cost"
     const val PARAM_VALUE_ERROR_MESSAGE = "error_msg"
 
-    fun reportToStartConnect(from: String) {
+    fun reportToStartConnect(from: String, regionId: String?) {
         DTAnalytics.track("vpn_to_start_connect", mutableMapOf<String, Any>().apply {
             put(PARAM_KEY_FROM, from)
-            CoreSDKResponseManager.getTopRankServer()?.let {
+            CoreSDKResponseManager.getTopRankServer(regionId)?.let {
                 put(IP_ADDRESS, "${it.host}")
                 put(PARAM_VALUE_PORT, it.port ?: -1)
                 put(PARAM_VALUE_RANK, it.rankingFactor ?: -1)
@@ -39,10 +39,10 @@ object VpnReporter {
         })
     }
 
-    fun reportStartConnect(from: String) {
+    fun reportStartConnect(from: String, regionId: String?) {
         DTAnalytics.track("vpn_start_connect", mutableMapOf<String, Any>().apply {
             put(PARAM_KEY_FROM, from)
-            CoreSDKResponseManager.getTopRankServer()?.let {
+            CoreSDKResponseManager.getTopRankServer(regionId)?.let {
                 put(IP_ADDRESS, "${it.host}")
                 put(PARAM_VALUE_PORT, it.port ?: -1)
                 put(PARAM_VALUE_RANK, it.rankingFactor ?: -1)

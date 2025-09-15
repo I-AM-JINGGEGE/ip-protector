@@ -108,11 +108,11 @@ class DisconnectFragment : CommonFragment {
             return
         }
         GlobalScope.launch {
-            VpnReporter.reportToStartConnect(from)
+            VpnReporter.reportToStartConnect(from, null)
             if (!requestVpnPermission()) {
                 return@launch
             }
-            VpnReporter.reportStartConnect(from)
+            VpnReporter.reportStartConnect(from, null)
             CoreServiceManager.getInstance(requireContext()).connect(null)
             getInstance().stateLiveData.postValue(FakeConnectionState(FakeConnectionState.STATE_START, 0F))
         }
