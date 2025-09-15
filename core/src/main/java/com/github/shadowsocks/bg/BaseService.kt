@@ -370,6 +370,9 @@ object BaseService {
                     data.proxy!!.scheduleUpdate()
                     data.udpFallback?.scheduleUpdate()
 
+                    // Delay to ensure the tun2socks process is ready
+                    delay(500)
+
                     data.changeState(State.Connected)
                 } catch (_: CancellationException) {
                     // if the job was cancelled, it is canceller's responsibility to call stopRunner
