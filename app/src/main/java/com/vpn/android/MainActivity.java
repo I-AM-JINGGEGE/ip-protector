@@ -45,6 +45,7 @@ import com.vpn.android.comboads.network.UserProfileRetrofit;
 import com.vpn.android.coreservice.CoreServiceManager;
 import com.vpn.android.coreservice.ProgressListener;
 import com.vpn.android.coreservice.FakeConnectingProgressManager;
+import com.vpn.android.network.IpTestHelper;
 import com.vpn.android.report.AppReport;
 import com.vpn.android.report.ReportConstants;
 import com.vpn.android.report.VpnReporter;
@@ -434,6 +435,7 @@ public class MainActivity extends CommonAppCompatActivity implements OnClickDisc
                             LogUtils.e("VpnReporter", "Beat onFailure: " + t.getMessage());
                         }
                     });
+                    IpTestHelper.testGetIpAsync(MainApplication.Companion.getContext());
                     if (FakeConnectingProgressManager.Companion.getInstance().isWaitingForConnecting()) {
                         FakeConnectingProgressManager.Companion.getInstance().notifyVPNConnected();
                     }

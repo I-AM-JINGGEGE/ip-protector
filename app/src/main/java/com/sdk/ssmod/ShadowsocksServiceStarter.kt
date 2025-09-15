@@ -4,7 +4,6 @@ import com.github.shadowsocks.Core
 import com.github.shadowsocks.acl.Acl
 import com.github.shadowsocks.database.Profile
 import com.github.shadowsocks.database.ProfileManager
-import com.github.shadowsocks.net.Subnet.Companion.fromString
 
 internal class ShadowsocksServiceStarter(
     /**
@@ -26,9 +25,9 @@ internal class ShadowsocksServiceStarter(
 ) {
 
     fun run() {
-        // 如果有需要绕过的域名，创建自定义规则
+        // 如果有需要绕过的域名，修改 BYPASS_LAN 规则
         if (bypassDomains.isNotEmpty()) {
-            createCustomAclRules(bypassDomains)
+            createModifiedBypassLanRules(bypassDomains)
         }
         
         ProfileManager.clear()
@@ -40,8 +39,8 @@ internal class ShadowsocksServiceStarter(
             password = password,
             method = "aes-256-gcm",
             proxyApps = true, // We proxy apps, yes we do.
-            // 如果有自定义域名，使用自定义规则，否则保持原有设置
-            route = if (bypassDomains.isNotEmpty()) Acl.CUSTOM_RULES else Acl.BYPASS_LAN,
+            // 始终使用 BYPASS_LAN，但规则可能被修改
+            route = Acl.BYPASS_LAN,
             // Bypass Mode: any app not excluded are proxied by VPN.
             bypass = true,
             // Apps you want to bypass/connect to VPN, separated by '\n'.
@@ -53,8 +52,8 @@ internal class ShadowsocksServiceStarter(
         Core.startService()
     }
 
-    private fun createCustomAclRules(bypassDomains: List<String>) {
-        val customRules = buildString {
+    private fun createModifiedBypassLanRules(bypassDomains: List<String>) {
+        val modifiedRules = buildString {
             // 保持原有的 BYPASS_LAN 行为
             appendLine("[proxy_all]")
             appendLine()
@@ -81,14 +80,37 @@ internal class ShadowsocksServiceStarter(
             
             // 添加您要绕过的域名
             bypassDomains.forEach { domain ->
-                appendLine(domain)
+                when {
+                    // 如果是 IP 地址或 IP 段，直接添加
+                    domain.matches(Regex("^\\d+\\.\\d+\\.\\d+\\.\\d+(/\\d+)?$")) -> {
+                        appendLine(domain)
+                    }
+                    // 如果已经是正则表达式格式，直接添加
+                    domain.startsWith("(?:") -> {
+                        appendLine(domain)
+                    }
+                    // 如果是通配符格式 *.domain.com，转换为正则表达式
+                    domain.startsWith("*.") -> {
+                        val realDomain = domain.substring(2) // 移除 *.
+                        val escapedDomain = realDomain.replace(".", "\\.")
+                        appendLine("(?:^|\\.)$escapedDomain$")
+                    }
+                    // 普通域名，添加精确匹配和子域名匹配
+                    else -> {
+                        val escapedDomain = domain.replace(".", "\\.")
+                        // 精确匹配
+                        appendLine("^$escapedDomain$")
+                        // 子域名匹配
+                        appendLine("(?:^|\\.)$escapedDomain$")
+                    }
+                }
             }
         }
-        
-        // 保存自定义规则
-        Acl.customRules = Acl().apply {
-            fromReader(customRules.reader(), true)
-        }
-    }
 
+        // 直接修改 bypass-lan.acl 文件
+        try {
+            val bypassLanFile = Acl.getFile(Acl.BYPASS_LAN)
+            bypassLanFile.writeText(modifiedRules)
+        } catch (e: Exception) { }
+    }
 }
