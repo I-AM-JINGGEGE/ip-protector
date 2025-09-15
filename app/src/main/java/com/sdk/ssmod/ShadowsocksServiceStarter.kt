@@ -1,5 +1,6 @@
 package com.sdk.ssmod
 
+import android.text.TextUtils
 import com.github.shadowsocks.Core
 import com.github.shadowsocks.acl.Acl
 import com.github.shadowsocks.database.Profile
@@ -21,13 +22,13 @@ internal class ShadowsocksServiceStarter(
     /**
      * Domain names to bypass proxy (direct connection)
      */
-    private val bypassDomains: List<String> = emptyList()
+    private val bypassDomain: String? = null
 ) {
 
     fun run() {
         // 如果有需要绕过的域名，修改 BYPASS_LAN 规则
-        if (bypassDomains.isNotEmpty()) {
-            createModifiedBypassLanRules(bypassDomains)
+        if (!TextUtils.isEmpty(bypassDomain)) {
+            createModifiedBypassLanRules(bypassDomain!!)
         }
         
         ProfileManager.clear()
@@ -52,7 +53,7 @@ internal class ShadowsocksServiceStarter(
         Core.startService()
     }
 
-    private fun createModifiedBypassLanRules(bypassDomains: List<String>) {
+    private fun createModifiedBypassLanRules(domain: String) {
         val modifiedRules = buildString {
             // 保持原有的 BYPASS_LAN 行为
             appendLine("[proxy_all]")
@@ -79,30 +80,28 @@ internal class ShadowsocksServiceStarter(
             appendLine("224.0.0.0/3")
             
             // 添加您要绕过的域名
-            bypassDomains.forEach { domain ->
-                when {
-                    // 如果是 IP 地址或 IP 段，直接添加
-                    domain.matches(Regex("^\\d+\\.\\d+\\.\\d+\\.\\d+(/\\d+)?$")) -> {
-                        appendLine(domain)
-                    }
-                    // 如果已经是正则表达式格式，直接添加
-                    domain.startsWith("(?:") -> {
-                        appendLine(domain)
-                    }
-                    // 如果是通配符格式 *.domain.com，转换为正则表达式
-                    domain.startsWith("*.") -> {
-                        val realDomain = domain.substring(2) // 移除 *.
-                        val escapedDomain = realDomain.replace(".", "\\.")
-                        appendLine("(?:^|\\.)$escapedDomain$")
-                    }
-                    // 普通域名，添加精确匹配和子域名匹配
-                    else -> {
-                        val escapedDomain = domain.replace(".", "\\.")
-                        // 精确匹配
-                        appendLine("^$escapedDomain$")
-                        // 子域名匹配
-                        appendLine("(?:^|\\.)$escapedDomain$")
-                    }
+            when {
+                // 如果是 IP 地址或 IP 段，直接添加
+                domain.matches(Regex("^\\d+\\.\\d+\\.\\d+\\.\\d+(/\\d+)?$")) -> {
+                    appendLine(domain)
+                }
+                // 如果已经是正则表达式格式，直接添加
+                domain.startsWith("(?:") -> {
+                    appendLine(domain)
+                }
+                // 如果是通配符格式 *.domain.com，转换为正则表达式
+                domain.startsWith("*.") -> {
+                    val realDomain = domain.substring(2) // 移除 *.
+                    val escapedDomain = realDomain.replace(".", "\\.")
+                    appendLine("(?:^|\\.)$escapedDomain$")
+                }
+                // 普通域名，添加精确匹配和子域名匹配
+                else -> {
+                    val escapedDomain = domain.replace(".", "\\.")
+                    // 精确匹配
+                    appendLine("^$escapedDomain$")
+                    // 子域名匹配
+                    appendLine("(?:^|\\.)$escapedDomain$")
                 }
             }
         }

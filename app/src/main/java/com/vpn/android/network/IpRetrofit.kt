@@ -4,7 +4,9 @@ import android.content.Context
 import android.util.Log
 import com.vpn.android.base.utils.BuildConfigUtils
 import com.vpn.android.base.utils.DeviceUtils
+import com.vpn.android.base.utils.LogUtils
 import com.vpn.android.comboads.network.HttpClientRetryInterceptor
+import com.vpn.tahiti.TahitiCoreServiceAppsBypassUtils
 import com.vpn.tahiti.TahitiCoreServiceUserUtils
 import okhttp3.OkHttpClient
 import okhttp3.ResponseBody
@@ -32,12 +34,8 @@ class IpRetrofit private constructor() {
     }
 
     init {
-        Log.i(TAG, "=== 初始化 IpRetrofit ===")
-        Log.i(TAG, "Base URL: https://api.ironmeta.com/")
-        Log.i(TAG, "使用直连模式（禁用代理）")
-        
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://api.ironmeta.com/") // 使用 ironmeta API
+            .baseUrl("https://${TahitiCoreServiceAppsBypassUtils.getDomainBypass()}/") // 使用 ironmeta API
             .addConverterFactory(GsonConverterFactory.create())
             .client(retryNetWorkHttpClient())
             .build()
@@ -93,71 +91,28 @@ class IpRetrofit private constructor() {
                 if (response.isSuccessful) {
                     try {
                         val responseBody = response.body()?.string()
-                        Log.i(TAG, "✅ IP API Response Success:")
-                        Log.i(TAG, "Response Body: $responseBody")
+                        LogUtils.i(TAG, "✅ IP API Response Success:")
+                        LogUtils.i(TAG, "Response Body: $responseBody")
                         
                         // 根据您提供的示例，响应应该是: {"ip":"54.208.119.170"}
                         responseBody?.let { body ->
-                            Log.i(TAG, "📍 Current IP: $body")
+                            LogUtils.i(TAG, "📍 Current IP: $body")
                         }
                     } catch (e: Exception) {
-                        Log.e(TAG, "❌ Error reading response body", e)
+                        LogUtils.e(TAG, "❌ Error reading response body", e)
                     }
                 } else {
-                    Log.e(TAG, "❌ IP API Response Failed:")
-                    Log.e(TAG, "Response Code: ${response.code()}")
-                    Log.e(TAG, "Response Message: ${response.message()}")
+                    LogUtils.e(TAG, "❌ IP API Response Failed:")
+                    LogUtils.e(TAG, "Response Code: ${response.code()}")
+                    LogUtils.e(TAG, "Response Message: ${response.message()}")
                 }
             }
 
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                Log.e(TAG, "❌ IP API Request Failed:", t)
-                Log.e(TAG, "Error Message: ${t.message}")
+                LogUtils.e(TAG, "❌ IP API Request Failed:", t)
+                LogUtils.e(TAG, "Error Message: ${t.message}")
             }
         })
-    }
-
-    /**
-     * 同步获取 IP 信息（可选）
-     */
-    fun getIpInfoSync(context: Context): String? {
-        return try {
-            val pkg = BuildConfigUtils.getPackageName(context)
-            val cv = BuildConfigUtils.getVersionCode(context)
-            val cnl = BuildConfigUtils.getCnl(context)
-            val did = TahitiCoreServiceUserUtils.getUid(context)
-            val mcc = DeviceUtils.getMcc(context)
-            val mnc = DeviceUtils.getMnc(context)
-            val lang = DeviceUtils.getOSLang(context)
-            val rgn = DeviceUtils.getOSCountry(context)
-            val random = Random().nextInt()
-
-            val map: MutableMap<String?, Any?> = HashMap()
-            map["cv"] = cv
-            map["cnl"] = cnl
-            map["pkg"] = pkg
-            map["did"] = did
-            map["mcc"] = mcc
-            map["mnc"] = mnc
-            map["lang"] = lang
-            map["rgn"] = rgn
-            map["_random"] = random
-
-            val call = ipService.getIp(map)
-            val response = call.execute()
-            
-            if (response.isSuccessful) {
-                val responseBody = response.body()?.string()
-                Log.i(TAG, "✅ Sync IP API Response: $responseBody")
-                responseBody
-            } else {
-                Log.e(TAG, "❌ Sync IP API Failed: ${response.code()} - ${response.message()}")
-                null
-            }
-        } catch (e: Exception) {
-            Log.e(TAG, "❌ Sync IP API Exception:", e)
-            null
-        }
     }
 }
 

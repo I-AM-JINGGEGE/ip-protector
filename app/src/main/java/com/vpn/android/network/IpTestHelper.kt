@@ -1,11 +1,7 @@
 package com.vpn.android.network
 
 import android.content.Context
-import android.util.Log
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import com.vpn.android.base.utils.LogUtils
 
 class IpTestHelper {
     
@@ -17,7 +13,7 @@ class IpTestHelper {
          */
         @JvmStatic
         fun testGetIpAsync(context: Context) {
-            Log.i(TAG, "🚀 开始异步获取 IP 信息...")
+            LogUtils.i(TAG, "🚀 开始异步获取 IP 信息...")
             IpRetrofit.instance.getIpInfo(context)
         }
     }

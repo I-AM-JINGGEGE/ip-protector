@@ -1,7 +1,6 @@
 package com.vpn.tahiti;
 
 import android.content.Context;
-import android.util.ArraySet;
 
 import androidx.annotation.NonNull;
 
@@ -23,9 +22,8 @@ public class TahitiCoreServiceAppsBypassUtils {
         return VstoreManager.getInstance(context).encode(false, KvStoreConstants.KEY_CORE_SERVICE_APPS_BYPASS_PACKAGE_NAME, bypassAppsPackageName);
     }
 
-    public static List<String> getDomainsBypass() {
-        List<String> domains = new ArrayList<>();
-        domains.add("api.ironmeta.com");
-        return domains;
+    @NonNull
+    public static String getDomainBypass() {
+        return "api.ironmeta.com";
     }
 }
