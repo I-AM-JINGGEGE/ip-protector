@@ -1,12 +1,10 @@
 package com.vpn.base.vstore;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
-import com.tencent.mmkv.MMKV;
-
-import com.getkeepsafe.relinker.ReLinker;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,86 +24,76 @@ public class VstoreManager {
         return sVstoreManager;
     }
 
-    private Map<String, MMKV> mStoreMap = new HashMap<>();
+    private Map<String, SharedPreferences> mStoreMap = new HashMap<>();
+    private Context mAppContext;
 
     private VstoreManager(@NonNull Context appContext) {
-        MMKV.initialize(appContext, appContext.getFilesDir().getAbsolutePath() + "/mmkv", libName -> ReLinker.loadLibrary(appContext, libName));
-        createMMKV(STORE_ID_FOR_MAIN_PROCESS, MMKV.SINGLE_PROCESS_MODE);
-        createMMKV(STORE_ID_FOR_MULTI_PROCESS, MMKV.MULTI_PROCESS_MODE);
+        mAppContext = appContext;
+        // 主进程使用 MODE_PRIVATE，多进程使用 MODE_MULTI_PROCESS
+        createSharedPreferences(STORE_ID_FOR_MAIN_PROCESS, Context.MODE_PRIVATE);
+        createSharedPreferences(STORE_ID_FOR_MULTI_PROCESS, Context.MODE_MULTI_PROCESS);
     }
 
-    private MMKV createMMKV(String storeId, int mode) {
-        MMKV mmkv = MMKV.mmkvWithID(storeId, mode);
-        mStoreMap.put(storeId, mmkv);
-        return mmkv;
+    private SharedPreferences createSharedPreferences(String storeId, int mode) {
+        SharedPreferences sharedPreferences = mAppContext.getSharedPreferences(storeId, mode);
+        mStoreMap.put(storeId, sharedPreferences);
+        return sharedPreferences;
     }
 
     @NonNull
-    private MMKV getMmkv(boolean usedByMainProcessOnly) {
+    private SharedPreferences getSharedPreferences(boolean usedByMainProcessOnly) {
         return Objects.requireNonNull(usedByMainProcessOnly ? mStoreMap.get(STORE_ID_FOR_MAIN_PROCESS) : mStoreMap.get(STORE_ID_FOR_MULTI_PROCESS));
     }
 
     public boolean encode(boolean usedByMainProcessOnly, String key, boolean value) {
-        return getMmkv(usedByMainProcessOnly).encode(key, value);
+        return getSharedPreferences(usedByMainProcessOnly).edit().putBoolean(key, value).commit();
     }
 
     public boolean decode(boolean usedByMainProcessOnly, String key, boolean defaultValue) {
-        return getMmkv(usedByMainProcessOnly).decodeBool(key, defaultValue);
+        return getSharedPreferences(usedByMainProcessOnly).getBoolean(key, defaultValue);
     }
 
     public boolean encode(boolean usedByMainProcessOnly, String key, int value) {
-        return getMmkv(usedByMainProcessOnly).encode(key, value);
+        return getSharedPreferences(usedByMainProcessOnly).edit().putInt(key, value).commit();
     }
 
     public int decode(boolean usedByMainProcessOnly, String key, int defaultValue) {
-        return getMmkv(usedByMainProcessOnly).decodeInt(key, defaultValue);
+        return getSharedPreferences(usedByMainProcessOnly).getInt(key, defaultValue);
     }
 
     public boolean encode(boolean usedByMainProcessOnly, String key, long value) {
-        return getMmkv(usedByMainProcessOnly).encode(key, value);
+        return getSharedPreferences(usedByMainProcessOnly).edit().putLong(key, value).commit();
     }
 
     public long decode(boolean usedByMainProcessOnly, String key, long defaultValue) {
-        return getMmkv(usedByMainProcessOnly).decodeLong(key, defaultValue);
+        return getSharedPreferences(usedByMainProcessOnly).getLong(key, defaultValue);
     }
 
     public boolean encode(boolean usedByMainProcessOnly, String key, double value) {
-        return getMmkv(usedByMainProcessOnly).encode(key, value);
+        return getSharedPreferences(usedByMainProcessOnly).edit().putFloat(key, (float) value).commit();
     }
 
     public double decode(boolean usedByMainProcessOnly, String key, double defaultValue) {
-        return getMmkv(usedByMainProcessOnly).decodeDouble(key, defaultValue);
+        return getSharedPreferences(usedByMainProcessOnly).getFloat(key, (float) defaultValue);
     }
 
     public boolean encode(boolean usedByMainProcessOnly, String key, String value) {
-        return getMmkv(usedByMainProcessOnly).encode(key, value);
+        return getSharedPreferences(usedByMainProcessOnly).edit().putString(key, value).commit();
     }
 
     public String decode(boolean usedByMainProcessOnly, String key, String defaultValue) {
-        return getMmkv(usedByMainProcessOnly).decodeString(key, defaultValue);
-    }
-
-    public boolean encode(boolean usedByMainProcessOnly, String key, Parcelable value) {
-        return getMmkv(usedByMainProcessOnly).encode(key, value);
-    }
-
-    public <T extends Parcelable> T decode(boolean usedByMainProcessOnly, String key, Class<T> tClass, T defaultValue) {
-        return getMmkv(usedByMainProcessOnly).decodeParcelable(key, tClass, defaultValue);
+        return getSharedPreferences(usedByMainProcessOnly).getString(key, defaultValue);
     }
 
     public boolean encode(boolean usedByMainProcessOnly, String key, Set<String> value) {
-        return getMmkv(usedByMainProcessOnly).encode(key, value);
+        return getSharedPreferences(usedByMainProcessOnly).edit().putStringSet(key, value).commit();
     }
 
     public Set<String> decode(boolean usedByMainProcessOnly, String key, Set<String> defaultValue) {
-        return getMmkv(usedByMainProcessOnly).decodeStringSet(key, defaultValue);
-    }
-
-    public boolean contains(boolean usedByMainProcessOnly, String key) {
-        return getMmkv(usedByMainProcessOnly).containsKey(key);
+        return getSharedPreferences(usedByMainProcessOnly).getStringSet(key, defaultValue);
     }
 
     public void remove(boolean usedByMainProcessOnly, String key) {
-        getMmkv(usedByMainProcessOnly).removeValueForKey(key);
+        getSharedPreferences(usedByMainProcessOnly).edit().remove(key).commit();
     }
 }
