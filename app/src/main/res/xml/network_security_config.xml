@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!-- 只允许特定 IP 地址的 HTTP 请求 -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="false">34.107.253.151</domain>
+    </domain-config>
+</network-security-config>

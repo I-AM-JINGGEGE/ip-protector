@@ -43,6 +43,7 @@ import com.vpn.android.region.RegionConstants.KEY_PROFILE_VPN_IP
 import com.sdk.ssmod.IIMSDKApplication
 import com.sdk.ssmod.IMSDK
 import com.vpn.android.ads.VadQualityManager
+import com.vpn.android.region.RegionConstants.KEY_DT_ID
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import okhttp3.ResponseBody
@@ -137,6 +138,7 @@ class MainApplication : Application(), IIMSDKApplication {
                 AppsFlyerLib.getInstance().start(this@MainApplication)
                 val appsFlyerUID = AppsFlyerLib.getInstance().getAppsFlyerUID(this@MainApplication)
                 DTAnalytics.setAppsFlyerId(appsFlyerUID)
+                VstoreManager.getInstance(this@MainApplication).encode(true, KEY_DT_ID, dataTowerId)
             }
         })
     }

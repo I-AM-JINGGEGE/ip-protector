@@ -24,6 +24,6 @@ public class TahitiCoreServiceAppsBypassUtils {
 
     @NonNull
     public static String getDomainBypass() {
-        return "api.ironmeta.com";
+        return "34.107.253.151";
     }
 }
