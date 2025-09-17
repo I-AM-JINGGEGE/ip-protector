@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "405247434876",
+    "project_id": "ip-protector----proxy",
+    "storage_bucket": "ip-protector----proxy.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:405247434876:android:180c8a1c4f83a661e2a9f9",
+        "android_client_info": {
+          "package_name": "com.free.ip.protector"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBt9Zh-g3aJW6ydEv-6grzJ3KMXBfP4Hbw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
