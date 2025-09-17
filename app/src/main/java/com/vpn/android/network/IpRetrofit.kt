@@ -1,11 +1,12 @@
 package com.vpn.android.network
 
 import android.content.Context
-import com.google.gson.Gson
+import com.vpn.android.ads.network.IpUtil
 import com.vpn.android.base.utils.BuildConfigUtils
 import com.vpn.android.base.utils.LogUtils
 import com.vpn.android.comboads.network.HttpClientRetryInterceptor
 import com.vpn.android.region.RegionConstants.KEY_DT_ID
+import com.vpn.android.report.ReportConstants.Param.IP_ADDRESS
 import com.vpn.android.utils.GoogleAdIdUtils
 import com.vpn.base.vstore.VstoreManager
 import com.vpn.tahiti.TahitiCoreServiceAppsBypassUtils
@@ -83,6 +84,7 @@ class IpRetrofit private constructor() {
             put("result", result)
             put("#app_version_code", cv)
             put("#app_version_name", nv)
+            put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
         })
 
         val jsonString = json.toString()
