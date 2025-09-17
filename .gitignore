@@ -10,3 +10,19 @@
 *.aab
 *.apk
 /.kotlin
+
+# Google Services
+**/google-services.json
+**/GoogleService-Info.plist
+
+# Keystore files
+*.jks
+*.keystore
+*.p12
+*.pem
+*.pwd
+
+# API Keys and secrets
+**/secrets.properties
+**/api-keys.properties
+**/config.properties
