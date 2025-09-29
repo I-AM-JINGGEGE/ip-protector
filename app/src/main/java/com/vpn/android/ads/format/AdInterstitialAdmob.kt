@@ -5,6 +5,7 @@ import ai.datatower.ad.AdType
 import ai.datatower.ad.DTAdReport
 import android.app.Activity
 import android.content.Context
+import android.os.SystemClock
 import com.appsflyer.AFInAppEventParameterName
 import com.appsflyer.AFInAppEventType
 import com.appsflyer.AppsFlyerLib
@@ -45,7 +46,7 @@ class AdInterstitialAdmob(var adId: String, val context: Context) {
         }
         callBack = listener
         isLoadingAd = true
-        val start = System.currentTimeMillis()
+        val start = SystemClock.elapsedRealtime()
         DTAdReport.reportLoadBegin(adId, AdType.INTERSTITIAL, AdPlatform.ADMOB, seq, mutableMapOf<String, Any>().apply {
             put("from", from)
             put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
@@ -56,7 +57,7 @@ class AdInterstitialAdmob(var adId: String, val context: Context) {
                 isLoadingAd = false
                 mInterstitialAd = null
                 callBack?.onFailure(adError.code, adError.message)
-                DTAdReport.reportLoadEnd(adId, AdType.INTERSTITIAL, AdPlatform.ADMOB, System.currentTimeMillis() - start, false, seq, adError.code, adError.message, mutableMapOf<String, Any>().apply {
+                DTAdReport.reportLoadEnd(adId, AdType.INTERSTITIAL, AdPlatform.ADMOB, SystemClock.elapsedRealtime() - start, false, seq, adError.code, adError.message, mutableMapOf<String, Any>().apply {
                     put("from", from)
                     put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
                 })
@@ -67,7 +68,7 @@ class AdInterstitialAdmob(var adId: String, val context: Context) {
                 setAdShowCallback()
                 isLoadingAd = false
                 callBack?.onAdLoaded()
-                DTAdReport.reportLoadEnd(adId, AdType.INTERSTITIAL, AdPlatform.ADMOB, System.currentTimeMillis() - start, true, seq, 0, "", mutableMapOf<String, Any>().apply {
+                DTAdReport.reportLoadEnd(adId, AdType.INTERSTITIAL, AdPlatform.ADMOB, SystemClock.elapsedRealtime() - start, true, seq, 0, "", mutableMapOf<String, Any>().apply {
                     put("from", from)
                     put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
                 })

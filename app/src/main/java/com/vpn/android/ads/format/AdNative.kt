@@ -4,6 +4,7 @@ import ai.datatower.ad.AdPlatform
 import ai.datatower.ad.AdType
 import ai.datatower.ad.DTAdReport
 import android.content.Context
+import android.os.SystemClock
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -78,7 +79,7 @@ class AdNative(val context: Context, var adId: String) {
             }
             mNativeAd = ad
             mNativeAdLoadListener?.onAdLoaded()
-            DTAdReport.reportLoadEnd(adId, AdType.NATIVE, AdPlatform.ADMOB, System.currentTimeMillis() - start, true, seq, 0, "", mutableMapOf<String, Any>().apply {
+            DTAdReport.reportLoadEnd(adId, AdType.NATIVE, AdPlatform.ADMOB, SystemClock.elapsedRealtime() - start, true, seq, 0, "", mutableMapOf<String, Any>().apply {
                 put("from", from)
                 put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
             })
@@ -86,7 +87,7 @@ class AdNative(val context: Context, var adId: String) {
         .withAdListener(object : AdListener() {
             override fun onAdFailedToLoad(adError: LoadAdError) {
                 mNativeAdLoadListener?.onAdLoadFail(adError.code, adError.message)
-                DTAdReport.reportLoadEnd(adId, AdType.NATIVE, AdPlatform.ADMOB, System.currentTimeMillis() - start, false, seq, adError.code, adError.message, mutableMapOf<String, Any>().apply {
+                DTAdReport.reportLoadEnd(adId, AdType.NATIVE, AdPlatform.ADMOB, SystemClock.elapsedRealtime() - start, false, seq, adError.code, adError.message, mutableMapOf<String, Any>().apply {
                     put("from", from)
                     put(IP_ADDRESS, IpUtil.getConnectedIdAddress())
                 })
@@ -128,7 +129,7 @@ class AdNative(val context: Context, var adId: String) {
             loadListener?.onAdLoaded()
             return
         }
-        start = System.currentTimeMillis()
+        start = SystemClock.elapsedRealtime()
         this.from = from
         DTAdReport.reportLoadBegin(adId, AdType.NATIVE, AdPlatform.ADMOB, seq, mutableMapOf<String, Any>().apply {
             put("from", from)
